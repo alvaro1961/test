@@ -1,0 +1,790 @@
+[
+  {
+    "objectID": "chapters/vectors.html",
+    "href": "chapters/vectors.html",
+    "title": "1  Vectors in \\(\\mathbb{R}^n\\)",
+    "section": "",
+    "text": "1.1 Addition of vectors and scalar product of vectors\nThe following videos from the Essence of Linear Algebra, from 3Blue1Brown, are exceptionally good. Watch them carefully\nLet \\(\\mathbf{v}=(v_1,\\dots,v_n)\\) and \\(\\mathbf{w}=(w_1,\\dots,w_n)\\) be two vectors in \\(\\mathbb{R}^n\\) and let \\(c\\in\\mathbb{R}\\) be a scalar. The sum of \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\) is defined by: \\[\\mathbf{v}+\\mathbf{w}=\\begin{bmatrix}v_1\\\\v_2\\\\\\vdots \\\\ v_n\\end{bmatrix}+\\begin{bmatrix}w_1\\\\w_2\\\\\\vdots\\\\ w_n\\end{bmatrix}=\\begin{bmatrix}v_1+w_1\\\\v_2+w_2\\\\\\vdots\\\\ v_n+w_n\\end{bmatrix}.\\]\nThe scalar product of \\(c\\) and \\(\\mathbf{v}\\) is defined by: \\[c\\mathbf{v}=c\\begin{bmatrix}v_1\\\\v_2\\\\\\vdots\\\\ v_n\\end{bmatrix}=\\begin{bmatrix}cv_1\\\\cv_2\\\\\\vdots\\\\ cv_n\\end{bmatrix}.\\]\nIn \\(\\mathbb{R}^n\\), we represent vectors as column vectors. For convenience in inline text, we sometimes write \\(\\mathbf{v}=(v_1,\\dots,v_n)\\), but this notation should be understood to represent a column vector. This is distinct from a row vector, which we explicitly denote as \\(\\mathbf{v}=\\begin{bmatrix}v_1& v_2 &\\cdots &v_n\\end{bmatrix}\\). The distinction is important because row and column vectors behave differently under matrix operations.",
+    "crumbs": [
+      "Vectors",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vectors in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vectors.html#addition-of-vectors-and-scalar-product-of-vectors",
+    "href": "chapters/vectors.html#addition-of-vectors-and-scalar-product-of-vectors",
+    "title": "1  Vectors in \\(\\mathbb{R}^n\\)",
+    "section": "",
+    "text": "Properties of addition and scalar product\nLet \\(\\mathbf{u}\\), \\(\\mathbf{v}\\), and \\(\\mathbf{w}\\) be vectors in \\(\\mathbb{R}^n\\), and let \\(c\\) and \\(d\\) be scalars.\n\n\\(\\mathbf{u} + \\mathbf{v} \\in \\mathbb{R}^n\\) (Closed under addition)\n\\(c\\mathbf{u} \\in \\mathbb{R}^n\\) (Closed under scalar multiplication)\n\\(\\mathbf{u} + \\mathbf{v} = \\mathbf{v} + \\mathbf{u}\\) (Commutative property of addition)\n\\((\\mathbf{u} + \\mathbf{v}) + \\mathbf{w} = \\mathbf{u} + (\\mathbf{v} + \\mathbf{w})\\) (Associative property of addition)\n\\(\\exists \\, \\mathbf{0} \\in \\mathbb{R}^n\\) such that \\(\\mathbf{u} + \\mathbf{0} = \\mathbf{u}\\) (Existence of an additive identity)\n\\(\\forall \\, \\mathbf{u} \\in \\mathbb{R}^n, \\, \\exists \\, -\\mathbf{u}\\) such that \\(\\mathbf{u} + (-\\mathbf{u}) = \\mathbf{0}\\) (Existence of additive inverses)\n\\(1\\mathbf{u} = \\mathbf{u}\\) (Identity element of scalar multiplication)\n\\((cd)\\mathbf{u} = c(d\\mathbf{u})\\) (Associative property of scalar multiplication)\n\\(c(\\mathbf{u} + \\mathbf{v}) = c\\mathbf{u} + c\\mathbf{v}\\) (Distributive property)\n\\((c + d)\\mathbf{u} = c\\mathbf{u} + d\\mathbf{u}\\) (Distributive property)\n\nThese properties characterize sets equipped with addition and scalar multiplication that satisfy the axioms of a vector space. In particular, they define the structure not only of \\(\\mathbb{R}^n\\) but also of more abstract vector spaces, where elements need not be geometric vectors, and scalars may belong to fields other than \\(\\mathbb{R}\\), such as \\(\\mathbb{C}\\) or finite fields.",
+    "crumbs": [
+      "Vectors",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vectors in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vectors.html#linear-combinations",
+    "href": "chapters/vectors.html#linear-combinations",
+    "title": "1  Vectors in \\(\\mathbb{R}^n\\)",
+    "section": "1.2 Linear Combinations",
+    "text": "1.2 Linear Combinations\nA linear combination of vectors \\(\\mathbf{v}_1, \\mathbf{v}_2, \\ldots, \\mathbf{v}_k\\) in \\(\\mathbb{R}^n\\) is a sum of scalar multiples of these vectors:\n\\[a_1\\mathbf{v}_1 + a_2\\mathbf{v}_2 + \\cdots + a_k\\mathbf{v}_k\\]\nwhere \\(a_1, a_2, \\ldots, a_k\\) are scalars (real numbers).\nLet’s illustrate this with two vectors in \\(\\mathbb{R}^2\\): \\(\\mathbf{v}_1=\\begin{bmatrix}1\\\\1\\end{bmatrix}\\) and \\(\\mathbf{v}_2=\\begin{bmatrix}-1\\\\1\\end{bmatrix}\\). We can create different vectors through linear combinations of \\(\\mathbf{v}_1\\) and \\(\\mathbf{v}_2\\):\n\nCombining with positive coefficients: \\[2\\mathbf{v}_1 + \\mathbf{v}_2 = 2\\begin{bmatrix}1\\\\1\\end{bmatrix} + \\begin{bmatrix}-1\\\\1\\end{bmatrix} = \\begin{bmatrix}1\\\\3\\end{bmatrix}\\]\nUsing a negative coefficient: \\[\\mathbf{v}_1 - 3\\mathbf{v}_2 = \\begin{bmatrix}1\\\\1\\end{bmatrix} - 3\\begin{bmatrix}-1\\\\1\\end{bmatrix} = \\begin{bmatrix}4\\\\-2\\end{bmatrix}\\]\nWorking with fractions: \\[\\frac{1}{2}\\mathbf{v}_1 + \\frac{1}{2}\\mathbf{v}_2 = \\frac{1}{2}\\begin{bmatrix}1\\\\1\\end{bmatrix} + \\frac{1}{2}\\begin{bmatrix}-1\\\\1\\end{bmatrix} = \\begin{bmatrix}0\\\\1\\end{bmatrix}\\]\n\nMany questions in linear algebra reduce to solving systems of linear equations. Questions about linear combinations are a prime example, as we’ll see in the following exercise:\n\nExercise: Can we write \\(\\begin{bmatrix}0\\\\1\\\\0\\end{bmatrix}\\) as a linear combination of the vectors \\(\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix}\\), \\(\\begin{bmatrix}4\\\\5\\\\6\\end{bmatrix}\\), \\(\\begin{bmatrix}7\\\\8\\\\9\\end{bmatrix}\\)?\n\n\n\n\n\n\nClick to see the solution\n\n\n\n\n\nWe want scalars \\(c_1\\), \\(c_2\\), \\(c_3\\) such that: \\[c_1\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix} + c_2\\begin{bmatrix}4\\\\5\\\\6\\end{bmatrix} + c_3\\begin{bmatrix}7\\\\8\\\\9\\end{bmatrix} = \\begin{bmatrix}0\\\\1\\\\0\\end{bmatrix}\\] This gives the system of equations: \\[\\begin{align*}\nc_1 + 4c_2 + 7c_3 &= 0\\\\\n2c_1 + 5c_2 + 8c_3 &= 1\\\\\n3c_1 + 6c_2 + 9c_3 &= 0.\n\\end{align*}\\] We can use substitution, or elimination, to show that this system has no solution, so \\(\\begin{bmatrix}0\\\\1\\\\0\\end{bmatrix}\\) is not a linear combination of the given vectors. We’ll cover solutions to such systems extensively later in the course.\n\n\n\n\nLinear combinations are fundamental in linear algebra and have numerous applications, such as:\n\nExpressing a vector in terms of other vectors\nSolving systems of linear equations\nDescribing lines, planes, and hyperplanes in \\(\\mathbb{R}^n\\)\nAnalyzing linear transformations and matrices",
+    "crumbs": [
+      "Vectors",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vectors in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vectors.html#span",
+    "href": "chapters/vectors.html#span",
+    "title": "1  Vectors in \\(\\mathbb{R}^n\\)",
+    "section": "1.3 Span",
+    "text": "1.3 Span\nThe set of all possible linear combinations of a given set of vectors is known as the span of those vectors, and it has important properties.\nLet’s start with a precise definition. If \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\) are vectors in \\(\\mathbb{R}^n\\), then \\[\\text{span}\\left(\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\}\\right) =\\{ c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k:c_1,\\dots,c_k\\in\\mathbb{R} \\}\\]\nNotice that \\(\\text{span}\\left(\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\}\\right)\\) is a subset of \\(\\mathbb{R}^n\\). When working with sets, we typically focus on two key questions:\n\nHow do we verify if an element belongs to the set?\nWhat properties can we deduce when we know an element belongs to the set?\n\nFor the span of vectors \\(\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\}\\):\nVerification: To check if \\(\\mathbf{v}\\) is in the span, we solve a system of equations. Consider:\nIf \\(\\mathbf{v}_1 = \\begin{bmatrix}1\\\\2\\\\1\\end{bmatrix}\\), \\(\\mathbf{v}_2 = \\begin{bmatrix}0\\\\1\\\\1\\end{bmatrix}\\), and \\(\\mathbf{v} = \\begin{bmatrix}2\\\\5\\\\3\\end{bmatrix}\\)\nTo check if \\(\\mathbf{v}\\) is in span\\((\\{\\mathbf{v}_1,\\mathbf{v}_2\\})\\), we ask: do there exist \\(c_1,c_2\\) such that \\(c_1\\mathbf{v}_1 + c_2\\mathbf{v}_2 = \\mathbf{v}\\)?\nThis gives us: \\[\\begin{align*}\nc_1(1) + c_2(0) &= 2\\\\\nc_1(2) + c_2(1) &= 5\\\\\nc_1(1) + c_2(1) &= 3\n\\end{align*}\\]\nIf we find values for \\(c_1,c_2\\) satisfying all equations, then \\(\\mathbf{v}\\) is in the span. If no such values exist, \\(\\mathbf{v}\\) is not in the span.\nProperties: If a vector \\(\\mathbf{w}\\) is in \\(\\text{span}\\left(\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\}\\right)\\), we know that there exist constants \\(c_1,\\dots,c_n\\in\\mathbb{R}\\) such that \\(\\mathbf{w}=c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k\\).\nWe use these properties to deduce important results:\n\n\nProposition\nSuppose that \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\) are vectors in \\(\\mathbb{R}^n\\). Then\n\nIf \\(\\mathbf{w}_1\\) and \\(\\mathbf{w}_2\\) are in \\(\\text{span}\\left(\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\}\\right)\\), then \\(\\mathbf{w}_1+\\mathbf{w}_2\\) is also in \\(\\text{span}\\left(\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\}\\right)\\).\nIf \\(\\mathbf{w}\\in \\text{span}\\left(\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\}\\right)\\), and \\(c\\in\\mathbb{R}\\), then \\(c\\mathbf{w}\\in \\text{span}\\left(\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_k\\}\\right)\\).\n\n\n\n\nProof. We only check (1), (2) is similar. Since \\(\\mathbf{w}_1\\) is in the span, there exist \\(a_1,\\dots,a_k\\) with \\(\\mathbf{w}_1 = a_1\\mathbf{v}_1+\\cdots+a_k\\mathbf{v}_k\\). Similarly, there exist \\(b_1,\\dots,b_k\\) with \\(\\mathbf{w}_2 = b_1\\mathbf{v}_1+\\cdots+b_k\\mathbf{v}_k\\). Then: \\[\\mathbf{w}_1 + \\mathbf{w}_2 = (a_1+b_1)\\mathbf{v}_1+\\cdots+(a_k+b_k)\\mathbf{v}_k\\] showing \\(\\mathbf{w}_1 + \\mathbf{w}_2\\) is in the span. \\(\\square\\)\n\nVisualizing Vector Spans in \\(\\mathbb{R}^3\\)\n\nSpan of a Single Vector Given \\(\\mathbf{v} \\in \\mathbb{R}^3\\), the \\(\\text{span}({\\mathbf{v}})\\) is:\n\n\nA point at origin if \\(\\mathbf{v} = \\mathbf{0}\\)\nA line through the origin if \\(\\mathbf{v} \\neq \\mathbf{0}\\), containing all scalar multiples of \\(\\mathbf{v}\\)\n\n\nSpan of Two Vectors For nonzero vectors \\(\\mathbf{v}, \\mathbf{w} \\in \\mathbb{R}^3\\), the \\(\\text{span}({\\mathbf{v}, \\mathbf{w}})\\) is:\n\n\nA line through origin if the vectors are parallel (one is a scalar multiple of the other)\nA plane through origin otherwise, containing all linear combinations \\(s\\mathbf{v} + t\\mathbf{w}\\) where \\(s,t \\in \\mathbb{R}\\)\n\n\nSpan of Multiple Vectors Consider the set of vectors \\(\\{\\mathbf{v}_1, \\mathbf{v}_2, \\mathbf{v}_3, \\mathbf{v}_4\\}\\): \\[\n\\mathbf{v}_1 = \\begin{bmatrix}1\\\\1\\\\3\\end{bmatrix}, \\;\n\\mathbf{v}_2 = \\begin{bmatrix}-2\\\\-2\\\\-6\\end{bmatrix}, \\;\n\\mathbf{v}_3 = \\begin{bmatrix}1\\\\-2\\\\5\\end{bmatrix}, \\;\n\\mathbf{v}_4 = \\begin{bmatrix}0\\\\3\\\\-2\\end{bmatrix}\n\\]\n\nThe span of these vectors is the set of all possible linear combinations: \\[\\text{span}(\\{\\mathbf{v}_1, \\mathbf{v}_2, \\mathbf{v}_3, \\mathbf{v}_4\\}) = \\{t_1\\mathbf{v}_1 + t_2\\mathbf{v}_2 + t_3\\mathbf{v}_3 + t_4\\mathbf{v}_4 : t_1,t_2,t_3,t_4 \\in \\mathbb{R}\\}.\\]\nTheir span is visualized by the following graph and we see that all the vectors are in one plane.\n\n\n                                                \n\n\nThe span of a set of vectors in \\(\\mathbb{R}^3\\) must be one of exactly four geometric objects:\n\nA single point (specifically, the origin \\((0,0,0)\\))\nA line passing through the origin\nA plane containing the origin\nAll of \\(\\mathbb{R}^3\\) (the entire three-dimensional space)",
+    "crumbs": [
+      "Vectors",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vectors in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vectors.html#dot-product-in-mathbbrn",
+    "href": "chapters/vectors.html#dot-product-in-mathbbrn",
+    "title": "1  Vectors in \\(\\mathbb{R}^n\\)",
+    "section": "1.4 Dot Product in \\(\\mathbb{R}^n\\)",
+    "text": "1.4 Dot Product in \\(\\mathbb{R}^n\\)\nLet \\(\\mathbf{v}=(v_1,\\dots,v_n)\\) and \\(\\mathbf{w}=(w_1,\\dots,w_n)\\) be two vectors in \\(\\mathbb{R}^n\\). The dot product of \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\) is defined by: \\[\\mathbf{v}\\cdot\\mathbf{w}=\\begin{bmatrix}v_1\\\\v_2\\\\\\vdots\\\\ v_n\\end{bmatrix}\\cdot \\begin{bmatrix}w_1\\\\w_2\\\\\\vdots\\\\ w_n\\end{bmatrix}= \\sum_{i=1}^nv_iw_i.\\]\nThe following properties are easy to check.\n\n1.4.1 Properties of the Dot Product in \\(\\mathbb{R}^n\\)\nLet \\(\\mathbf{u}\\), \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\) be vectors in \\(\\mathbb{R}^n\\), and let \\(a\\in\\mathbb{R}\\) and \\(b\\in\\mathbb{R}\\) be scalars.\n\n\\(\\mathbf{v} \\cdot \\mathbf{v} \\geq 0\\) and \\(\\mathbf{v} \\cdot \\mathbf{v} = 0\\) if and only if \\(\\mathbf{v} = \\mathbf{0}\\) (Positive Definite)\n\\(\\mathbf{v} \\cdot \\mathbf{w} = \\mathbf{w} \\cdot \\mathbf{v}\\) (Symmetric)\n\\(\\mathbf{u}\\cdot(a\\mathbf{v} + b\\mathbf{w}) = a(\\mathbf{u} \\cdot \\mathbf{v}) + b(\\mathbf{u} \\cdot \\mathbf{w})\\) and \\((a\\mathbf{u} + b\\mathbf{v}) \\cdot \\mathbf{w} = a(\\mathbf{u} \\cdot \\mathbf{w}) + b(\\mathbf{v} \\cdot \\mathbf{w})\\) (Linear in each Variable)\n\n\n\n1.4.2 Norm\nThe dot product induces a norm on \\(\\mathbb{R}^n\\). The norm of a vector \\(\\mathbf{v} = (v_1, v_2, \\ldots, v_n)\\in\\mathbb{R}^n\\) is given by:\n\\[\\|\\mathbf{v}\\| = \\sqrt{\\mathbf{v}\\cdot\\mathbf{v}} = \\sqrt{\\sum_{i=1}^n |v_i|^2}\\]\nThe norm is also known as the magnitude or length of a vector. It satisfies the following properties:\n\nNon-negativity: \\(\\|\\mathbf{v}\\| \\geq 0\\) for all \\(\\mathbf{v} \\in \\mathbb{R}^n\\)\nDefiniteness: \\(\\|\\mathbf{v}\\| = 0\\) if and only if \\(\\mathbf{v} = \\mathbf{0}\\)\nHomogeneity: \\(\\|c\\mathbf{v}\\| = |c| \\|\\mathbf{v}\\|\\) for all \\(c \\in \\mathbb{R}\\) and \\(\\mathbf{v} \\in \\mathbb{R}^n\\)\nTriangle inequality: \\(\\|\\mathbf{v} + \\mathbf{w}\\| \\leq \\|\\mathbf{v}\\| + \\|\\mathbf{w}\\|\\) for all \\(\\mathbf{v}, \\mathbf{w} \\in \\mathbb{R}^n\\)\n\nThe first three properties are easy to verify. The Triangle Inequality can be proved using Cauchy-Schwarz inequality that says that \\(|\\mathbf{v} \\cdot \\mathbf{w}| \\leq \\|\\mathbf{v}\\| \\|\\mathbf{w}\\|\\)\n\nExercise: Use Cauchy-Schwarz Inequality to prove the Triangle Inequality of the norm.\n\n\n\n\n\n\nClick to see the proof\n\n\n\n\n\nWe start with the squared norm of \\(\\mathbf{v} + \\mathbf{w}\\):\n\\[\\|\\mathbf{v} + \\mathbf{w}\\|^2 = (\\mathbf{v} + \\mathbf{w}) \\cdot (\\mathbf{v} + \\mathbf{w})\\]\nExpanding the right-hand side using the properties of the dot product, we get:\n\\[\\|\\mathbf{v} + \\mathbf{w}\\|^2 = \\mathbf{v} \\cdot \\mathbf{v} + 2(\\mathbf{v} \\cdot \\mathbf{w}) + \\mathbf{w} \\cdot \\mathbf{w} = \\|\\mathbf{v}\\|^2 + 2(\\mathbf{v} \\cdot \\mathbf{w}) + \\|\\mathbf{w}\\|^2\\]\nNow, we apply the Cauchy-Schwarz Inequality to the term \\(2(\\mathbf{v} \\cdot \\mathbf{w})\\):\n\\[2(\\mathbf{v}\\cdot\\mathbf{w})\\leq2|\\mathbf{v} \\cdot \\mathbf{w}| \\leq 2\\|\\mathbf{v}\\| \\|\\mathbf{w}\\|\\]\nSubstituting this into the previous equation, we obtain:\n\\[\\|\\mathbf{v} + \\mathbf{w}\\|^2 \\leq \\|\\mathbf{v}\\|^2 + 2\\|\\mathbf{v}\\| \\|\\mathbf{w}\\| + \\|\\mathbf{w}\\|^2 = (\\|\\mathbf{v}\\| + \\|\\mathbf{w}\\|)^2\\]\nTaking the square root of both sides (which is valid since both sides are non-negative) yields:\n\\[\\|\\mathbf{v} + \\mathbf{w}\\| \\leq \\|\\mathbf{v}\\| + \\|\\mathbf{w}\\|\\]\nwhich is the Triangle Inequality for the norm in \\(\\mathbb{R}^n\\). \\(\\square\\)\n\n\n\n\n\n\n1.4.3 Orthogonality and Cauchy-Schwarz Inequality\nTwo vectors \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\) in \\(\\mathbb{R}^n\\) are orthogonal if \\(\\mathbf{v}\\cdot\\mathbf{w}=0\\). Orthogonality is a central topic in linear algebra and has numerous applications in various fields, such as:\n\nCoordinate systems and basis vectors\nLeast squares approximation and regression analysis\nFourier series and signal processing\nQuantum mechanics and Hilbert spaces\n\n\n\n1.4.3.1 Pythagorean Theorem\nIf \\(\\mathbf{v}, \\mathbf{w}\\in \\mathbb{R}^n\\) are orthogonal vectors, then \\(\\|\\mathbf{v} + \\mathbf{w}\\|^2= \\|\\mathbf{v}\\|^2 + \\|\\mathbf{w}\\|^2\\)\n\n\n\nProof. Let \\(\\mathbf{v} = (v_1, v_2, \\ldots, v_n)\\) and \\(\\mathbf{w} = (w_1, w_2, \\ldots, w_n)\\) be orthogonal vectors in \\(\\mathbb{R}^n\\). We start with the squared norm of \\(\\mathbf{v} + \\mathbf{w}\\):\n\\[\\|\\mathbf{v} + \\mathbf{w}\\|^2 = (\\mathbf{v} + \\mathbf{w}) \\cdot (\\mathbf{v} + \\mathbf{w})\\]\nExpanding the right-hand side using the properties of the dot product, we get:\n\\[\\|\\mathbf{v} + \\mathbf{w}\\|^2 = \\mathbf{v} \\cdot \\mathbf{v} + 2(\\mathbf{v} \\cdot \\mathbf{w}) + \\mathbf{w} \\cdot \\mathbf{w}\\]\nSince \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\) are orthogonal, \\(\\mathbf{v} \\cdot \\mathbf{w} = 0\\). Substituting this into the equation above, we obtain:\n\\[\\|\\mathbf{v} + \\mathbf{w}\\|^2 = \\mathbf{v} \\cdot \\mathbf{v} + \\mathbf{w} \\cdot \\mathbf{w} = \\|\\mathbf{v}\\|^2 + \\|\\mathbf{w}\\|^2\\]\nwhich is the Pythagorean Theorem for orthogonal vectors in \\(\\mathbb{R}^n\\). \\(\\square\\)\n\nThe Pythagorean Theorem is a special case of the Parallelogram Law, which states that for any two vectors \\(\\mathbf{v}, \\mathbf{w}\\in \\mathbb{R}^n\\):\n\\[\\|\\mathbf{v} + \\mathbf{w}\\|^2 + \\|\\mathbf{v} - \\mathbf{w}\\|^2 = 2(\\|\\mathbf{v}\\|^2 + \\|\\mathbf{w}\\|^2)\\]\nWhen \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\) are orthogonal, \\(\\|\\mathbf{v} - \\mathbf{w}\\|^2 = \\|\\mathbf{v}\\|^2 + \\|\\mathbf{w}\\|^2\\), and the Parallelogram Law reduces to the Pythagorean Theorem.\n\nProve the Parallelogram Law\n\n\n1.4.3.2 Exercise: Prove the Parallelogram Law\n\n\n\n\n\n\nHint\n\n\n\n\n\nMany proofs like this start by “expanding” the squared terms \\(\\|\\mathbf{v}\\pm \\mathbf{w}\\|^2\\). Then some terms cancel.\n\n\n\n\nThere are several different proofs of the Cauchy-Schwarz inequality. In class we present a geometric one that takes advantage of orthogonality, which is sketched after the proof that uses a quadratic function.\n\n\n1.4.3.3 Theorem: Cauchy-Schwarz Inequality\nLet \\(\\mathbf{v} = (v_1, v_2, \\ldots, v_n)\\) and \\(\\mathbf{w} = (w_1, w_2, \\ldots, w_n)\\) be two vectors in \\(\\mathbb{R}^n\\). Then \\(|\\mathbf{v} \\cdot \\mathbf{w}| \\leq \\|\\mathbf{v}\\| \\|\\mathbf{w}\\|\\)\n\n\n\nProof. Let \\(t \\in \\mathbb{R}\\) be a scalar. Consider the non-negative quantity \\(\\|\\mathbf{v} - t\\mathbf{w}\\|^2\\):\n\\[\\|\\mathbf{v} - t\\mathbf{w}\\|^2 \\geq 0\\]\nExpanding the left-hand side using the properties of the dot product, we get:\n\\[(\\mathbf{v} - t\\mathbf{w}) \\cdot (\\mathbf{v} - t\\mathbf{w}) = \\mathbf{v} \\cdot \\mathbf{v} - 2t(\\mathbf{v} \\cdot \\mathbf{w}) + t^2(\\mathbf{w} \\cdot \\mathbf{w}) \\geq 0\\]\nThis inequality holds for all values of \\(t\\). Let’s choose \\(t\\) to be the value that minimizes the left-hand side:\n\\[t = \\frac{\\mathbf{v} \\cdot \\mathbf{w}}{\\|\\mathbf{w}\\|^2}\\]\nSubstituting this value of \\(t\\) into the inequality, we obtain:\n\\[\\|\\mathbf{v}\\|^2 - 2\\frac{(\\mathbf{v} \\cdot \\mathbf{w})^2}{\\|\\mathbf{w}\\|^2} + \\frac{(\\mathbf{v} \\cdot \\mathbf{w})^2}{\\|\\mathbf{w}\\|^2} \\geq 0\\]\nSimplifying the left-hand side:\n\\[\\|\\mathbf{v}\\|^2 - \\frac{(\\mathbf{v} \\cdot \\mathbf{w})^2}{\\|\\mathbf{w}\\|^2} \\geq 0\\]\nMultiplying both sides by \\(\\|\\mathbf{w}\\|^2\\) yields:\n\\[\\|\\mathbf{v}\\|^2\\|\\mathbf{w}\\|^2 \\geq (\\mathbf{v} \\cdot \\mathbf{w})^2\\]\nTaking the square root of both sides (which is valid since both sides are non-negative) gives:\n\\[\\|\\mathbf{v}\\| \\|\\mathbf{w}\\| \\geq |\\mathbf{v} \\cdot \\mathbf{w}|\\]\nwhich is the Cauchy-Schwarz Inequality. \\(\\square\\)\n\n\n\n\n\n\n\nClick to see an alternative proof of Cauchy-Schawrz\n\n\n\n\n\nSuppose that neither \\(\\mathbf{v}\\) nor \\(\\mathbf{w}\\) are zero and that one is not a multiple of the other.\nFor any scalar \\(t\\in\\mathbb{R}\\), we can write \\(\\mathbf{w}\\) as the sum of two vectors: \\(\\mathbf{w} = t\\mathbf{v}+(\\mathbf{w}-t\\mathbf{v})\\). Our goal is to find \\(t\\in\\mathbb{R}\\) such that \\(t\\mathbf{v}\\) and \\(\\mathbf{w}-t\\mathbf{v}\\) are orthogonal. For such a \\(t\\), \\[\\|\\mathbf{w}\\|^2 = t^2\\|\\mathbf{v}\\|^2+\\|\\mathbf{w}-t\\mathbf{v}\\|^2.\\] In particular, \\[t^2\\|\\mathbf{v}\\|^2\\leq\\|\\mathbf{w}\\|^2.\\] From the equation \\(\\mathbf{v}\\cdot (\\mathbf{w}-t\\mathbf{v})=0\\), we find that \\(t=\\frac{\\mathbf{v}\\cdot \\mathbf{w}}{\\mathbf{v}\\cdot \\mathbf{v}}\\). When we substitute this into \\[t^2\\|\\mathbf{v}\\|^2\\leq\\|\\mathbf{w}\\|^2,\\] and simplify we get the Cauchy-Schwarz inequality.\n\n\n\n\n\n1.4.4 Geometric Interpretation of the Dot Product\nThe dot product of two vectors \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\) in \\(\\mathbb{R}^n\\) can be expressed in terms of their norms and the angle between them: \\[\\mathbf{v} \\cdot \\mathbf{w} = \\|\\mathbf{v}\\| \\|\\mathbf{w}\\| \\cos(\\theta)\\] where \\(\\theta\\) is the angle between \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\). This relationship highlights the geometric interpretation of the dot product. When \\(\\theta = 0°\\), the vectors are parallel, and the dot product equals the product of their norms. When \\(\\theta = 90°\\), the vectors are orthogonal, and the dot product is zero. The Cauchy-Schwarz Inequality follows directly from this relationship, as \\(|\\cos(\\theta)| \\leq 1\\).\nWe can verify this easily in \\(\\mathbb{R}^2\\). Consider two vectors \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\) in \\(\\mathbb{R}^2\\). Let the angle that vector \\(\\mathbf{v}\\) makes with the positive x-axis be \\(\\alpha\\), and the angle that vector \\(\\mathbf{w}\\) makes with the positive x-axis be \\(\\alpha + \\beta\\), where \\(\\beta\\) is the angle between vectors \\(\\mathbf{v}\\) and \\(\\mathbf{w}\\).\nThe vectors can be expressed in terms of their magnitudes and angles: \\(\\mathbf{v} = (\\|\\mathbf{v}\\| \\cos(\\alpha), \\|\\mathbf{v}\\| \\sin(\\alpha))\\) and \\(\\mathbf{w} = (\\|\\mathbf{w}\\| \\cos(\\alpha + \\beta), \\|\\mathbf{w}\\| \\sin(\\alpha + \\beta))\\). The dot product of these vectors is:\n\\[\\mathbf{v} \\cdot \\mathbf{w} = \\|\\mathbf{v}\\| \\|\\mathbf{w}\\| (\\cos(\\alpha) \\cos(\\alpha + \\beta) + \\sin(\\alpha) \\sin(\\alpha + \\beta))\\]\nUsing the angle addition formulas:\n\\[\\cos(\\alpha + \\beta) = \\cos(\\alpha) \\cos(\\beta) - \\sin(\\alpha) \\sin(\\beta)\\] \\[\\sin(\\alpha + \\beta) = \\sin(\\alpha) \\cos(\\beta) + \\cos(\\alpha) \\sin(\\beta)\\]\nWe show that \\(\\cos(\\alpha) \\cos(\\alpha + \\beta) + \\sin(\\alpha) \\sin(\\alpha + \\beta) = \\cos(\\beta)\\) and we conclude that \\[\\mathbf{v} \\cdot \\mathbf{w} = \\|\\mathbf{v}\\| \\|\\mathbf{w}\\| \\cos(\\beta).\\]\n\nExercise: Prove that \\(\\cos(\\alpha) \\cos(\\alpha + \\beta) + \\sin(\\alpha) \\sin(\\alpha + \\beta) = \\cos(\\beta)\\)\n\n\n\n\n\n\nClick to see the proof\n\n\n\n\n\n\\[\\begin{aligned}\n\\cos(\\alpha) \\cos(\\alpha + \\beta) + \\sin(\\alpha) \\sin(\\alpha + \\beta) &=\n\\cos(\\alpha) (\\cos(\\alpha) \\cos(\\beta) - \\sin(\\alpha) \\sin(\\beta)) \\\\\n&\\quad + \\sin(\\alpha) (\\sin(\\alpha) \\cos(\\beta) + \\cos(\\alpha) \\sin(\\beta))) \\\\\n&= (\\cos^2(\\alpha) \\cos(\\beta) - \\cos(\\alpha) \\sin(\\alpha) \\sin(\\beta) \\\\\n&\\quad + \\sin^2(\\alpha) \\cos(\\beta) + \\cos(\\alpha) \\sin(\\alpha) \\sin(\\beta)) \\\\\n&= (\\cos^2(\\alpha) \\cos(\\beta) + \\sin^2(\\alpha) \\cos(\\beta)) \\\\\n&= (\\cos^2(\\alpha) + \\sin^2(\\alpha)) \\cos(\\beta) \\\\\n&= \\cos(\\beta)\n\\end{aligned}\\]\n\n\n\n\n\n\n1.4.5 Distance\nThe norm induces a distance (or metric) on \\(\\mathbb{R}^n\\), the distance between two vectors \\(\\mathbf{v} = (v_1, v_2, \\ldots, v_n)\\) and \\(\\mathbf{w} = (w_1, w_2, \\ldots, w_n)\\) is given by:\n\\[d(\\mathbf{v}, \\mathbf{w}) =\\|\\mathbf{v}-\\mathbf{w}\\| = \\sqrt{\\sum_{i=1}^n |v_i - w_i|^2}\\]\nThis distance is known as the Euclidean distance. It satisfies the following properties:\n\nNon-negativity: \\(d(\\mathbf{v}, \\mathbf{w}) \\geq 0\\) for all \\(\\mathbf{v}, \\mathbf{w} \\in \\mathbb{R}^n\\)\nDefiniteness: \\(d(\\mathbf{v}, \\mathbf{w}) = 0\\) if and only if \\(\\mathbf{v} = \\mathbf{w}\\)\nSymmetry: \\(d(\\mathbf{v}, \\mathbf{w}) = d(\\mathbf{w}, \\mathbf{v})\\) for all \\(\\mathbf{v}, \\mathbf{w} \\in \\mathbb{R}^n\\)\nTriangle inequality: \\(d(\\mathbf{v}, \\mathbf{z}) \\leq d(\\mathbf{v}, \\mathbf{w}) + d(\\mathbf{w}, \\mathbf{z})\\) for all \\(\\mathbf{v}, \\mathbf{w}, \\mathbf{z} \\in \\mathbb{R}^n\\)\n\nThe induced distance has numerous applications in various fields, such as:\n\nClustering and classification in machine learning\nMeasuring similarity or dissimilarity between objects or data points\nOptimization problems in operations research\nError analysis and approximation theory in numerical analysis\n\nUnderstanding the relationships between dot product, norm, and distance is crucial in applications in mathematics, physics, computer science, and engineering.",
+    "crumbs": [
+      "Vectors",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vectors in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vectors.html#vector-computation-in-python",
+    "href": "chapters/vectors.html#vector-computation-in-python",
+    "title": "1  Vectors in \\(\\mathbb{R}^n\\)",
+    "section": "1.5 Vector Computation in Python",
+    "text": "1.5 Vector Computation in Python\nPython provides various ways to work with vectors, including built-in lists and the NumPy library. In this class, we will extensively use NumPy for vector computations due to its optimized performance and wide range of mathematical functions. However, we will also include examples using Python lists for illustration purposes. Let’s explore how to perform common vector operations using Python.\n\n1.5.1 Representing Vectors\nIn Python, we can represent vectors using lists or NumPy arrays. Here’s an example of creating vectors:\n\nimport numpy as np\n\n# Using Python lists\nv = [1, 2, 3]\nw = [4, 5, 6]\n\n# Using NumPy arrays\nv_np = np.array([1, 2, 3])\nw_np = np.array([4, 5, 6])\n\n\n\n1.5.2 Vector Addition\nTo add two vectors, we can use the + operator for lists or NumPy arrays:\n\n# Using Python lists\nresult = [v[i] + w[i] for i in range(len(v))]\nprint(result)  # Output: [5, 7, 9]\n\n# Using NumPy arrays\nresult_np = v_np + w_np\nprint(result_np)  # Output: [5 7 9]\n\n[5, 7, 9]\n[5 7 9]\n\n\n\n\n1.5.3 Scalar Multiplication\nTo multiply a vector by a scalar, we can use a list comprehension or NumPy array multiplication:\n\nscalar = 2\n\n# Using Python lists\nresult = [scalar * x for x in v]\nprint(result)  # Output: [2, 4, 6]\n\n# Using NumPy arrays\nresult_np = scalar * v_np\nprint(result_np)  # Output: [2 4 6]\n\n[2, 4, 6]\n[2 4 6]\n\n\n\n\n1.5.4 Dot Product\nTo compute the dot product of two vectors, we can use a list comprehension or NumPy’s dot function:\n\n# Using Python lists\ndot_product = sum([v[i] * w[i] for i in range(len(v))])\nprint(dot_product)  # Output: 32\n\n# Using NumPy arrays\ndot_product_np = np.dot(v_np, w_np)\nprint(dot_product_np)  # Output: 32\n\n32\n32\n\n\n\n\n1.5.5 Vector Norms\nTo calculate the norm (length) of a vector, we can use the Euclidean distance formula or NumPy’s linalg.norm function:\n\nimport math\n\n# Using Python lists\nnorm = math.sqrt(sum([x**2 for x in v]))\nprint(norm)  # Output: 3.7416573867739413\n\n# Using NumPy arrays\nnorm_np = np.linalg.norm(v_np)\nprint(norm_np)  # Output: 3.7416573867739413\n\n3.7416573867739413\n3.7416573867739413\n\n\nThese examples demonstrate how to perform basic vector computations using Python lists and NumPy arrays. NumPy provides optimized functions for vector operations, which can be more efficient, especially for large vectors and matrices.",
+    "crumbs": [
+      "Vectors",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vectors in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vector_spaces.html",
+    "href": "chapters/vector_spaces.html",
+    "title": "2  Abstract Vector Spaces",
+    "section": "",
+    "text": "2.1 Definition\nThe step from \\(\\mathbb{R}^n\\) to abstract vector spaces reflects a fundamental principle in mathematics: identifying common patterns to unify seemingly different objects. While \\(\\mathbb{R}^n\\) provides a concrete and visualizable model, the abstract framework reveals that spaces of functions, polynomials, and solutions to some differential equations share the exact same algebraic structure. This abstraction is not just elegant—it’s immensely practical. When we prove a theorem about vector spaces in general, it automatically applies to all these examples at once.\nA vector space \\(V\\) over \\(\\mathbb{R}\\) is a set equipped with two operations: vector addition (\\(+\\)) and scalar multiplication (\\(\\cdot\\)). For \\(\\mathbf{u},\\mathbf{v},\\mathbf{w}\\in V\\) and scalars \\(a,b\\in\\mathbb{R}\\), these operations must satisfy:\nVector Addition Properties:\nScalar Multiplication Properties:\nExamples:",
+    "crumbs": [
+      "Vectors",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Abstract Vector Spaces</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vector_spaces.html#definition",
+    "href": "chapters/vector_spaces.html#definition",
+    "title": "2  Abstract Vector Spaces",
+    "section": "",
+    "text": "Commutativity: \\(\\mathbf{u}+\\mathbf{v}=\\mathbf{v}+\\mathbf{u}\\)\nAssociativity: \\((\\mathbf{u}+\\mathbf{v})+\\mathbf{w}=\\mathbf{u}+(\\mathbf{v}+\\mathbf{w})\\)\nZero vector: There exists \\(\\mathbf{0}\\in V\\) such that \\(\\mathbf{v}+\\mathbf{0}=\\mathbf{v}\\) for all \\(\\mathbf{v}\\in V\\)\nAdditive inverse: For each \\(\\mathbf{v}\\in V\\), there exists \\(-\\mathbf{v}\\in V\\) such that \\(\\mathbf{v}+(-\\mathbf{v})=\\mathbf{0}\\)\n\n\n\nDistributivity over vector addition: \\(a(\\mathbf{u}+\\mathbf{v})=a\\mathbf{u}+a\\mathbf{v}\\)\nDistributivity over scalar addition: \\((a+b)\\mathbf{v}=a\\mathbf{v}+b\\mathbf{v}\\)\nAssociativity: \\(a(b\\mathbf{v})=(ab)\\mathbf{v}\\)\nIdentity: \\(1\\mathbf{v}=\\mathbf{v}\\)\n\n\n\n\\(\\mathbb{R}^n\\)\nFunction spaces:\n\n\\(C[a,b]\\): continuous functions on \\([a,b]\\)\n\\(C^\\infty(\\mathbb{R})\\): infinitely differentiable functions\n\nPolynomial spaces:\n\n\\(\\mathbb{P}_n\\): polynomials of degree \\(\\leq n\\)\n\\(\\mathbb{P}\\): all polynomials\n\n\n\n2.1.1 Subspaces of \\(\\mathbb{R}^n\\)\nWithin any vector space, certain subsets naturally inherit the vector space structure. These special subsets, called subspaces, play a fundamental role in linear algebra. While we’ll focus on subspaces of \\(\\mathbb{R}^n\\), where they arise as familiar geometric objects like lines and planes through the origin, the concept extends elegantly to all vector spaces.\n\nDefinition: A subset \\(W\\) of the vector space \\(V\\) is called a subspace if it satisfies three conditions:\n\nThe zero vector \\(\\mathbf{0}\\) is in \\(W\\)\nFor all \\(\\mathbf{u},\\mathbf{v}\\in W\\), their sum \\(\\mathbf{u}+\\mathbf{v}\\) is also in \\(W\\) (closed under addition)\nFor all \\(\\mathbf{v}\\in W\\) and all scalars \\(c\\in\\mathbb{R}\\), the vector \\(c\\mathbf{v}\\) is in \\(W\\) (closed under scalar multiplication)\n\n\n\nTheorem: Every subspace of \\(\\mathbb{R}^n\\) is itself a vector space.\n\n\nProof. Let \\(W\\) be a subspace of \\(\\mathbb{R}^n\\). We must verify all eight vector space properties.\nVector Addition Properties:\n\nCommutativity: Let \\(\\mathbf{u},\\mathbf{v}\\in W\\). Since \\(W\\subseteq\\mathbb{R}^n\\), we know \\(\\mathbf{u}+\\mathbf{v}=\\mathbf{v}+\\mathbf{u}\\), as this holds in \\(\\mathbb{R}^n\\).\nAssociativity: Let \\(\\mathbf{u},\\mathbf{v},\\mathbf{w}\\in W\\). Since \\(W\\subseteq\\mathbb{R}^n\\), we know that \\((\\mathbf{u}+\\mathbf{v})+\\mathbf{w}=\\mathbf{u}+(\\mathbf{v}+\\mathbf{w})\\), as this holds in \\(\\mathbb{R}^n\\).\nZero vector: This is given directly by subspace property 1.\nAdditive inverse: Let \\(\\mathbf{v}\\in W\\). By subspace property 3, \\((-1)\\mathbf{v}\\in W\\). This is the additive inverse of \\(\\mathbf{v}\\) since \\(\\mathbf{v}+(-1)\\mathbf{v}=1\\mathbf{v}+(-1)\\mathbf{v}=(1-1)\\mathbf{v}=0\\mathbf{v}=\\mathbf{0}\\).\n\nScalar Multiplication Properties:\n\nDistributivity over vector addition: Let \\(a\\in\\mathbb{R}\\) and \\(\\mathbf{u},\\mathbf{v}\\in W\\). We know that \\(a(\\mathbf{u}+\\mathbf{v})=a\\mathbf{u}+a\\mathbf{v}\\), as this holds in \\(\\mathbb{R}^n\\).\nDistributivity over scalar addition: Let \\(a,b\\in\\mathbb{R}\\) and \\(\\mathbf{v}\\in W\\). We know that \\((a+b)\\mathbf{v}=a\\mathbf{v}+b\\mathbf{v}\\), as this holds in \\(\\mathbb{R}^n\\).\nAssociativity of scalar multiplication: Let \\(a,b\\in\\mathbb{R}\\) and \\(\\mathbf{v}\\in W\\). We know that \\(\\mathbb{R}^n\\), \\(a(b\\mathbf{v})=(ab)\\mathbf{v}\\), as this holds in \\(\\mathbb{R}^n\\).\nIdentity scalar multiplication: Let \\(\\mathbf{v}\\in W\\). We know that \\(1\\mathbf{v}=\\mathbf{v}\\), as this holds in \\(\\mathbb{R}^n\\), and clearly \\(\\mathbf{v}\\in W\\) by assumption.\n\nTherefore, since all eight vector space properties are satisfied, \\(W\\) is indeed a vector space.\n\nNote that this proof relies heavily on two key facts:\n\nThe vector space operations in \\(W\\) are inherited from \\(\\mathbb{R}^n\\)\nThe subspace properties ensure that these operations are well-defined on \\(W\\) (i.e., their outputs remain in \\(W\\))\n\nFurthermore, observe that the proof does not rely on any specific properties of \\(\\mathbb{R}^n\\). It establishes that subspaces of vector spaces are themselves vector spaces under the operations inherited from the parent space.\n\n\n2.1.2 Examples of subspaces of \\(\\mathbb{R}^n\\)\nhere …",
+    "crumbs": [
+      "Vectors",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Abstract Vector Spaces</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vector_spaces.html#inner-products",
+    "href": "chapters/vector_spaces.html#inner-products",
+    "title": "2  Abstract Vector Spaces",
+    "section": "2.2 Inner Products:",
+    "text": "2.2 Inner Products:\nAn inner product on a vector space \\(V\\) is a function \\(\\langle\\cdot,\\cdot\\rangle:V\\times V\\to\\mathbb{R}\\) satisfying:\n\nSymmetry: \\(\\langle\\mathbf{u},\\mathbf{v}\\rangle=\\langle\\mathbf{v},\\mathbf{u}\\rangle\\)\nLinearity: \\(\\langle a\\mathbf{u}+b\\mathbf{v},\\mathbf{w}\\rangle=a\\langle\\mathbf{u},\\mathbf{w}\\rangle+b\\langle\\mathbf{v},\\mathbf{w}\\rangle\\)\nPositive definiteness: \\(\\langle\\mathbf{v},\\mathbf{v}\\rangle\\geq 0\\) with equality if and only if \\(\\mathbf{v}=\\mathbf{0}\\)\n\nThe inner product generalizes the familiar dot product of \\(\\mathbb{R}^n\\). Different fields use different notations:\n\nIn \\(\\mathbb{R}^n\\): \\(\\mathbf{u}\\cdot\\mathbf{v}\\) (dot product notation)\nIn mathematics: \\(\\langle \\mathbf{u}, \\mathbf{v} \\rangle\\) (angle bracket notation)\nIn physics: \\(\\langle \\mathbf{u} | \\mathbf{v} \\rangle\\) (Dirac or bra-ket notation)\n\nExamples of Inner Products:\n\nStandard dot product in \\(\\mathbb{R}^n\\): \\(\\langle\\mathbf{x},\\mathbf{y}\\rangle=\\sum_{i=1}^n x_iy_i\\)\nOn \\(C[a,b]\\): \\(\\langle f,g\\rangle=\\int_a^b f(x)g(x)\\,dx\\)\nOn \\(\\mathbb{P}_n\\): \\(\\langle p,q\\rangle=\\int_{-1}^1 p(x)q(x)\\,dx\\)\n\nJust as in \\(\\mathbb{R}^n\\), these inner products satisfy fundamental properties that make them powerful tools. The Cauchy-Schwarz inequality holds in any inner product space: \\(|\\langle\\mathbf{u},\\mathbf{v}\\rangle|\\leq|\\mathbf{u}||\\mathbf{v}|\\). Moreover, every inner product generates a norm through \\(|\\mathbf{v}|=\\sqrt{\\langle\\mathbf{v},\\mathbf{v}\\rangle}\\), which in turn induces a distance function \\(d(\\mathbf{u},\\mathbf{v})=|\\mathbf{u}-\\mathbf{v}|\\). This norm satisfies all the properties we know from \\(\\mathbb{R}^n\\): positivity, homogeneity, and the triangle inequality. Thus, every inner product space inherits the geometric structure that makes \\(\\mathbb{R}^n\\) so useful.",
+    "crumbs": [
+      "Vectors",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Abstract Vector Spaces</span>"
+    ]
+  },
+  {
+    "objectID": "worksheets/computing_dot_products.html",
+    "href": "worksheets/computing_dot_products.html",
+    "title": "Practice Problems",
+    "section": "",
+    "text": "Computing Dot Products",
+    "crumbs": [
+      "Vectors",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/computing_dot_products.html#problem-1",
+    "href": "worksheets/computing_dot_products.html#problem-1",
+    "title": "Practice Problems",
+    "section": "Problem 1",
+    "text": "Problem 1\nLet \\(\\vec{v}\\), \\(\\vec{w}\\), \\(\\vec{z} \\in \\mathbb{R}^n\\). Suppose that \\(\\vec{v} \\cdot \\vec{w} = 2\\), \\(\\vec{v} \\cdot \\vec{z} = -1\\), \\(\\vec{z} \\cdot \\vec{w} = 1\\), \\(\\|\\vec{v}\\| = \\sqrt{3}\\), \\(\\|\\vec{w}\\| = 2\\), and \\(\\|\\vec{z}\\| = \\sqrt{5}\\). Find the following:\n\n\\((2\\vec{v} + 3\\vec{w}) \\cdot \\vec{z}\\)\n\\(\\vec{v} \\cdot (\\vec{v} - 2\\vec{w} + 3\\vec{z})\\)\n\\((3\\vec{v} - 4\\vec{z}) \\cdot (\\vec{w} + 5\\vec{z})\\)\n\\(\\|\\vec{v} + \\vec{w}\\|\\)\n\\(\\|\\vec{v} - \\vec{w}\\|\\)\n\\(\\|2\\vec{v} - 6\\vec{z}\\|\\)\nFind the angle between \\(\\vec{v}\\) and \\(\\vec{z}\\)\nFind \\(c \\in \\mathbb{R}\\) such that \\(\\vec{v}\\) is orthogonal to \\(\\vec{w} + c\\vec{z}\\)\nFind \\(c \\in \\mathbb{R}\\) such that \\(\\vec{w} - c\\vec{v}\\) is orthogonal to \\(\\vec{v}\\)",
+    "crumbs": [
+      "Vectors",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/computing_dot_products.html#problem-2",
+    "href": "worksheets/computing_dot_products.html#problem-2",
+    "title": "Practice Problems",
+    "section": "Problem 2",
+    "text": "Problem 2\nLet \\(\\vec{v}\\), \\(\\vec{w} \\in \\mathbb{R}^n\\). Suppose that \\(\\|\\vec{v}\\| = 2\\), \\(\\|\\vec{v} + \\vec{w}\\| = \\sqrt{3}\\) and \\(\\|\\vec{w}\\| = \\sqrt{2}\\). Find \\(\\vec{v} \\cdot \\vec{w}\\).",
+    "crumbs": [
+      "Vectors",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/computing_dot_products.html#problem-3",
+    "href": "worksheets/computing_dot_products.html#problem-3",
+    "title": "Practice Problems",
+    "section": "Problem 3",
+    "text": "Problem 3\nLet \\(\\vec{v}\\), \\(\\vec{w} \\in \\mathbb{R}^n\\). Suppose that \\(\\|\\vec{v}\\| = \\sqrt{2}\\), \\(\\|\\vec{v} - \\vec{w}\\| = \\sqrt{3}\\) and \\(\\vec{v} \\cdot \\vec{w} = \\frac{1}{2}\\). Find \\(\\|w\\|\\).",
+    "crumbs": [
+      "Vectors",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/computing_dot_products.html#problem-4",
+    "href": "worksheets/computing_dot_products.html#problem-4",
+    "title": "Practice Problems",
+    "section": "Problem 4",
+    "text": "Problem 4\nSuppose that \\(\\vec{u} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}\\), \\(\\vec{v} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}\\) and \\(\\vec{w} = \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix}\\)\n\nFind a constant \\(c \\in \\mathbb{R}\\) such that \\(\\vec{v} - c\\vec{u}\\) is orthogonal to \\(\\vec{u}\\). Name this vector \\(\\vec{f_2} = \\vec{v} - c\\vec{u}\\).\nFind constants \\(c, d \\in \\mathbb{R}\\) such that \\(\\vec{w} - c\\vec{u} - d\\vec{f_2}\\) is orthogonal to \\(\\vec{u}\\) and orthogonal to \\(\\vec{f_2}\\). Name this vector \\(\\vec{f_3} = \\vec{w} - c\\vec{u} - d\\vec{f_2}\\).\nFind constants \\(c, d, e \\in \\mathbb{R}\\) such that the vectors \\(c\\vec{u}\\), \\(d\\vec{f_2}\\), and \\(e\\vec{f_3}\\) have norm one. Rename these vectors \\(\\vec{e_1} = c\\vec{u_1}\\), \\(\\vec{e_2} = d\\vec{f_2}\\), and \\(\\vec{e_3} = e\\vec{f_3}\\) and write them explicitly.",
+    "crumbs": [
+      "Vectors",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/computing_dot_products.html#problem-5",
+    "href": "worksheets/computing_dot_products.html#problem-5",
+    "title": "Practice Problems",
+    "section": "Problem 5",
+    "text": "Problem 5\nLet \\(\\vec{v_1}\\), \\(\\vec{v_2}\\), \\(\\vec{v_3}\\), \\(\\vec{v_4}\\) be vectors satisfying:\n\\(\\vec{v_i} \\cdot \\vec{v_j} = \\begin{cases} 1 & \\text{if } i = j \\\\ 0 & \\text{otherwise} \\end{cases}\\)\n\nFind \\((2\\vec{v_1} - 3\\vec{v_2}) \\cdot (2\\vec{v_3} + 4\\vec{v_4})\\)\nFind \\((\\vec{v_1} + \\vec{v_2}) \\cdot (\\vec{v_1} - \\vec{v_2})\\)\nFind \\(\\|v_4\\|\\)\nFind \\(\\|4\\vec{v_1} - 3\\vec{v_2}\\|\\)\nFind \\(\\|2\\vec{v_1} - 3\\vec{v_2} + 4\\vec{v_1} - 5\\vec{v_2}\\|\\)",
+    "crumbs": [
+      "Vectors",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "parts/matrices.html",
+    "href": "parts/matrices.html",
+    "title": "Matrices",
+    "section": "",
+    "text": "This section covers matrices.\n\nMatrices\nWorksheet: Matrix Multiplication",
+    "crumbs": [
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html",
+    "href": "chapters/matrices.html",
+    "title": "3  Matrices",
+    "section": "",
+    "text": "3.1 Matrices: Definition and Different Perspectives\nThe following video from the Essence of Linear Algebra, from 3Blue1Brown, is exceptionally good. Watch it carefully\nA matrix is a rectangular array of numbers arranged in rows and columns. Formally, a matrix \\(A\\) with \\(m\\) rows and \\(n\\) columns is written as:\n\\[\nA = \\begin{bmatrix}\na_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\\na_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\na_{m,1} & a_{m,2} & \\cdots & a_{m,n}\n\\end{bmatrix}.\n\\] The matrix \\(A\\) is said to have dimension \\(m\\times n\\). The entry \\(a_{i,j}\\) represents the element at the \\(i\\)-th row and \\(j\\)-th column. This entry is also sometimes denoted as \\(A_{i,j}\\) or \\((A)_{i,j}\\).\nFor example, consider the following matrix:\n\\[M=\\begin{bmatrix}8&6&0&6\\\\-4&-8&2&-7\\\\-8&4&-5&3\\end{bmatrix}\\]\nThis matrix \\(M\\) has 3 rows and 4 columns. We can interpret and view this matrix in several ways:",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#matrices-definition-and-different-perspectives",
+    "href": "chapters/matrices.html#matrices-definition-and-different-perspectives",
+    "title": "3  Matrices",
+    "section": "",
+    "text": "As an array of numbers: We can see \\(M\\) as a collection of numbers arranged in a rectangular grid with 3 rows and 4 columns. Each entry in the matrix is identified by its row and column index. For example, \\(M_{2,3}\\) or \\((M)_{2,3}\\), the entry in the second row and third column is 2.\nAs a collection of column vectors: We can view \\(M\\) as having 4 column vectors, each with 3 elements. The columns of \\(M\\) are:\n\\[\\left [ \\begin{bmatrix}8\\\\-4\\\\-8\\end{bmatrix}, \\begin{bmatrix}6\\\\-8\\\\4\\end{bmatrix}, \\begin{bmatrix}0\\\\2\\\\-5\\end{bmatrix}, \\begin{bmatrix}6\\\\-7\\\\3\\end{bmatrix}\\right ]\\]\nEach column vector can be treated as a separate entity, and matrix operations can be performed on these columns.\nAs a collection of row vectors: We can view \\(M\\) as having 3 row vectors, each with 4 elements. The rows of \\(M\\) are:\n\\[\\biggl [ \\begin{bmatrix}8&6&0&6\\end{bmatrix}, \\begin{bmatrix}-4&-8&2&-7\\end{bmatrix}, \\begin{bmatrix}-8&4&-5&3\\end{bmatrix}\\biggr ]\\]\nEach row vector can be treated as a separate entity, and matrix operations can be performed on these rows.",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#the-transpose-of-a-matrix",
+    "href": "chapters/matrices.html#the-transpose-of-a-matrix",
+    "title": "3  Matrices",
+    "section": "3.2 The Transpose of a Matrix",
+    "text": "3.2 The Transpose of a Matrix\nGiven a matrix \\(A\\) with \\(m\\) rows and \\(n\\) columns, denoted as: \\[\nA = \\begin{bmatrix}\na_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\\na_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\na_{m,1} & a_{m,2} & \\cdots & a_{m,n}\n\\end{bmatrix},\n\\] the transpose of matrix \\(A\\), denoted as \\(A^T\\) or \\(A'\\), is obtained by interchanging the rows and columns of \\(A\\). In other words, the first row of \\(A\\) becomes the first column of \\(A^T\\), the second row of \\(A\\) becomes the second column of \\(A^T\\), and so on. The resulting matrix \\(A^T\\) has \\(n\\) rows and \\(m\\) columns:\n\\[\nA^T = \\begin{bmatrix}\na_{1,1} & a_{2,1} & \\cdots & a_{m,1}\\\\\na_{1,2} & a_{2,2} & \\cdots & a_{m,2}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\na_{1,n} & a_{2,n} & \\cdots & a_{m,n}.\n\\end{bmatrix}\n\\]\nWhen \\(A\\) is represented by columns or by rows, we can easily determine the form of the transpose. \\[\n\\text{If}\\quad A = \\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{c}_1 & \\mathbf{c}_2 & \\cdots & \\mathbf{c}_n \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix},\\text{ then }\\quad\nA^T=\\begin{bmatrix}\n\\leftarrow & \\mathbf{c}_1^T &\\rightarrow \\\\\n\\leftarrow & \\mathbf{c}_2^T &\\rightarrow\\\\\n\\vdots & \\vdots &\\vdots\\\\\n\\leftarrow & \\mathbf{c}_n^T &\\rightarrow\n\\end{bmatrix},\n\\] and \\[\n\\text{if}\\quad A =\n\\begin{bmatrix}\n\\leftarrow & \\mathbf{r}_1 &\\rightarrow \\\\\n\\leftarrow & \\mathbf{r}_2 &\\rightarrow\\\\\n\\vdots & \\vdots &\\vdots\\\\\n\\leftarrow & \\mathbf{r}_m &\\rightarrow\n\\end{bmatrix}, \\text{ then }\\quad\nA^T = \\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{r}_1^T & \\mathbf{r}_2^T & \\cdots & \\mathbf{r}_n^T \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}.\n\\]\nNotice that if we take the trace twice returns the original matrix. IN other words, \\[(A^T)^T=A.\\] To check properties of the trace we use the definition \\((A^T)_{i,j}=A_{j,i}\\).\n\nExercise: Suppose that \\(A\\) and \\(B\\) are \\(m\\times n\\) matrices and that \\(c\\in\\mathbb{R}\\). Prove that \\((A+B)^T=A^T+B^T\\) and that \\((cA)^T=cA^T\\).\n\n\n\n\n\n\nClick to see a sketch of the proof\n\n\n\n\n\n\\[((A+B)^T)_{i,j}=(A+B)_{j,i}=A_{j,i}+B_{j,i}=(A^T)_{i,j}+(B^T)_{i,j}=(A^T+B^T)_{i,j}.\\] The other one is similar",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#addition-and-scalar-multiplication-of-matrices",
+    "href": "chapters/matrices.html#addition-and-scalar-multiplication-of-matrices",
+    "title": "3  Matrices",
+    "section": "3.3 Addition and Scalar Multiplication of Matrices",
+    "text": "3.3 Addition and Scalar Multiplication of Matrices\nGiven two matrices \\(A\\) and \\(B\\) of the same size \\(m \\times n\\), the sum of \\(A\\) and \\(B\\), denoted as \\(A + B\\), is a new matrix \\(C\\) of size \\(m \\times n\\) where each element \\(c_{i,j}\\) is the sum of the corresponding elements \\(a_{i,j}\\) and \\(b_{i,j}\\) from matrices \\(A\\) and \\(B\\), respectively. In other words: \\[c_{i,j} = a_{i,j} + b_{i,j}\\] for all \\(1 \\leq i \\leq m\\) and \\(1 \\leq j \\leq n\\). For example, if \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}\\), then: \\[A + B = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} + \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix} = \\begin{bmatrix} 1+5 & 2+6 \\\\ 3+7 & 4+8 \\end{bmatrix} = \\begin{bmatrix} 6 & 8 \\\\ 10 & 12 \\end{bmatrix}\\] The scalar multiplication of a matrix \\(A\\) by a scalar \\(k\\), denoted as \\(kA\\), is a new matrix \\(B\\) of the same size as \\(A\\), where each element \\(b_{i,j}\\) is the product of the scalar \\(k\\) and the corresponding element \\(a_{i,j}\\) from matrix \\(A\\). In other words: \\[b_{i,j} = k \\cdot a_{i,j}\\] for all \\(1 \\leq i \\leq m\\) and \\(1 \\leq j \\leq n\\). For example, if \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\) and \\(k = 2\\), then: \\[2A = 2 \\cdot \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 \\cdot 1 & 2 \\cdot 2 \\\\ 2 \\cdot 3 & 2 \\cdot 4 \\end{bmatrix} = \\begin{bmatrix} 2 & 4 \\\\ 6 & 8 \\end{bmatrix}\\]\n\n3.3.1 Properties of addition and scalar product\nLet \\(A\\), \\(B\\), and \\(C\\) be \\(m\\times n\\) matrices and let \\(c\\) and \\(d\\) be scalars. Then we can esily check that\n\nCommutativity of addition: \\(A + B = B + A\\)\nAssociativity of addition: \\((A + B) + C = A + (B + C)\\)\nExistence of zero matrix: There exists a matrix \\(O\\) such that \\(A + O = A\\) for all matrices \\(A\\)\nExistence of additive inverse: For every matrix \\(A\\), there exists a matrix \\(-A\\) such that \\(A + (-A) = O\\)\nDistributivity of scalar multiplication over matrix addition: \\(k(A + B) = kA + kB\\)\nDistributivity of scalar multiplication over field addition: \\((k + l)A = kA + lA\\)\nAssociativity of scalar multiplication: \\((kl)A = k(lA)\\)\nExistence of multiplicative identity: \\(1A = A\\) for all matrices \\(A\\)\n\nSince we have already shown that if \\(A\\) and \\(B\\) are \\(m\\times n\\) matrices and \\(k\\) is a scalar, then \\(A+B\\) and \\(kA\\) are also \\(m\\times n\\) matrices, we can conclude that the set of all \\(m\\times n\\) matrices forms a vector space. This set is commonly denoted using various notations, including: \\(M_{m\\times n}\\), \\(\\mathbb{M}_{m\\times n}\\), and \\(\\mathbb{R}^{m\\times n}\\).",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#matrix-vector-multiplication",
+    "href": "chapters/matrices.html#matrix-vector-multiplication",
+    "title": "3  Matrices",
+    "section": "3.4 Matrix-Vector Multiplication",
+    "text": "3.4 Matrix-Vector Multiplication\nWe now cover one of the most important operations in linear algebra: multiplying a matrix with a vector. Let \\(A\\) be a an \\(m\\times n\\) matrix and \\(\\mathbf{x}\\in\\mathbb{R}^n\\). The product \\(A\\mathbf{x}\\) will be a vector in \\(\\mathbb{R}^m\\). This operation is crucial because it allows us to:\n\nTransform vectors in space (like rotations, reflections, or scaling)\nSolve systems of linear equations in a compact way\nApply linear transformations in computer graphics, data science, and physics\n\nWe look at the \\(m\\times n\\) matrix \\(A\\) in three ways: \\[A = \\begin{bmatrix}\na_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\\na_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\na_{m,1} & a_{m,2} & \\cdots & a_{m,n}\n\\end{bmatrix}\n=\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{c}_1 & \\mathbf{c}_2 & \\cdots & \\mathbf{c}_n \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}\n=\\begin{bmatrix}\n\\leftarrow & \\mathbf{r}_1 &\\rightarrow \\\\\n\\leftarrow & \\mathbf{r}_2 &\\rightarrow \\\\\n\\vdots & \\vdots &\\vdots\\\\\n\\leftarrow & \\mathbf{r}_m &\\rightarrow\n\\end{bmatrix}.\\]\n\n3.4.1 A Linear Combination of Columns\nWe define the product \\(A\\mathbf{x}\\) as a linear combination of the columns of \\(A\\): \\[\nA\\mathbf{x} =\n\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{c}_1 & \\mathbf{c}_2 & \\cdots & \\mathbf{c}_n \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}\n\\begin{bmatrix}x_1\\\\x_2\\\\\\vdots\\\\x_n \\end{bmatrix}\n= x_1\\mathbf{c}_1+x_2\\mathbf{c_2}+\\cdots+x_n\\mathbf{c}_n.\n\\tag{3.1}\\]\nExample: Let \\(A=\\begin{bmatrix} 1 & 2 & 0 \\\\ -1 & 3 & 4 \\end{bmatrix}\\) be a \\(2\\times 3\\) matrix and \\(\\mathbf{x}=\\begin{bmatrix} 2 \\\\ -1 \\\\ 3 \\end{bmatrix}\\) be a vector in \\(\\mathbb{R}^3\\). Then \\[\n\\begin{aligned}\nA\\mathbf{x} &=\n\\begin{bmatrix} 1 & 2 & 0 \\\\ -1 & 3 & 4 \\end{bmatrix}\n\\begin{bmatrix} 2 \\\\ -1 \\\\ 3 \\end{bmatrix} \\\\\n&=2\\begin{bmatrix}1\\\\-1 \\end{bmatrix}\n+ (-1)\\begin{bmatrix}2\\\\3 \\end{bmatrix}\n+3\\begin{bmatrix}0\\\\4 \\end{bmatrix}\n=\\begin{bmatrix}0\\\\6 \\end{bmatrix}\n\\end{aligned}\n\\]\nEquation (Equation 3.1) is one of the most useful formulas.\n\nIt allows us to write matrix multiplications as linear combinations,\nIt allows us write linear combinations as matrix multiplication.\n\n\n\n3.4.2 The Component-wise Formula\nFrom the definition given by (Equation 3.1), we can write \\(A\\mathbf{x}\\) in terms of the \\(a_{i,j}\\)’s: \\[\\begin{aligned}\nA\\mathbf{x} &=\n\\begin{bmatrix}\na_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\\na_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\na_{m,1} & a_{m,2} & \\cdots & a_{m,n}\n\\end{bmatrix}\n\\begin{bmatrix} x_1\\\\ x_2\\\\ \\vdots\\\\ x_n \\end{bmatrix} \\\\\n&= x_1\\begin{bmatrix} a_{1,1}\\\\ a_{2,1}\\\\ \\vdots\\\\ a_{m,1} \\end{bmatrix}\n+ x_2\\begin{bmatrix} a_{1,2}\\\\ a_{2,2}\\\\ \\vdots\\\\ a_{m,2} \\end{bmatrix} +\\cdots\n+ x_n\\begin{bmatrix} a_{1,n}\\\\ a_{2,n}\\\\ \\vdots\\\\ a_{m,n} \\end{bmatrix} \\\\\n% &= \\begin{bmatrix} a_{1,1}x_1\\\\ a_{2,1}x_1\\\\ \\vdots\\\\ a_{m,1}x_1 \\end{bmatrix}\n% + \\begin{bmatrix} a_{1,2}x_2\\\\ a_{2,2}x_2\\\\ \\vdots\\\\ a_{m,2}x_2 \\end{bmatrix} +\\cdots\n% + \\begin{bmatrix} a_{1,n}x_n\\\\ a_{2,n}x_n\\\\ \\vdots\\\\ a_{m,n}x_n \\end{bmatrix} \\\\\nA\\mathbf{x} &= \\begin{bmatrix} a_{1,1}x_1+a_{1,2}x_2+\\cdots+a_{1,n}x_n\\\\ a_{2,1}x_1+a_{2,2}x_2+\\cdots+a_{2,n}x_n\\\\ \\vdots\\\\ a_{m,1}x_1+a_{m,2}x_2+\\cdots+a_{m,n}x_n\\\\ \\end{bmatrix}.\n\\end{aligned}\n\\]\nTherefore, the \\(i\\)-th component of \\(A\\mathbf{x}\\) is: \\[(A\\mathbf{x})_i=a_{i,1}x_1+a_{i,2}x_2+\\cdots+a_{i,n}x_n \\tag{3.2}\\]\n\n\n3.4.3 The Row Dot Product Formula\nFrom (Equation 3.2) we see that the \\(i\\)-th term of \\(A\\mathbf{x}\\) can be written as a dot product: \\[\n(A\\mathbf{x})_i=a_{i,1}x_1+a_{i,2}x_2+\\cdots+a_{i,n}x_n\n=\\begin{bmatrix} a_{i,1}\\\\ a_{i,2}\\\\\\vdots \\\\ a_{i,n}\\end{bmatrix}\\cdot\n\\begin{bmatrix} x_1\\\\ x_2\\\\\\vdots \\\\ x_n\\end{bmatrix}\n=\\mathbf{r}_i^T\\cdot\\mathbf{x}.\\] Recall that vectors in \\(\\mathbb{R}^n\\) are represented by column vectors, and that the first vector is the transpose of the \\(i\\)-th row of \\(A\\). Putting all the compunents togther, we get: \\[\nA\\mathbf{x}=\\begin{bmatrix}\n\\leftarrow & \\mathbf{r}_1 &\\rightarrow \\\\\n\\leftarrow & \\mathbf{r}_2 &\\rightarrow \\\\\n\\vdots & \\vdots &\\vdots\\\\\n\\leftarrow & \\mathbf{r}_m &\\rightarrow \\end{bmatrix}\n\\begin{bmatrix} x_1\\\\ x_2\\\\\\vdots \\\\ x_n\\end{bmatrix}\n=\\begin{bmatrix}\n\\mathbf{r}_1^T\\cdot\\mathbf{x} \\\\\n\\mathbf{r}_2^T\\cdot\\mathbf{x}\\\\ \\vdots \\\\\n\\mathbf{r}_n^T\\cdot\\mathbf{x}\\end{bmatrix}.\n\\]",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#matrix-matrix-multiplication",
+    "href": "chapters/matrices.html#matrix-matrix-multiplication",
+    "title": "3  Matrices",
+    "section": "3.5 Matrix-Matrix Multiplication",
+    "text": "3.5 Matrix-Matrix Multiplication\nMatrix-matrix multiplication, like matrix-vector multiplication, requires compatibility between the dimensions of the matrices involved. For the product \\(AB\\) to be defined, the number of columns in \\(A\\) must equal the number of rows in \\(B\\). When this condition is met, the matrices are said to be compatible for multiplication. Specifically, if \\(A\\) is an \\(m \\times n\\) matrix and \\(B\\) is an \\(n \\times p\\) matrix, their product \\(AB\\) will be an \\(m \\times p\\) matrix.\n\n3.5.1 The Product \\(AB\\): \\(A\\) Acts on the Columns of \\(B\\)\nLet \\(A\\) be an \\(m \\times n\\) matrix and \\(B\\) an \\(n \\times p\\) matrix. Since the number of columns in \\(A\\) matches the number of rows in \\(B\\), the matrices are compatible for multiplication. To define the product \\(AB\\), we express \\(B\\) in terms of its column vectors and let \\(A\\) act on each column individually. Specifically,\n\\[\nAB = A \\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{b}_1 & \\mathbf{b}_2 & \\cdots & \\mathbf{b}_p \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix} =\n\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\nA\\mathbf{b}_1 & A\\mathbf{b}_2 & \\cdots & A\\mathbf{b}_p \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}.\n\\]\nNotice that \\(AB\\) consists of \\(p\\) columns, where each column \\(A\\mathbf{c}_i \\in \\mathbb{R}^m\\). Therefore, \\(AB\\) is an \\(m \\times p\\) matrix.\n\n\n3.5.2 The Component Formula\nWe use the previous formula to compute the individual entries of \\(AB\\). Consider \\((AB)_{i,j}\\). This is the element of \\(AB\\) in the \\(i\\)-th row and \\(j\\)-th column. Since the \\(j\\)-th column of \\(AB\\) is \\(A\\mathbf{b}_j\\), it follows from (Equation 3.2) that \\((AB)_{i,j}=(A\\mathbf{b}_j)_i= \\sum_{k=1}^na_{i,k}b_{k,j}.\\) Then we have \\[(AB)_{i,j}=\\sum_{k=1}^na_{i,k}b_{k,j}. \\tag{3.3}\\]\n\n\n3.5.3 The Row-Column Dot Product Formula\nFrom (Equation 3.3), it follows that \\((AB)_{i,j}\\) is the dot product of the \\(i\\)-th row of \\(A\\) and the \\(j\\)-th column of \\(B\\). Writing \\(A\\) in terms of its rows and \\(B\\) in terms of its columns, we have:\n\\[\nAB =\n\\begin{bmatrix}\n\\leftarrow & \\mathbf{r}_1 & \\rightarrow \\\\\n\\leftarrow & \\mathbf{r}_2 & \\rightarrow \\\\\n\\vdots & \\vdots & \\vdots \\\\\n\\leftarrow & \\mathbf{r}_m & \\rightarrow\n\\end{bmatrix}\n\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{b}_1 & \\mathbf{b}_2 & \\cdots & \\mathbf{b}_p \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix} =\n\\begin{bmatrix}\n\\mathbf{r}_1^T \\cdot \\mathbf{b}_1 & \\mathbf{r}_1^T \\cdot \\mathbf{b}_2 & \\cdots & \\mathbf{r}_1^T \\cdot \\mathbf{b}_p \\\\  \n\\mathbf{r}_2^T \\cdot \\mathbf{b}_1 & \\mathbf{r}_2^T \\cdot \\mathbf{b}_2 & \\cdots & \\mathbf{r}_2^T \\cdot \\mathbf{b}_p \\\\  \n\\vdots & \\vdots & \\ddots & \\vdots \\\\  \n\\mathbf{r}_m^T \\cdot \\mathbf{b}_1 & \\mathbf{r}_m^T \\cdot \\mathbf{b}_2 & \\cdots & \\mathbf{r}_m^T \\cdot \\mathbf{b}_p  \n\\end{bmatrix}.\n\\]\nHere, \\(\\mathbf{r}_i\\) represents the \\(i\\)-th row of \\(A\\), and \\(\\mathbf{b}_j\\) represents the \\(j\\)-th column of \\(B\\). Each entry of \\(AB\\), denoted \\((AB)_{i,j}\\), is the dot product \\(\\mathbf{r}_i^T \\cdot \\mathbf{b}_j\\).",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#the-transpose-of-the-product",
+    "href": "chapters/matrices.html#the-transpose-of-the-product",
+    "title": "3  Matrices",
+    "section": "3.6 The Transpose of the Product",
+    "text": "3.6 The Transpose of the Product\nAn important property of matrix multiplication is that the transpose of a product is the product of the transposes in reverse order. This relation is fundamental in many areas of linear algebra, from proving theoretical results about linear transformations to solving practical problems in optimization and data analysis.\n\n3.6.0.1 Theorem\nLet \\(A\\) be an \\(m \\times n\\) matrix and \\(B\\) an \\(n \\times p\\) matrix. Then:\n\\[(AB)^T = B^T A^T.\\]\n\n\nProof. The product \\(AB\\) is an \\(m \\times p\\) matrix, so its transpose \\((AB)^T\\) is a \\(p \\times m\\) matrix. Similarly, \\(B^T\\) is a \\(p \\times n\\) matrix, and \\(A^T\\) is an \\(n \\times m\\) matrix. Thus, the product \\(B^T A^T\\) also has dimensions \\(p \\times m\\), matching those of \\((AB)^T\\).\nTo prove the equality, we verify that the entries of \\((AB)^T\\) and \\(B^T A^T\\) are identical. Consider the \\((i, j)\\)-th entry of \\((AB)^T\\):\n\\[( (AB)^T )_{i,j} = (AB)_{j,i}.\\]\nUsing the definition of matrix multiplication, we expand \\((AB)_{j,i}\\):\n\\[(AB)_{j,i} = \\sum_{k=1}^n A_{j,k} B_{k,i}.\\]\nNext, observe that \\((B^T)_{i,k} = B_{k,i}\\) and \\((A^T)_{k,j} = A_{j,k}\\). Substituting these into the sum, we get:\n\\[(AB)_{j,i} = \\sum_{k=1}^n (B^T)_{i,k} (A^T)_{k,j}.\\]\nTherefore,\n\\[((AB)^T)_{i,j} = (B^T A^T)_{i,j}.\\]\nSince the \\((i, j)\\)-th entries of \\((AB)^T\\) and \\(B^T A^T\\) are equal for all \\(i\\) and \\(j\\), we conclude that:\n\\[(AB)^T = B^T A^T.\\]\n\n\n\n\n\n\n\nClick to see a proof that uses the row column dot product formula\n\n\n\n\n\nWrite \\(A\\) and \\(B\\) in terms of their rows and columns \\[A=\\begin{bmatrix}\n\\leftarrow & \\mathbf{r}_1 & \\rightarrow \\\\\n\\leftarrow & \\mathbf{r}_2 & \\rightarrow \\\\\n\\vdots & \\vdots & \\vdots \\\\\n\\leftarrow & \\mathbf{r}_m & \\rightarrow\n\\end{bmatrix} \\quad\\quad\nB=\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{b}_1 & \\mathbf{b}_2 & \\cdots & \\mathbf{b}_p \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}\\] Then \\[B^T = \\begin{bmatrix} \\leftarrow &\\mathbf{b}_1^T&\\rightarrow \\\\ \\leftarrow& \\mathbf{b}_2^T&\\rightarrow \\\\ \\vdots &\\vdots&\\vdots \\\\\\leftarrow & \\mathbf{b}_p^T &\\rightarrow \\end{bmatrix}\\quad\\quad\nA^T =\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{r}_1^T & \\mathbf{r}_2^T & \\cdots & \\mathbf{r}_m^T \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}.\\] Therefore it follows from the row column dot product formula that \\[(B^TA^T)_{i,j} = (\\mathbf{b}_i^T)^T\\cdot\\mathbf{r}_j^T=\\mathbf{b}_i\\cdot\\mathbf{r}_j^T\n=\\mathbf{r}_j^T\\cdot\\mathbf{b}_i=(AB)_{j,i}=((AB)^T)_{i,j}.\\]",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#matrix-types-and-the-inverse",
+    "href": "chapters/matrices.html#matrix-types-and-the-inverse",
+    "title": "3  Matrices",
+    "section": "3.7 Matrix Types and the Inverse",
+    "text": "3.7 Matrix Types and the Inverse\nMatrices come in various types, each with unique properties that make them fundamental to linear algebra and its applications. Among these, the following play a central role.\n\n3.7.1 Square Matrices\nA square matrix is a matrix that has an equal number of rows and columns. The collection of all \\(n \\times n\\) square matrices is denoted by \\(M_n\\). This set is closed under several operations: if \\(A, B \\in M_n\\), their product \\(AB\\) also belongs to \\(M_n\\). Similarly, any power of \\(A\\), such as \\(A^k\\) for a positive integer \\(k\\), remains in \\(M_n\\), as does the transpose of \\(A\\).\n\n\n3.7.2 Diagonal Matrices\nA diagonal matrix is a square matrix in which all off-diagonal entries are zero. Formally, a matrix \\(D \\in M_n\\) is diagonal if \\((D)_{i,j} = 0\\) for all \\(i \\neq j\\). The only potentially nonzero entries are located along the main diagonal, from the top-left to the bottom-right. Diagonal matrices are significant because they are easy to work with: addition, multiplication, and finding powers are straightforward operations when the matrices are diagonal.\n\n\n3.7.3 Upper and Lower Triangular Matrices\nAn upper triangular matrix is a square matrix in which all entries below the main diagonal are zero, meaning \\((U)_{i,j} = 0\\) for all \\(i &gt; j\\). Similarly, a lower triangular matrix has all entries above the main diagonal equal to zero, i.e., \\((L)_{i,j} = 0\\) for all \\(i &lt; j\\). These matrices are commonly used in matrix factorizations, and solving systems of linear equations efficiently. Both types are particularly important in numerical methods, as their structure reduces computational complexity in many algorithms.\n\n\n3.7.4 Identity Matrices\nAn identity matrix is a special type of diagonal matrix where all the diagonal entries are 1, and all off-diagonal entries are 0. It is denoted as \\(I_n\\) for an \\(n \\times n\\) matrix. Formally, \\((I_n)_{i,j} = 1\\) if \\(i = j\\) and \\((I_n)_{i,j} = 0\\) if \\(i \\neq j\\).\nThe identity matrix serves as the multiplicative identity in matrix multiplication. Specifically, if \\(A\\) is an \\(n \\times p\\) matrix, then \\(I_n A = A\\). Similarly, if \\(B\\) is an \\(m \\times n\\) matrix, then \\(B I_n = B\\).\n\n\n3.7.5 Inverse of a Matrix\nThe inverse of a matrix is a concept that applies to square matrices. A square matrix \\(A\\) is said to be invertible (or nonsingular) if there exists another matrix \\(A^{-1}\\) such that:\n\\[A A^{-1} = A^{-1} A = I_n,\\]\nwhere \\(I_n\\) is the identity matrix. The matrix \\(A^{-1}\\) is called the inverse of \\(A\\).\nNot all square matrices have an inverse. In practical applications, matrix inverses are used to solve systems of linear equations, analyze transformations, and compute solutions in various scientific and engineering contexts. However, for large matrices, explicit inversion is computationally expensive, and alternative methods, such as iterative techniques, are often preferred.",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#elementary-matrices-row-operations",
+    "href": "chapters/matrices.html#elementary-matrices-row-operations",
+    "title": "3  Matrices",
+    "section": "3.8 Elementary Matrices: Row Operations",
+    "text": "3.8 Elementary Matrices: Row Operations\nElementary matrices are special square matrices that perform row operations through matrix multiplication. They play an important role in linear algebra, particularly in solving systems of linear equations, characterizing invertible matrices, and understanding and computing determinants. There are three types:\n\nType 1: Switching two rows\nType 2: Multiplying a row by a non-zero constant\nType 3: Adding a multiple of a row to another row\n\nLet’s illustrate each type with 3×3 elementary matrices acting on a generic 3×5 matrix:\nLet A be a 3×5 matrix: \\(A = \\begin{bmatrix}\na_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5}\\\\\na_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5}\\\\\na_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} & a_{3,5}\n\\end{bmatrix}\\)\n\n3.8.1 Example 1: Interchanging Rows 1 and 2\n\\(\\begin{aligned}\nE_1A &=\n\\begin{bmatrix}\n0 & 1 & 0\\\\\n1 & 0 & 0\\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\na_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5}\\\\\na_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5}\\\\\na_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} & a_{3,5}\n\\end{bmatrix} \\\\\n&=\\begin{bmatrix}\na_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5}\\\\\na_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5}\\\\\na_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} & a_{3,5}\n\\end{bmatrix}\n\\end{aligned}\\)\n\n\n3.8.2 Example 2: Multiplying Row 3 by 2\n\\(\\begin{aligned}\nE_2A &=\n\\begin{bmatrix}\n1 & 0 & 0\\\\\n0 & 1 & 0\\\\\n0 & 0 & 2\n\\end{bmatrix}\n\\begin{bmatrix}\na_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5}\\\\\na_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5}\\\\\na_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} & a_{3,5}\n\\end{bmatrix} \\\\\n&=\\begin{bmatrix}\na_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5}\\\\\na_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5}\\\\\n2a_{3,1} & 2a_{3,2} & 2a_{3,3} & 2a_{3,4} & 2a_{3,5}\n\\end{bmatrix}\n\\end{aligned}\\)\n\n\n3.8.3 Example 3: Adding 3 Times Row 1 to Row 2\n\\(\\begin{aligned}\nE_3A &=\n\\begin{bmatrix}\n1 & 0 & 0\\\\\n3 & 1 & 0\\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\na_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5}\\\\\na_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5}\\\\\na_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} & a_{3,5}\n\\end{bmatrix} \\\\\n&=\\begin{bmatrix}\na_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5}\\\\\n3a_{1,1}+a_{2,1} & 3a_{1,2}+a_{2,2} & 3a_{1,3}+a_{2,3} & 3a_{1,4}+a_{2,4} & 3a_{1,5}+a_{2,5}\\\\\na_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} & a_{3,5}\n\\end{bmatrix}\n\\end{aligned}\\)\nNote that each elementary matrix is invertible, and its inverse performs the opposite operation:\n\nFor \\(E_1\\): its own inverse (swapping the same rows again)\nFor \\(E_2\\): multiply the third row by 1/2\nFor \\(E_3\\): subtract 3 times row 1 from row 2\n\nWe saw in (Equation 3.1) that when we multiply a matrix \\(A\\) by a vector \\(\\mathbf{x}\\), the product \\(A\\mathbf{x}\\) is a linear combination of the columns of \\(A\\). Similarly, when we multiply by a row vector \\(\\mathbf{z}\\) from the left, the product \\(\\mathbf{z}A\\) is a linear combination of the rows of \\(A\\). This fundamental principle helps us understand elementary matrices: when we multiply a matrix \\(A\\) by an elementary matrix \\(E\\) on the left, each row of the product \\(EA\\) is a linear combination of the rows of \\(A\\), precisely implementing our desired row operation.",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#matrices-in-numpy",
+    "href": "chapters/matrices.html#matrices-in-numpy",
+    "title": "3  Matrices",
+    "section": "3.9 Matrices in Numpy",
+    "text": "3.9 Matrices in Numpy\nThis section covers fundamental matrix operations using NumPy’s ndarray class. We’ll explore creation, indexing, and basic mathematical operations.\n\n3.9.1 Setup\nFirst, let’s import NumPy:\n\nimport numpy as np\n\n\n\n3.9.2 Creating Matrices\nNumPy provides several ways to create matrices using ndarrays:\n\n# From a list of lists\nA = np.array([[1, 2, 3],\n              [4, 5, 6]])\nprint(\"Matrix A:\")\nprint(A)\n\n# Using special functions\nzeros = np.zeros((2, 3))    # 2x3 matrix of zeros\nones = np.ones((3, 3))      # 3x3 matrix of ones\neye = np.eye(3)             # 3x3 identity matrix\n\nprint(\"\\nZeros matrix:\")\nprint(zeros)\nprint(\"\\nIdentity matrix:\")\nprint(eye)\n\nMatrix A:\n[[1 2 3]\n [4 5 6]]\n\nZeros matrix:\n[[0. 0. 0.]\n [0. 0. 0.]]\n\nIdentity matrix:\n[[1. 0. 0.]\n [0. 1. 0.]\n [0. 0. 1.]]\n\n\n\n\n3.9.3 Matrix Properties and Shape\nThe shape attribute tells us the dimensions of the matrix:\n\nA = np.array([[1, 2, 3],\n              [4, 5, 6]])\nprint(f\"Shape: {A.shape}\")\nprint(f\"Number of dimensions: {A.ndim}\")\nprint(f\"Size: {A.size}\")\n\nShape: (2, 3)\nNumber of dimensions: 2\nSize: 6\n\n\n\n\n3.9.4 Indexing and Slicing\nNumPy provides powerful ways to access matrix elements:\n\nA = np.array([[1, 2, 3],\n              [4, 5, 6],\n              [7, 8, 9]])\n\n# Individual elements\nprint(\"First element:\", A[0, 0])\nprint(\"Second row, third column:\", A[1, 2])\n\n# Extracting rows\nprint(\"\\nFirst row:\", A[0, :])\nprint(\"Second row:\", A[1])  # : is implicit\n\n# Extracting columns\nprint(\"\\nFirst column:\", A[:, 0])\nprint(\"Second column:\", A[:, 1])\n\n# Slicing\nprint(\"\\nSubmatrix (first two rows, second and third columns):\")\nprint(A[0:2, 1:3])\n\nFirst element: 1\nSecond row, third column: 6\n\nFirst row: [1 2 3]\nSecond row: [4 5 6]\n\nFirst column: [1 4 7]\nSecond column: [2 5 8]\n\nSubmatrix (first two rows, second and third columns):\n[[2 3]\n [5 6]]\n\n\n\n\n3.9.5 Basic Operations\n\n3.9.5.1 Addition and Subtraction\nMatrix addition and subtraction work element-wise:\n\nA = np.array([[1, 2],\n              [3, 4]])\nB = np.array([[5, 6],\n              [7, 8]])\n\nprint(\"Matrix A:\")\nprint(A)\nprint(\"\\nMatrix B:\")\nprint(B)\nprint(\"\\nA + B:\")\nprint(A + B)\nprint(\"\\nA - B:\")\nprint(A - B)\n\nMatrix A:\n[[1 2]\n [3 4]]\n\nMatrix B:\n[[5 6]\n [7 8]]\n\nA + B:\n[[ 6  8]\n [10 12]]\n\nA - B:\n[[-4 -4]\n [-4 -4]]\n\n\n\n\n3.9.5.2 Scalar Operations\nMultiply or divide a matrix by a scalar:\n\nA = np.array([[1, 2],\n              [3, 4]])\n\nprint(\"Original matrix:\")\nprint(A)\nprint(\"\\nMultiply by 2:\")\nprint(2 * A)\nprint(\"\\nDivide by 2:\")\nprint(A / 2)\n\nOriginal matrix:\n[[1 2]\n [3 4]]\n\nMultiply by 2:\n[[2 4]\n [6 8]]\n\nDivide by 2:\n[[0.5 1. ]\n [1.5 2. ]]\n\n\n\n\n3.9.5.3 Matrix Multiplication\nNumPy provides several ways to perform matrix multiplication:\n\nA = np.array([[1, 2],\n              [3, 4]])\nB = np.array([[5, 6],\n              [7, 8]])\n\nprint(\"Matrix multiplication (A @ B):\")\nprint(A @ B)          # Preferred method (Python 3.5+)\n\nprint(\"\\nElement-wise multiplication (A * B):\")\nprint(A * B)          # Hadamard product\n\nMatrix multiplication (A @ B):\n[[19 22]\n [43 50]]\n\nElement-wise multiplication (A * B):\n[[ 5 12]\n [21 32]]\n\n\n\n\n\n3.9.6 Common Matrix Operations\nHere are some frequently used matrix operations:\n\nA = np.array([[1, 2],\n              [3, 4]])\n\nprint(\"Original matrix:\")\nprint(A)\n\nprint(\"\\nTranspose:\")\nprint(A.T)\n\nprint(\"\\nMatrix trace:\")\nprint(np.trace(A))\n\nprint(\"\\nMatrix determinant:\")\nprint(np.linalg.det(A))\n\nprint(\"\\nMatrix inverse:\")\nprint(np.linalg.inv(A))\n\nOriginal matrix:\n[[1 2]\n [3 4]]\n\nTranspose:\n[[1 3]\n [2 4]]\n\nMatrix trace:\n5\n\nMatrix determinant:\n-2.0000000000000004\n\nMatrix inverse:\n[[-2.   1. ]\n [ 1.5 -0.5]]\n\n\n\n\n3.9.7 Important Notes\n\nAlways check matrix dimensions when performing operations\nUse the appropriate multiplication operator:\n\n@ or np.matmul() for matrix multiplication\n* for element-wise multiplication\n\nRemember that indexing starts at 0, not 1\nWhen extracting rows or columns:\n\nA single row: A[i] or A[i, :]\nA single column: A[:, j]",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/matrices.html#matrices-in-sympy",
+    "href": "chapters/matrices.html#matrices-in-sympy",
+    "title": "3  Matrices",
+    "section": "3.10 Matrices in Sympy",
+    "text": "3.10 Matrices in Sympy\nThis section covers fundamental matrix operations using SymPy’s Matrix class. We’ll explore creation, indexing, and both numeric and symbolic operations.\n\n3.10.1 Setup\nFirst, let’s import SymPy and set up symbolic variables:\n\nfrom sympy import Matrix, Symbol, init_printing, pprint\nimport sympy as sp\n\n# Setup pretty printing\ninit_printing()\n\n# Define some symbolic variables\nx = Symbol('x')\ny = Symbol('y')\n\n\n\n3.10.2 Creating Matrices\nSymPy provides several ways to create matrices:\n\n# From a list of lists\nA = Matrix([[1, 2, 3],\n            [4, 5, 6]])\nprint(\"Matrix A:\")\npprint(A)\n\n# Using special constructors\nzeros = Matrix.zeros(2, 3)    # 2x3 matrix of zeros\nones = Matrix.ones(3, 3)      # 3x3 matrix of ones\neye = Matrix.eye(3)           # 3x3 identity matrix\n\nprint(\"\\nZeros matrix:\")\npprint(zeros)\nprint(\"\\nIdentity matrix:\")\npprint(eye)\n\n# Symbolic matrix\nsymbolic = Matrix([[x, y],\n                  [y, x]])\nprint(\"\\nSymbolic matrix:\")\npprint(symbolic)\n\nMatrix A:\n⎡1  2  3⎤\n⎢       ⎥\n⎣4  5  6⎦\n\nZeros matrix:\n⎡0  0  0⎤\n⎢       ⎥\n⎣0  0  0⎦\n\nIdentity matrix:\n⎡1  0  0⎤\n⎢       ⎥\n⎢0  1  0⎥\n⎢       ⎥\n⎣0  0  1⎦\n\nSymbolic matrix:\n⎡x  y⎤\n⎢    ⎥\n⎣y  x⎦\n\n\n\n\n3.10.3 Matrix Properties and Shape\nSymPy matrices have several useful properties:\n\nA = Matrix([[1, 2, 3],\n            [4, 5, 6]])\nprint(f\"Shape: {A.shape}\")\nprint(f\"Number of rows: {A.rows}\")\nprint(f\"Number of columns: {A.cols}\")\n\nShape: (2, 3)\nNumber of rows: 2\nNumber of columns: 3\n\n\n\n\n3.10.4 Indexing and Slicing\nSymPy uses different indexing methods than NumPy:\n\nA = Matrix([[1, 2, 3],\n            [4, 5, 6],\n            [7, 8, 9]])\n\n# Individual elements (zero-based indexing)\nprint(\"First element:\", A[0, 0])\nprint(\"Second row, third column:\", A[1, 2])\n\n# Extracting rows\nprint(\"\\nFirst row:\")\npprint(A.row(0))\nprint(\"\\nSecond row:\")\npprint(A.row(1))\n\n# Extracting columns\nprint(\"\\nFirst column:\")\npprint(A.col(0))\nprint(\"\\nSecond column:\")\npprint(A.col(1))\n\n# Extracting submatrices\nprint(\"\\nSubmatrix:\")\npprint(A[0:2, 1:3])\n\nFirst element: 1\nSecond row, third column: 6\n\nFirst row:\n[1  2  3]\n\nSecond row:\n[4  5  6]\n\nFirst column:\n⎡1⎤\n⎢ ⎥\n⎢4⎥\n⎢ ⎥\n⎣7⎦\n\nSecond column:\n⎡2⎤\n⎢ ⎥\n⎢5⎥\n⎢ ⎥\n⎣8⎦\n\nSubmatrix:\n⎡2  3⎤\n⎢    ⎥\n⎣5  6⎦\n\n\n\n\n3.10.5 Basic Operations\n\n3.10.5.1 Addition and Subtraction\nMatrix addition and subtraction work both with numeric and symbolic matrices:\n\nA = Matrix([[1, 2],\n            [3, 4]])\nB = Matrix([[5, 6],\n            [7, 8]])\n\nprint(\"Matrix A:\")\npprint(A)\nprint(\"\\nMatrix B:\")\npprint(B)\nprint(\"\\nA + B:\")\npprint(A + B)\nprint(\"\\nA - B:\")\npprint(A - B)\n\n# Symbolic example\nC = Matrix([[x, y],\n            [y, x]])\nprint(\"\\nSymbolic addition A + C:\")\npprint(A + C)\n\nMatrix A:\n⎡1  2⎤\n⎢    ⎥\n⎣3  4⎦\n\nMatrix B:\n⎡5  6⎤\n⎢    ⎥\n⎣7  8⎦\n\nA + B:\n⎡6   8 ⎤\n⎢      ⎥\n⎣10  12⎦\n\nA - B:\n⎡-4  -4⎤\n⎢      ⎥\n⎣-4  -4⎦\n\nSymbolic addition A + C:\n⎡x + 1  y + 2⎤\n⎢            ⎥\n⎣y + 3  x + 4⎦\n\n\n\n\n3.10.5.2 Scalar Operations\nMultiply or divide a matrix by a scalar (numeric or symbolic):\n\nA = Matrix([[1, 2],\n            [3, 4]])\n\nprint(\"Original matrix:\")\npprint(A)\nprint(\"\\nMultiply by 2:\")\npprint(2 * A)\nprint(\"\\nMultiply by symbolic x:\")\npprint(x * A)\n\nOriginal matrix:\n⎡1  2⎤\n⎢    ⎥\n⎣3  4⎦\n\nMultiply by 2:\n⎡2  4⎤\n⎢    ⎥\n⎣6  8⎦\n\nMultiply by symbolic x:\n⎡ x   2⋅x⎤\n⎢        ⎥\n⎣3⋅x  4⋅x⎦\n\n\n\n\n3.10.5.3 Matrix Multiplication\nSymPy matrix multiplication works with both numeric and symbolic matrices:\n\nA = Matrix([[1, 2],\n            [3, 4]])\nB = Matrix([[5, 6],\n            [7, 8]])\n\nprint(\"Matrix multiplication (A * B):\")\npprint(A * B)\n\nMatrix multiplication (A * B):\n⎡19  22⎤\n⎢      ⎥\n⎣43  50⎦\n\n\n\n\n\n3.10.6 Other Matrix Operations\nSymPy provides powerful symbolic matrix operations:\n\nA = Matrix([[1, 2],\n            [3, 4]])\n\nprint(\"Original matrix:\")\npprint(A)\n\nprint(\"\\nTranspose:\")\npprint(A.transpose())\n\nprint(\"\\nMatrix trace:\")\npprint(A.trace())\n\nprint(\"\\nDeterminant:\")\npprint(A.det())\n\nprint(\"\\nMatrix inverse:\")\npprint(A.inv())\n\n# Symbolic example\nS = Matrix([[x, y],\n            [y, x]])\nprint(\"\\n5th power of S:\")\nS**5\n\nOriginal matrix:\n⎡1  2⎤\n⎢    ⎥\n⎣3  4⎦\n\nTranspose:\n⎡1  3⎤\n⎢    ⎥\n⎣2  4⎦\n\nMatrix trace:\n5\n\nDeterminant:\n-2\n\nMatrix inverse:\n⎡-2    1  ⎤\n⎢         ⎥\n⎣3/2  -1/2⎦\n\n5th power of S:\n\n\n\\(\\displaystyle \\left[\\begin{matrix}x^{5} + 10 x^{3} y^{2} + 5 x y^{4} & 5 x^{4} y + 10 x^{2} y^{3} + y^{5}\\\\5 x^{4} y + 10 x^{2} y^{3} + y^{5} & x^{5} + 10 x^{3} y^{2} + 5 x y^{4}\\end{matrix}\\right]\\)\n\n\n\n\n3.10.7 Important Notes\n\nSymPy matrices use * for matrix multiplication (unlike NumPy’s @)\nIndexing is zero-based, similar to NumPy\nSymPy matrices are immutable - operations return new matrices\nRow and column extraction methods return Matrix objects\nSymPy can handle:\n\nSymbolic computations\nExact fractions\nAlgebraic expressions",
+    "crumbs": [
+      "Matrices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_multiplication.html",
+    "href": "worksheets/matrix_multiplication.html",
+    "title": "Practice Problems",
+    "section": "",
+    "text": "Problem 1\nFor this worksheet, we have:\n\\(A = \\begin{bmatrix}\\uparrow&\\uparrow&\\uparrow\\\\\n\\mathbf{c}_1&\\mathbf{c}_2 &\\mathbf{c}_3\\\\\n\\downarrow&\\downarrow&\\downarrow\\end{bmatrix} =\n\\begin{bmatrix} \\leftarrow \\mathbf{r}_1 \\rightarrow \\\\ \\leftarrow \\mathbf{r}_2 \\rightarrow \\\\ \\leftarrow \\mathbf{r}_3 \\rightarrow \\\\ \\leftarrow \\mathbf{r}_4 \\rightarrow \\end{bmatrix}\\)\n\\(E_1 = \\begin{bmatrix} 0 & 1 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\)\n\\(E_2 = \\begin{bmatrix} 1 & 0 & -2 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\)\n\\(E_3 = \\begin{bmatrix} -1 & 0 & 0 & 0 \\\\ 1 & -1 & 0 & 0 \\\\ 0 & 1 & -1 & 0 \\\\ 0 & 0 & 1 & -1 \\end{bmatrix}\\)\n\\(E_4 = \\begin{bmatrix} 1 & 0 & 1 & -10 \\\\ 2 & 2 & 1 & 0 \\\\ 0 & -2 & -1 & 0 \\\\ 4 & 0 & 0 & -1 \\end{bmatrix}\\)\nFor each of the following problems, indicate if the matrices can be multiplied. If they can, express the answer in terms of the rows of \\(A\\) or the columns of \\(A\\). If they cannot be multiplied, explain why.",
+    "crumbs": [
+      "Matrices",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_multiplication.html#problem-1",
+    "href": "worksheets/matrix_multiplication.html#problem-1",
+    "title": "Practice Problems",
+    "section": "",
+    "text": "\\(AE_1\\)\n\\(E_1A\\)\n\\(AE_2\\)\n\\(E_2A\\)\n\\(AE_3\\)\n\\(E_3A\\)\n\\(AE_4\\)\n\\(E_4A\\)",
+    "crumbs": [
+      "Matrices",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_multiplication.html#problem-2",
+    "href": "worksheets/matrix_multiplication.html#problem-2",
+    "title": "Practice Problems",
+    "section": "Problem 2",
+    "text": "Problem 2\nSuppose that \\(AB_1 = \\begin{bmatrix} \\uparrow & \\uparrow & \\uparrow & \\uparrow \\\\ (\\mathbf{c}_1-3\\mathbf{c}_2) & \\mathbf{c}_3 & \\mathbf{c}_2 & (8\\mathbf{c}_2-\\mathbf{c}_3) \\\\ \\downarrow & \\downarrow & \\downarrow & \\downarrow \\end{bmatrix}\\). Find \\(B_1\\)",
+    "crumbs": [
+      "Matrices",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_multiplication.html#problem-3",
+    "href": "worksheets/matrix_multiplication.html#problem-3",
+    "title": "Practice Problems",
+    "section": "Problem 3",
+    "text": "Problem 3\nSuppose that \\(B_2A = \\begin{bmatrix} \\leftarrow \\mathbf{r}_1 \\rightarrow \\\\ \\leftarrow \\mathbf{r}_2 \\rightarrow \\\\ \\leftarrow \\mathbf{r}_3 \\rightarrow \\\\ \\leftarrow \\mathbf{r}_4 \\rightarrow \\end{bmatrix}\\). Find \\(B_2\\)",
+    "crumbs": [
+      "Matrices",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_multiplication.html#problem-4",
+    "href": "worksheets/matrix_multiplication.html#problem-4",
+    "title": "Practice Problems",
+    "section": "Problem 4",
+    "text": "Problem 4\nSuppose that \\(B_3A = \\begin{bmatrix} \\leftarrow (\\mathbf{r}_1+\\mathbf{r}_2-\\mathbf{r}_3) \\rightarrow \\\\ \\leftarrow (\\mathbf{r}_2-\\mathbf{r}_3+\\mathbf{r}_4) \\rightarrow \\end{bmatrix}\\). Find \\(B_2\\)",
+    "crumbs": [
+      "Matrices",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_multiplication.html#problem-5",
+    "href": "worksheets/matrix_multiplication.html#problem-5",
+    "title": "Practice Problems",
+    "section": "Problem 5",
+    "text": "Problem 5\nSuppose that \\(B_4E_1 = A\\). Find \\(B_4\\)",
+    "crumbs": [
+      "Matrices",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_multiplication.html#problem-6",
+    "href": "worksheets/matrix_multiplication.html#problem-6",
+    "title": "Practice Problems",
+    "section": "Problem 6",
+    "text": "Problem 6\nSuppose that \\(B_5\\begin{bmatrix} \\leftarrow (\\mathbf{r}_1+\\mathbf{r}_2+\\mathbf{r}_3+\\mathbf{r}_4) \\rightarrow \\\\ \\leftarrow (\\mathbf{r}_2+\\mathbf{r}_3+\\mathbf{r}_4) \\rightarrow \\\\ \\leftarrow (\\mathbf{r}_3+\\mathbf{r}_4) \\rightarrow \\\\ \\leftarrow \\mathbf{r}_4 \\rightarrow \\end{bmatrix} = A\\). Find \\(B_5\\)",
+    "crumbs": [
+      "Matrices",
+      "Practice Problems"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html",
+    "href": "applications/image_transforms_matrix.html",
+    "title": "Real World Application",
+    "section": "",
+    "text": "Image Transformation with Matrices\nThis section explores how images are represented as matrices and demonstrates various transformations using Python. We’ll cover both grayscale and color images, showing how matrix operations can be used to create different visual effects.",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html#image-transformation-with-matrices",
+    "href": "applications/image_transforms_matrix.html#image-transformation-with-matrices",
+    "title": "Real World Application",
+    "section": "",
+    "text": "Required Libraries\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom PIL import Image",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html#black-and-white-images",
+    "href": "applications/image_transforms_matrix.html#black-and-white-images",
+    "title": "Real World Application",
+    "section": "1. Black and White Images",
+    "text": "1. Black and White Images\n\nUnderstanding Grayscale Representation\nGrayscale images are typically represented as 2D arrays (matrices) where each element represents the intensity of a pixel. When working with uint8 (integers) data type, the values range from 0 (black) to 255 (white). When working with float data type, the values should be normalized to the range 0 to 1.\n\n# Create a simple 3x4 grayscale image\ngrayscale_example = np.array([\n    [0, 85, 170, 255],    # Different shades of gray\n    [255, 170, 85, 0],    # Reversed pattern\n    [128, 128, 128, 128]  # Medium gray\n])\n\nplt.figure(figsize=(6, 4))\nplt.imshow(grayscale_example, cmap='gray')\nplt.colorbar()\nplt.title('3x4 Grayscale Example')\nplt.show()",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html#color-images-rgb",
+    "href": "applications/image_transforms_matrix.html#color-images-rgb",
+    "title": "Real World Application",
+    "section": "2. Color Images (RGB)",
+    "text": "2. Color Images (RGB)\nColors can be represented in various digital formats - from HSV (Hue, Saturation, Value) to CMYK (Cyan, Magenta, Yellow, Key/Black). Here,we’ll work with the RGB (Red, Green, Blue) color model, where each pixel’s color is created by combining different intensities of these three primary colors.\n\nRGB Color Model\nColor images use three channels: Red, Green, and Blue. Each pixel is represented by three values, creating a 3D array with shape (height, width, 3). As with grayscale images, the values can be either in the range 0-255 (uint8) or 0-1 (float).\n\nCommon Colors:\n\nBlack: (0, 0, 0)\nWhite: (255, 255, 255)\nPure Red: (255, 0, 0)\nPure Green: (0, 255, 0)\nPure Blue: (0, 0, 255)\nYellow: (255, 255, 0) [Red + Green]\nMagenta: (255, 0, 255) [Red + Blue]\nCyan: (0, 255, 255) [Green + Blue]\n\n\n\n\nSimple RGB image with common colors\n\nsimple_rgb = np.array([\n    [[255,0,0], [0,255,0], [0,0,255], [255,255,255]],   # top row\n    [[255,255,0], [0,255,255],[0,0,0], [100,100,100]]   # bottom row\n])\n\nplt.figure(figsize=(4, 4))\nplt.imshow(simple_rgb)\nplt.title('2x4 RGB Image')\nplt.show()\n\n\n\n\n\n\n\n\n\n\nNavigating Color Images in NumPy\nWhen working with color images in NumPy, image[a,b,c] lets us access specific pixel values. The first two numbers (a,b) are the pixel coordinates - a selects the row (moving down), b selects the column (moving right). The last number c picks the color channel: 0 for red, 1 for green, or 2 for blue. So image[1,2,1] gets the green value at row 2, column 3.\nTo access entire color channels, you can use : to select all rows and columns. For example, image[:,:,0] gives you the complete red channel, image[:,:,1] the green channel, and image[:,:,2] the blue channel. Each channel is a 2D array of intensities from 0 to 255, which we visualize in grayscale in the folling function - bright pixels show where that color is strong, dark pixels where it’s absent.\n\ndef display_rgb_channels(image):\n    \"\"\"Display an image and its RGB channels separately\"\"\"\n    \n    # Create a figure with 2x2 subplots\n    fig, axes = plt.subplots(2, 2, figsize=(8,8))\n    \n    # Original image\n    axes[0,0].imshow(image)\n    axes[0,0].set_title('Original')\n    \n    # Red channel showed as gray\n    axes[0,1].imshow(image[:,:,0], cmap=\"gray\")\n    axes[0,1].set_title('Red Channel')\n    \n    # Green channel showed as gray\n    axes[1,0].imshow(image[:,:,1], cmap=\"gray\")\n    axes[1,0].set_title('Green Channel')\n    \n    # Blue channel showed as gray\n    axes[1,1].imshow(image[:,:,2], cmap=\"gray\")\n    axes[1,1].set_title('Blue Channel')\n    \n    plt.tight_layout()\n    plt.show()\n\n# Load an image\ncircles = plt.imread('rgb_colors.png')\ndisplay_rgb_channels(circles)\nbutterfly = plt.imread('butterfly.jpg')\ndisplay_rgb_channels(butterfly)",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html#converting-between-images-and-matrices",
+    "href": "applications/image_transforms_matrix.html#converting-between-images-and-matrices",
+    "title": "Real World Application",
+    "section": "3. Converting Between Images and Matrices",
+    "text": "3. Converting Between Images and Matrices\n\nUnderstanding Image Arrays and Reshaping\nA grayscale image is stored as a 2D array with shape (height, width), while a color image uses a 3D array with shape (height, width, 3). For example, a 100x100 color image has shape (100, 100, 3), where the third dimension holds RGB values.\nMatrix operations require 2D arrays, so we need to reorganize our 3D color images. We transform from height × width × 3 to a matrix of (height × width) rows by 3 columns, flattening the spatial dimensions while keeping color information.\nThe reshape(-1,3) method transforms our 3D color image into a 2D matrix. The -1 tells NumPy to automatically calculate the number of rows needed, while 3 specifies we want 3 columns. For example, an image of shape (100,100,3) becomes a matrix of shape (10000,3), where each row represents one pixel’s values. The columns have a specific meaning: the first column contains all red values, the second green, and the third blue.\n\n\nExample\nLet’s illustrate this is a simple example:\n\nimg_2by2 = np.array([\n    [[1,2,3],[4,5,6]],      # top row\n    [[7,8,9],[10,11,12]]    # bottom row\n])\nprint(\"The original image:\")\nprint(img_2by2)\nprint(\"Shape:\", img_2by2.shape)\n\nprint(\"\\n\" + \"-\"*40 + \"\\n\")  # adds a dividing line\n\nM_2by2 = img_2by2.reshape(-1,3)\nprint(\"The reshaped matrix:\")\nprint(M_2by2)\nprint(\"Shape:\", M_2by2.shape)\n\nThe original image:\n[[[ 1  2  3]\n  [ 4  5  6]]\n\n [[ 7  8  9]\n  [10 11 12]]]\nShape: (2, 2, 3)\n\n----------------------------------------\n\nThe reshaped matrix:\n[[ 1  2  3]\n [ 4  5  6]\n [ 7  8  9]\n [10 11 12]]\nShape: (4, 3)\n\n\nNotice that the columns represent red, green, and blue values respectively. This process is reversible. If we write M_2by2.reshape(img_2by2.shape) we get img_2by2 back - no need to remember the original dimensions since they’re stored in the shape attribute. However, if you want, you can also write M_2by2.reshape(2,2).\n\nM_2by2.reshape(img_2by2.shape)\n\narray([[[ 1,  2,  3],\n        [ 4,  5,  6]],\n\n       [[ 7,  8,  9],\n        [10, 11, 12]]])\n\n\n\n\nHelper Functions\nWe’ll use these helper functions to convert between image and matrix formats throughout our examples:\n\ndef image_to_matrix(image):\n    \"\"\"Convert image to matrix format (n_pixels × 3)\"\"\"\n    return image.reshape(-1, 3)\n\ndef matrix_to_image(matrix, original_shape):\n    \"\"\"Convert matrix back to image format\"\"\"\n    return matrix.reshape(original_shape)",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html#color-transformations-using-permutation-matrices",
+    "href": "applications/image_transforms_matrix.html#color-transformations-using-permutation-matrices",
+    "title": "Real World Application",
+    "section": "4. Color Transformations Using Permutation Matrices",
+    "text": "4. Color Transformations Using Permutation Matrices\n\nSwapping Color Channels\nWe can use permutation matrices to swap color channels:\n\ndef swap_colors(image, permutation_matrix):\n    \"\"\"Apply color permutation to image\"\"\"\n    matrix = image_to_matrix(image)\n    transformed = matrix @ permutation_matrix\n    return matrix_to_image(transformed, image.shape)\n\n# Example permutation matrices\nRGB_to_BGR = np.array([\n    [0, 0, 1],\n    [0, 1, 0],\n    [1, 0, 0]\n])\n\n\n\n\n\n\n\nExercise: Find all six 3×3 permutation matrices.\n\n\n\n\n\n\nIdentity:\n\\(\\begin{bmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{bmatrix}\\)\nSingle swap (R-G):\n\\(\\begin{bmatrix}0&1&0\\\\1&0&0\\\\0&0&1\\end{bmatrix}\\)\nSingle swap (R-B):\n\\(\\begin{bmatrix}0&0&1\\\\0&1&0\\\\1&0&0\\end{bmatrix}\\)\nSingle swap (G-B):\n\\(\\begin{bmatrix}1&0&0\\\\0&0&1\\\\0&1&0\\end{bmatrix}\\)\nCyclic (R→G→B→R):\n\\(\\begin{bmatrix}0&0&1\\\\1&0&0\\\\0&1&0\\end{bmatrix}\\)\nCyclic Cyclic (R→B→G→R):\n\\(\\begin{bmatrix}0&1&0\\\\0&0&1\\\\1&0&0\\end{bmatrix}\\)",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html#grayscale-conversion-and-negative",
+    "href": "applications/image_transforms_matrix.html#grayscale-conversion-and-negative",
+    "title": "Real World Application",
+    "section": "5. Grayscale Conversion and Negative",
+    "text": "5. Grayscale Conversion and Negative\nWhen converting a color image to grayscale, we don’t simply average the RGB values. Our eyes have different sensitivities to different colors, with green light being perceived as brightest and blue as darkest. To create natural-looking grayscale images, we use weighted averages that match human perception: 29.9% for red, 58.7% for green, and 11.4% for blue.\nThe negative of an image can be obtained by subtracting each pixel value from the maximum possible value (255 for 8-bit images). Thanks to NumPy’s broadcasting capabilities, we can simply write 255 - image and this operation will be applied to every pixel value automatically, whether it’s a grayscale or color image. Here’s a simple function to create image negatives:\n\ndef to_grayscale(image):\n    \"\"\"Convert RGB image to grayscale using weighted sum\"\"\"\n    weights = np.array([0.299, 0.587, 0.114])\n    matrix = image_to_matrix(image)\n    grayscale_values = matrix @ weights\n    return grayscale_values.reshape(image.shape[:2])\n\ndef create_negative(image):\n    \"\"\"Create negative of an image\"\"\"\n    return 255 - image\n\n# Upload black and white image of a dog\ndog = np.array(Image.open('grayscale.png').convert('L'))\n# Show image and negative\nfig, axes = plt.subplots(2, 1, figsize=(8, 10))\naxes[0].set_title('Original Grayscale Image')\naxes[0].imshow(dog, cmap='gray')\naxes[1].set_title('Negative Image')\naxes[1].imshow(255-dog,cmap = 'gray')\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html#color-filters",
+    "href": "applications/image_transforms_matrix.html#color-filters",
+    "title": "Real World Application",
+    "section": "6. Color Filters",
+    "text": "6. Color Filters\n\nImplementing a Sepia Filter\nA sepia filter transforms a regular color image into one with a warm, brownish tone reminiscent of vintage photographs. To create this effect, we need to adjust each color channel using specific weights. For each pixel, the new RGB values are calculated as a combination of the original values:\nThe red channel is amplified with warm tones The green channel is moderately reduced The blue channel is significantly reduced\nThis creates the characteristic reddish-brown tint that gives sepia images their antique appearance.\n\ndef apply_sepia(image):\n    \"\"\"Apply sepia filter to image\"\"\"\n    sepia_matrix = np.array([\n        [0.393, 0.349, 0.272],\n        [0.769, 0.686, 0.534],\n        [0.189, 0.168, 0.131]\n    ])\n    \n    matrix = image_to_matrix(image)\n    sepia = matrix @ sepia_matrix\n    \n    # Clip values to valid range\n    sepia = np.clip(sepia, 0, 1)\n    return matrix_to_image(sepia, image.shape)\n\n\n\nImplementing a Color Intensification Filter\nA color intensification filter makes images more vibrant by amplifying the primary colors while reducing color bleeding between channels. To create this effect, each color channel is multiplied by 1.5 (intensifying its own color) while subtracting a quarter of the other colors’ intensities. This process:\n\nBoosts each channel’s own color\nReduces the influence of other colors\nIncreases contrast between different colored areas\n\nThis creates a more vivid appearance with enhanced color separation and impact.\n\ndef intensify_colors(image):\n    \"\"\"Apply color intensification filter to image\"\"\"\n    intensity_matrix = np.array([\n        [1.5, -0.25, -0.25],\n        [-0.25, 1.5, -0.25],\n        [-0.25, -0.25, 1.5]\n    ])\n    \n    matrix = image_to_matrix(image)\n    intensified = matrix @ intensity_matrix\n    \n    # Clip values to valid range\n    intensified = np.clip(intensified, 0, 1)\n    return matrix_to_image(intensified, image.shape)",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html#example-usage",
+    "href": "applications/image_transforms_matrix.html#example-usage",
+    "title": "Real World Application",
+    "section": "Example Usage",
+    "text": "Example Usage\nHere’s how to use these transformations on an actual image:\n\n# Load an image: Open it in Image, and convert it to a numpy array as a float\nimage = np.array(Image.open('city_river.jpg')).astype(float)/255\n\n# Display original and transformed versions\nfig, axes = plt.subplots(5, 1, figsize=(10,25))\n\naxes[0].imshow(image)\naxes[0].set_title('Original')\n\naxes[1].imshow(swap_colors(image, RGB_to_BGR))\naxes[1].set_title('RGB to BGR')\n\naxes[2].imshow(to_grayscale(image), cmap='gray')\naxes[2].set_title('Grayscale')\n\naxes[3].imshow(apply_sepia(image))\naxes[3].set_title('Sepia')\n\naxes[4].imshow(intensify_colors(image))\naxes[4].set_title('Intensification')\n\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "applications/image_transforms_matrix.html#conclusion",
+    "href": "applications/image_transforms_matrix.html#conclusion",
+    "title": "Real World Application",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis document has demonstrated how matrices can be used to transform images in various ways. We’ve covered: - Basic image representation in grayscale and RGB - Converting between image and matrix formats - Color channel permutations - Grayscale conversion - Negative image creation - Sepia filter implementation\nThese transformations show the practical application of matrix operations in image processing, connecting linear algebra concepts with real-world applications.",
+    "crumbs": [
+      "Matrices",
+      "Real World Application"
+    ]
+  },
+  {
+    "objectID": "parts/linear_maps.html",
+    "href": "parts/linear_maps.html",
+    "title": "Linear Transformation",
+    "section": "",
+    "text": "This section covers Linear Transformations.\n\nMatrices\nWorksheet: Matrix Multiplication",
+    "crumbs": [
+      "Linear Transformation"
+    ]
+  },
+  {
+    "objectID": "chapters/linear_maps.html",
+    "href": "chapters/linear_maps.html",
+    "title": "4  Linear Transformations in \\(\\mathbb{R}^n\\)",
+    "section": "",
+    "text": "4.1 Motivating Example\nIf \\(A\\) is an \\(m\\times n\\) matrix, Equation 3.1 tells us that \\(A\\) induces a map \\(A:\\mathbb{R}^n\\to\\mathbb{R}^m\\) defined by the Matrix-Vector formula \\(A\\mathbf{x}\\). This map has two important properties:\nLet’s check 1: Let \\(\\mathbf{x}=(x_1,\\dots,x_n)\\) and \\(\\mathbf{y}=(y_1,\\dots,y_n)\\) be two arbtrary elements of \\(\\mathbb{R}^n\\). Then writing the product in terms of the columns of \\(A\\) and using standard operations of vectors we get: \\[\\begin{aligned}\nA(\\mathbf{x}+\\mathbf{y}) &=\n\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{c}_1 & \\mathbf{c}_2 & \\cdots & \\mathbf{c}_n \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}\\left(\n\\begin{bmatrix}x_1\\\\x_2\\\\\\vdots\\\\x_n \\end{bmatrix}  +    \n\\begin{bmatrix}y_1\\\\y_2\\\\\\vdots\\\\y_n \\end{bmatrix}     \n\\right) \\\\\n&=\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{c}_1 & \\mathbf{c}_2 & \\cdots & \\mathbf{c}_n \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}\n\\begin{bmatrix}x_1+y_1\\\\x_2+y_2\\\\\\vdots\\\\x_n+y_n \\end{bmatrix} \\\\\n&= (x_1+y_1)\\mathbf{c}_1+\\cdots +(x_n+y_n)\\mathbf{c}_n\\\\\n&=(x_1\\mathbf{c}_1+\\cdots +x_n\\mathbf{c}_n)+(y_1\\mathbf{c}_1+\\cdots + y_n\\mathbf{c}_n)\\\\\n&=A\\mathbf{x}+A\\mathbf{y}.\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Linear Transformation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Linear Transformations in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/linear_maps.html#motivating-example",
+    "href": "chapters/linear_maps.html#motivating-example",
+    "title": "4  Linear Transformations in \\(\\mathbb{R}^n\\)",
+    "section": "",
+    "text": "For every \\(\\mathbf{x},\\mathbf{y}\\in\\mathbb{R}^n, A(\\mathbf{x}+\\mathbf{y})=A\\mathbf{x}+A\\mathbf{y}\\), and\nFor every \\(\\mathbf{x}\\in\\mathbb{R}^n\\) and every \\(c\\in\\mathbb{R}\\), \\(A(c\\mathbf{x})=cA\\mathbf{x}\\)\n\n\n\n4.1.0.1 Exercise: Check 2.\n\n\n\n\n\n\nClick to see the proof\n\n\n\n\n\nLet \\(\\mathbf{x}=(x_1,\\dots,x_n)\\) be an arbitrary element in \\(\\mathbb{R}^n\\) and let \\(c\\in\\mathbb{R}\\) be a scalar. Writing the product in terms of the columns of \\(A\\) and using standard operations on vectors we get: \\[\n\\begin{aligned}\nA(c\\mathbf{x}) &=\n\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{c}_1 & \\mathbf{c}_2 & \\cdots & \\mathbf{c}_n \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}\n\\left(\nc\\begin{bmatrix}x_1\\\\ x_2\\\\\\vdots\\\\ x_n \\end{bmatrix}  \n\\right) \\\\\n&= \\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\n\\mathbf{c}_1 & \\mathbf{c}_2 & \\cdots & \\mathbf{c}_n \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}\\left(\n\\begin{bmatrix}cx_1\\\\ cx_2\\\\ \\vdots\\\\ cx_n \\end{bmatrix}  \n\\right) \\\\\n&= (cx_1)\\mathbf{c}_1+\\cdots +(cx_n)\\mathbf{c}_n\\\\\n&= c(x_1\\mathbf{c}_1+\\cdots +x_n\\mathbf{c}_n)\\\\\n&= c(A\\mathbf{x})\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Linear Transformation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Linear Transformations in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/linear_maps.html#linear-transformations",
+    "href": "chapters/linear_maps.html#linear-transformations",
+    "title": "4  Linear Transformations in \\(\\mathbb{R}^n\\)",
+    "section": "4.2 Linear Transformations",
+    "text": "4.2 Linear Transformations\n\nDefinition: A function \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is a linear transformation if it satisfies two properties:\n\nAdditivity: For every \\(\\mathbf{x}_1,\\mathbf{x}_2\\in\\mathbb{R}^n, T(\\mathbf{x}_1+\\mathbf{x}_2)=T(\\mathbf{x}_1)+T(\\mathbf{x}_2)\\), and\nScalar Multiplication: For every \\(\\mathbf{x}\\in\\mathbb{R}^n\\) and every \\(c\\in\\mathbb{R}\\), \\(T(c\\mathbf{x})=cT(\\mathbf{x})\\)\n\n\nThese properties naturally extend to any finite collection of vectors. For vectors \\(\\mathbf{x}_1,\\mathbf{x}_2,\\ldots,\\mathbf{x}_k\\in\\mathbb{R}^n\\) and scalars \\(c_1,c_2,\\ldots,c_k\\in\\mathbb{R}\\), we have \\[T(c_1\\mathbf{x}_1+\\cdots+c_k\\mathbf{x}_k)=c_1T(\\mathbf{x}_1)+\\cdots+c_kT(\\mathbf{x}_k) \\tag{4.1}\\] This is an important formula that we will use many times.\nNotice that we just establihed that an \\(m\\times n\\) matrix \\(A\\) induces a linear transformation \\(A:\\mathbb{R}^n\\to\\mathbb{R}^m\\) defined by \\(A\\mathbf{x}\\). In this section we will demonstrate the converse: that any linear transformation from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\) can be expressed as matrix multiplication. The following simple example will illustrate this fundamental property.\n\nExample: Let \\(T:\\mathbb{R}^2\\to\\mathbb{R}^3\\) be defined by \\(T\\left( \\begin{bmatrix}a\\\\ b\\end{bmatrix} \\right)=\\begin{bmatrix}a+b\\\\ b-2a\\\\ a\\end{bmatrix}\\)\n\nThe first step is to show that the function is a linear transformation. Try to do it using the definition, but feel free to click to see the detailed proof.\n\nExercise: Prove that \\(T:\\mathbb{R}^2\\to\\mathbb{R}^3\\) is a linear transformation.\n\n\n\n\n\n\nClick to see the proof\n\n\n\n\n\n\nProof. To prove that \\(T\\) is a linear transformation, we must verify both properties from the definition:\n\nAdditivity: \\(T(\\mathbf{x}+\\mathbf{y})=T(\\mathbf{x})+T(\\mathbf{y})\\) for all \\(\\mathbf{x},\\mathbf{y}\\in\\mathbb{R}^2\\)\nScalar multiplication: \\(T(c\\mathbf{x})=cT(\\mathbf{x})\\) for all \\(\\mathbf{x}\\in\\mathbb{R}^2\\) and \\(c\\in\\mathbb{R}\\)\n\nProperty 1 (Additivity): Let \\(\\mathbf{x}=\\begin{bmatrix}x_1\\\\ x_2\\end{bmatrix}\\) and \\(\\mathbf{y}=\\begin{bmatrix}y_1\\\\ y_2\\end{bmatrix}\\) be arbitrary vectors in \\(\\mathbb{R}^2\\).\nFirst, let’s compute \\(T(\\mathbf{x}+\\mathbf{y})\\): \\[\\begin{align*}\nT(\\mathbf{x}+\\mathbf{y}) &= T\\left(\\begin{bmatrix}x_1+y_1\\\\ x_2+y_2\\end{bmatrix}\\right)\\\\\n&= \\begin{bmatrix}(x_1+y_1)+(x_2+y_2)\\\\ (x_2+y_2)-2(x_1+y_1)\\\\ x_1+y_1\\end{bmatrix}\\\\\n&= \\begin{bmatrix}x_1+x_2+y_1+y_2\\\\ x_2+y_2-2x_1-2y_1\\\\ x_1+y_1\\end{bmatrix}\n\\end{align*}\\]\nNow, let’s compute \\(T(\\mathbf{x})+T(\\mathbf{y})\\): \\[\\begin{align*}\nT(\\mathbf{x})+T(\\mathbf{y}) &= \\begin{bmatrix}x_1+x_2\\\\ x_2-2x_1\\\\ x_1\\end{bmatrix} + \\begin{bmatrix}y_1+y_2\\\\ y_2-2y_1\\\\ y_1\\end{bmatrix}\\\\\n&= \\begin{bmatrix}x_1+x_2+y_1+y_2\\\\ x_2-2x_1+y_2-2y_1\\\\ x_1+y_1\\end{bmatrix}\n\\end{align*}\\]\nSince these are equal for any choice of \\(\\mathbf{x}\\) and \\(\\mathbf{y}\\), Property 1 is verified.\nProperty 2 (Scalar Multiplication): Let \\(\\mathbf{x}=\\begin{bmatrix}x_1\\\\ x_2\\end{bmatrix}\\) be an arbitrary vector in \\(\\mathbb{R}^2\\) and \\(c\\in\\mathbb{R}\\) be an arbitrary scalar.\nFirst, let’s compute \\(T(c\\mathbf{x})\\): \\[\\begin{align*}\nT(c\\mathbf{x}) &= T\\left(\\begin{bmatrix}cx_1\\\\ cx_2\\end{bmatrix}\\right)\\\\\n&= \\begin{bmatrix}cx_1+cx_2\\\\ cx_2-2(cx_1)\\\\ cx_1\\end{bmatrix}\\\\\n&= \\begin{bmatrix}c(x_1+x_2)\\\\ c(x_2-2x_1)\\\\ cx_1\\end{bmatrix}\n\\end{align*}\\]\nNow, let’s compute \\(cT(\\mathbf{x})\\): \\[\\begin{align*}\ncT(\\mathbf{x}) &= c\\begin{bmatrix}x_1+x_2\\\\ x_2-2x_1\\\\ x_1\\end{bmatrix}\\\\\n&= \\begin{bmatrix}c(x_1+x_2)\\\\ c(x_2-2x_1)\\\\ cx_1\\end{bmatrix}\n\\end{align*}\\]\nSince these are equal for any choice of \\(\\mathbf{x}\\) and \\(c\\), Property 2 is verified.\nTherefore, since both properties hold, \\(T\\) is indeed a linear transformation.\n\n\n\n\n\nNow that we know that \\(T:\\mathbb{R}^2\\to\\mathbb{R}^3\\) is linear we use elementary vector operations, Equation 4.1, and Equation 3.1 to obtain: \\[\\begin{aligned}\nT\\left( \\begin{bmatrix}a\\\\ b\\end{bmatrix} \\right)\n&=T\\left( a\\begin{bmatrix}1\\\\ 0\\end{bmatrix} + b\\begin{bmatrix}0\\\\ 1\\end{bmatrix}\\right) \\\\\n&=aT\\left( \\begin{bmatrix}1\\\\ 0\\end{bmatrix}\\right) + bT\\left(\\begin{bmatrix}0\\\\ 1\\end{bmatrix}\\right) \\\\\n&=a\\begin{bmatrix}1\\\\ -1\\\\ 1\\end{bmatrix} + b\\begin{bmatrix}1\\\\ 1\\\\0\\end{bmatrix}\n= \\begin{bmatrix}1 & 1\\\\ -1 &1\\\\ 1&0\\end{bmatrix}\\begin{bmatrix}a\\\\ b\\end{bmatrix}.\n\\end{aligned}\\] This means that for every \\(\\mathbf{x}\\in\\mathbb{R}^2\\), \\(T(\\mathbf{x})=A\\mathbf{x}\\) for \\(A= \\begin{bmatrix}1 & 1\\\\ -1 &1\\\\ 1&0\\end{bmatrix}\\)\n\nTheorem: Let \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) be a linear transformation. Then there exists an \\(m\\times n\\) matrix \\(A\\) such that for every \\(\\mathbf{x}\\in\\mathbb{R}^n\\), \\(T(\\mathbf{x})=A\\mathbf{x}\\).\n\n\nProof. The proof consists of three main steps:\n\nFirst, let’s identify the canonical basis vectors of \\(\\mathbb{R}^n\\). Let \\(\\mathbf{e}_i\\) denote the \\(i\\)-th canonical basis vector: \\[\\mathbf{e}_1=\\begin{bmatrix}1\\\\0\\\\ \\vdots\\\\ 0\\end{bmatrix},\\quad \\mathbf{e}_2=\\begin{bmatrix}0\\\\1\\\\ \\vdots\\\\ 0\\end{bmatrix},\\quad \\ldots, \\quad \\mathbf{e}_n=\\begin{bmatrix}0\\\\0\\\\ \\vdots\\\\ 1\\end{bmatrix}\\]\nAny vector \\(\\mathbf{x}\\in\\mathbb{R}^n\\) can be written uniquely as a linear combination of these basis vectors: \\[\\mathbf{x}=\\begin{bmatrix}x_1\\\\ x_2\\\\ \\vdots\\\\ x_n\\end{bmatrix}=x_1\\mathbf{e}_1 + x_2\\mathbf{e}_2 + \\cdots + x_n\\mathbf{e}_n\\]\nNow, using the linearity of \\(T\\) (see Equation 4.1), we have: \\[\\begin{aligned}\nT(\\mathbf{x})&=T(x_1\\mathbf{e}_1 + x_2\\mathbf{e}_2 + \\cdots + x_n\\mathbf{e}_n)\\\\\n&=x_1T(\\mathbf{e}_1) + x_2T(\\mathbf{e}_2) + \\cdots + x_nT(\\mathbf{e}_n)\n\\end{aligned}\n\\]\ndefine the matrix \\(A\\) by using the transformed basis vectors as its columns: \\[A=\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\nT(\\mathbf{e}_1) & T(\\mathbf{e}_2) & \\cdots & T(\\mathbf{e}_n) \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow \\\\\n\\end{bmatrix}\\]\nThen by the definition of matrix multiplication (see Equation 3.1): \\[\\begin{aligned}\nA\\mathbf{x}&=\n\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\nT(\\mathbf{e}_1) & T(\\mathbf{e}_2) & \\cdots & T(\\mathbf{e}_n) \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow \\\\\n\\end{bmatrix}\n\\begin{bmatrix}x_1\\\\ x_2\\\\ \\vdots\\\\ x_n\\end{bmatrix} \\\\\n&=x_1T(\\mathbf{e}_1) + x_2T(\\mathbf{e}_2) + \\cdots + x_nT(\\mathbf{e}_n)=T(\\mathbf{x})\n\\end{aligned}.\n\\]\n\nTherefore, we have constructed a matrix \\(A\\) such that \\(T(\\mathbf{x})=A\\mathbf{x}\\) for all \\(\\mathbf{x}\\in\\mathbb{R}^n\\). Note that \\(A\\) is \\(m\\times n\\) since it has \\(n\\) columns, and each column \\(T(\\mathbf{e}_i)\\in\\mathbb{R}^m\\).\n\n\n\n\n\n\n\n\nImportant\n\n\n\nKey Algorithm: The definition of the matrix \\(A\\) provides a practical method for finding the matrix representation of any linear transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\). Simply compute \\(T(\\mathbf{e}_i)\\) for each canonical basis vector and use these vectors as the columns of \\(A\\): \\[A=\\begin{bmatrix}\n\\uparrow & \\uparrow & \\cdots & \\uparrow \\\\\nT(\\mathbf{e}_1) & T(\\mathbf{e}_2) & \\cdots & T(\\mathbf{e}_n) \\\\\n\\downarrow & \\downarrow & \\cdots & \\downarrow\n\\end{bmatrix}\\] In other words, the \\(j\\)-th column of \\(A\\) is the output of the transformation \\(T\\) when applied to the \\(j\\)-th canonical basis vector \\(\\mathbf{e}_j\\).",
+    "crumbs": [
+      "Linear Transformation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Linear Transformations in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/linear_maps.html#composition-of-linear-transformations",
+    "href": "chapters/linear_maps.html#composition-of-linear-transformations",
+    "title": "4  Linear Transformations in \\(\\mathbb{R}^n\\)",
+    "section": "4.3 Composition of Linear Transformations",
+    "text": "4.3 Composition of Linear Transformations\nblah blah",
+    "crumbs": [
+      "Linear Transformation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Linear Transformations in $\\mathbb{R}^n$</span>"
+    ]
+  },
+  {
+    "objectID": "parts/system_equations.html",
+    "href": "parts/system_equations.html",
+    "title": "System of Linear Equations",
+    "section": "",
+    "text": "This section covers system of linear equations.\n\nVectors in \\(\\mathbb{R}^n\\)\nWorksheet: Computing Dot Products",
+    "crumbs": [
+      "System of Linear Equations"
+    ]
+  },
+  {
+    "objectID": "chapters/system_equations.html",
+    "href": "chapters/system_equations.html",
+    "title": "5  System of Linear Equations",
+    "section": "",
+    "text": "To be completed …",
+    "crumbs": [
+      "System of Linear Equations",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>System of Linear Equations</span>"
+    ]
+  },
+  {
+    "objectID": "parts/worksheets.html",
+    "href": "parts/worksheets.html",
+    "title": "Worksheets",
+    "section": "",
+    "text": "This page describes the worksheets",
+    "crumbs": [
+      "Worksheets"
+    ]
+  },
+  {
+    "objectID": "worksheets/dot_product_matrix.html",
+    "href": "worksheets/dot_product_matrix.html",
+    "title": "Dot Products and Matrix Multiplication",
+    "section": "",
+    "text": "Problem 1\nThe goal of these problems is to help you see dot products in matrix multiplication.\nLet \\(A = \\begin{bmatrix} \\uparrow & \\uparrow & \\uparrow \\\\ \\mathbf{c}_1 & \\mathbf{c}_2 & \\mathbf{c}_3 \\\\ \\downarrow & \\downarrow & \\downarrow \\end{bmatrix} = \\begin{bmatrix} \\leftarrow \\mathbf{r}_1 \\rightarrow \\\\ \\leftarrow \\mathbf{r}_2 \\rightarrow \\\\ \\leftarrow \\mathbf{r}_3 \\rightarrow \\\\ \\leftarrow \\mathbf{r}_4 \\rightarrow \\end{bmatrix}\\)\nand suppose that \\(A \\begin{bmatrix} 1 \\\\ 1 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 3 \\\\ 0 \\\\ 2 \\\\ -9 \\end{bmatrix}\\). For the following write the vectors in terms of the columns or rows of \\(A\\).",
+    "crumbs": [
+      "Worksheets",
+      "Dot Products and Matrix Multiplication"
+    ]
+  },
+  {
+    "objectID": "worksheets/dot_product_matrix.html#problem-1",
+    "href": "worksheets/dot_product_matrix.html#problem-1",
+    "title": "Dot Products and Matrix Multiplication",
+    "section": "",
+    "text": "What are the dimensions of \\(A\\)?\nWrite two vectors \\(\\mathbf{v}\\) in terms of the rows of \\(A\\) that are orthogonal to \\((1,1,-1)\\)\nWrite a vector \\(\\mathbf{v}\\) in terms of the rows of \\(A\\) that satisfies \\(\\mathbf{v} \\cdot (1,1,-1) = 3\\)\nWrite a vector \\(\\mathbf{v}\\) in terms of the rows of \\(A\\) that satisfies \\(\\mathbf{v} \\cdot (1,1,-1) = 1\\)\nDoes \\((3,0,2,-9) \\in \\text{Col}(A)\\)? If it does, write \\((3,0,2,-9)\\) in terms of the columns of \\(A\\).",
+    "crumbs": [
+      "Worksheets",
+      "Dot Products and Matrix Multiplication"
+    ]
+  },
+  {
+    "objectID": "worksheets/dot_product_matrix.html#problem-2",
+    "href": "worksheets/dot_product_matrix.html#problem-2",
+    "title": "Dot Products and Matrix Multiplication",
+    "section": "Problem 2",
+    "text": "Problem 2\nLet \\(A = \\begin{bmatrix} \\uparrow & \\uparrow & \\uparrow \\\\ \\mathbf{c}_1 & \\mathbf{c}_2 & \\mathbf{c}_3 \\\\ \\downarrow & \\downarrow & \\downarrow \\end{bmatrix}\\), \\(B = \\begin{bmatrix} \\uparrow & \\uparrow & \\uparrow \\\\ d_1 & d_2 & d_3 \\\\ \\downarrow & \\downarrow & \\downarrow \\end{bmatrix}\\) and suppose that \\(A^tB = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{bmatrix}\\)\n\nWhat are the dimensions of \\(A\\)?\nFind the following dot products: \\(\\mathbf{c}_1 \\cdot d_1\\), \\(\\mathbf{c}_3 \\cdot d_1\\), \\(\\mathbf{c}_2 \\cdot d_3\\)\nFind a constant \\(\\alpha \\in \\mathbb{R}\\) such that \\(\\mathbf{c}_1 - \\alpha \\mathbf{c}_2\\) is orthogonal to \\(d_3\\)",
+    "crumbs": [
+      "Worksheets",
+      "Dot Products and Matrix Multiplication"
+    ]
+  },
+  {
+    "objectID": "worksheets/dot_product_matrix.html#problem-3",
+    "href": "worksheets/dot_product_matrix.html#problem-3",
+    "title": "Dot Products and Matrix Multiplication",
+    "section": "Problem 3",
+    "text": "Problem 3\nLet \\(A = \\begin{bmatrix} \\uparrow & \\uparrow & \\uparrow \\\\ \\mathbf{c}_1 & \\mathbf{c}_2 & \\mathbf{c}_3 \\\\ \\downarrow & \\downarrow & \\downarrow \\end{bmatrix}\\) and assume that \\(A^tA = \\begin{bmatrix} 1 & -1 & 1 \\\\ -1 & 2 & 0 \\\\ 1 & 0 & 3 \\end{bmatrix}\\)\n\nFind the following dot products: \\(\\mathbf{c}_1 \\cdot \\mathbf{c}_2\\), \\(\\mathbf{c}_1 \\cdot \\mathbf{c}_3\\), \\(\\mathbf{c}_2 \\cdot \\mathbf{c}_3\\)\nFind \\(\\|\\mathbf{c}_1\\|\\), \\(\\|\\mathbf{c}_2\\|\\), \\(\\|\\mathbf{c}_3\\|\\)\nFind \\(\\|\\mathbf{c}_1 + 3\\mathbf{c}_2\\|\\) and \\(\\|3\\mathbf{c}_2 - 4\\mathbf{c}_3\\|\\)",
+    "crumbs": [
+      "Worksheets",
+      "Dot Products and Matrix Multiplication"
+    ]
+  },
+  {
+    "objectID": "worksheets/dot_product_matrix.html#problem-4",
+    "href": "worksheets/dot_product_matrix.html#problem-4",
+    "title": "Dot Products and Matrix Multiplication",
+    "section": "Problem 4",
+    "text": "Problem 4\nSuppose that \\(A\\begin{bmatrix} 1 & 2 & 1 \\\\ 0 & 1 & 1 \\\\ -1 & 0 & 0 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 1 \\\\ 1 & 0 & 1 \\\\ 1 & 0 & 2 \\end{bmatrix}\\) and let \\(S = \\{(1,0,-1),(1,1,1),(0,0,0),(2,1,0)\\}\\)\n\nWhat are the dimensions of \\(A\\)?\nWhich of the vectors in \\(S\\) belong to \\(\\text{Col}(A)\\)? Write these vectors in terms of the columns of \\(A\\).\nWhich of the vectors in \\(S\\) belong to \\(\\text{Nul}(A)\\)?\nIs it possible for \\(A\\) to be symmetric? (recall that this means that \\(A = A^t\\))",
+    "crumbs": [
+      "Worksheets",
+      "Dot Products and Matrix Multiplication"
+    ]
+  },
+  {
+    "objectID": "worksheets/dot_product_matrix.html#problem-5",
+    "href": "worksheets/dot_product_matrix.html#problem-5",
+    "title": "Dot Products and Matrix Multiplication",
+    "section": "Problem 5",
+    "text": "Problem 5\nSuppose that \\(A\\) is a \\(3 \\times 3\\) matrix. For the following, use the orthogonality relations between the fundamental subspaces of a matrix to determine if it is possible for \\(A\\) to satisfy the indicated properties.\n\n\\(A\\mathbf{x} = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix}\\) for some \\(\\mathbf{x}\\), and \\(A^t\\begin{bmatrix} 1 \\\\ 1 \\\\ 0 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}\\)\n\\(A\\mathbf{x} = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix}\\) for some \\(\\mathbf{x}\\), and \\(A^t\\begin{bmatrix} 1 \\\\ 1 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}\\)\n\\(A\\mathbf{x} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix}\\) for some \\(\\mathbf{x}\\), and \\(A\\begin{bmatrix} 1 \\\\ 1 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}\\)\n\\(A = A^t\\), \\(A\\mathbf{x} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix}\\) for some \\(\\mathbf{x}\\), and \\(A\\begin{bmatrix} 1 \\\\ 1 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}\\)",
+    "crumbs": [
+      "Worksheets",
+      "Dot Products and Matrix Multiplication"
+    ]
+  },
+  {
+    "objectID": "worksheets/LinearEquationsIndependenceSpanning.html",
+    "href": "worksheets/LinearEquationsIndependenceSpanning.html",
+    "title": "Always, Sometimes, Never",
+    "section": "",
+    "text": "Understanding the Relation Between Solutions of System of Linear Equations, Linear Independence, and Spanning\nFor each of the following statements, answer: “always”, “sometimes”, or “never”, and provide a clear explanation that justifies your answer.",
+    "crumbs": [
+      "Worksheets",
+      "Always, Sometimes, Never"
+    ]
+  },
+  {
+    "objectID": "worksheets/LinearEquationsIndependenceSpanning.html#problem-1",
+    "href": "worksheets/LinearEquationsIndependenceSpanning.html#problem-1",
+    "title": "Always, Sometimes, Never",
+    "section": "Problem 1",
+    "text": "Problem 1\nSuppose that \\(A\\) is a \\(3 \\times 4\\) matrix.\n\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has a solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has a unique solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has infinitely many solutions.",
+    "crumbs": [
+      "Worksheets",
+      "Always, Sometimes, Never"
+    ]
+  },
+  {
+    "objectID": "worksheets/LinearEquationsIndependenceSpanning.html#problem-2",
+    "href": "worksheets/LinearEquationsIndependenceSpanning.html#problem-2",
+    "title": "Always, Sometimes, Never",
+    "section": "Problem 2",
+    "text": "Problem 2\nSuppose that \\(A\\) is a \\(5 \\times 4\\) matrix.\n\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has a solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has a unique solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has infinitely many solutions.",
+    "crumbs": [
+      "Worksheets",
+      "Always, Sometimes, Never"
+    ]
+  },
+  {
+    "objectID": "worksheets/LinearEquationsIndependenceSpanning.html#problem-3",
+    "href": "worksheets/LinearEquationsIndependenceSpanning.html#problem-3",
+    "title": "Always, Sometimes, Never",
+    "section": "Problem 3",
+    "text": "Problem 3\nLet \\(A\\) be a \\(3\\times 4\\) matrix, with columns \\(A = [\\mathbf{c}_1\\; \\mathbf{c}_2\\; \\mathbf{c}_3\\; \\mathbf{c}_4]\\) and with rows represented by the columns of the transpose \\(A^T = [\\mathbf{r}_1\\; \\mathbf{r}_2\\; \\mathbf{r}_3]\\)\n\nThe columns of \\(A\\), \\(\\{\\mathbf{c}_1, \\mathbf{c}_2, \\mathbf{c}_3, \\mathbf{c}_4\\}\\), are linearly independent.\nThe columns of \\(A\\), \\(\\{\\mathbf{c}_1, \\mathbf{c}_2, \\mathbf{c}_3, \\mathbf{c}_4\\}\\), span \\(\\mathbb{R}^3\\)\nThe columns of \\(A^T\\), \\(\\{\\mathbf{r}_1, \\mathbf{r}_2, \\mathbf{r}_3\\}\\), are linearly independent.\nThe columns of \\(A^T\\), \\(\\{\\mathbf{r}_1, \\mathbf{r}_2, \\mathbf{r}_3\\}\\), span \\(\\mathbb{R}^4\\)",
+    "crumbs": [
+      "Worksheets",
+      "Always, Sometimes, Never"
+    ]
+  },
+  {
+    "objectID": "worksheets/LinearEquationsIndependenceSpanning.html#problem-4",
+    "href": "worksheets/LinearEquationsIndependenceSpanning.html#problem-4",
+    "title": "Always, Sometimes, Never",
+    "section": "Problem 4",
+    "text": "Problem 4\nLet \\(\\mathbf{b} \\in \\mathbb{R}^4\\) and let \\(A\\) be a \\(4\\times 4\\) matrix, with columns \\(A = [\\mathbf{c}_1\\; \\mathbf{c}_2\\; \\mathbf{c}_3\\; \\mathbf{c}_4]\\). Suppose that \\(\\{\\mathbf{c}_1, \\mathbf{c}_2, \\mathbf{c}_3, \\mathbf{c}_4\\}\\) is linearly independent.\n\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has a unique solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has infinitely many solutions.\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has a solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has a unique solution (assume there is at least one solution).\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has infinitely many solutions (assume there is at least one solution).\nThe columns \\(\\{\\mathbf{c}_1, \\mathbf{c}_2, \\mathbf{c}_3, \\mathbf{c}_4\\}\\) span \\(\\mathbb{R}^4\\).",
+    "crumbs": [
+      "Worksheets",
+      "Always, Sometimes, Never"
+    ]
+  },
+  {
+    "objectID": "worksheets/LinearEquationsIndependenceSpanning.html#problem-5",
+    "href": "worksheets/LinearEquationsIndependenceSpanning.html#problem-5",
+    "title": "Always, Sometimes, Never",
+    "section": "Problem 5",
+    "text": "Problem 5\nLet \\(\\mathbf{b} \\in \\mathbb{R}^4\\) and let \\(A\\) be a \\(4\\times 4\\) matrix, with columns \\(A = [\\mathbf{c}_1\\; \\mathbf{c}_2\\; \\mathbf{c}_3\\; \\mathbf{c}_4]\\). Suppose that \\(\\{\\mathbf{c}_1, \\mathbf{c}_2, \\mathbf{c}_3, \\mathbf{c}_4\\}\\) spans \\(\\mathbb{R}^4\\).\n\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has a solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has a unique solution (assume there is at least one solution).\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has infinitely many solutions (assume there is at least one solution).\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has a solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has a unique solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has infinitely many solutions.\nThe columns \\(\\{\\mathbf{c}_1, \\mathbf{c}_2, \\mathbf{c}_3, \\mathbf{c}_4\\}\\) are linearly independent.",
+    "crumbs": [
+      "Worksheets",
+      "Always, Sometimes, Never"
+    ]
+  },
+  {
+    "objectID": "worksheets/LinearEquationsIndependenceSpanning.html#problem-6",
+    "href": "worksheets/LinearEquationsIndependenceSpanning.html#problem-6",
+    "title": "Always, Sometimes, Never",
+    "section": "Problem 6",
+    "text": "Problem 6\nLet \\(\\mathbf{b} \\in \\mathbb{R}^5\\) and let \\(A\\) be a \\(5\\times 4\\) matrix with columns \\(A = [\\mathbf{c}_1\\; \\mathbf{c}_2\\; \\mathbf{c}_3\\; \\mathbf{c}_4]\\). Suppose that \\(\\{\\mathbf{c}_1, \\mathbf{c}_2, \\mathbf{c}_3, \\mathbf{c}_4\\}\\) is linearly independent.\n\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has a unique solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has infinitely many solutions.\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has a solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has a unique solution (assume there is at least one solution).\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has infinitely many solutions (assume there is at least one solution).",
+    "crumbs": [
+      "Worksheets",
+      "Always, Sometimes, Never"
+    ]
+  },
+  {
+    "objectID": "worksheets/LinearEquationsIndependenceSpanning.html#problem-7",
+    "href": "worksheets/LinearEquationsIndependenceSpanning.html#problem-7",
+    "title": "Always, Sometimes, Never",
+    "section": "Problem 7",
+    "text": "Problem 7\nLet \\(\\mathbf{b} \\in \\mathbb{R}^4\\) and let \\(A\\) be a \\(4 \\times 5\\) matrix with columns \\(A = [\\mathbf{c}_1\\; \\mathbf{c}_2\\; \\mathbf{c}_3\\; \\mathbf{c}_4\\; \\mathbf{c}_5]\\) and suppose that the row reduced matrix of \\(A\\) has exactly one free variable.\n\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has a unique solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{0}\\) has infinitely many solutions.\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has a solution.\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has a unique solution (assume there is at least one solution).\nThe equation \\(A\\mathbf{x} = \\mathbf{b}\\) has infinitely many solutions (assume there is at least one solution).",
+    "crumbs": [
+      "Worksheets",
+      "Always, Sometimes, Never"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_representations2.html",
+    "href": "worksheets/matrix_representations2.html",
+    "title": "Matrix Representations",
+    "section": "",
+    "text": "Given Bases\nIn ℝ³, consider the following bases:\n\\(S_1 = \\left\\{\\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}\\right\\}\\) (the standard basis)\n\\(S_2 = \\left\\{\\begin{pmatrix} 1 \\\\ 2 \\\\ -4 \\end{pmatrix}, \\begin{pmatrix} -3 \\\\ -3 \\\\ 4 \\end{pmatrix}, \\begin{pmatrix} 1 \\\\ 1 \\\\ -1 \\end{pmatrix}\\right\\}\\)\n\\(S_3 = \\left\\{\\begin{pmatrix} \\sqrt{3}/3 \\\\ \\sqrt{3}/3 \\\\ \\sqrt{3}/3 \\end{pmatrix}, \\begin{pmatrix} \\sqrt{2}/2 \\\\ 0 \\\\ -\\sqrt{2}/2 \\end{pmatrix}, \\begin{pmatrix} -\\sqrt{6}/6 \\\\ \\sqrt{6}/3 \\\\ -\\sqrt{6}/6 \\end{pmatrix}\\right\\}\\)\nIn ℝ⁴, consider the following bases:\n\\(S_4 = \\left\\{\\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 0 \\\\ 0 \\\\ 1 \\end{pmatrix}\\right\\}\\) (the standard basis)\n\\(S_5 = \\left\\{\\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\\\ -1 \\end{pmatrix}, \\begin{pmatrix} 2 \\\\ -2 \\\\ -1 \\\\ 1 \\end{pmatrix}, \\begin{pmatrix} 3 \\\\ 1 \\\\ 0 \\\\ -2 \\end{pmatrix}, \\begin{pmatrix} 4 \\\\ -4 \\\\ -1 \\\\ -2 \\end{pmatrix}\\right\\}\\)\n\\(S_6 = \\left\\{\\begin{pmatrix} 1/2 \\\\ 1/2 \\\\ 1/2 \\\\ 1/2 \\end{pmatrix}, \\begin{pmatrix} 1/2 \\\\ 1/2 \\\\ -1/2 \\\\ -1/2 \\end{pmatrix}, \\begin{pmatrix} 1/2 \\\\ -1/2 \\\\ 1/2 \\\\ -1/2 \\end{pmatrix}, \\begin{pmatrix} 1/2 \\\\ -1/2 \\\\ -1/2 \\\\ 1/2 \\end{pmatrix}\\right\\}\\)",
+    "crumbs": [
+      "Worksheets",
+      "Matrix Representations"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_representations2.html#part-i-bases-and-coordinates",
+    "href": "worksheets/matrix_representations2.html#part-i-bases-and-coordinates",
+    "title": "Matrix Representations",
+    "section": "Part I: Bases and Coordinates",
+    "text": "Part I: Bases and Coordinates\nLet \\(S = \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\}\\) be a basis of ℝⁿ, and let \\(\\mathbf{v} \\in \\mathbb{R}^n\\). Then there exists a unique vector \\(\\mathbf{x} = (x_1, \\ldots, x_n) \\in \\mathbb{R}^n\\) such that \\(x_1\\mathbf{v}_1 + x_2\\mathbf{v}_2 + \\cdots + x_n\\mathbf{v}_n = \\mathbf{v}\\). We denote this vector \\(\\mathbf{x}\\) by \\([\\mathbf{v}]_S\\), which represents the coordinates of \\(\\mathbf{v}\\) with respect to the basis \\(S\\).\n\nProblem 1\nFind the vector \\(\\mathbf{v}\\) given its coordinates in the specified basis:\n\nGiven \\([\\mathbf{v}]_{S_2} = (1,0,-1)\\)\nGiven \\([\\mathbf{v}]_{S_3} = (0,-1,0)\\)\nGiven \\([\\mathbf{v}]_{S_5} = (1,0,-1,0)\\)\nGiven \\([\\mathbf{v}]_{S_5} = (1,1,1,1)\\)\n\n\n\nProblem 2\nFor each of the following vectors, find \\([\\mathbf{v}]_S\\) by:\n\nWriting the vector equation \\(\\mathbf{v} = x_1\\mathbf{v}_1 + x_2\\mathbf{v}_2 + \\cdots + x_k\\mathbf{v}_k\\)\nConverting it to a matrix equation\nSolving the augmented matrix using SymPy\nDetermining \\([\\mathbf{v}]_S\\)\n\nFind coordinates for:\n\nThe vector \\(\\mathbf{v} = (1,1,1)\\) with respect to basis \\(S_2\\)\nThe vector \\(\\mathbf{v} = (1,1,1)\\) with respect to basis \\(S_3\\)\nThe vector \\(\\mathbf{v} = (1,1,1,1)\\) with respect to basis \\(S_5\\)\nThe vector \\(\\mathbf{v} = (1,1,1,1)\\) with respect to basis \\(S_6\\)\nMultiple vectors:\n\nWith respect to \\(S_2\\), find coordinates of \\(\\mathbf{v}_1 = (1,1,0)\\) and \\(\\mathbf{v}_2 = (0,1,1)\\)\nWith respect to \\(S_6\\), find coordinates of \\(\\mathbf{v}_1 = (1,1,0,-1)\\), \\(\\mathbf{v}_2 = (0,1,1,-2)\\), and \\(\\mathbf{v}_3 = (1,0,1,0)\\)",
+    "crumbs": [
+      "Worksheets",
+      "Matrix Representations"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_representations2.html#part-ii-change-of-basis-matrices",
+    "href": "worksheets/matrix_representations2.html#part-ii-change-of-basis-matrices",
+    "title": "Matrix Representations",
+    "section": "Part II: Change of Basis Matrices",
+    "text": "Part II: Change of Basis Matrices\nLet \\(B_1 = \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\}\\) and \\(B_2 = \\{\\mathbf{w}_1, \\ldots, \\mathbf{w}_n\\}\\) be two bases of ℝⁿ. Then there exists a unique invertible \\(n \\times n\\) matrix \\(P = P_{B_1\\leftarrow B_2}\\) such that for every \\(\\mathbf{v} \\in \\mathbb{R}^n\\): \\([\\mathbf{v}]_{B_1} = P[\\mathbf{v}]_{B_2}\\).\nThe matrix \\(P\\) is the transition matrix from \\(B_2\\) to \\(B_1\\) and it can be shown that \\(P = \\begin{bmatrix} [\\mathbf{w}_1]_{B_1} & [\\mathbf{w}_2]_{B_1} & \\cdots & [\\mathbf{w}_n]_{B_1} \\end{bmatrix}\\)\n\nProblems\n\nFind the transition matrix from \\(S_2\\) to \\(S_1\\)\nFind the transition matrix from \\(S_1\\) to \\(S_3\\)\nFind the transition matrix from \\(S_2\\) to \\(S_3\\)\nSuppose that \\(S=\\{\\mathbf{w}_1,\\mathbf{w}_2,\\mathbf{w}_3\\}\\) and that the \\(P = \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 1 \\end{bmatrix}\\) is the transition matrix from \\(S\\) to \\(S_2\\), find the vectors \\(\\mathbf{w}_1, \\mathbf{w}_2, \\mathbf{w}_3\\).\nSuppose that \\(S=\\{\\mathbf{w}_1,\\mathbf{w}_2,\\mathbf{w}_3,\\mathbf{w}_4\\}\\) and that \\(P = \\begin{bmatrix} 1 & -1 & 1 & 0 \\\\ 0 & -2 & 1 & 1 \\\\ 0 & 0 & 1 & 1 \\\\ 0 & 0 & 0 & -2 \\end{bmatrix}\\) is the transition matrix from \\(S_5\\) to \\(S\\), find the vectors \\(\\mathbf{w}_1, \\mathbf{w}_2, \\mathbf{w}_3, \\mathbf{w}_4\\)",
+    "crumbs": [
+      "Worksheets",
+      "Matrix Representations"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_representations2.html#part-iii-matrix-representation-of-linear-maps",
+    "href": "worksheets/matrix_representations2.html#part-iii-matrix-representation-of-linear-maps",
+    "title": "Matrix Representations",
+    "section": "Part III: Matrix Representation of Linear Maps",
+    "text": "Part III: Matrix Representation of Linear Maps\nLet \\(T: \\mathbb{R}^n \\rightarrow \\mathbb{R}^n\\) be a linear map and \\(S = \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\}\\) be a basis. The matrix representation of \\(T\\) with respect to \\(S\\) is the unique \\(n\\times n\\) matrix that satisfies: \\([T\\mathbf{v}]_S = A[\\mathbf{v}]_S\\).\nIt can be shown that \\(A = \\begin{bmatrix} [T\\mathbf{v}_1]_S & [T\\mathbf{v}_2]_S & \\cdots & [T\\mathbf{v}_n]_S \\end{bmatrix}\\)\n\nProblems\n\nFind the matrix representation of \\(T\\) with respect to the basis \\(S=\\{\\mathbf{v}_1,\\mathbf{v}_2,\\mathbf{v}_3\\}\\) given: \\(T\\mathbf{v}_1 = -2\\mathbf{v}_1\\), \\(T\\mathbf{v}_2 = 8\\mathbf{v}_2\\), \\(T\\mathbf{v}_3 = \\mathbf{v}_3\\).\nGiven the matrix representation \\(\\begin{bmatrix} -2 & 0 \\\\ 0 & 8 \\end{bmatrix}\\) with respect to a basis \\(S=\\{\\mathbf{v}_1,\\mathbf{v}_2\\}\\):\n\nFind \\(T(\\mathbf{v}_1)\\) and \\(T(\\mathbf{v}_2)\\)\nFind the eigenvalues and eigenvectors\n\nFor the linear transformation \\(T(x,y,z) = (x+y, 2x-y+z, z-3x)\\):\n\nProve that \\(T\\) is linear\nFind the matrix representation with respect to basis \\(S_1\\)\nFind the matrix representation with respect to basis \\(S_2\\)\n\nGiven the matrix \\(A = \\begin{bmatrix} 1 & 2 & 0 \\\\ -1 & 2 & -1 \\\\ 0 & 0 & 1 \\end{bmatrix}\\) with respect to basis \\(S_2\\):\n\nFind \\(T((1,1,-1))\\)\nFind \\(T((1,1,1))\\)\nFind the vector \\(\\mathbf{v}\\) such that \\(T\\mathbf{v} = (-3,-3,4)\\)\nFind the matrix representation with respect to basis \\(S_1\\)\n\nGiven the matrix \\(A = \\begin{bmatrix} 1 & 2 & 0 & 0 \\\\ -1 & 2 & -1 & 1 \\\\ 0 & 0 & 1 & 0 \\\\ 0 & 4 & 0 & 1 \\end{bmatrix}\\) with respect to basis \\(S_6\\):\n\nFind \\(T((1/2,1/2,1/2,1/2))\\)\nFind \\(T((1,0,0,0))\\)\nFind \\(T((0,1,0,0))\\)\nFind a basis for \\(\\text{Nul}(A)\\) and a non-zero vector \\(\\mathbf{v}\\) such that \\(T\\mathbf{v}=\\mathbf{0}\\)",
+    "crumbs": [
+      "Worksheets",
+      "Matrix Representations"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_representations2.html#part-iv-matrix-representations-with-respect-to-two-bases",
+    "href": "worksheets/matrix_representations2.html#part-iv-matrix-representations-with-respect-to-two-bases",
+    "title": "Matrix Representations",
+    "section": "Part IV: Matrix Representations with Respect to Two Bases",
+    "text": "Part IV: Matrix Representations with Respect to Two Bases\nLet \\(B_1\\) and \\(B_2\\) be bases of ℝⁿ and let \\(T: \\mathbb{R}^n \\rightarrow \\mathbb{R}^n\\) be a linear map with matrix representations:\n\\[[T\\mathbf{v}]_{B_1} = A[\\mathbf{v}]_{B_1}\\quad\\text{and}\\quad[T\\mathbf{v}]_{B_2} = B[\\mathbf{v}]_{B_2}\\]\nIf \\(P = P_{B_1\\leftarrow B_2}\\) is the transition matrix, then: \\(P^{-1}AP = B\\) and \\(A = PBP^{-1}\\)\n\nProblems\n\nGiven a diagonal matrix representation \\(\\text{diag}(-1,2,0,4)\\) with respect to basis \\(S_6\\):\n\nFind the eigenvalues and eigenvectors\nFind the matrix representation of \\(T\\) with respect to \\(S_6\\), and call this matrix \\(A\\).\nFind the matrix representation of \\(T\\) with respect to \\(S_4\\), and call this matrix \\(B\\).\n\nFind \\(P=P_{S_6\\leftarrow S_4}\\), the transition matrix from \\(S_4\\) to \\(S_6\\), and verify that \\(P^{-1}AP = B\\).",
+    "crumbs": [
+      "Worksheets",
+      "Matrix Representations"
+    ]
+  },
+  {
+    "objectID": "worksheets/matrix_representations2.html#part-v-finding-diagonal-representations",
+    "href": "worksheets/matrix_representations2.html#part-v-finding-diagonal-representations",
+    "title": "Matrix Representations",
+    "section": "Part V: Finding Diagonal Representations",
+    "text": "Part V: Finding Diagonal Representations\nFor a linear map \\(T: \\mathbb{R}^n \\rightarrow \\mathbb{R}^n\\) with basis \\(S = \\{\\mathbf{v}_1,\\ldots,\\mathbf{v}_n\\}\\), a diagonal representation has the form:\n\\[[T\\mathbf{v}]_S = \\begin{bmatrix} \\lambda_1 & 0 & \\cdots & 0 \\\\ 0 & \\lambda_2 & \\cdots & 0 \\\\ \\vdots & \\vdots & \\ddots & 0 \\\\ 0 & 0 & \\cdots & \\lambda_n \\end{bmatrix}[\\mathbf{v}]_S.\\]\nThe vectors \\(\\mathbf{v}_1,\\ldots,\\mathbf{v}_n\\) are eigenvectors with corresponding aigenvalues \\(\\lambda_1,\\dots,\\lambda_n\\).\nThe equivalent statement for matrix is similar. Suppose that the \\(n\\times n\\) matrix \\(A\\) has linearly independent eigenvectors \\(\\mathbf{v}_1,\\ldots,\\mathbf{v}_n\\) with corresponding eigenvalues \\(\\lambda_1,\\ldots,\\lambda_n\\). Let \\(P=[\\mathbf{v}_1 \\cdots \\mathbf{v}_n]\\) and \\(\\Lambda = \\text{diag}(\\lambda_1,\\ldots,\\lambda_n)\\). We can check that \\(P\\) is invertible, that \\(AP = P\\Lambda\\), or equivalently, that \\(P^{-1}AP=\\Lambda\\).\n\nProblems\n\nGiven \\(A = \\begin{bmatrix} -2 & 12 \\\\ -1 & 5 \\end{bmatrix} = \\begin{bmatrix} 3 & 4 \\\\ -1 & -1 \\end{bmatrix} \\begin{bmatrix} 2 & 0 \\\\ 0 & 1 \\end{bmatrix} \\begin{bmatrix} -1 & 4 \\\\ 1 & -3 \\end{bmatrix}\\):\n\nRead off the eigenvalues and eigenvectors, verify that \\(A\\mathbf{v}=\\lambda\\mathbf{v}\\), and find \\(P\\) and \\(P^{-1}\\)\n\nFor the matrix \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & 4 & 5 \\\\ 0 & 0 & -2 \\end{bmatrix}\\):\n\nFind the eigenvalues without computation\nFind the eigenvectors, \\(P\\), and \\(\\Lambda\\) (you can use software for this part)\n\nFor the matrix \\(A = \\begin{bmatrix} -3 & -5 & -2 \\\\ -5 & 0 & -5 \\\\ -2 & -5 & -3 \\end{bmatrix}\\):\n\nUse SymPy to find the eigenvalues and eigenvectors and verify that \\(A=P\\Lambda P^{-1}\\).\nDo the same using NumPy, but since the matrix is symmetric use eigh instead of eig.\n\nRepeat Problem 3 for the matrix \\(A = \\begin{bmatrix} -2 & 1 & 2 \\\\ 1 & 2 & 0 \\\\ 2 & 0 & 2 \\end{bmatrix}\\)\nFor the matrix \\(A = \\begin{bmatrix} 0 & 1 & -1 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & -1 \\end{bmatrix}\\):\n\nFind the eigenvalues and eigenvectors, and determine if \\(A\\) is diagonalizable\n\nRepeat Problem 5 for the matrix \\(A = \\begin{bmatrix} -1 & 0 & 0 \\\\ -2 & -1 & 2 \\\\ -2 & 0 & 1 \\end{bmatrix}\\)",
+    "crumbs": [
+      "Worksheets",
+      "Matrix Representations"
+    ]
+  }
+]
