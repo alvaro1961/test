@@ -165,7 +165,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../worksheets/computing_dot_products.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Problems</span></a>
+ <span class="menu-text">Problems</span></a>
   </div>
 </li>
       </ul>
@@ -188,7 +188,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../worksheets/matrix_multiplication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Problems</span></a>
+ <span class="menu-text">Problems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -229,35 +229,6 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../chapters/system_equations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">System of Linear Equations</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../parts/worksheets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worksheets</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/dot_product_matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dot Products and Matrix Multiplication</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/LinearEquationsIndependenceSpanning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Always, Sometimes, Never</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/matrix_representations2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Matrix Representations</span></a>
   </div>
 </li>
       </ul>
@@ -328,8 +299,7 @@ A(\mathbf{x}+\mathbf{y}) &amp;=
 &amp;=A\mathbf{x}+A\mathbf{y}.
 \end{aligned}
 \]</span></p>
-<section id="exercise-check-2." class="level4 exercise" data-number="4.1.0.1">
-<h4 data-number="4.1.0.1" class="anchored" data-anchor-id="exercise-check-2."><span class="header-section-number">4.1.0.1</span> Exercise: Check 2.</h4>
+<p><strong>Exercise:</strong> Check property 2. That is, for every <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span> and every <span class="math inline">\(c\in\mathbb{R}\)</span>, <span class="math inline">\(A(c\mathbf{x})=cA\mathbf{x}\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -368,7 +338,6 @@ c\begin{bmatrix}x_1\\ x_2\\\vdots\\ x_n \end{bmatrix}
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="linear-transformations" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="linear-transformations"><span class="header-section-number">4.2</span> Linear Transformations</h2>
@@ -479,11 +448,11 @@ T(\mathbf{e}_1) &amp; T(\mathbf{e}_2) &amp; \cdots &amp; T(\mathbf{e}_n) \\
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Key Algorithm
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Key Algorithm:</em> The definition of the matrix <span class="math inline">\(A\)</span> provides a practical method for finding the matrix representation of any linear transformation <span class="math inline">\(T:\mathbb{R}^n\to\mathbb{R}^m\)</span>. Simply compute <span class="math inline">\(T(\mathbf{e}_i)\)</span> for each canonical basis vector and use these vectors as the columns of <span class="math inline">\(A\)</span>: <span class="math display">\[A=\begin{bmatrix}
+<p>The definition of the matrix <span class="math inline">\(A\)</span> provides an algorithm for finding the matrix representation of any linear transformation <span class="math inline">\(T:\mathbb{R}^n\to\mathbb{R}^m\)</span>. Simply compute <span class="math inline">\(T(\mathbf{e}_i)\)</span> for each canonical basis vector and use these vectors as the columns of <span class="math inline">\(A\)</span>: <span class="math display">\[A=\begin{bmatrix}
 \uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow \\
 T(\mathbf{e}_1) &amp; T(\mathbf{e}_2) &amp; \cdots &amp; T(\mathbf{e}_n) \\
 \downarrow &amp; \downarrow &amp; \cdots &amp; \downarrow

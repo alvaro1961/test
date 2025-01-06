@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Practice Problems – Linear Algebra</title>
+<title>Problems – Linear Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/matrices.html">Matrices</a></li><li class="breadcrumb-item"><a href="../worksheets/matrix_multiplication.html">Practice Problems</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/matrices.html">Matrices</a></li><li class="breadcrumb-item"><a href="../worksheets/matrix_multiplication.html">Problems</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,7 +165,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../worksheets/computing_dot_products.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Problems</span></a>
+ <span class="menu-text">Problems</span></a>
   </div>
 </li>
       </ul>
@@ -188,7 +188,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../worksheets/matrix_multiplication.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Practice Problems</span></a>
+ <span class="menu-text">Problems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -233,35 +233,6 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../parts/worksheets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worksheets</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/dot_product_matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dot Products and Matrix Multiplication</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/LinearEquationsIndependenceSpanning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Always, Sometimes, Never</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/matrix_representations2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Matrix Representations</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -278,15 +249,16 @@ window.Quarto = {
   <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
   <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
   <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/matrices.html">Matrices</a></li><li class="breadcrumb-item"><a href="../worksheets/matrix_multiplication.html">Practice Problems</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/matrices.html">Matrices</a></li><li class="breadcrumb-item"><a href="../worksheets/matrix_multiplication.html">Problems</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Practice Problems</h1>
+<h1 class="title">Problems</h1>
 </div>
 
 
@@ -303,17 +275,51 @@ window.Quarto = {
 </header>
 
 
-<p>For this worksheet, we have:</p>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>For this problem let</p>
+<p><span class="math display">\[A = \begin{bmatrix}
+3 &amp; 1 &amp; -2 \\
+5 &amp; -4 &amp; 3
+\end{bmatrix},
+B = \begin{bmatrix}
+8 &amp; 2\\
+-6 &amp; -3\\
+2 &amp; -4
+\end{bmatrix}\]</span></p>
+<p><span class="math display">\[C = \begin{bmatrix}
+2 &amp; 3 \\
+-3 &amp; 2
+\end{bmatrix},
+D = \begin{bmatrix}
+4 &amp; 6 \\
+-2 &amp; 5
+\end{bmatrix},
+E = \begin{bmatrix}
+-6 \\
+4
+\end{bmatrix}\]</span></p>
+<p>Compute the following. If the operation is not possible explain why</p>
+<ol type="a">
+<li><span class="math inline">\(-3A+B\)</span></li>
+<li><span class="math inline">\(B - 3A^T\)</span></li>
+<li><span class="math inline">\(I_3-AB\)</span></li>
+<li><span class="math inline">\(AB-2I_2\)</span></li>
+<li><span class="math inline">\(AC\)</span></li>
+<li><span class="math inline">\(DA\)</span></li>
+<li><span class="math inline">\(E^TCE\)</span></li>
+<li><span class="math inline">\(BD+A^T\)</span></li>
+</ol>
+<p>For the following problems we have:</p>
 <p><span class="math inline">\(A = \begin{bmatrix}\uparrow&amp;\uparrow&amp;\uparrow\\
 \mathbf{c}_1&amp;\mathbf{c}_2 &amp;\mathbf{c}_3\\
 \downarrow&amp;\downarrow&amp;\downarrow\end{bmatrix} =
 \begin{bmatrix} \leftarrow \mathbf{r}_1 \rightarrow \\ \leftarrow \mathbf{r}_2 \rightarrow \\ \leftarrow \mathbf{r}_3 \rightarrow \\ \leftarrow \mathbf{r}_4 \rightarrow \end{bmatrix}\)</span></p>
-<p><span class="math inline">\(E_1 = \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span></p>
-<p><span class="math inline">\(E_2 = \begin{bmatrix} 1 &amp; 0 &amp; -2 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span></p>
-<p><span class="math inline">\(E_3 = \begin{bmatrix} -1 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; -1 \end{bmatrix}\)</span></p>
-<p><span class="math inline">\(E_4 = \begin{bmatrix} 1 &amp; 0 &amp; 1 &amp; -10 \\ 2 &amp; 2 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; -1 &amp; 0 \\ 4 &amp; 0 &amp; 0 &amp; -1 \end{bmatrix}\)</span></p>
-<section id="problem-1" class="level2">
-<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p><span class="math inline">\(E_1 = \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, &nbsp; <span class="math inline">\(E_2 = \begin{bmatrix} 1 &amp; 0 &amp; -2 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, &nbsp;</p>
+<p><span class="math inline">\(E_3 = \begin{bmatrix} -1 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; -1 \end{bmatrix}\)</span>, &nbsp; <span class="math inline">\(E_4 = \begin{bmatrix} 1 &amp; 0 &amp; 1 &amp; -10 \\ 2 &amp; 2 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; -1 &amp; 0 \\ 4 &amp; 0 &amp; 0 &amp; -1 \end{bmatrix}\)</span></p>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
 <p>For each of the following problems, indicate if the matrices can be multiplied. If they can, express the answer in terms of the rows of <span class="math inline">\(A\)</span> or the columns of <span class="math inline">\(A\)</span>. If they cannot be multiplied, explain why.</p>
 <ol type="a">
 <li><p><span class="math inline">\(AE_1\)</span></p></li>
@@ -326,24 +332,24 @@ window.Quarto = {
 <li><p><span class="math inline">\(E_4A\)</span></p></li>
 </ol>
 </section>
-<section id="problem-2" class="level2">
-<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
-<p>Suppose that <span class="math inline">\(AB_1 = \begin{bmatrix} \uparrow &amp; \uparrow &amp; \uparrow &amp; \uparrow \\ (\mathbf{c}_1-3\mathbf{c}_2) &amp; \mathbf{c}_3 &amp; \mathbf{c}_2 &amp; (8\mathbf{c}_2-\mathbf{c}_3) \\ \downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow \end{bmatrix}\)</span>. Find <span class="math inline">\(B_1\)</span></p>
-</section>
 <section id="problem-3" class="level2">
 <h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-<p>Suppose that <span class="math inline">\(B_2A = \begin{bmatrix} \leftarrow \mathbf{r}_1 \rightarrow \\ \leftarrow \mathbf{r}_2 \rightarrow \\ \leftarrow \mathbf{r}_3 \rightarrow \\ \leftarrow \mathbf{r}_4 \rightarrow \end{bmatrix}\)</span>. Find <span class="math inline">\(B_2\)</span></p>
+<p>Suppose that <span class="math inline">\(AB_1 = \begin{bmatrix} \uparrow &amp; \uparrow &amp; \uparrow &amp; \uparrow \\ (\mathbf{c}_1-3\mathbf{c}_2) &amp; \mathbf{c}_3 &amp; \mathbf{c}_2 &amp; (8\mathbf{c}_2-\mathbf{c}_3) \\ \downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow \end{bmatrix}\)</span>. Find <span class="math inline">\(B_1\)</span></p>
 </section>
 <section id="problem-4" class="level2">
 <h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
-<p>Suppose that <span class="math inline">\(B_3A = \begin{bmatrix} \leftarrow (\mathbf{r}_1+\mathbf{r}_2-\mathbf{r}_3) \rightarrow \\ \leftarrow (\mathbf{r}_2-\mathbf{r}_3+\mathbf{r}_4) \rightarrow \end{bmatrix}\)</span>. Find <span class="math inline">\(B_2\)</span></p>
+<p>Suppose that <span class="math inline">\(B_2A = \begin{bmatrix} \leftarrow \mathbf{r}_1 \rightarrow \\ \leftarrow \mathbf{r}_2 \rightarrow \\ \leftarrow \mathbf{r}_3 \rightarrow \\ \leftarrow \mathbf{r}_4 \rightarrow \end{bmatrix}\)</span>. Find <span class="math inline">\(B_2\)</span></p>
 </section>
 <section id="problem-5" class="level2">
 <h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
-<p>Suppose that <span class="math inline">\(B_4E_1 = A\)</span>. Find <span class="math inline">\(B_4\)</span></p>
+<p>Suppose that <span class="math inline">\(B_3A = \begin{bmatrix} \leftarrow (\mathbf{r}_1+\mathbf{r}_2-\mathbf{r}_3) \rightarrow \\ \leftarrow (\mathbf{r}_2-\mathbf{r}_3+\mathbf{r}_4) \rightarrow \end{bmatrix}\)</span>. Find <span class="math inline">\(B_2\)</span></p>
 </section>
 <section id="problem-6" class="level2">
 <h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p>Suppose that <span class="math inline">\(B_4E_1 = A\)</span>. Find <span class="math inline">\(B_4\)</span></p>
+</section>
+<section id="problem-7" class="level2">
+<h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
 <p>Suppose that <span class="math inline">\(B_5\begin{bmatrix} \leftarrow (\mathbf{r}_1+\mathbf{r}_2+\mathbf{r}_3+\mathbf{r}_4) \rightarrow \\ \leftarrow (\mathbf{r}_2+\mathbf{r}_3+\mathbf{r}_4) \rightarrow \\ \leftarrow (\mathbf{r}_3+\mathbf{r}_4) \rightarrow \\ \leftarrow \mathbf{r}_4 \rightarrow \end{bmatrix} = A\)</span>. Find <span class="math inline">\(B_5\)</span></p>
 
 

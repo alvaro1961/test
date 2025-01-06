@@ -165,7 +165,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../worksheets/computing_dot_products.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Problems</span></a>
+ <span class="menu-text">Problems</span></a>
   </div>
 </li>
       </ul>
@@ -188,7 +188,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../worksheets/matrix_multiplication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Problems</span></a>
+ <span class="menu-text">Problems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -233,35 +233,6 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../parts/worksheets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worksheets</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/dot_product_matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dot Products and Matrix Multiplication</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/LinearEquationsIndependenceSpanning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Always, Sometimes, Never</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/matrix_representations2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Matrix Representations</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -272,12 +243,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">2.1</span> Definition</a>
-  <ul class="collapse">
-  <li><a href="#subspaces-of-mathbbrn" id="toc-subspaces-of-mathbbrn" class="nav-link" data-scroll-target="#subspaces-of-mathbbrn"><span class="header-section-number">2.1.1</span> Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
-  <li><a href="#examples-of-subspaces-of-mathbbrn" id="toc-examples-of-subspaces-of-mathbbrn" class="nav-link" data-scroll-target="#examples-of-subspaces-of-mathbbrn"><span class="header-section-number">2.1.2</span> Examples of subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
-  </ul></li>
-  <li><a href="#inner-products" id="toc-inner-products" class="nav-link" data-scroll-target="#inner-products"><span class="header-section-number">2.2</span> Inner Products:</a></li>
+  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">2.1</span> Definition</a></li>
+  <li><a href="#subspaces-of-vector-spaces" id="toc-subspaces-of-vector-spaces" class="nav-link" data-scroll-target="#subspaces-of-vector-spaces"><span class="header-section-number">2.2</span> Subspaces of Vector Spaces</a></li>
+  <li><a href="#inner-products" id="toc-inner-products" class="nav-link" data-scroll-target="#inner-products"><span class="header-section-number">2.3</span> Inner Products:</a></li>
   </ul>
 </nav>
     </div>
@@ -321,23 +289,40 @@ window.Quarto = {
 <li>Associativity: <span class="math inline">\(a(b\mathbf{v})=(ab)\mathbf{v}\)</span></li>
 <li>Identity: <span class="math inline">\(1\mathbf{v}=\mathbf{v}\)</span></li>
 </ol>
-<p><strong>Examples:</strong></p>
+<p><strong>Examples:</strong> Vector spaces appear naturally throughout mathematics and its applications. While we’ll encounter many examples throughout this course, here are a few fundamental ones to illustrate how diverse they can be.</p>
 <ol type="1">
-<li><p><span class="math inline">\(\mathbb{R}^n\)</span></p></li>
+<li><p><span class="math inline">\(\mathbb{R}^n\)</span>: Our familiar space of n-tuples of real numbers with the standard addition and scalar multiplication.</p></li>
 <li><p>Function spaces:</p>
 <ul>
-<li><span class="math inline">\(C[a,b]\)</span>: continuous functions on <span class="math inline">\([a,b]\)</span></li>
-<li><span class="math inline">\(C^\infty(\mathbb{R})\)</span>: infinitely differentiable functions</li>
+<li><span class="math inline">\(C[a,b]\)</span>: Continuous functions on <span class="math inline">\([a,b]\)</span>
+<ul>
+<li>Sum: <span class="math inline">\((f + g)(x) = f(x) + g(x)\)</span></li>
+<li>Scalar multiplication: <span class="math inline">\((cf)(x) = c\cdot f(x)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(C^\infty(\mathbb{R})\)</span>: Infinitely differentiable functions
+<ul>
+<li>Sum: <span class="math inline">\((f + g)(x) = f(x) + g(x)\)</span></li>
+<li>Scalar multiplication: <span class="math inline">\((cf)(x) = c\cdot f(x)\)</span></li>
+</ul></li>
 </ul></li>
 <li><p>Polynomial spaces:</p>
 <ul>
-<li><span class="math inline">\(\mathbb{P}_n\)</span>: polynomials of degree <span class="math inline">\(\leq n\)</span></li>
-<li><span class="math inline">\(\mathbb{P}\)</span>: all polynomials</li>
+<li><span class="math inline">\(\mathbb{P}_n\)</span>: Polynomials of degree <span class="math inline">\(\leq n\)</span>
+<ul>
+<li>Sum: <span class="math inline">\((p + q)(x) = p(x) + q(x)\)</span></li>
+<li>Scalar multiplication: <span class="math inline">\((cp)(x) = c\cdot p(x)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\mathbb{P}\)</span>: All polynomials
+<ul>
+<li>Sum: <span class="math inline">\((p + q)(x) = p(x) + q(x)\)</span></li>
+<li>Scalar multiplication: <span class="math inline">\((cp)(x) = c\cdot p(x)\)</span></li>
+</ul></li>
 </ul></li>
 </ol>
-<section id="subspaces-of-mathbbrn" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="subspaces-of-mathbbrn"><span class="header-section-number">2.1.1</span> Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></h3>
-<p>Within any vector space, certain subsets naturally inherit the vector space structure. These special subsets, called <em>subspaces</em>, play a fundamental role in linear algebra. While we’ll focus on subspaces of <span class="math inline">\(\mathbb{R}^n\)</span>, where they arise as familiar geometric objects like lines and planes through the origin, the concept extends elegantly to all vector spaces.</p>
+</section>
+<section id="subspaces-of-vector-spaces" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="subspaces-of-vector-spaces"><span class="header-section-number">2.2</span> Subspaces of Vector Spaces</h2>
+<p>Within any vector space, certain subsets naturally inherit the vector space structure. These special subsets, called <em>subspaces</em>, play a fundamental role in linear algebra.</p>
 <div class="definition">
 <p><strong>Definition:</strong> A subset <span class="math inline">\(W\)</span> of the vector space <span class="math inline">\(V\)</span> is called a <em>subspace</em> if it satisfies three conditions:</p>
 <ol type="1">
@@ -346,41 +331,65 @@ window.Quarto = {
 <li>For all <span class="math inline">\(\mathbf{v}\in W\)</span> and all scalars <span class="math inline">\(c\in\mathbb{R}\)</span>, the vector <span class="math inline">\(c\mathbf{v}\)</span> is in <span class="math inline">\(W\)</span> (closed under scalar multiplication)</li>
 </ol>
 </div>
+<p>These conditions ensure that <span class="math inline">\(W\)</span> inherits the vector space structure from <span class="math inline">\(V\)</span>, making it a vector space in its own right and providing us with a rich source of new examples.</p>
 <div class="theorem">
-<p><strong>Theorem:</strong> Every subspace of <span class="math inline">\(\mathbb{R}^n\)</span> is itself a vector space.</p>
+<p><strong>Theorem:</strong> Every subspace of a vector space <span class="math inline">\(V\)</span> is itself a vector space.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(W\)</span> be a subspace of <span class="math inline">\(\mathbb{R}^n\)</span>. We must verify all eight vector space properties.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(W\)</span> be a subspace of the vector space <span class="math inline">\(V\)</span>. We must verify all eight vector space properties.</p>
 <p><strong>Vector Addition Properties:</strong></p>
 <ol type="1">
-<li><p><em>Commutativity:</em> Let <span class="math inline">\(\mathbf{u},\mathbf{v}\in W\)</span>. Since <span class="math inline">\(W\subseteq\mathbb{R}^n\)</span>, we know <span class="math inline">\(\mathbf{u}+\mathbf{v}=\mathbf{v}+\mathbf{u}\)</span>, as this holds in <span class="math inline">\(\mathbb{R}^n\)</span>.</p></li>
-<li><p><em>Associativity:</em> Let <span class="math inline">\(\mathbf{u},\mathbf{v},\mathbf{w}\in W\)</span>. Since <span class="math inline">\(W\subseteq\mathbb{R}^n\)</span>, we know that <span class="math inline">\((\mathbf{u}+\mathbf{v})+\mathbf{w}=\mathbf{u}+(\mathbf{v}+\mathbf{w})\)</span>, as this holds in <span class="math inline">\(\mathbb{R}^n\)</span>.</p></li>
+<li><p><em>Commutativity:</em> Let <span class="math inline">\(\mathbf{u},\mathbf{v}\in W\)</span>. Since <span class="math inline">\(W\subseteq V\)</span>, we know <span class="math inline">\(\mathbf{u}+\mathbf{v}=\mathbf{v}+\mathbf{u}\)</span>, as this holds in <span class="math inline">\(V\)</span>.</p></li>
+<li><p><em>Associativity:</em> Let <span class="math inline">\(\mathbf{u},\mathbf{v},\mathbf{w}\in W\)</span>. Since <span class="math inline">\(W\subseteq V\)</span>, we know that <span class="math inline">\((\mathbf{u}+\mathbf{v})+\mathbf{w}=\mathbf{u}+(\mathbf{v}+\mathbf{w})\)</span>, as this holds in <span class="math inline">\(V\)</span>.</p></li>
 <li><p><em>Zero vector:</em> This is given directly by subspace property 1.</p></li>
 <li><p><em>Additive inverse:</em> Let <span class="math inline">\(\mathbf{v}\in W\)</span>. By subspace property 3, <span class="math inline">\((-1)\mathbf{v}\in W\)</span>. This is the additive inverse of <span class="math inline">\(\mathbf{v}\)</span> since <span class="math inline">\(\mathbf{v}+(-1)\mathbf{v}=1\mathbf{v}+(-1)\mathbf{v}=(1-1)\mathbf{v}=0\mathbf{v}=\mathbf{0}\)</span>.</p></li>
 </ol>
 <p><strong>Scalar Multiplication Properties:</strong></p>
 <ol type="1">
-<li><p><em>Distributivity over vector addition:</em> Let <span class="math inline">\(a\in\mathbb{R}\)</span> and <span class="math inline">\(\mathbf{u},\mathbf{v}\in W\)</span>. We know that <span class="math inline">\(a(\mathbf{u}+\mathbf{v})=a\mathbf{u}+a\mathbf{v}\)</span>, as this holds in <span class="math inline">\(\mathbb{R}^n\)</span>.</p></li>
-<li><p><em>Distributivity over scalar addition:</em> Let <span class="math inline">\(a,b\in\mathbb{R}\)</span> and <span class="math inline">\(\mathbf{v}\in W\)</span>. We know that <span class="math inline">\((a+b)\mathbf{v}=a\mathbf{v}+b\mathbf{v}\)</span>, as this holds in <span class="math inline">\(\mathbb{R}^n\)</span>.</p></li>
-<li><p><em>Associativity of scalar multiplication:</em> Let <span class="math inline">\(a,b\in\mathbb{R}\)</span> and <span class="math inline">\(\mathbf{v}\in W\)</span>. We know that <span class="math inline">\(\mathbb{R}^n\)</span>, <span class="math inline">\(a(b\mathbf{v})=(ab)\mathbf{v}\)</span>, as this holds in <span class="math inline">\(\mathbb{R}^n\)</span>.</p></li>
-<li><p><em>Identity scalar multiplication:</em> Let <span class="math inline">\(\mathbf{v}\in W\)</span>. We know that <span class="math inline">\(1\mathbf{v}=\mathbf{v}\)</span>, as this holds in <span class="math inline">\(\mathbb{R}^n\)</span>, and clearly <span class="math inline">\(\mathbf{v}\in W\)</span> by assumption.</p></li>
+<li><p><em>Distributivity over vector addition:</em> Let <span class="math inline">\(a\in\mathbb{R}\)</span> and <span class="math inline">\(\mathbf{u},\mathbf{v}\in W\)</span>. We know that <span class="math inline">\(a(\mathbf{u}+\mathbf{v})=a\mathbf{u}+a\mathbf{v}\)</span>, as this holds in <span class="math inline">\(V\)</span>.</p></li>
+<li><p><em>Distributivity over scalar addition:</em> Let <span class="math inline">\(a,b\in\mathbb{R}\)</span> and <span class="math inline">\(\mathbf{v}\in W\)</span>. We know that <span class="math inline">\((a+b)\mathbf{v}=a\mathbf{v}+b\mathbf{v}\)</span>, as this holds in <span class="math inline">\(V\)</span>.</p></li>
+<li><p><em>Associativity of scalar multiplication:</em> Let <span class="math inline">\(a,b\in\mathbb{R}\)</span> and <span class="math inline">\(\mathbf{v}\in W\)</span>. We know that <span class="math inline">\(a(b\mathbf{v})=(ab)\mathbf{v}\)</span>, as this holds in <span class="math inline">\(V\)</span>.</p></li>
+<li><p><em>Identity scalar multiplication:</em> Let <span class="math inline">\(\mathbf{v}\in W\)</span>. We know that <span class="math inline">\(1\mathbf{v}=\mathbf{v}\)</span>, as this holds in <span class="math inline">\(V\)</span>, and clearly <span class="math inline">\(\mathbf{v}\in W\)</span> by assumption.</p></li>
 </ol>
 <p>Therefore, since all eight vector space properties are satisfied, <span class="math inline">\(W\)</span> is indeed a vector space.</p>
 </div>
 <p>Note that this proof relies heavily on two key facts:</p>
 <ol type="1">
-<li>The vector space operations in <span class="math inline">\(W\)</span> are inherited from <span class="math inline">\(\mathbb{R}^n\)</span></li>
+<li>The vector space operations in <span class="math inline">\(W\)</span> are inherited from <span class="math inline">\(V\)</span></li>
 <li>The subspace properties ensure that these operations are well-defined on <span class="math inline">\(W\)</span> (i.e., their outputs remain in <span class="math inline">\(W\)</span>)</li>
 </ol>
-<p>Furthermore, observe that the proof does not rely on any specific properties of <span class="math inline">\(\mathbb{R}^n\)</span>. It establishes that subspaces of vector spaces are themselves vector spaces under the operations inherited from the parent space.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span> are fundamental structures that arise naturally in many applications of linear algebra. They have intuitive geometric interpretations that help us visualize abstract concepts:</p>
+<ol type="1">
+<li>In <span class="math inline">\(\mathbb{R}^2\)</span>:
+<ul>
+<li>A line through the origin</li>
+<li>The entire plane <span class="math inline">\(\mathbb{R}^2\)</span> itself</li>
+<li>The zero vector <span class="math inline">\({\vec{0}}\)</span></li>
+</ul></li>
+<li>In <span class="math inline">\(\mathbb{R}^3\)</span>:
+<ul>
+<li>A line through the origin</li>
+<li>A plane through the origin</li>
+<li>The entire space <span class="math inline">\(\mathbb{R}^3\)</span></li>
+<li>The zero vector <span class="math inline">\({\mathbf{0}}\)</span></li>
+</ul></li>
+</ol>
+<p>In <a href="vectors.html#thm-span_subspace" class="quarto-xref">Theorem&nbsp;<span>1.1</span></a>, we proved that the span of a set of vectors <span class="math inline">\({\mathbf{v}_1, \mathbf{v}_2, ..., \mathbf{v}_k}\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span> is a subspace.</p>
+</div>
+</div>
 </section>
-<section id="examples-of-subspaces-of-mathbbrn" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="examples-of-subspaces-of-mathbbrn"><span class="header-section-number">2.1.2</span> Examples of subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></h3>
-<p>here …</p>
-</section>
-</section>
-<section id="inner-products" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="inner-products"><span class="header-section-number">2.2</span> Inner Products:</h2>
+<section id="inner-products" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="inner-products"><span class="header-section-number">2.3</span> Inner Products:</h2>
 <p>An inner product on a vector space <span class="math inline">\(V\)</span> is a function <span class="math inline">\(\langle\cdot,\cdot\rangle:V\times V\to\mathbb{R}\)</span> satisfying:</p>
 <ol type="1">
 <li>Symmetry: <span class="math inline">\(\langle\mathbf{u},\mathbf{v}\rangle=\langle\mathbf{v},\mathbf{u}\rangle\)</span></li>
@@ -399,7 +408,7 @@ window.Quarto = {
 <li>On <span class="math inline">\(C[a,b]\)</span>: <span class="math inline">\(\langle f,g\rangle=\int_a^b f(x)g(x)\,dx\)</span></li>
 <li>On <span class="math inline">\(\mathbb{P}_n\)</span>: <span class="math inline">\(\langle p,q\rangle=\int_{-1}^1 p(x)q(x)\,dx\)</span></li>
 </ol>
-<p>Just as in <span class="math inline">\(\mathbb{R}^n\)</span>, these inner products satisfy fundamental properties that make them powerful tools. The Cauchy-Schwarz inequality holds in any inner product space: <span class="math inline">\(|\langle\mathbf{u},\mathbf{v}\rangle|\leq|\mathbf{u}||\mathbf{v}|\)</span>. Moreover, every inner product generates a norm through <span class="math inline">\(|\mathbf{v}|=\sqrt{\langle\mathbf{v},\mathbf{v}\rangle}\)</span>, which in turn induces a distance function <span class="math inline">\(d(\mathbf{u},\mathbf{v})=|\mathbf{u}-\mathbf{v}|\)</span>. This norm satisfies all the properties we know from <span class="math inline">\(\mathbb{R}^n\)</span>: positivity, homogeneity, and the triangle inequality. Thus, every inner product space inherits the geometric structure that makes <span class="math inline">\(\mathbb{R}^n\)</span> so useful.</p>
+<p>Just as in <span class="math inline">\(\mathbb{R}^n\)</span>, these inner products satisfy fundamental properties that make them powerful tools. Every inner product generates a norm through <span class="math inline">\(\|\mathbf{v}\|=\sqrt{\langle\mathbf{v},\mathbf{v}\rangle}\)</span>, which in turn induces a distance function <span class="math inline">\(d(\mathbf{u},\mathbf{v})=\|\mathbf{u}-\mathbf{v}\|\)</span>. The Cauchy-Schwarz inequality holds in any inner product space: <span class="math inline">\(|\langle\mathbf{u},\mathbf{v}\rangle|\leq\|\mathbf{u}\|\|\mathbf{v}\|\)</span>. And the norm satisfies all the properties we know from <span class="math inline">\(\mathbb{R}^n\)</span>: positivity, homogeneity, and the triangle inequality. Thus, every inner product space inherits the geometric structure that makes <span class="math inline">\(\mathbb{R}^n\)</span> so useful.</p>
 
 
 </section>
@@ -829,8 +838,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../worksheets/computing_dot_products.html" class="pagination-link" aria-label="Practice Problems">
-        <span class="nav-page-text">Practice Problems</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../worksheets/computing_dot_products.html" class="pagination-link" aria-label="Problems">
+        <span class="nav-page-text">Problems</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

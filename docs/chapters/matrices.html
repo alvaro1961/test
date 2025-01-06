@@ -199,7 +199,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../worksheets/computing_dot_products.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Problems</span></a>
+ <span class="menu-text">Problems</span></a>
   </div>
 </li>
       </ul>
@@ -222,7 +222,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../worksheets/matrix_multiplication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Problems</span></a>
+ <span class="menu-text">Problems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -267,35 +267,6 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../parts/worksheets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worksheets</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/dot_product_matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dot Products and Matrix Multiplication</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/LinearEquationsIndependenceSpanning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Always, Sometimes, Never</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../worksheets/matrix_representations2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Matrix Representations</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -307,11 +278,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#matrices-definition-and-different-perspectives" id="toc-matrices-definition-and-different-perspectives" class="nav-link active" data-scroll-target="#matrices-definition-and-different-perspectives"><span class="header-section-number">3.1</span> Matrices: Definition and Different Perspectives</a></li>
-  <li><a href="#the-transpose-of-a-matrix" id="toc-the-transpose-of-a-matrix" class="nav-link" data-scroll-target="#the-transpose-of-a-matrix"><span class="header-section-number">3.2</span> The Transpose of a Matrix</a></li>
-  <li><a href="#addition-and-scalar-multiplication-of-matrices" id="toc-addition-and-scalar-multiplication-of-matrices" class="nav-link" data-scroll-target="#addition-and-scalar-multiplication-of-matrices"><span class="header-section-number">3.3</span> Addition and Scalar Multiplication of Matrices</a>
+  <li><a href="#addition-and-scalar-multiplication-of-matrices" id="toc-addition-and-scalar-multiplication-of-matrices" class="nav-link" data-scroll-target="#addition-and-scalar-multiplication-of-matrices"><span class="header-section-number">3.2</span> Addition and Scalar Multiplication of Matrices</a>
   <ul class="collapse">
-  <li><a href="#properties-of-addition-and-scalar-product" id="toc-properties-of-addition-and-scalar-product" class="nav-link" data-scroll-target="#properties-of-addition-and-scalar-product"><span class="header-section-number">3.3.1</span> Properties of addition and scalar product</a></li>
+  <li><a href="#properties-of-addition-and-scalar-product" id="toc-properties-of-addition-and-scalar-product" class="nav-link" data-scroll-target="#properties-of-addition-and-scalar-product"><span class="header-section-number">3.2.1</span> Properties of addition and scalar product</a></li>
   </ul></li>
+  <li><a href="#the-transpose-of-a-matrix" id="toc-the-transpose-of-a-matrix" class="nav-link" data-scroll-target="#the-transpose-of-a-matrix"><span class="header-section-number">3.3</span> The Transpose of a Matrix</a></li>
   <li><a href="#matrix-vector-multiplication" id="toc-matrix-vector-multiplication" class="nav-link" data-scroll-target="#matrix-vector-multiplication"><span class="header-section-number">3.4</span> Matrix-Vector Multiplication</a>
   <ul class="collapse">
   <li><a href="#a-linear-combination-of-columns" id="toc-a-linear-combination-of-columns" class="nav-link" data-scroll-target="#a-linear-combination-of-columns"><span class="header-section-number">3.4.1</span> A Linear Combination of Columns</a></li>
@@ -327,11 +298,12 @@ window.Quarto = {
   <li><a href="#the-transpose-of-the-product" id="toc-the-transpose-of-the-product" class="nav-link" data-scroll-target="#the-transpose-of-the-product"><span class="header-section-number">3.6</span> The Transpose of the Product</a></li>
   <li><a href="#matrix-types-and-the-inverse" id="toc-matrix-types-and-the-inverse" class="nav-link" data-scroll-target="#matrix-types-and-the-inverse"><span class="header-section-number">3.7</span> Matrix Types and the Inverse</a>
   <ul class="collapse">
-  <li><a href="#square-matrices" id="toc-square-matrices" class="nav-link" data-scroll-target="#square-matrices"><span class="header-section-number">3.7.1</span> Square Matrices</a></li>
-  <li><a href="#diagonal-matrices" id="toc-diagonal-matrices" class="nav-link" data-scroll-target="#diagonal-matrices"><span class="header-section-number">3.7.2</span> Diagonal Matrices</a></li>
-  <li><a href="#upper-and-lower-triangular-matrices" id="toc-upper-and-lower-triangular-matrices" class="nav-link" data-scroll-target="#upper-and-lower-triangular-matrices"><span class="header-section-number">3.7.3</span> Upper and Lower Triangular Matrices</a></li>
-  <li><a href="#identity-matrices" id="toc-identity-matrices" class="nav-link" data-scroll-target="#identity-matrices"><span class="header-section-number">3.7.4</span> Identity Matrices</a></li>
-  <li><a href="#inverse-of-a-matrix" id="toc-inverse-of-a-matrix" class="nav-link" data-scroll-target="#inverse-of-a-matrix"><span class="header-section-number">3.7.5</span> Inverse of a Matrix</a></li>
+  <li><a href="#square-matrices" id="toc-square-matrices" class="nav-link" data-scroll-target="#square-matrices">Square Matrices</a></li>
+  <li><a href="#diagonal-matrices" id="toc-diagonal-matrices" class="nav-link" data-scroll-target="#diagonal-matrices">Diagonal Matrices</a></li>
+  <li><a href="#upper-and-lower-triangular-matrices" id="toc-upper-and-lower-triangular-matrices" class="nav-link" data-scroll-target="#upper-and-lower-triangular-matrices">Upper and Lower Triangular Matrices</a></li>
+  <li><a href="#symmetric-matrices" id="toc-symmetric-matrices" class="nav-link" data-scroll-target="#symmetric-matrices">Symmetric Matrices</a></li>
+  <li><a href="#identity-matrices" id="toc-identity-matrices" class="nav-link" data-scroll-target="#identity-matrices">Identity Matrices</a></li>
+  <li><a href="#inverse-of-a-matrix" id="toc-inverse-of-a-matrix" class="nav-link" data-scroll-target="#inverse-of-a-matrix">Inverse of a Matrix</a></li>
   </ul></li>
   <li><a href="#elementary-matrices-row-operations" id="toc-elementary-matrices-row-operations" class="nav-link" data-scroll-target="#elementary-matrices-row-operations"><span class="header-section-number">3.8</span> Elementary Matrices: Row Operations</a>
   <ul class="collapse">
@@ -412,8 +384,27 @@ a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
 <p>Each row vector can be treated as a separate entity, and matrix operations can be performed on these rows.</p></li>
 </ol>
 </section>
-<section id="the-transpose-of-a-matrix" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="the-transpose-of-a-matrix"><span class="header-section-number">3.2</span> The Transpose of a Matrix</h2>
+<section id="addition-and-scalar-multiplication-of-matrices" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="addition-and-scalar-multiplication-of-matrices"><span class="header-section-number">3.2</span> Addition and Scalar Multiplication of Matrices</h2>
+<p>Given two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the same size <span class="math inline">\(m \times n\)</span>, the sum of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, denoted as <span class="math inline">\(A + B\)</span>, is a new matrix <span class="math inline">\(C\)</span> of size <span class="math inline">\(m \times n\)</span> where each element <span class="math inline">\(c_{i,j}\)</span> is the sum of the corresponding elements <span class="math inline">\(a_{i,j}\)</span> and <span class="math inline">\(b_{i,j}\)</span> from matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, respectively. In other words: <span class="math display">\[c_{i,j} = a_{i,j} + b_{i,j}\]</span> for all <span class="math inline">\(1 \leq i \leq m\)</span> and <span class="math inline">\(1 \leq j \leq n\)</span>. For example, if <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}\)</span> and <span class="math inline">\(B = \begin{bmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{bmatrix}\)</span>, then: <span class="math display">\[A + B = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix} + \begin{bmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{bmatrix} = \begin{bmatrix} 1+5 &amp; 2+6 \\ 3+7 &amp; 4+8 \end{bmatrix} = \begin{bmatrix} 6 &amp; 8 \\ 10 &amp; 12 \end{bmatrix}\]</span> The scalar multiplication of a matrix <span class="math inline">\(A\)</span> by a scalar <span class="math inline">\(k\)</span>, denoted as <span class="math inline">\(kA\)</span>, is a new matrix <span class="math inline">\(B\)</span> of the same size as <span class="math inline">\(A\)</span>, where each element <span class="math inline">\(b_{i,j}\)</span> is the product of the scalar <span class="math inline">\(k\)</span> and the corresponding element <span class="math inline">\(a_{i,j}\)</span> from matrix <span class="math inline">\(A\)</span>. In other words: <span class="math display">\[b_{i,j} = k \cdot a_{i,j}\]</span> for all <span class="math inline">\(1 \leq i \leq m\)</span> and <span class="math inline">\(1 \leq j \leq n\)</span>. For example, if <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}\)</span> and <span class="math inline">\(k = 2\)</span>, then: <span class="math display">\[2A = 2 \cdot \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix} = \begin{bmatrix} 2 \cdot 1 &amp; 2 \cdot 2 \\ 2 \cdot 3 &amp; 2 \cdot 4 \end{bmatrix} = \begin{bmatrix} 2 &amp; 4 \\ 6 &amp; 8 \end{bmatrix}\]</span></p>
+<section id="properties-of-addition-and-scalar-product" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="properties-of-addition-and-scalar-product"><span class="header-section-number">3.2.1</span> Properties of addition and scalar product</h3>
+<p>Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> be <span class="math inline">\(m\times n\)</span> matrices and let <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span> be scalars. Then we can esily check that</p>
+<ol type="1">
+<li>Commutativity of addition: <span class="math inline">\(A + B = B + A\)</span></li>
+<li>Associativity of addition: <span class="math inline">\((A + B) + C = A + (B + C)\)</span></li>
+<li>Existence of zero matrix: There exists a matrix <span class="math inline">\(O\)</span> such that <span class="math inline">\(A + O = A\)</span> for all matrices <span class="math inline">\(A\)</span></li>
+<li>Existence of additive inverse: For every matrix <span class="math inline">\(A\)</span>, there exists a matrix <span class="math inline">\(-A\)</span> such that <span class="math inline">\(A + (-A) = O\)</span></li>
+<li>Distributivity of scalar multiplication over matrix addition: <span class="math inline">\(k(A + B) = kA + kB\)</span></li>
+<li>Distributivity of scalar multiplication over field addition: <span class="math inline">\((k + l)A = kA + lA\)</span></li>
+<li>Associativity of scalar multiplication: <span class="math inline">\((kl)A = k(lA)\)</span></li>
+<li>Existence of multiplicative identity: <span class="math inline">\(1A = A\)</span> for all matrices <span class="math inline">\(A\)</span></li>
+</ol>
+<p>Since we have already shown that if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <span class="math inline">\(m\times n\)</span> matrices and <span class="math inline">\(k\)</span> is a scalar, then <span class="math inline">\(A+B\)</span> and <span class="math inline">\(kA\)</span> are also <span class="math inline">\(m\times n\)</span> matrices, we can conclude that the set of all <span class="math inline">\(m\times n\)</span> matrices forms a vector space. This set is commonly denoted using various notations, including: <span class="math inline">\(M_{m\times n}\)</span>, <span class="math inline">\(\mathbb{M}_{m\times n}\)</span>, and <span class="math inline">\(\mathbb{R}^{m\times n}\)</span>.</p>
+</section>
+</section>
+<section id="the-transpose-of-a-matrix" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="the-transpose-of-a-matrix"><span class="header-section-number">3.3</span> The Transpose of a Matrix</h2>
 <p>Given a matrix <span class="math inline">\(A\)</span> with <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, denoted as: <span class="math display">\[
 A = \begin{bmatrix}
 a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\
@@ -456,7 +447,7 @@ A^T = \begin{bmatrix}
 \downarrow &amp; \downarrow &amp; \cdots &amp; \downarrow
 \end{bmatrix}.
 \]</span></p>
-<p>Notice that if we take the trace twice returns the original matrix. IN other words, <span class="math display">\[(A^T)^T=A.\]</span> To check properties of the trace we use the definition <span class="math inline">\((A^T)_{i,j}=A_{j,i}\)</span>.</p>
+<p>Notice that if we take the transpose twice returns the original matrix. In other words, <span class="math display">\[(A^T)^T=A.\]</span> To check properties of the transpose we use the definition <span class="math inline">\((A^T)_{i,j}=A_{j,i}\)</span>.</p>
 <div class="exercise">
 <p><strong>Exercise:</strong> Suppose that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <span class="math inline">\(m\times n\)</span> matrices and that <span class="math inline">\(c\in\mathbb{R}\)</span>. Prove that <span class="math inline">\((A+B)^T=A^T+B^T\)</span> and that <span class="math inline">\((cA)^T=cA^T\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -476,25 +467,6 @@ Click to see a sketch of the proof
 </div>
 </div>
 </div>
-</section>
-<section id="addition-and-scalar-multiplication-of-matrices" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="addition-and-scalar-multiplication-of-matrices"><span class="header-section-number">3.3</span> Addition and Scalar Multiplication of Matrices</h2>
-<p>Given two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the same size <span class="math inline">\(m \times n\)</span>, the sum of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, denoted as <span class="math inline">\(A + B\)</span>, is a new matrix <span class="math inline">\(C\)</span> of size <span class="math inline">\(m \times n\)</span> where each element <span class="math inline">\(c_{i,j}\)</span> is the sum of the corresponding elements <span class="math inline">\(a_{i,j}\)</span> and <span class="math inline">\(b_{i,j}\)</span> from matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, respectively. In other words: <span class="math display">\[c_{i,j} = a_{i,j} + b_{i,j}\]</span> for all <span class="math inline">\(1 \leq i \leq m\)</span> and <span class="math inline">\(1 \leq j \leq n\)</span>. For example, if <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}\)</span> and <span class="math inline">\(B = \begin{bmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{bmatrix}\)</span>, then: <span class="math display">\[A + B = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix} + \begin{bmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{bmatrix} = \begin{bmatrix} 1+5 &amp; 2+6 \\ 3+7 &amp; 4+8 \end{bmatrix} = \begin{bmatrix} 6 &amp; 8 \\ 10 &amp; 12 \end{bmatrix}\]</span> The scalar multiplication of a matrix <span class="math inline">\(A\)</span> by a scalar <span class="math inline">\(k\)</span>, denoted as <span class="math inline">\(kA\)</span>, is a new matrix <span class="math inline">\(B\)</span> of the same size as <span class="math inline">\(A\)</span>, where each element <span class="math inline">\(b_{i,j}\)</span> is the product of the scalar <span class="math inline">\(k\)</span> and the corresponding element <span class="math inline">\(a_{i,j}\)</span> from matrix <span class="math inline">\(A\)</span>. In other words: <span class="math display">\[b_{i,j} = k \cdot a_{i,j}\]</span> for all <span class="math inline">\(1 \leq i \leq m\)</span> and <span class="math inline">\(1 \leq j \leq n\)</span>. For example, if <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}\)</span> and <span class="math inline">\(k = 2\)</span>, then: <span class="math display">\[2A = 2 \cdot \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix} = \begin{bmatrix} 2 \cdot 1 &amp; 2 \cdot 2 \\ 2 \cdot 3 &amp; 2 \cdot 4 \end{bmatrix} = \begin{bmatrix} 2 &amp; 4 \\ 6 &amp; 8 \end{bmatrix}\]</span></p>
-<section id="properties-of-addition-and-scalar-product" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="properties-of-addition-and-scalar-product"><span class="header-section-number">3.3.1</span> Properties of addition and scalar product</h3>
-<p>Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> be <span class="math inline">\(m\times n\)</span> matrices and let <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span> be scalars. Then we can esily check that</p>
-<ol type="1">
-<li>Commutativity of addition: <span class="math inline">\(A + B = B + A\)</span></li>
-<li>Associativity of addition: <span class="math inline">\((A + B) + C = A + (B + C)\)</span></li>
-<li>Existence of zero matrix: There exists a matrix <span class="math inline">\(O\)</span> such that <span class="math inline">\(A + O = A\)</span> for all matrices <span class="math inline">\(A\)</span></li>
-<li>Existence of additive inverse: For every matrix <span class="math inline">\(A\)</span>, there exists a matrix <span class="math inline">\(-A\)</span> such that <span class="math inline">\(A + (-A) = O\)</span></li>
-<li>Distributivity of scalar multiplication over matrix addition: <span class="math inline">\(k(A + B) = kA + kB\)</span></li>
-<li>Distributivity of scalar multiplication over field addition: <span class="math inline">\((k + l)A = kA + lA\)</span></li>
-<li>Associativity of scalar multiplication: <span class="math inline">\((kl)A = k(lA)\)</span></li>
-<li>Existence of multiplicative identity: <span class="math inline">\(1A = A\)</span> for all matrices <span class="math inline">\(A\)</span></li>
-</ol>
-<p>Since we have already shown that if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <span class="math inline">\(m\times n\)</span> matrices and <span class="math inline">\(k\)</span> is a scalar, then <span class="math inline">\(A+B\)</span> and <span class="math inline">\(kA\)</span> are also <span class="math inline">\(m\times n\)</span> matrices, we can conclude that the set of all <span class="math inline">\(m\times n\)</span> matrices forms a vector space. This set is commonly denoted using various notations, including: <span class="math inline">\(M_{m\times n}\)</span>, <span class="math inline">\(\mathbb{M}_{m\times n}\)</span>, and <span class="math inline">\(\mathbb{R}^{m\times n}\)</span>.</p>
-</section>
 </section>
 <section id="matrix-vector-multiplication" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="matrix-vector-multiplication"><span class="header-section-number">3.4</span> Matrix-Vector Multiplication</h2>
@@ -699,25 +671,29 @@ A^T =\begin{bmatrix}
 <section id="matrix-types-and-the-inverse" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="matrix-types-and-the-inverse"><span class="header-section-number">3.7</span> Matrix Types and the Inverse</h2>
 <p>Matrices come in various types, each with unique properties that make them fundamental to linear algebra and its applications. Among these, the following play a central role.</p>
-<section id="square-matrices" class="level3" data-number="3.7.1">
-<h3 data-number="3.7.1" class="anchored" data-anchor-id="square-matrices"><span class="header-section-number">3.7.1</span> Square Matrices</h3>
+<section id="square-matrices" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="square-matrices">Square Matrices</h3>
 <p>A square matrix is a matrix that has an equal number of rows and columns. The collection of all <span class="math inline">\(n \times n\)</span> square matrices is denoted by <span class="math inline">\(M_n\)</span>. This set is closed under several operations: if <span class="math inline">\(A, B \in M_n\)</span>, their product <span class="math inline">\(AB\)</span> also belongs to <span class="math inline">\(M_n\)</span>. Similarly, any power of <span class="math inline">\(A\)</span>, such as <span class="math inline">\(A^k\)</span> for a positive integer <span class="math inline">\(k\)</span>, remains in <span class="math inline">\(M_n\)</span>, as does the transpose of <span class="math inline">\(A\)</span>.</p>
 </section>
-<section id="diagonal-matrices" class="level3" data-number="3.7.2">
-<h3 data-number="3.7.2" class="anchored" data-anchor-id="diagonal-matrices"><span class="header-section-number">3.7.2</span> Diagonal Matrices</h3>
+<section id="diagonal-matrices" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="diagonal-matrices">Diagonal Matrices</h3>
 <p>A diagonal matrix is a square matrix in which all off-diagonal entries are zero. Formally, a matrix <span class="math inline">\(D \in M_n\)</span> is diagonal if <span class="math inline">\((D)_{i,j} = 0\)</span> for all <span class="math inline">\(i \neq j\)</span>. The only potentially nonzero entries are located along the main diagonal, from the top-left to the bottom-right. Diagonal matrices are significant because they are easy to work with: addition, multiplication, and finding powers are straightforward operations when the matrices are diagonal.</p>
 </section>
-<section id="upper-and-lower-triangular-matrices" class="level3" data-number="3.7.3">
-<h3 data-number="3.7.3" class="anchored" data-anchor-id="upper-and-lower-triangular-matrices"><span class="header-section-number">3.7.3</span> Upper and Lower Triangular Matrices</h3>
+<section id="upper-and-lower-triangular-matrices" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="upper-and-lower-triangular-matrices">Upper and Lower Triangular Matrices</h3>
 <p>An upper triangular matrix is a square matrix in which all entries below the main diagonal are zero, meaning <span class="math inline">\((U)_{i,j} = 0\)</span> for all <span class="math inline">\(i &gt; j\)</span>. Similarly, a lower triangular matrix has all entries above the main diagonal equal to zero, i.e., <span class="math inline">\((L)_{i,j} = 0\)</span> for all <span class="math inline">\(i &lt; j\)</span>. These matrices are commonly used in matrix factorizations, and solving systems of linear equations efficiently. Both types are particularly important in numerical methods, as their structure reduces computational complexity in many algorithms.</p>
 </section>
-<section id="identity-matrices" class="level3" data-number="3.7.4">
-<h3 data-number="3.7.4" class="anchored" data-anchor-id="identity-matrices"><span class="header-section-number">3.7.4</span> Identity Matrices</h3>
+<section id="symmetric-matrices" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="symmetric-matrices">Symmetric Matrices</h3>
+<p>A square matrix is symmetric if it is equal to its transpose, meaning <span class="math inline">\(A^T=T\)</span> or, equivalently, <span class="math inline">\(A_{i,j}=A_{j,i}\)</span> for all <span class="math inline">\(i,j\)</span>. Symmetric matrices play a crucial role in various fields due to their significant orthogonal properties and frequent appearance in science and engineering applications.</p>
+</section>
+<section id="identity-matrices" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="identity-matrices">Identity Matrices</h3>
 <p>An identity matrix is a special type of diagonal matrix where all the diagonal entries are 1, and all off-diagonal entries are 0. It is denoted as <span class="math inline">\(I_n\)</span> for an <span class="math inline">\(n \times n\)</span> matrix. Formally, <span class="math inline">\((I_n)_{i,j} = 1\)</span> if <span class="math inline">\(i = j\)</span> and <span class="math inline">\((I_n)_{i,j} = 0\)</span> if <span class="math inline">\(i \neq j\)</span>.</p>
 <p>The identity matrix serves as the multiplicative identity in matrix multiplication. Specifically, if <span class="math inline">\(A\)</span> is an <span class="math inline">\(n \times p\)</span> matrix, then <span class="math inline">\(I_n A = A\)</span>. Similarly, if <span class="math inline">\(B\)</span> is an <span class="math inline">\(m \times n\)</span> matrix, then <span class="math inline">\(B I_n = B\)</span>.</p>
 </section>
-<section id="inverse-of-a-matrix" class="level3" data-number="3.7.5">
-<h3 data-number="3.7.5" class="anchored" data-anchor-id="inverse-of-a-matrix"><span class="header-section-number">3.7.5</span> Inverse of a Matrix</h3>
+<section id="inverse-of-a-matrix" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="inverse-of-a-matrix">Inverse of a Matrix</h3>
 <p>The inverse of a matrix is a concept that applies to square matrices. A square matrix <span class="math inline">\(A\)</span> is said to be invertible (or nonsingular) if there exists another matrix <span class="math inline">\(A^{-1}\)</span> such that:<br>
 <span class="math display">\[A A^{-1} = A^{-1} A = I_n,\]</span><br>
 where <span class="math inline">\(I_n\)</span> is the identity matrix. The matrix <span class="math inline">\(A^{-1}\)</span> is called the inverse of <span class="math inline">\(A\)</span>.</p>
@@ -815,14 +791,14 @@ a_{3,1} &amp; a_{3,2} &amp; a_{3,3} &amp; a_{3,4} &amp; a_{3,5}
 <section id="setup" class="level3" data-number="3.9.1">
 <h3 data-number="3.9.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">3.9.1</span> Setup</h3>
 <p>First, let’s import NumPy:</p>
-<div id="5c8630c4" class="cell" data-execution_count="1">
+<div id="0354816a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="creating-matrices" class="level3" data-number="3.9.2">
 <h3 data-number="3.9.2" class="anchored" data-anchor-id="creating-matrices"><span class="header-section-number">3.9.2</span> Creating Matrices</h3>
 <p>NumPy provides several ways to create matrices using ndarrays:</p>
-<div id="7f2fffff" class="cell" data-execution_count="2">
+<div id="754b3f9b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From a list of lists</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
@@ -857,7 +833,7 @@ Identity matrix:
 <section id="matrix-properties-and-shape" class="level3" data-number="3.9.3">
 <h3 data-number="3.9.3" class="anchored" data-anchor-id="matrix-properties-and-shape"><span class="header-section-number">3.9.3</span> Matrix Properties and Shape</h3>
 <p>The shape attribute tells us the dimensions of the matrix:</p>
-<div id="efbec826" class="cell" data-execution_count="3">
+<div id="fdc8e1a9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>A<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -873,7 +849,7 @@ Size: 6</code></pre>
 <section id="indexing-and-slicing" class="level3" data-number="3.9.4">
 <h3 data-number="3.9.4" class="anchored" data-anchor-id="indexing-and-slicing"><span class="header-section-number">3.9.4</span> Indexing and Slicing</h3>
 <p>NumPy provides powerful ways to access matrix elements:</p>
-<div id="e63fe5f4" class="cell" data-execution_count="4">
+<div id="8c6183d8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
@@ -914,7 +890,7 @@ Submatrix (first two rows, second and third columns):
 <section id="addition-and-subtraction" class="level4" data-number="3.9.5.1">
 <h4 data-number="3.9.5.1" class="anchored" data-anchor-id="addition-and-subtraction"><span class="header-section-number">3.9.5.1</span> Addition and Subtraction</h4>
 <p>Matrix addition and subtraction work element-wise:</p>
-<div id="77fe173e" class="cell" data-execution_count="5">
+<div id="ae988315" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -950,7 +926,7 @@ A - B:
 <section id="scalar-operations" class="level4" data-number="3.9.5.2">
 <h4 data-number="3.9.5.2" class="anchored" data-anchor-id="scalar-operations"><span class="header-section-number">3.9.5.2</span> Scalar Operations</h4>
 <p>Multiply or divide a matrix by a scalar:</p>
-<div id="42e78806" class="cell" data-execution_count="6">
+<div id="4c8f6031" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -978,7 +954,7 @@ Divide by 2:
 <section id="matrix-multiplication" class="level4" data-number="3.9.5.3">
 <h4 data-number="3.9.5.3" class="anchored" data-anchor-id="matrix-multiplication"><span class="header-section-number">3.9.5.3</span> Matrix Multiplication</h4>
 <p>NumPy provides several ways to perform matrix multiplication:</p>
-<div id="4694fc4e" class="cell" data-execution_count="7">
+<div id="eb43f890" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -1004,7 +980,7 @@ Element-wise multiplication (A * B):
 <section id="common-matrix-operations" class="level3" data-number="3.9.6">
 <h3 data-number="3.9.6" class="anchored" data-anchor-id="common-matrix-operations"><span class="header-section-number">3.9.6</span> Common Matrix Operations</h3>
 <p>Here are some frequently used matrix operations:</p>
-<div id="0107c292" class="cell" data-execution_count="8">
+<div id="cfedf3d2" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1067,7 +1043,7 @@ Matrix inverse:
 <section id="setup-1" class="level3" data-number="3.10.1">
 <h3 data-number="3.10.1" class="anchored" data-anchor-id="setup-1"><span class="header-section-number">3.10.1</span> Setup</h3>
 <p>First, let’s import SymPy and set up symbolic variables:</p>
-<div id="bb74ddbd" class="cell" data-execution_count="9">
+<div id="0c670068" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, Symbol, init_printing, pprint</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1082,7 +1058,7 @@ Matrix inverse:
 <section id="creating-matrices-1" class="level3" data-number="3.10.2">
 <h3 data-number="3.10.2" class="anchored" data-anchor-id="creating-matrices-1"><span class="header-section-number">3.10.2</span> Creating Matrices</h3>
 <p>SymPy provides several ways to create matrices:</p>
-<div id="0ee56c20" class="cell" data-execution_count="10">
+<div id="4eb6efad" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From a list of lists</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
@@ -1132,7 +1108,7 @@ Symbolic matrix:
 <section id="matrix-properties-and-shape-1" class="level3" data-number="3.10.3">
 <h3 data-number="3.10.3" class="anchored" data-anchor-id="matrix-properties-and-shape-1"><span class="header-section-number">3.10.3</span> Matrix Properties and Shape</h3>
 <p>SymPy matrices have several useful properties:</p>
-<div id="249496b5" class="cell" data-execution_count="11">
+<div id="8b36f67b" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>A<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1148,7 +1124,7 @@ Number of columns: 3</code></pre>
 <section id="indexing-and-slicing-1" class="level3" data-number="3.10.4">
 <h3 data-number="3.10.4" class="anchored" data-anchor-id="indexing-and-slicing-1"><span class="header-section-number">3.10.4</span> Indexing and Slicing</h3>
 <p>SymPy uses different indexing methods than NumPy:</p>
-<div id="dda37661" class="cell" data-execution_count="12">
+<div id="dc086fb3" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
@@ -1208,7 +1184,7 @@ Submatrix:
 <section id="addition-and-subtraction-1" class="level4" data-number="3.10.5.1">
 <h4 data-number="3.10.5.1" class="anchored" data-anchor-id="addition-and-subtraction-1"><span class="header-section-number">3.10.5.1</span> Addition and Subtraction</h4>
 <p>Matrix addition and subtraction work both with numeric and symbolic matrices:</p>
-<div id="596c8bb3" class="cell" data-execution_count="13">
+<div id="426a50d5" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrix([[<span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -1259,7 +1235,7 @@ Symbolic addition A + C:
 <section id="scalar-operations-1" class="level4" data-number="3.10.5.2">
 <h4 data-number="3.10.5.2" class="anchored" data-anchor-id="scalar-operations-1"><span class="header-section-number">3.10.5.2</span> Scalar Operations</h4>
 <p>Multiply or divide a matrix by a scalar (numeric or symbolic):</p>
-<div id="917536cc" class="cell" data-execution_count="14">
+<div id="f71ba8da" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1290,7 +1266,7 @@ Multiply by symbolic x:
 <section id="matrix-multiplication-1" class="level4" data-number="3.10.5.3">
 <h4 data-number="3.10.5.3" class="anchored" data-anchor-id="matrix-multiplication-1"><span class="header-section-number">3.10.5.3</span> Matrix Multiplication</h4>
 <p>SymPy matrix multiplication works with both numeric and symbolic matrices:</p>
-<div id="05d2276c" class="cell" data-execution_count="15">
+<div id="1a13d168" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrix([[<span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -1310,7 +1286,7 @@ Multiply by symbolic x:
 <section id="other-matrix-operations" class="level3" data-number="3.10.6">
 <h3 data-number="3.10.6" class="anchored" data-anchor-id="other-matrix-operations"><span class="header-section-number">3.10.6</span> Other Matrix Operations</h3>
 <p>SymPy provides powerful symbolic matrix operations:</p>
-<div id="bfc8ec96" class="cell" data-execution_count="16">
+<div id="988e053d" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1807,8 +1783,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../worksheets/matrix_multiplication.html" class="pagination-link" aria-label="Practice Problems">
-        <span class="nav-page-text">Practice Problems</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../worksheets/matrix_multiplication.html" class="pagination-link" aria-label="Problems">
+        <span class="nav-page-text">Problems</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
