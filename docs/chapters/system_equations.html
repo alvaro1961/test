@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; System of Linear Equations – Linear Algebra</title>
+<title>5&nbsp; Systems of Linear Equations – Linear Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">System of Linear Equations</a></li><li class="breadcrumb-item"><a href="../chapters/system_equations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">System of Linear Equations</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">System of Linear Equations</a></li><li class="breadcrumb-item"><a href="../chapters/system_equations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -227,7 +227,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/system_equations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">System of Linear Equations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></span></a>
   </div>
 </li>
       </ul>
@@ -237,15 +237,37 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#equivalent-representations" id="toc-equivalent-representations" class="nav-link active" data-scroll-target="#equivalent-representations"><span class="header-section-number">5.1</span> Equivalent Representations</a>
+  <ul class="collapse">
+  <li><a href="#as-a-vector-equation" id="toc-as-a-vector-equation" class="nav-link" data-scroll-target="#as-a-vector-equation">As a Vector Equation</a></li>
+  <li><a href="#as-a-matrix-equation" id="toc-as-a-matrix-equation" class="nav-link" data-scroll-target="#as-a-matrix-equation">As a Matrix Equation</a></li>
+  </ul></li>
+  <li><a href="#characterization-of-the-solution-set" id="toc-characterization-of-the-solution-set" class="nav-link" data-scroll-target="#characterization-of-the-solution-set"><span class="header-section-number">5.2</span> Characterization of the Solution Set</a>
+  <ul class="collapse">
+  <li><a href="#case-1-no-solution" id="toc-case-1-no-solution" class="nav-link" data-scroll-target="#case-1-no-solution">Case 1: No Solution</a></li>
+  <li><a href="#case-2-unique-solution" id="toc-case-2-unique-solution" class="nav-link" data-scroll-target="#case-2-unique-solution">Case 2: Unique Solution</a></li>
+  <li><a href="#case-3-infinite-solutions" id="toc-case-3-infinite-solutions" class="nav-link" data-scroll-target="#case-3-infinite-solutions">Case 3: Infinite Solutions</a></li>
+  </ul></li>
+  <li><a href="#solution-methods" id="toc-solution-methods" class="nav-link" data-scroll-target="#solution-methods"><span class="header-section-number">5.3</span> Solution Methods</a>
+  <ul class="collapse">
+  <li><a href="#substitution-method" id="toc-substitution-method" class="nav-link" data-scroll-target="#substitution-method">Substitution Method</a></li>
+  <li><a href="#elimination-method" id="toc-elimination-method" class="nav-link" data-scroll-target="#elimination-method">Elimination Method</a></li>
+  </ul></li>
+  <li><a href="#gauss-elimination" id="toc-gauss-elimination" class="nav-link" data-scroll-target="#gauss-elimination"><span class="header-section-number">5.4</span> Gauss Elimination</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">System of Linear Equations</a></li><li class="breadcrumb-item"><a href="../chapters/system_equations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">System of Linear Equations</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">System of Linear Equations</a></li><li class="breadcrumb-item"><a href="../chapters/system_equations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">System of Linear Equations</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></h1>
 </div>
 
 
@@ -262,9 +284,191 @@ window.Quarto = {
 </header>
 
 
-<p>To be completed …</p>
+<p>Systems of linear equations form the cornerstone of linear algebra. They emerge naturally in mathematics, physics, engineering, and data science whenever we need to describe multiple linear relationships simultaneously.</p>
+<section id="equivalent-representations" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="equivalent-representations"><span class="header-section-number">5.1</span> Equivalent Representations</h2>
+<p>A key observation in linear algebra is that we can represent the same system in three different ways. Each representation offers unique advantages. Consider:</p>
+<p><span class="math display">\[
+\begin{aligned}
+3x + 4y + z &amp;= 9 \\
+x - y + 2z &amp;= 4 \\
+5x - 4y + z &amp;= 3
+\end{aligned}
+\]</span></p>
+<section id="as-a-vector-equation" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="as-a-vector-equation">As a Vector Equation</h3>
+<p>Here, we view the system as a sum of scaled vectors: <span class="math display">\[
+x\begin{bmatrix} 3 \\ 1 \\ 5 \end{bmatrix} +
+y\begin{bmatrix} 4 \\ -1 \\ -4 \end{bmatrix} +
+z\begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix} =
+\begin{bmatrix} 9 \\ 4 \\ 3 \end{bmatrix}
+\]</span></p>
+</section>
+<section id="as-a-matrix-equation" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="as-a-matrix-equation">As a Matrix Equation</h3>
+<p>Here, we package all coefficients into a single matrix: <span class="math display">\[
+\begin{bmatrix}
+3 &amp; 4 &amp; 1 \\
+1 &amp; -1 &amp; 2 \\
+5 &amp; -4 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix} =
+\begin{bmatrix}
+9 \\ 4 \\ 3
+\end{bmatrix}
+\]</span></p>
+<p>The vector equation representation offers a geometric interpretation of linear systems. When we write the system as a vector equation, we’re asking whether a target vector can be obtained as a linear combination of given vectors. This connects systems of equations directly to fundamental concepts of linear algebra: linear combinations and spanning sets. We can visualize the solution process as asking whether the target vector lies in the span of our coefficient vectors, and if so, how we can reach it through scaling and adding these vectors.</p>
+<p>Matrix equations package the coefficients efficiently. They are particularly useful in the square case, where the coefficient matrix is <span class="math inline">\(n\times n\)</span>. When this matrix is invertible, we can solve the system directly by multiplying both sides by the inverse matrix: if <span class="math inline">\(Ax = b\)</span> and <span class="math inline">\(A\)</span> is invertible, then <span class="math inline">\(x = A^{-1}b\)</span>. This not only gives us a theoretical way to express solutions but also connects to computational methods for solving systems. Moreover, whether a matrix is invertible tells us important information about the existence and uniqueness of solutions.</p>
+<p>These three representations—systems of equations, vector equations, and matrix equations—each illuminate different aspects of linear systems. Fluency in moving between these representations and understanding their connections is important for both theoretical understanding and practical problem-solving.</p>
+</section>
+</section>
+<section id="characterization-of-the-solution-set" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="characterization-of-the-solution-set"><span class="header-section-number">5.2</span> Characterization of the Solution Set</h2>
+<p>A fundamental result of linear algebra is that every system of linear equations must have exactly one of these three outcomes:</p>
+<ol type="1">
+<li>No solution exists (inconsistent system)</li>
+<li>Exactly one solution exists (unique solution)</li>
+<li>Infinitely many solutions exist</li>
+</ol>
+<p>Let’s visualize each case in <span class="math inline">\(\mathbb{R}^2\)</span> using vector equations:</p>
+<section id="case-1-no-solution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="case-1-no-solution">Case 1: No Solution</h3>
+<p><span class="math display">\[
+x\begin{bmatrix} 1 \\ 2 \end{bmatrix} +
+y\begin{bmatrix} 2 \\ 4 \end{bmatrix} =
+\begin{bmatrix} 1 \\ 1 \end{bmatrix}
+\]</span></p>
+<p>This system has no solution because:</p>
+<ul>
+<li>The vectors <span class="math inline">\(\begin{bmatrix} 1 \\ 2 \end{bmatrix}\)</span> and <span class="math inline">\(\begin{bmatrix} 2 \\ 4 \end{bmatrix}\)</span> span only a line</li>
+<li>The target vector <span class="math inline">\(\begin{bmatrix} 1 \\ 1 \end{bmatrix}\)</span> lies off this line</li>
+<li>No combination of the vectors can reach the target</li>
+</ul>
+</section>
+<section id="case-2-unique-solution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="case-2-unique-solution">Case 2: Unique Solution</h3>
+<p><span class="math display">\[
+x\begin{bmatrix} 1 \\ 2 \end{bmatrix} +
+y\begin{bmatrix} 1 \\ 1 \end{bmatrix} =
+\begin{bmatrix} 0 \\ 1 \end{bmatrix}
+\]</span></p>
+<p>This system has exactly one solution: <span class="math inline">\(\quad x=1\)</span> and <span class="math inline">\(y=-1\)</span>.</p>
+</section>
+<section id="case-3-infinite-solutions" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="case-3-infinite-solutions">Case 3: Infinite Solutions</h3>
+<p><span class="math display">\[
+x\begin{bmatrix} 1 \\ 2 \end{bmatrix} +
+y\begin{bmatrix} 2 \\ 4 \end{bmatrix} =
+\begin{bmatrix} 4 \\ 8 \end{bmatrix}
+\]</span></p>
+<p>This system has infinitely many solutions because:</p>
+<ul>
+<li>The vectors are parallel (one is a multiple of the other)</li>
+<li>The target vector lies on their shared line</li>
+<li>Solutions: <span class="math inline">\(x = 4+4t, y = -2t\)</span> for any real <span class="math inline">\(t\)</span></li>
+</ul>
+</section>
+</section>
+<section id="solution-methods" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="solution-methods"><span class="header-section-number">5.3</span> Solution Methods</h2>
+<p>In Algebra 1 (typically 8th or 9th grade), students learn three approaches:</p>
+<ol type="1">
+<li>Graphing (limited to <span class="math inline">\(\mathbb{R}^2\)</span>)</li>
+<li>Substitution</li>
+<li>Elimination</li>
+</ol>
+<p>Let’s examine the algebraic methods using this system: <span class="math display">\[
+\begin{aligned}
+2x + 3y &amp;= 2 \\
+x + y &amp;= 7
+\end{aligned}
+\]</span></p>
+<section id="substitution-method" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="substitution-method">Substitution Method</h3>
+<ol type="1">
+<li><p>Choose a variable and solve for it: <span class="math display">\[
+x = 7 - y \quad \text{(from second equation)}
+\]</span></p></li>
+<li><p>Substitute into the other equation: <span class="math display">\[
+\begin{aligned}
+2(7-y) + 3y &amp;= 2 \\
+14 - 2y + 3y &amp;= 2 \\
+14 + y &amp;= 2 \\
+y &amp;= -12
+\end{aligned}
+\]</span></p></li>
+<li><p>Back-substitute: <span class="math display">\[
+x = 7 - (-12) = 19
+\]</span></p></li>
+</ol>
+</section>
+<section id="elimination-method" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="elimination-method">Elimination Method</h3>
+<ol type="1">
+<li><p>Set up the aligned system: <span class="math display">\[
+\begin{aligned}
+2x + 3y &amp;= 2 \\
+x + y &amp;= 7
+\end{aligned}
+\]</span></p></li>
+<li><p>Multiply second equation by -2: <span class="math display">\[
+\begin{aligned}
+2x + 3y &amp;= 2 \\
+-2x - 2y &amp;= -14
+\end{aligned}
+\]</span></p></li>
+<li><p>Add equations: <span class="math display">\[
+\begin{aligned}
+2x + 3y &amp;= 2 \\
+-2x - 2y &amp;= -14 \\
+\hline
+y &amp;= -12
+\end{aligned}
+\]</span></p></li>
+<li><p>Back-substitute: <span class="math display">\[
+\begin{aligned}
+2x + 3(-12) &amp;= 2 \\
+2x - 36 &amp;= 2 \\
+2x &amp;= 38 \\
+x &amp;= 19
+\end{aligned}
+\]</span></p></li>
+</ol>
+<blockquote class="blockquote">
+<p>While both methods work, elimination systematically transforms the system into an “upper triangular” form, making solutions easier to find. Consider this upper triangular system:</p>
+</blockquote>
+<p><span class="math display">\[
+\begin{aligned}
+x_1 + 2x_2 + x_3 - x_4 &amp;= 4 \\
+x_3 + x_4 &amp;= 1 \\
+x_4 &amp;= -2
+\end{aligned}
+\]</span></p>
+<p>From this form, we can easily find all solutions:</p>
+<ol type="1">
+<li><span class="math inline">\(x_4 = -2\)</span></li>
+<li>Substituting <span class="math inline">\(x_4\)</span> in the second equation, we get <span class="math inline">\(x_3 = 3\)</span></li>
+<li><span class="math inline">\(x_2\)</span> is free (can be any real number)</li>
+<li>Susbtituting <span class="math inline">\(x_4\)</span> and <span class="math inline">\(x_3\)</span> in the first equation, we get <span class="math inline">\(x_1 = -2x_2 + 3\)</span></li>
+</ol>
+<p>The general solution is: <span class="math display">\[
+\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}
+=\begin{bmatrix}-2x_2+3\\x_2\\3\\-2\end{bmatrix}
+=\begin{bmatrix}3\\0\\3\\-2\end{bmatrix}+
+x_2\begin{bmatrix}-2\\1\\0\\0\end{bmatrix}
+\]</span></p>
+<p>This represents all solutions, with <span class="math inline">\(x_2\)</span> as the free parameter.</p>
+</section>
+</section>
+<section id="gauss-elimination" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="gauss-elimination"><span class="header-section-number">5.4</span> Gauss Elimination</h2>
+<p>The elimination method discussed previously naturally extends to a systematic algorithm known as Gaussian Elimination. This algorithm formalizes and generalizes the process of using row operations to transform a system of equations into “upper triangular” form, also called echelon form. The key insight is that through a careful sequence of row operations (adding multiples of one equation to another, swapping equations, or multiplying an equation by a nonzero scalar), we can systematically create zeros below the diagonal, one column at a time.</p>
+<p>When a system is in echelon form, the pattern of coefficients forms a “staircase” shape, making it significantly easier to find solutions through back-substitution. This systematic approach works for systems of any size, making it a fundamental tool in linear algebra. The detailed algorithm and its implementation are presented in the accompanying slide presentation.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
