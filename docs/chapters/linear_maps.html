@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../parts/system_equations.html" rel="next">
+<link href="../worksheets/linearMapsEquations1.html" rel="next">
 <link href="../parts/linear_maps.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -212,6 +212,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../chapters/linear_maps.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Transformations in <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/linearMapsEquations1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problems</span></a>
   </div>
 </li>
       </ul>
@@ -519,7 +525,7 @@ T(\mathbf{e}_1) &amp; T(\mathbf{e}_2) &amp; \cdots &amp; T(\mathbf{e}_n) \\
 <p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span>. Since <span class="math inline">\(B\)</span> is the matrix representation of <span class="math inline">\(T_1:\mathbb{R}^n\to\mathbb{R}^m\)</span>, it follows from <a href="#thm-matrix_rep" class="quarto-xref">Theorem&nbsp;<span>4.1</span></a> that <span class="math inline">\(T_1(\mathbf{x})=B\mathbf{x}\)</span>. Similarly, since <span class="math inline">\(A\)</span> is the matrix representation of <span class="math inline">\(T_2:\mathbb{R}^m\to \mathbb{R}^p\)</span> and <span class="math inline">\(B\mathbf{x}\in\mathbb{R}^m\)</span> we have that <span class="math inline">\(T_2(B\mathbf{x})=A(B{\mathbf{x}})\)</span>. Combining these two facts with <a href="#lem-associative" class="quarto-xref">Lemma&nbsp;<span>4.1</span></a>, we get <span class="math display">\[(T_2\circ T_1)(\mathbf{x})=T_2(T_1(\mathbf{x}))=T_2(B\mathbf{x})=A(B{\mathbf{x}})=(AB)\mathbf{x}\]</span> which implies that <span class="math inline">\(AB\)</span> is the matrix representation of <span class="math inline">\(T_2\circ T_1\)</span>. <span class="math inline">\(\square\)</span></p>
 </div>
 <blockquote class="blockquote">
-<p>Since composition of functions is associative, we previous theorem implies that multiplication of matrices is associative</p>
+<p>Since composition of functions is associative, the previous theorem implies that multiplication of matrices is associative</p>
 </blockquote>
 <div class="corollary">
 <p><strong>Corollary:</strong> Suppose that <span class="math inline">\(A, B\)</span> and <span class="math inline">\(C\)</span> are matrices of sizes <span class="math inline">\(m\times n\)</span>, <span class="math inline">\(n\times p\)</span> and <span class="math inline">\(p\times q\)</span>, respectively. Then <span class="math display">\[(AB)C=A(BC)\]</span></p>
@@ -954,8 +960,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../parts/system_equations.html" class="pagination-link" aria-label="System of Linear Equations">
-        <span class="nav-page-text">System of Linear Equations</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../worksheets/linearMapsEquations1.html" class="pagination-link" aria-label="Problems">
+        <span class="nav-page-text">Problems</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
