@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,6 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../worksheets/alwaysSometimesNever.html" rel="next">
 <link href="../parts/system_equations.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -109,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">System of Linear Equations</a></li><li class="breadcrumb-item"><a href="../chapters/system_equations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">Systems of Linear Equations</a></li><li class="breadcrumb-item"><a href="../chapters/system_equations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -224,7 +259,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parts/system_equations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">System of Linear Equations</span></a>
+ <span class="menu-text">Systems of Linear Equations</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,7 +271,17 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/alwaysSometimesNever.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceptual Problems</span></a>
+  </div>
+</li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Subspaces and Bases</span></span>
   </li>
     </ul>
     </div>
@@ -264,14 +309,28 @@ window.Quarto = {
   <li><a href="#substitution-method" id="toc-substitution-method" class="nav-link" data-scroll-target="#substitution-method">Substitution Method</a></li>
   <li><a href="#elimination-method" id="toc-elimination-method" class="nav-link" data-scroll-target="#elimination-method">Elimination Method</a></li>
   </ul></li>
-  <li><a href="#gauss-elimination" id="toc-gauss-elimination" class="nav-link" data-scroll-target="#gauss-elimination"><span class="header-section-number">5.4</span> Gauss Elimination</a></li>
+  <li><a href="#gauss-elimination" id="toc-gauss-elimination" class="nav-link" data-scroll-target="#gauss-elimination"><span class="header-section-number">5.4</span> Gauss Elimination</a>
+  <ul class="collapse">
+  <li><a href="#why-does-gaussian-elimination-work" id="toc-why-does-gaussian-elimination-work" class="nav-link" data-scroll-target="#why-does-gaussian-elimination-work">Why does Gaussian Elimination work?</a></li>
+  </ul></li>
+  <li><a href="#homogeneous-systems" id="toc-homogeneous-systems" class="nav-link" data-scroll-target="#homogeneous-systems"><span class="header-section-number">5.5</span> Homogeneous Systems</a>
+  <ul class="collapse">
+  <li><a href="#solving-homogeneous-systems" id="toc-solving-homogeneous-systems" class="nav-link" data-scroll-target="#solving-homogeneous-systems">Solving Homogeneous Systems</a></li>
+  <li><a href="#connection-between-solutions-and-column-dependencies" id="toc-connection-between-solutions-and-column-dependencies" class="nav-link" data-scroll-target="#connection-between-solutions-and-column-dependencies">Connection Between Solutions and Column Dependencies</a></li>
+  <li><a href="#homogeneous-systems-dependence-and-independence" id="toc-homogeneous-systems-dependence-and-independence" class="nav-link" data-scroll-target="#homogeneous-systems-dependence-and-independence">Homogeneous Systems: Dependence and Independence</a></li>
+  </ul></li>
+  <li><a href="#linear-systems-and-the-span-of-columns" id="toc-linear-systems-and-the-span-of-columns" class="nav-link" data-scroll-target="#linear-systems-and-the-span-of-columns"><span class="header-section-number">5.6</span> Linear Systems and the Span of Columns</a></li>
+  <li><a href="#finding-inverses" id="toc-finding-inverses" class="nav-link" data-scroll-target="#finding-inverses"><span class="header-section-number">5.7</span> Finding Inverses</a>
+  <ul class="collapse">
+  <li><a href="#sec-inverse-elementary" id="toc-sec-inverse-elementary" class="nav-link" data-scroll-target="#sec-inverse-elementary"><span class="header-section-number">5.7.1</span> Writing Invertible Matrices as Products of Elementary Matrices</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">System of Linear Equations</a></li><li class="breadcrumb-item"><a href="../chapters/system_equations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">Systems of Linear Equations</a></li><li class="breadcrumb-item"><a href="../chapters/system_equations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></h1>
 </div>
@@ -472,8 +531,251 @@ x_2\begin{bmatrix}-2\\1\\0\\0\end{bmatrix}
 <h2 data-number="5.4" class="anchored" data-anchor-id="gauss-elimination"><span class="header-section-number">5.4</span> Gauss Elimination</h2>
 <p>The elimination method discussed previously naturally extends to a systematic algorithm known as Gaussian Elimination. This algorithm formalizes and generalizes the process of using row operations to transform a system of equations into “upper triangular” form, also called echelon form. The key insight is that through a careful sequence of row operations (adding multiples of one equation to another, swapping equations, or multiplying an equation by a nonzero scalar), we can systematically create zeros below the diagonal, one column at a time.</p>
 <p>When a system is in echelon form, the pattern of coefficients forms a “staircase” shape, making it significantly easier to find solutions through back-substitution. This systematic approach works for systems of any size, making it a fundamental tool in linear algebra. The detailed algorithm and its implementation are presented in the accompanying slide presentation.</p>
+<section id="why-does-gaussian-elimination-work" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="why-does-gaussian-elimination-work">Why does Gaussian Elimination work?</h3>
+<p>The mathematical foundation of Gaussian elimination lies in matrix multiplication: each row operation is equivalent to left multiplication by an invertible matrix. The following theorem shows why these operations preserve the solution set of the original system.</p>
+<div id="thm-equivalent-solution" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.1</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix, <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span> and <span class="math inline">\(E\)</span> be an invertible <span class="math inline">\(m\times m\)</span> matrix. Then the following conditions are equivalent for a vector <span class="math inline">\(\mathbf{x}_0\in\mathbb{R}^n\)</span>:</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbf{x}_0\)</span> is a solution of the system <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span></li>
+<li><span class="math inline">\(\mathbf{x}_0\)</span> is a solution of the system <span class="math inline">\((EA)\mathbf{x}=E\mathbf{b}\)</span></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>The equivalence follows because <span class="math inline">\(E\)</span> is invertible:</p>
+<ul>
+<li>If <span class="math inline">\(A\mathbf{x}_0=\mathbf{b}\)</span>, then multiplying both sides by <span class="math inline">\(E\)</span> gives <span class="math inline">\((EA)\mathbf{x}_0=E\mathbf{b}\)</span></li>
+<li>Conversely, if <span class="math inline">\((EA)\mathbf{x}_0=E\mathbf{b}\)</span>, then multiplying both sides by <span class="math inline">\(E^{-1}\)</span> gives <span class="math inline">\(A\mathbf{x}_0=\mathbf{b}\)</span>. <span class="math inline">\(\square\)</span></li>
+</ul>
+</div>
+<p>Each elementary row operation corresponds to multiplication by a specific type of invertible matrix:</p>
+<ol type="1">
+<li>Row swap <span class="math inline">\((R_i \leftrightarrow R_j)\)</span>: Multiply by a permutation matrix that differs from the identity matrix only in rows <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, where the 1’s are swapped. The inverse is itself since swapping twice returns to the original</li>
+<li>Row scaling <span class="math inline">\((cR_i)\)</span>: Multiply by diagonal matrix with <span class="math inline">\(c\)</span> in position <span class="math inline">\(i\)</span>, 1’s elsewhere. The inverse multiplies row <span class="math inline">\(i\)</span> by <span class="math inline">\(\frac{1}{c}\)</span></li>
+<li>Row addition <span class="math inline">\((R_i + cR_j)\)</span>: Multiply by the matrix that differs from the identity only in position <span class="math inline">\((i,j)\)</span> where there is a <span class="math inline">\(c\)</span>. This adds <span class="math inline">\(c\)</span> times row <span class="math inline">\(j\)</span> to row <span class="math inline">\(i\)</span>. The inverse has <span class="math inline">\(-c\)</span> in position <span class="math inline">\((i,j)\)</span>, which subtracts <span class="math inline">\(c\)</span> times row <span class="math inline">\(j\)</span> from row <span class="math inline">\(i\)</span></li>
+</ol>
+<p>Therefore, if we perform a sequence of row operations to transform <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> into row echelon form, we’re effectively multiplying both sides by a product of invertible matrices. This preserves the solution set while making the system easier to solve.</p>
+<p>This also explains why we use the augmented matrices. Notice that <span class="math inline">\([A|\mathbf{b}]\)</span> has <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n+1\)</span> columns, then it follows from <a href="matrices.html#eq-matrix-matrix" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> that <span class="math display">\[E[A|\mathbf{b}]=[EA|E\mathbf{b}].\]</span> So row operations on the augmented matrix simultaneously transform both <span class="math inline">\(A\)</span> and <span class="math inline">\(\mathbf{b}\)</span> while preserving their relationship.</p>
+</section>
+</section>
+<section id="homogeneous-systems" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="homogeneous-systems"><span class="header-section-number">5.5</span> Homogeneous Systems</h2>
+<p>A linear system <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> is homogeneous if <span class="math inline">\(\mathbf{b}=\mathbf{0}\)</span>. That is, a homogeneous system has the form: <span class="math display">\[A\mathbf{x}=\mathbf{0}\]</span> The zero vector <span class="math inline">\(\mathbf{x}=\mathbf{0}\)</span> is always a solution to a homogeneous system. This leads to a fundamental property: a homogeneous system has either:</p>
+<ol type="1">
+<li>Exactly one solution: <span class="math inline">\(\mathbf{x}=\mathbf{0}\)</span></li>
+<li>Infinitely many solutions</li>
+</ol>
+<p>This dichotomy follows because if a homogeneous system has any nonzero solution <span class="math inline">\(\mathbf{v}\)</span>, then <span class="math inline">\(c\mathbf{v}\)</span> is also a solution for any scalar <span class="math inline">\(c\)</span>, yielding infinitely many solutions.</p>
+<section id="solving-homogeneous-systems" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="solving-homogeneous-systems">Solving Homogeneous Systems</h3>
+<p>To solve a homogeneous system, we reduce <span class="math inline">\(A\)</span> to row echelon form and analyze the pivots.</p>
+<p>In row echelon form, a free column is any column that does not contain a pivot. When solving the system, variables corresponding to free columns can take any value, while the other variables are determined by these choices. Each free column thus generates a dimension of solutions.</p>
+<p>Consider the system: <span class="math display">\[\begin{bmatrix}
+1 &amp; 2 &amp; 1 &amp; 3\\
+2 &amp; 4 &amp; 0 &amp; 2\\
+3 &amp; 6 &amp; -1 &amp; 1
+\end{bmatrix}\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}=\begin{bmatrix}0\\0\\0\end{bmatrix}\]</span></p>
+<p>Row reduction gives: <span class="math display">\[\begin{bmatrix}
+1 &amp; 2 &amp; 0 &amp; 1\\
+0 &amp; 0 &amp; 1 &amp; 2\\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}=\begin{bmatrix}0\\0\\0\end{bmatrix}\]</span></p>
+<p>Notice that columns 2 and 4 are free because they have no pivots. Using back substitution, we that the solution of the reduced system is:</p>
+<ul>
+<li><span class="math inline">\(x_4\)</span> is free</li>
+<li><span class="math inline">\(x_3=-2x_4\)</span>,</li>
+<li><span class="math inline">\(x_2\)</span> is free, and</li>
+<li><span class="math inline">\(x_1=-2x_2-x_4\)</span>.</li>
+</ul>
+<p>Writing all values in terms of <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> we see that solutions are of the form: <span class="math display">\[
+\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}
+=\begin{bmatrix}-2x_2-x_4\\x_2\\-2x_4\\x_4\end{bmatrix} =x_2\begin{bmatrix}-2\\ 1\\ 0\\ 0\end{bmatrix} + x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
+<p>Since <span class="math inline">\(x_2,x_4\)</span> can be any real numbers, the system has infinitely many solutions.</p>
+</section>
+<section id="connection-between-solutions-and-column-dependencies" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="connection-between-solutions-and-column-dependencies">Connection Between Solutions and Column Dependencies</h3>
+<p>Solutions to homogeneous systems reveal linear dependencies among the columns of the coefficient matrix. Consider:</p>
+<p><span class="math display">\[A=\begin{bmatrix}
+1 &amp; 2 &amp; 1 &amp; 3\\
+2 &amp; 4 &amp; 0 &amp; 2\\
+3 &amp; 6 &amp; -1 &amp; 1
+\end{bmatrix} =\begin{bmatrix}
+\uparrow &amp; \uparrow &amp; \uparrow &amp; \uparrow \\
+\mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \mathbf{a}_3 &amp; \mathbf{a}_4 \\
+\downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow
+\end{bmatrix}\]</span></p>
+<p>where <span class="math inline">\(\mathbf{a}_1,\mathbf{a}_2,\mathbf{a}_3,\mathbf{a}_4\)</span> are the columns of <span class="math inline">\(A\)</span>.</p>
+<p>We just saw that the general solution to <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> is: <span class="math display">\[ \begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix} =
+x_2\begin{bmatrix}-2\\ 1\\ 0\\ 0\end{bmatrix} +
+x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
+<p>Each basic solution reveals a column dependency (<a href="matrices.html#eq-matrix-linear-combination" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>):</p>
+<ol type="1">
+<li>Setting <span class="math inline">\(x_2=1, x_4=0\)</span> gives solution <span class="math inline">\((-2,1,0,0)\in\mathbb{R}^4\)</span>. This means: <span class="math display">\[-2\mathbf{a}_1 + \mathbf{a}_2 = \mathbf{0}\quad\text{which implies}\quad \mathbf{a}_2 = 2\mathbf{a}_1.\]</span></li>
+<li>Setting <span class="math inline">\(x_2=0, x_4=1\)</span> gives solution <span class="math inline">\((-1,0,-2,1)\in\mathbb{R}^4\)</span>. This means: <span class="math display">\[-\mathbf{a}_1 - 2\mathbf{a}_3 + \mathbf{a}_4 = \mathbf{0}\quad\text{which implies}\quad \mathbf{a}_4 = \mathbf{a}_1 + 2\mathbf{a}_3.\]</span></li>
+</ol>
+<p>These relationships, which can be easily verified by replacing the values of the columns, show that free columns (<span class="math inline">\(\mathbf{a}_2\)</span> and <span class="math inline">\(\mathbf{a}_4\)</span>) can be expressed as linear combinations of pivot columns (<span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_3\)</span>).</p>
+</section>
+<section id="homogeneous-systems-dependence-and-independence" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="homogeneous-systems-dependence-and-independence">Homogeneous Systems: Dependence and Independence</h3>
+<p>The previous example illustrates important principles that we expand in this section. Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix with columns <span class="math inline">\(\mathbf{a}_1,\mathbf{a}_2,\dots,\mathbf{a}_n\in\mathbb{R}^m\)</span>. Three key ideas connect solutions and column dependencies:</p>
+<ol type="1">
+<li>If <span class="math inline">\(\mathbf{x}\neq\mathbf{0}\)</span> solves <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>, then <span class="math inline">\(t\mathbf{x}\)</span> is also a solution for any <span class="math inline">\(t\in\mathbb{R}\)</span>, giving infinitely many solutions.</li>
+<li>From <a href="matrices.html#eq-matrix-linear-combination" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>, <span class="math inline">\(\mathbf{x}=(x_1,\dots,x_n)\in\mathbb{R}^n\)</span> solves <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> if and only if<br>
+<span class="math display">\[x_1\mathbf{a}_1+x_2\mathbf{a}_2+\cdots+x_n\mathbf{a}_n=\mathbf{0}\]</span></li>
+<li>When any <span class="math inline">\(x_i\neq 0\)</span>, we can solve for <span class="math inline">\(\mathbf{a}_i\)</span>, expressing <span class="math inline">\(\mathbf{a}_i\)</span> as a linear combination of the other columns: <span class="math display">\[\mathbf{a}_i = -\frac{x_1}{x_i}\mathbf{a}_1-\cdots-\frac{x_{i-1}}{x_i}\mathbf{a}_{i-1}-\frac{x_{i+1}}{x_i}\mathbf{a}_{i+1}-\cdots-\frac{x_n}{x_i}\mathbf{a}_n.\]</span> Conversely, if we can write <span class="math inline">\(\mathbf{a}_i\)</span> in terms of the other columns, there exist constants <span class="math inline">\(c_1,\dots,c_{i-1},c_{i+1},\dots,c_n\)</span> such that <span class="math display">\[\mathbf{a}_i=c_1\mathbf{a}_1+\cdots+c_{i-1}\mathbf{a}_{i-1}+c_{i+1}\mathbf{a}_{i+1}+\cdots+c_n\mathbf{a}_n.\]</span> Then subtracting <span class="math inline">\(\mathbf{a}_i\)</span> from both sides, we obtain <span class="math display">\[\mathbf{0}=c_1\mathbf{a}_1+\cdots+c_{i-1}\mathbf{a}_{i-1}+1\mathbf{a}_i+c_{i+1}\mathbf{a}_{i+1}+\cdots+c_n\mathbf{a}_n,\]</span> and we obtain a non-zero solution of the homogeneous system because the coefficient of <span class="math inline">\(\mathbf{a}_i\)</span> is 1.</li>
+</ol>
+<p>The following two theorems capture these important relations:</p>
+<div id="thm-homogeneous-dependence" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.2</strong></span> Suppose that <span class="math inline">\(A\)</span> is an <span class="math inline">\(m\times n\)</span> matrix. The following are equivalent:</p>
+<ol type="1">
+<li>The homogeneous system <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> has infintely many solutions</li>
+<li>The homogeneous system <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> has a non-zero solution</li>
+<li>We can write a column of <span class="math inline">\(A\)</span> as a linear combination of the other columns</li>
+<li>The row reduced Echelon form of <span class="math inline">\(A\)</span> has a free column</li>
+</ol>
+</div>
+<div id="thm-homogeneous-independence" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.3</strong></span> Suppose that <span class="math inline">\(A\)</span> is an <span class="math inline">\(m\times n\)</span> matrix with columns <span class="math inline">\(\mathbf{a}_1,\mathbf{a}_2\dots,\mathbf{a}_n\in\mathbb{R}^m\)</span>. The following are equivalent:</p>
+<ol type="1">
+<li>The homogeneous system <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> has a unique solution</li>
+<li>Let <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span>. If <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>, then <span class="math inline">\(\mathbf{x}=\mathbf{0}\)</span></li>
+<li>Let <span class="math inline">\(c_1,\dots,c_n\in\mathbb{R}\)</span>. If <span class="math inline">\(c_1\mathbf{a}_1+c_2\mathbf{a}_2+\cdots+c_n\mathbf{a}_n=\mathbf{0}\)</span>, then <span class="math inline">\(c_1=c_2=\cdots=c_n=0.\)</span></li>
+<li>The row reduced Echelon form of <span class="math inline">\(A\)</span> doesn’t have any free columns</li>
+</ol>
+</div>
+<p>Condition 3 of <a href="#thm-homogeneous-independence" class="quarto-xref">Theorem&nbsp;<span>5.3</span></a> motivates the following definition</p>
+<div id="def-linear-independence" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 5.1</strong></span> Suppose that <span class="math inline">\(V\)</span> is a vector space and that <span class="math inline">\(\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_k\in V\)</span>. The set <span class="math inline">\(S=\{\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_k\}\)</span> is linearly independent if for every <span class="math inline">\(c_1,\dots,c_k\in\mathbb{R}\)</span>, if <span class="math inline">\(c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_k\mathbf{v}_k=\mathbf{0}\)</span>, then <span class="math inline">\(c_1=c_2=\cdots=c_k=0.\)</span></p>
+</div>
+<blockquote class="blockquote">
+<p>Notice that <span class="math inline">\(\{\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_k\}\)</span> is linearly independent if and only if we cannot write any of these vectors as a linear combination of the other ones. However, checking this requires solving <span class="math inline">\(k\)</span> vector equations.</p>
+<p>From a computational point of view, the statement in the definition is much more practical. We only solve one vector equation. We look at: <span class="math display">\[ c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_k\mathbf{v}_k=\mathbf{0}\]</span> and we solve it. If the only solution is <span class="math inline">\(c_1=c_2=\cdots=c_k=0\)</span>, the set is linearly independent.</p>
+</blockquote>
+<p>If <span class="math inline">\(\{\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_k\}\)</span> is not linearly dependent, then it is <strong>linearly dependent</strong>. In this case we can write a vector as a linear combination of the others.</p>
+</section>
+</section>
+<section id="linear-systems-and-the-span-of-columns" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="linear-systems-and-the-span-of-columns"><span class="header-section-number">5.6</span> Linear Systems and the Span of Columns</h2>
+<p>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix with columns <span class="math inline">\(\mathbf{a}_1,\mathbf{a}_2,\dots,\mathbf{a}_n\in\mathbb{R}^m\)</span>. In this section we address three questions:</p>
+<ol type="1">
+<li>Given <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span>, when does <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> have at least one solution?</li>
+<li>If <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> has a solution, when is that solution unique?</li>
+<li>Under what conditions does <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> have solutions for every <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span></li>
+</ol>
+<p>By <a href="matrices.html#eq-matrix-linear-combination" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>: <span class="math display">\[A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \cdots + x_n\mathbf{a}_n = \mathbf{b}\]</span></p>
+<p>Therefore, <span class="math inline">\(\mathbf{b}\)</span> must be a linear combination of the columns of <span class="math inline">\(A\)</span>. The set of all such linear combinations is called the span of the columns (see <a href="vectors.html#sec-span" class="quarto-xref"><span>Section 1.3</span></a>). Then we have</p>
+<div id="thm-existence-solution" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.4</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix and <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span>. Then the following conditions are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> has a solution</li>
+<li><span class="math inline">\(\mathbf{b}\)</span> can be written as a linear combination of the columns of <span class="math inline">\(A\)</span></li>
+</ol>
+</div>
+<p>Let’s examine two examples. Consider: <span class="math display">\[A=\begin{bmatrix}1&amp;2&amp;1&amp;3\\2&amp;4&amp;0&amp;2\\3&amp;6&amp;-1&amp;1\end{bmatrix},\quad\mathbf{b}_1=\begin{bmatrix}1\\1\\1\end{bmatrix},\quad\mathbf{b}_2=\begin{bmatrix}1\\1\\0\end{bmatrix}\]</span></p>
+<p>First, let’s solve <span class="math inline">\(A\mathbf{x}=\mathbf{b}_1\)</span>. The row reduced echelon form of <span class="math inline">\([A|\mathbf{b}_1]\)</span> is: <span class="math display">\[
+\left[\begin{array}{cccc|c}1&amp;2&amp;1&amp;3&amp;1\\2&amp;4&amp;0&amp;2&amp;1\\3&amp;6&amp;-1&amp;1&amp;1\end{array}\right] \xrightarrow{\text{RREF}}
+\left[\begin{array}{cccc|c}1&amp;2&amp;0&amp;1&amp;\frac{1}{2}\\0&amp;0&amp;1&amp;2&amp;\frac{1}{2}\\0&amp;0&amp;0&amp;0&amp;0\end{array}\right]
+\]</span></p>
+<p>This system has solutions. Using back substitution:</p>
+<ol type="1">
+<li><span class="math inline">\(x_4\)</span> is free</li>
+<li><span class="math inline">\(x_3=\frac{1}{2}-2x_4\)</span></li>
+<li><span class="math inline">\(x_2\)</span> is free</li>
+<li><span class="math inline">\(x_1=\frac{1}{2}-2x_2-x_4\)</span></li>
+</ol>
+<p>The general solution is: <span class="math display">\[
+\begin{bmatrix}x_1\\ x_2\\ x_3\\ x_4\end{bmatrix} =
+\begin{bmatrix}\frac{1}{2}\\ 0\\ \frac{1}{2}\\ 0\end{bmatrix} +x_2 \begin{bmatrix}-2\\ 1\\ 0\\ 0\end{bmatrix}
++x_4 \begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}
+\]</span> Since <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> can take arbitrary elements, there are infinitely many solutions. When <span class="math inline">\(x_2=x_4=0\)</span>, we get <span class="math inline">\((\frac{1}{2},0,\frac{1}{2},0)\)</span>, showing that: <span class="math display">\[\mathbf{b}_1=\frac{1}{2}\mathbf{a}_1+\frac{1}{2}\mathbf{a}_3\]</span></p>
+<p>This example illustrates the following</p>
+<div id="thm-uniqueness-solution" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.5</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix, <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span>, and suppose that <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> has at least one solution. Then the following conditions are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> has a unique solution</li>
+<li>The matrix <span class="math inline">\(R\)</span>, the reduced row echelon form of <span class="math inline">\(A\)</span>, has a pivot position in every column.</li>
+<li>The matrix <span class="math inline">\(R\)</span>, the reduced row echelon form of <span class="math inline">\(A\)</span>, does not have a free column.</li>
+</ol>
+</div>
+<p>Now consider <span class="math inline">\(A\mathbf{x}=\mathbf{b}_2\)</span>. The row reduced echelon form of <span class="math inline">\([A|\mathbf{b}_2]\)</span> is: <span class="math display">\[
+\left[\begin{array}{cccc|c}1&amp;2&amp;1&amp;3&amp;1\\2&amp;4&amp;0&amp;2&amp;1\\3&amp;6&amp;-1&amp;1&amp;0\end{array}\right] \xrightarrow{\text{RREF}}
+\left[\begin{array}{cccc|c}1&amp;2&amp;0&amp;1&amp;0\\0&amp;0&amp;1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;1\end{array}\right]
+\]</span></p>
+<p>This system has no solution since the last equation becomes: <span class="math display">\[0x_1+0x_2+0x_3+0x_4=1\]</span></p>
+<p>For the general case, let <span class="math inline">\(\mathbf{b}_3=\begin{bmatrix}a\\b\\c\end{bmatrix}\)</span> be arbitrary in <span class="math inline">\(\mathbb{R}^3\)</span>. We can find solutions by reducing the augmented matrix <span class="math inline">\([A|\mathbf{b}_3]\)</span> to echelon form. We can do this in SymPy using the <code>echelon_form()</code> method that find the row echelon form and not the row reduced echelon form.</p>
+<div id="3e8cf561" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, symbols</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a,b,c <span class="op">=</span> symbols(<span class="st">"a b c"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">6</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>]])</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrix.hstack(A,Matrix([a,b,c]))    <span class="co"># finds the augmented matrix</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>B.echelon_form()    <span class="co"># finds the echelon form</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}1 &amp; 2 &amp; 1 &amp; 3 &amp; a\\0 &amp; 0 &amp; -2 &amp; -4 &amp; - 2 a + b\\0 &amp; 0 &amp; 0 &amp; 0 &amp; - 2 a + 4 b - 2 c\end{matrix}\right]\)</span></p>
+</div>
+</div>
+<p>The last equation is: <span class="math display">\[0x_1+0x_2+0x_3+0x_4=-2a+4b-2c,\]</span> which explains why <span class="math inline">\((1,1,1)\)</span> is a solution and <span class="math inline">\((1,1,0)\)</span> is not.</p>
+<p>The last two examples illustrate the following</p>
+<div id="thm-universal-solution" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.6</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix and let <span class="math inline">\(R\)</span> be the reduced row echelon form of <span class="math inline">\(A\)</span>. The following conditions are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> has a solution for every <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span>.</li>
+<li><span class="math inline">\(R\)</span> has a pivot position in every row.</li>
+<li><span class="math inline">\(R\)</span> does not have a zero row.</li>
+<li>Every <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span> can be written as a linear combination of the columns of <span class="math inline">\(A\)</span></li>
+</ol>
+</div>
+<p>The last condition motivates the following definition</p>
+<div id="def-spanning-set" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 5.2</strong></span> Suppose that <span class="math inline">\(V\)</span> is a vector space and that <span class="math inline">\(\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_k\in V\)</span>. The set <span class="math inline">\(S=\{\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_k\}\)</span> spans <span class="math inline">\(V\)</span> if for every <span class="math inline">\(\mathbf{v}\in V\)</span>, there exist <span class="math inline">\(c_1,\dots,c_k\in\mathbb{R}\)</span> such that <span class="math display">\[c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_k\mathbf{v}_k=\mathbf{v}\]</span></p>
+</div>
+</section>
+<section id="finding-inverses" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="finding-inverses"><span class="header-section-number">5.7</span> Finding Inverses</h2>
+<p>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n\times n\)</span> matrix. Recall that <span class="math inline">\(A\)</span> is invertible if there exists an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(A^{-1}\)</span> such that: <span class="math display">\[AA^{-1}=I_n\quad\text{and}\quad A^{-1}A=I_n\]</span> where <span class="math inline">\(I_n\)</span> is the <span class="math inline">\(n\times n\)</span> identity matrix. If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are invertible <span class="math inline">\(n\times n\)</span> matrices. Then <span class="math inline">\(AB\)</span> is also invertible and the inverse is the product of their inverses in reverse order: <span id="eq-inverse-product"><span class="math display">\[(AB)^{-1} = B^{-1}A^{-1} \tag{5.1}\]</span></span> We can easily verify this: <span class="math display">\[(AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = AI_nA^{-1} = AA^{-1} = I_n\]</span> And similarly for <span class="math inline">\((B^{-1}A^{-1})(AB)\)</span>.</p>
+<p>Suppose now that <span class="math inline">\(A\)</span> is an invertible <span class="math inline">\(n\times n\)</span> matrix. Then for any <span class="math inline">\(\mathbf{b}\in\mathbb{R}^n\)</span>, the system <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> has unique solution: <span class="math display">\[\mathbf{x}=A^{-1}\mathbf{b}.\]</span> From <a href="#thm-universal-solution" class="quarto-xref">Theorem&nbsp;<span>5.6</span></a>, the row reduced echelon form <span class="math inline">\(R\)</span> of an invertible matrix <span class="math inline">\(A\)</span> must have:</p>
+<ul>
+<li>A pivot in every row</li>
+<li>a pivot in every column, because <span class="math inline">\(R\)</span> has an equal number of rows and columns</li>
+<li>No free columns</li>
+</ul>
+<p>This leads to a key result:</p>
+<div class="theorem">
+<p><strong>Theorem:</strong> If <span class="math inline">\(A\)</span> is an invertible <span class="math inline">\(n\times n\)</span> matrix, its row reduced echelon form <span class="math inline">\(R\)</span> is the identity matrix <span class="math inline">\(I_n\)</span>.</p>
+</div>
+<p>This gives us an algorithm to find <span class="math inline">\(A^{-1}\)</span>:</p>
+<ol type="1">
+<li>Form the augmented matrix <span class="math inline">\([A|I_n]\)</span></li>
+<li>Row reduce to get <span class="math inline">\([I_n|B]\)</span> for some matrix <span class="math inline">\(B\)</span></li>
+<li>Then <span class="math inline">\(B = A^{-1}\)</span></li>
+</ol>
+<p>We’ll explore this algorithm in detail during the lab.</p>
+<section id="sec-inverse-elementary" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="sec-inverse-elementary"><span class="header-section-number">5.7.1</span> Writing Invertible Matrices as Products of Elementary Matrices</h3>
+<p>Let <span class="math inline">\(A\)</span> be an invertible matrix. Then the row reduced echelon form of <span class="math inline">\(A\)</span> is the identity. Each step of the row reduction process corresponds to left multiplication by an elementary matrix. Recall that elementary matrices are invertible and their inverses are also elementary matrices. Therefore, we can find elementary matrices <span class="math inline">\(E_1,\ldots,E_k\)</span> such that: <span class="math display">\[E_k\cdots E_2E_1A = I_n\]</span> Solving for <span class="math inline">\(A\)</span> we get that <span class="math display">\[A=E_K^{-1}E_{k-1}^{-1}\cdots E_2^{-1}E_1^{-1}.\]</span></p>
+<p>To illustrate, consider the case where <span class="math inline">\(E_4E_3E_2E_1A = I_n\)</span>. We can solve for <span class="math inline">\(A\)</span>:</p>
+<ol type="1">
+<li>Start with <span class="math inline">\(E_4E_3E_2E_1A = I_n\)</span></li>
+<li>Multiply from the left by <span class="math inline">\(E_4^{-1}\)</span>:
+<ul>
+<li><span class="math inline">\(E_3E_2E_1A = E_4^{-1}\)</span></li>
+</ul></li>
+<li>Multiply from the left by <span class="math inline">\(E_3^{-1}\)</span>:
+<ul>
+<li><span class="math inline">\(E_2E_1A = E_3^{-1}E_4^{-1}\)</span></li>
+</ul></li>
+<li>Multiply from the left by <span class="math inline">\(E_2^{-1}\)</span>:
+<ul>
+<li><span class="math inline">\(E_1A = E_2^{-1}E_3^{-1}E_4^{-1}\)</span></li>
+</ul></li>
+<li>Finally multiply from the left by <span class="math inline">\(E_1^{-1}\)</span>:
+<ul>
+<li><span class="math inline">\(A = E_1^{-1}E_2^{-1}E_3^{-1}E_4^{-1}\)</span></li>
+</ul></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -896,11 +1198,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../parts/system_equations.html" class="pagination-link" aria-label="System of Linear Equations">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">System of Linear Equations</span>
+      <a href="../parts/system_equations.html" class="pagination-link" aria-label="Systems of Linear Equations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Systems of Linear Equations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../worksheets/alwaysSometimesNever.html" class="pagination-link" aria-label="Conceptual Problems">
+        <span class="nav-page-text">Conceptual Problems</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
