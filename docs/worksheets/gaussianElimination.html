@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Systems of Linear Equations – Linear Algebra</title>
+<title>Computational Problems – Linear Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/system_equations.html" rel="next">
-<link href="../worksheets/linearMapsEquations1.html" rel="prev">
+<link href="../worksheets/alwaysSometimesNever.html" rel="next">
+<link href="../chapters/system_equations.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">Systems of Linear Equations</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">Systems of Linear Equations</a></li><li class="breadcrumb-item"><a href="../worksheets/gaussianElimination.html">Computational Problems</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -224,7 +224,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../parts/system_equations.html" class="sidebar-item-text sidebar-link active">
+            <a href="../parts/system_equations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Systems of Linear Equations</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -239,7 +239,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../worksheets/gaussianElimination.html" class="sidebar-item-text sidebar-link">
+  <a href="../worksheets/gaussianElimination.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Computational Problems</span></a>
   </div>
 </li>
@@ -273,15 +273,26 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#gaussian-elimination" id="toc-gaussian-elimination" class="nav-link active" data-scroll-target="#gaussian-elimination">Gaussian Elimination</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1:</a></li>
+  </ul></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2:</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/system_equations.html">Systems of Linear Equations</a></li><li class="breadcrumb-item"><a href="../worksheets/gaussianElimination.html">Computational Problems</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Systems of Linear Equations</h1>
+<h1 class="title">Computational Problems</h1>
 </div>
 
 
@@ -298,14 +309,56 @@ window.Quarto = {
 </header>
 
 
-<p>This section covers system of linear equations.</p>
-<ol type="1">
-<li><a href="../chapters/system_equations.html">Systems of Linear Equations</a></li>
-<li><a href="..\worksheets/gaussianElimination.qmd.qmd">Computational Problems</a></li>
-<li><a href="../worksheets/alwaysSometimesNever.html">Conceptual Problems</a></li>
+<section id="gaussian-elimination" class="level2">
+<h2 class="anchored" data-anchor-id="gaussian-elimination">Gaussian Elimination</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1:</h3>
+<p>Find the reduced row echelon form of the following matrices by hand:</p>
+<ol type="a">
+<li><span class="math inline">\(\begin{bmatrix}
+-1 &amp; 1  \\
+-1 &amp; 0  \\
+0 &amp; -1  \\
+-1 &amp; 2
+\end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\begin{bmatrix}
+1 &amp; 2 &amp; 0 \\
+1 &amp; 3 &amp; 3 \\
+-1 &amp; 0 &amp; -1 \\
+-3 &amp; 0 &amp; 0
+\end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\begin{bmatrix}
+0 &amp; -3 &amp; 2 &amp; -2 \\
+0 &amp; 2 &amp; 2 &amp; -2
+\end{bmatrix}\)</span></li>
 </ol>
+</section>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2:</h2>
+<p>Solve the following system of equations by hand:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_2 + 5x_3 &amp;= -4 \\
+x_1 + 4x_2 + 3x_3 &amp;= -2 \\
+2x_1 + 7x_2 + x_3 &amp;= -2
+\end{aligned}
+\]</span></p>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3:</h2>
+<p>Solve the following system of equations. Use SymPy to find the rref.</p>
+<p><span class="math display">\[
+\begin{aligned}
+6x_3 + 2x_4 - 4x_5 - 8x_6 &amp;= 8 \\
+3x_3 + x_4 - 2x_5 - 4x_6 &amp;= 4 \\
+2x_1 - 3x_2 + x_3 + 4x_4 - 7x_5 + x_6 &amp;= 2 \\
+6x_1 - 9x_2 + 11x_4 - 19x_5 + 3x_6 &amp;= 1
+\end{aligned}
+\]</span></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -727,13 +780,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../worksheets/linearMapsEquations1.html" class="pagination-link" aria-label="Problems">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Problems</span>
+      <a href="../chapters/system_equations.html" class="pagination-link" aria-label="Systems of Linear Equations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/system_equations.html" class="pagination-link" aria-label="Systems of Linear Equations">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../worksheets/alwaysSometimesNever.html" class="pagination-link" aria-label="Conceptual Problems">
+        <span class="nav-page-text">Conceptual Problems</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

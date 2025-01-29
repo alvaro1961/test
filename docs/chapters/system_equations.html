@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../worksheets/alwaysSometimesNever.html" rel="next">
+<link href="../worksheets/gaussianElimination.html" rel="next">
 <link href="../parts/system_equations.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -273,6 +273,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../worksheets/gaussianElimination.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computational Problems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../worksheets/alwaysSometimesNever.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conceptual Problems</span></a>
   </div>
@@ -280,8 +286,21 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Subspaces and Bases</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../parts/subspaces_bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Subspaces and Bases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/subspaces_Rn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
     </ul>
     </div>
@@ -640,7 +659,9 @@ x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
 <li>The homogeneous system <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> has a unique solution</li>
 <li>Let <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span>. If <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>, then <span class="math inline">\(\mathbf{x}=\mathbf{0}\)</span></li>
 <li>Let <span class="math inline">\(c_1,\dots,c_n\in\mathbb{R}\)</span>. If <span class="math inline">\(c_1\mathbf{a}_1+c_2\mathbf{a}_2+\cdots+c_n\mathbf{a}_n=\mathbf{0}\)</span>, then <span class="math inline">\(c_1=c_2=\cdots=c_n=0.\)</span></li>
-<li>The row reduced Echelon form of <span class="math inline">\(A\)</span> doesn’t have any free columns</li>
+<li>We cannot write any column of <span class="math inline">\(A\)</span> as a linear combination of the other columns</li>
+<li>The row reduced Echelon form of <span class="math inline">\(A\)</span> doesn’t have any free columns<br>
+</li>
 </ol>
 </div>
 <p>Condition 3 of <a href="#thm-homogeneous-independence" class="quarto-xref">Theorem&nbsp;<span>5.3</span></a> motivates the following definition</p>
@@ -662,7 +683,7 @@ x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
 <li>If <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> has a solution, when is that solution unique?</li>
 <li>Under what conditions does <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> have solutions for every <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span></li>
 </ol>
-<p>By <a href="matrices.html#eq-matrix-linear-combination" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>: <span class="math display">\[A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \cdots + x_n\mathbf{a}_n = \mathbf{b}\]</span></p>
+<p>Let’s start with existence. Suppose that <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> . By <a href="matrices.html#eq-matrix-linear-combination" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>: <span class="math display">\[A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \cdots + x_n\mathbf{a}_n = \mathbf{b}\]</span></p>
 <p>Therefore, <span class="math inline">\(\mathbf{b}\)</span> must be a linear combination of the columns of <span class="math inline">\(A\)</span>. The set of all such linear combinations is called the span of the columns (see <a href="vectors.html#sec-span" class="quarto-xref"><span>Section 1.3</span></a>). Then we have</p>
 <div id="thm-existence-solution" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 5.4</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix and <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span>. Then the following conditions are equivalent:</p>
@@ -671,7 +692,7 @@ x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
 <li><span class="math inline">\(\mathbf{b}\)</span> can be written as a linear combination of the columns of <span class="math inline">\(A\)</span></li>
 </ol>
 </div>
-<p>Let’s examine two examples. Consider: <span class="math display">\[A=\begin{bmatrix}1&amp;2&amp;1&amp;3\\2&amp;4&amp;0&amp;2\\3&amp;6&amp;-1&amp;1\end{bmatrix},\quad\mathbf{b}_1=\begin{bmatrix}1\\1\\1\end{bmatrix},\quad\mathbf{b}_2=\begin{bmatrix}1\\1\\0\end{bmatrix}\]</span></p>
+<p>Let’s examine some examples. Consider: <span class="math display">\[A=\begin{bmatrix}1&amp;2&amp;1&amp;3\\2&amp;4&amp;0&amp;2\\3&amp;6&amp;-1&amp;1\end{bmatrix},\quad\mathbf{b}_1=\begin{bmatrix}1\\1\\1\end{bmatrix},\quad\mathbf{b}_2=\begin{bmatrix}1\\1\\0\end{bmatrix}\]</span></p>
 <p>First, let’s solve <span class="math inline">\(A\mathbf{x}=\mathbf{b}_1\)</span>. The row reduced echelon form of <span class="math inline">\([A|\mathbf{b}_1]\)</span> is: <span class="math display">\[
 \left[\begin{array}{cccc|c}1&amp;2&amp;1&amp;3&amp;1\\2&amp;4&amp;0&amp;2&amp;1\\3&amp;6&amp;-1&amp;1&amp;1\end{array}\right] \xrightarrow{\text{RREF}}
 \left[\begin{array}{cccc|c}1&amp;2&amp;0&amp;1&amp;\frac{1}{2}\\0&amp;0&amp;1&amp;2&amp;\frac{1}{2}\\0&amp;0&amp;0&amp;0&amp;0\end{array}\right]
@@ -687,7 +708,7 @@ x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
 \begin{bmatrix}x_1\\ x_2\\ x_3\\ x_4\end{bmatrix} =
 \begin{bmatrix}\frac{1}{2}\\ 0\\ \frac{1}{2}\\ 0\end{bmatrix} +x_2 \begin{bmatrix}-2\\ 1\\ 0\\ 0\end{bmatrix}
 +x_4 \begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}
-\]</span> Since <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> can take arbitrary elements, there are infinitely many solutions. When <span class="math inline">\(x_2=x_4=0\)</span>, we get <span class="math inline">\((\frac{1}{2},0,\frac{1}{2},0)\)</span>, showing that: <span class="math display">\[\mathbf{b}_1=\frac{1}{2}\mathbf{a}_1+\frac{1}{2}\mathbf{a}_3\]</span></p>
+\]</span> Since <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> can take arbitrary elements, there are infinitely many solutions. When <span class="math inline">\(x_2=x_4=0\)</span>, we get <span class="math inline">\((\frac{1}{2},0,\frac{1}{2},0)\)</span>, showing that: <span class="math display">\[\mathbf{b}_1=\frac{1}{2}\mathbf{a}_1+\frac{1}{2}\mathbf{a}_3,\]</span> which we can verify by replacing the values of the columns of <span class="math inline">\(A\)</span> in the equation.</p>
 <p>This example illustrates the following</p>
 <div id="thm-uniqueness-solution" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 5.5</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix, <span class="math inline">\(\mathbf{b}\in\mathbb{R}^m\)</span>, and suppose that <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> has at least one solution. Then the following conditions are equivalent:</p>
@@ -702,8 +723,8 @@ x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
 \left[\begin{array}{cccc|c}1&amp;2&amp;0&amp;1&amp;0\\0&amp;0&amp;1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;1\end{array}\right]
 \]</span></p>
 <p>This system has no solution since the last equation becomes: <span class="math display">\[0x_1+0x_2+0x_3+0x_4=1\]</span></p>
-<p>For the general case, let <span class="math inline">\(\mathbf{b}_3=\begin{bmatrix}a\\b\\c\end{bmatrix}\)</span> be arbitrary in <span class="math inline">\(\mathbb{R}^3\)</span>. We can find solutions by reducing the augmented matrix <span class="math inline">\([A|\mathbf{b}_3]\)</span> to echelon form. We can do this in SymPy using the <code>echelon_form()</code> method that find the row echelon form and not the row reduced echelon form.</p>
-<div id="3e8cf561" class="cell" data-execution_count="1">
+<p>For the general case, let <span class="math inline">\(\mathbf{b}_3=\begin{bmatrix}a\\b\\c\end{bmatrix}\)</span> be arbitrary in <span class="math inline">\(\mathbb{R}^3\)</span>. We can find solutions by reducing the augmented matrix <span class="math inline">\([A|\mathbf{b}_3]\)</span> to echelon form. We can do this in SymPy using the <code>echelon_form()</code> method that finds the row echelon form and not the row reduced echelon form.</p>
+<div id="63190b19" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, symbols</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a,b,c <span class="op">=</span> symbols(<span class="st">"a b c"</span>)</span>
@@ -714,7 +735,7 @@ x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}1 &amp; 2 &amp; 1 &amp; 3 &amp; a\\0 &amp; 0 &amp; -2 &amp; -4 &amp; - 2 a + b\\0 &amp; 0 &amp; 0 &amp; 0 &amp; - 2 a + 4 b - 2 c\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<p>The last equation is: <span class="math display">\[0x_1+0x_2+0x_3+0x_4=-2a+4b-2c,\]</span> which explains why <span class="math inline">\((1,1,1)\)</span> is a solution and <span class="math inline">\((1,1,0)\)</span> is not.</p>
+<p>The last equation is: <span class="math display">\[0x_1+0x_2+0x_3+0x_4=-2a+4b-2c.\]</span> Then we conclude that <span class="math inline">\(A\mathbf{x}=\mathbf{b}_3\)</span> has a solution if and only if <span class="math inline">\(-2a+4b-2c=0\)</span>, which explains why we have a solution for <span class="math inline">\(\mathbf{b}_1=(1,1,1)\)</span> but not for <span class="math inline">\(\mathbf{b}_2=(1,1,0)\)</span>.</p>
 <p>The last two examples illustrate the following</p>
 <div id="thm-universal-solution" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 5.6</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix and let <span class="math inline">\(R\)</span> be the reduced row echelon form of <span class="math inline">\(A\)</span>. The following conditions are equivalent:</p>
@@ -752,7 +773,7 @@ x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
 <p>We’ll explore this algorithm in detail during the lab.</p>
 <section id="sec-inverse-elementary" class="level3" data-number="5.7.1">
 <h3 data-number="5.7.1" class="anchored" data-anchor-id="sec-inverse-elementary"><span class="header-section-number">5.7.1</span> Writing Invertible Matrices as Products of Elementary Matrices</h3>
-<p>Let <span class="math inline">\(A\)</span> be an invertible matrix. Then the row reduced echelon form of <span class="math inline">\(A\)</span> is the identity. Each step of the row reduction process corresponds to left multiplication by an elementary matrix. Recall that elementary matrices are invertible and their inverses are also elementary matrices. Therefore, we can find elementary matrices <span class="math inline">\(E_1,\ldots,E_k\)</span> such that: <span class="math display">\[E_k\cdots E_2E_1A = I_n\]</span> Solving for <span class="math inline">\(A\)</span> we get that <span class="math display">\[A=E_K^{-1}E_{k-1}^{-1}\cdots E_2^{-1}E_1^{-1}.\]</span></p>
+<p>Let <span class="math inline">\(A\)</span> be an invertible matrix. Then the row reduced echelon form of <span class="math inline">\(A\)</span> is the identity. Each step of the row reduction process corresponds to left multiplication by an elementary matrix. Recall that elementary matrices are invertible and their inverses are also elementary matrices. Therefore, we can find elementary matrices <span class="math inline">\(E_1,\ldots,E_k\)</span> such that: <span class="math display">\[E_k\cdots E_2E_1A = I_n\]</span> Solving for <span class="math inline">\(A\)</span> we get that <span class="math display">\[A=E_k^{-1}E_{k-1}^{-1}\cdots E_2^{-1}E_1^{-1}.\]</span></p>
 <p>To illustrate, consider the case where <span class="math inline">\(E_4E_3E_2E_1A = I_n\)</span>. We can solve for <span class="math inline">\(A\)</span>:</p>
 <ol type="1">
 <li>Start with <span class="math inline">\(E_4E_3E_2E_1A = I_n\)</span></li>
@@ -1203,8 +1224,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../worksheets/alwaysSometimesNever.html" class="pagination-link" aria-label="Conceptual Problems">
-        <span class="nav-page-text">Conceptual Problems</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../worksheets/gaussianElimination.html" class="pagination-link" aria-label="Computational Problems">
+        <span class="nav-page-text">Computational Problems</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
