@@ -296,8 +296,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bases of Vector Spaces</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/subspaces_Rn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -371,7 +377,7 @@ window.Quarto = {
 <p>This section explores how images are represented as matrices and demonstrates various transformations using Python. We’ll cover both grayscale and color images, showing how matrix operations can be used to create different visual effects.</p>
 <section id="required-libraries" class="level4">
 <h4 class="anchored" data-anchor-id="required-libraries">Required Libraries</h4>
-<div id="38e434cb" class="cell" data-execution_count="1">
+<div id="ed73a833" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -383,7 +389,7 @@ window.Quarto = {
 <section id="understanding-grayscale-representation" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-grayscale-representation">Understanding Grayscale Representation</h3>
 <p>Grayscale images are typically represented as 2D arrays (matrices) where each element represents the intensity of a pixel. When working with uint8 (integers) data type, the values range from 0 (black) to 255 (white). When working with float data type, the values should be normalized to the range 0 to 1.</p>
-<div id="e3ba4c50" class="cell" data-execution_count="2">
+<div id="1aa2bc1a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple 3x4 grayscale image</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>grayscale_example <span class="op">=</span> np.array([</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">85</span>, <span class="dv">170</span>, <span class="dv">255</span>],    <span class="co"># Different shades of gray</span></span>
@@ -428,7 +434,7 @@ window.Quarto = {
 </section>
 <section id="simple-rgb-image-with-common-colors" class="level3">
 <h3 class="anchored" data-anchor-id="simple-rgb-image-with-common-colors">Simple RGB image with common colors</h3>
-<div id="231b854b" class="cell" data-execution_count="3">
+<div id="04ac94fe" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>simple_rgb <span class="op">=</span> np.array([</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    [[<span class="dv">255</span>,<span class="dv">0</span>,<span class="dv">0</span>], [<span class="dv">0</span>,<span class="dv">255</span>,<span class="dv">0</span>], [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">255</span>], [<span class="dv">255</span>,<span class="dv">255</span>,<span class="dv">255</span>]],   <span class="co"># top row</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    [[<span class="dv">255</span>,<span class="dv">255</span>,<span class="dv">0</span>], [<span class="dv">0</span>,<span class="dv">255</span>,<span class="dv">255</span>],[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>], [<span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>]]   <span class="co"># bottom row</span></span>
@@ -451,7 +457,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="navigating-color-images-in-numpy">Navigating Color Images in NumPy</h3>
 <p>When working with color images in NumPy, <code>image[a,b,c]</code> lets us access specific pixel values. The first two numbers (a,b) are the pixel coordinates - <code>a</code> selects the row (moving down), <code>b</code> selects the column (moving right). The last number <code>c</code> picks the color channel: 0 for red, 1 for green, or 2 for blue. So <code>image[1,2,1]</code> gets the green value at row 2, column 3.</p>
 <p>To access entire color channels, you can use <code>:</code> to select all rows and columns. For example, <code>image[:,:,0]</code> gives you the complete red channel, <code>image[:,:,1]</code> the green channel, and <code>image[:,:,2]</code> the blue channel. Each channel is a 2D array of intensities from 0 to 255, which we visualize in grayscale in the folling function - bright pixels show where that color is strong, dark pixels where it’s absent.</p>
-<div id="8b76a34b" class="cell" data-execution_count="4">
+<div id="c9da6732" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> display_rgb_channels(image):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Display an image and its RGB channels separately"""</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -510,7 +516,7 @@ window.Quarto = {
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <p>Let’s illustrate this is a simple example:</p>
-<div id="0fa26ea3" class="cell" data-execution_count="5">
+<div id="f6b5cd5f" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>img_2by2 <span class="op">=</span> np.array([</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]],      <span class="co"># top row</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    [[<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>],[<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>]]    <span class="co"># bottom row</span></span>
@@ -545,7 +551,7 @@ Shape: (4, 3)</code></pre>
 </div>
 </div>
 <p>Notice that the columns represent red, green, and blue values respectively. This process is reversible. If we write <code>M_2by2.reshape(img_2by2.shape)</code> we get <code>img_2by2</code> back - no need to remember the original dimensions since they’re stored in the <code>shape</code> attribute. However, if you want, you can also write <code>M_2by2.reshape(2,2)</code>.</p>
-<div id="008ad8bf" class="cell" data-execution_count="6">
+<div id="d2fea78a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>M_2by2.reshape(img_2by2.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>array([[[ 1,  2,  3],
@@ -559,7 +565,7 @@ Shape: (4, 3)</code></pre>
 <section id="helper-functions" class="level3">
 <h3 class="anchored" data-anchor-id="helper-functions">Helper Functions</h3>
 <p>We’ll use these helper functions to convert between image and matrix formats throughout our examples:</p>
-<div id="ebe128af" class="cell" data-execution_count="7">
+<div id="716d881b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> image_to_matrix(image):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Convert image to matrix format (n_pixels × 3)"""</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> image.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>)</span>
@@ -575,7 +581,7 @@ Shape: (4, 3)</code></pre>
 <section id="swapping-color-channels" class="level3">
 <h3 class="anchored" data-anchor-id="swapping-color-channels">Swapping Color Channels</h3>
 <p>We can use permutation matrices to swap color channels:</p>
-<div id="a2821b8c" class="cell" data-execution_count="8">
+<div id="5951e0d5" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> swap_colors(image, permutation_matrix):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Apply color permutation to image"""</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    matrix <span class="op">=</span> image_to_matrix(image)</span>
@@ -624,7 +630,7 @@ Exercise: Find all six 3×3 permutation matrices.
 <h2 class="anchored" data-anchor-id="grayscale-conversion-and-negative">5. Grayscale Conversion and Negative</h2>
 <p>When converting a color image to grayscale, we don’t simply average the RGB values. Our eyes have different sensitivities to different colors, with green light being perceived as brightest and blue as darkest. To create natural-looking grayscale images, we use weighted averages that match human perception: 29.9% for red, 58.7% for green, and 11.4% for blue.</p>
 <p>The negative of an image can be obtained by subtracting each pixel value from the maximum possible value (255 for 8-bit images). Thanks to NumPy’s broadcasting capabilities, we can simply write 255 - image and this operation will be applied to every pixel value automatically, whether it’s a grayscale or color image. Here’s a simple function to create image negatives:</p>
-<div id="44e393d0" class="cell" data-execution_count="9">
+<div id="4ed1affa" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_grayscale(image):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Convert RGB image to grayscale using weighted sum"""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    weights <span class="op">=</span> np.array([<span class="fl">0.299</span>, <span class="fl">0.587</span>, <span class="fl">0.114</span>])</span>
@@ -662,7 +668,7 @@ Exercise: Find all six 3×3 permutation matrices.
 <p>A sepia filter transforms a regular color image into one with a warm, brownish tone reminiscent of vintage photographs. To create this effect, we need to adjust each color channel using specific weights. For each pixel, the new RGB values are calculated as a combination of the original values:</p>
 <p>The red channel is amplified with warm tones The green channel is moderately reduced The blue channel is significantly reduced</p>
 <p>This creates the characteristic reddish-brown tint that gives sepia images their antique appearance.</p>
-<div id="4be0b29b" class="cell" data-execution_count="10">
+<div id="cb6a31f8" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_sepia(image):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Apply sepia filter to image"""</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    sepia_matrix <span class="op">=</span> np.array([</span>
@@ -688,7 +694,7 @@ Exercise: Find all six 3×3 permutation matrices.
 <li>Increases contrast between different colored areas</li>
 </ul>
 <p>This creates a more vivid appearance with enhanced color separation and impact.</p>
-<div id="4b0e1e0b" class="cell" data-execution_count="11">
+<div id="2c8886f3" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> intensify_colors(image):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Apply color intensification filter to image"""</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    intensity_matrix <span class="op">=</span> np.array([</span>
@@ -709,7 +715,7 @@ Exercise: Find all six 3×3 permutation matrices.
 <section id="example-usage" class="level2">
 <h2 class="anchored" data-anchor-id="example-usage">Example Usage</h2>
 <p>Here’s how to use these transformations on an actual image:</p>
-<div id="66e3639c" class="cell" data-execution_count="12">
+<div id="ed1cd154" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load an image: Open it in Image, and convert it to a numpy array as a float</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> np.array(Image.<span class="bu">open</span>(<span class="st">'city_river.jpg'</span>)).astype(<span class="bu">float</span>)<span class="op">/</span><span class="dv">255</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Subspaces of \mathbb{R}^n – Linear Algebra</title>
+<title>7&nbsp; Subspaces of \mathbb{R}^n – Linear Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../parts/subspaces_bases.html" rel="prev">
+<link href="../chapters/bases.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -109,7 +109,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/subspaces_bases.html">Subspaces and Bases</a></li><li class="breadcrumb-item"><a href="../chapters/subspaces_Rn.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/subspaces_bases.html">Subspaces and Bases</a></li><li class="breadcrumb-item"><a href="../chapters/subspaces_Rn.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -261,8 +261,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bases of Vector Spaces</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/subspaces_Rn.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -277,11 +283,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples"><span class="header-section-number">6.1</span> Examples</a></li>
-  <li><a href="#the-four-fundamental-subspaces-of-mathbbrn" id="toc-the-four-fundamental-subspaces-of-mathbbrn" class="nav-link" data-scroll-target="#the-four-fundamental-subspaces-of-mathbbrn"><span class="header-section-number">6.2</span> The Four Fundamental Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></a>
+  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples"><span class="header-section-number">7.1</span> Examples</a></li>
+  <li><a href="#the-four-fundamental-subspaces-of-mathbbrn" id="toc-the-four-fundamental-subspaces-of-mathbbrn" class="nav-link" data-scroll-target="#the-four-fundamental-subspaces-of-mathbbrn"><span class="header-section-number">7.2</span> The Four Fundamental Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></a>
   <ul class="collapse">
-  <li><a href="#fundamental-relationships-in-mathbbrn" id="toc-fundamental-relationships-in-mathbbrn" class="nav-link" data-scroll-target="#fundamental-relationships-in-mathbbrn"><span class="header-section-number">6.2.1</span> Fundamental Relationships in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
-  <li><a href="#concrete-example" id="toc-concrete-example" class="nav-link" data-scroll-target="#concrete-example"><span class="header-section-number">6.2.2</span> Concrete Example:</a></li>
+  <li><a href="#fundamental-relationships-in-mathbbrn" id="toc-fundamental-relationships-in-mathbbrn" class="nav-link" data-scroll-target="#fundamental-relationships-in-mathbbrn"><span class="header-section-number">7.2.1</span> Fundamental Relationships in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+  <li><a href="#concrete-example" id="toc-concrete-example" class="nav-link" data-scroll-target="#concrete-example"><span class="header-section-number">7.2.2</span> Concrete Example:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -289,9 +295,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/subspaces_bases.html">Subspaces and Bases</a></li><li class="breadcrumb-item"><a href="../chapters/subspaces_Rn.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/subspaces_bases.html">Subspaces and Bases</a></li><li class="breadcrumb-item"><a href="../chapters/subspaces_Rn.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></h1>
 </div>
 
 
@@ -316,8 +322,8 @@ window.Quarto = {
 <li><strong>Closure under Scalar Multiplication</strong>: For all <span class="math inline">\(c \in \mathbb{R}\)</span> and <span class="math inline">\(\mathbf{v} \in W\)</span>, <span class="math inline">\(c\mathbf{v} \in W\)</span></li>
 </ol>
 <p>We showed in ?? that subspaces are also vector spaces with the operations they inherit.</p>
-<section id="examples" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="examples"><span class="header-section-number">6.1</span> Examples</h2>
+<section id="examples" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="examples"><span class="header-section-number">7.1</span> Examples</h2>
 <p>We will look at three important examples</p>
 <p><strong>Example 1: The Span of Vectors</strong> Let <span class="math inline">\(\mathbf{v}_1, ..., \mathbf{v}_k \in \mathbb{R}^n\)</span>. Recall that the span (<a href="vectors.html#sec-span" class="quarto-xref"><span>Section 1.3</span></a>) of the vectors is defined by <span class="math display">\[\text{span}\{\mathbf{v}_1, ..., \mathbf{v}_k\} = \{c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + ... + c_k\mathbf{v}_k : c_1, c_2, ..., c_k \in \mathbb{R}\}.\]</span></p>
 <div class="theorem">
@@ -357,8 +363,8 @@ window.Quarto = {
 </ol>
 </div>
 </section>
-<section id="the-four-fundamental-subspaces-of-mathbbrn" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="the-four-fundamental-subspaces-of-mathbbrn"><span class="header-section-number">6.2</span> The Four Fundamental Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></h2>
+<section id="the-four-fundamental-subspaces-of-mathbbrn" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-four-fundamental-subspaces-of-mathbbrn"><span class="header-section-number">7.2</span> The Four Fundamental Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></h2>
 <p>For an <span class="math inline">\(m \times n\)</span> matrix A:</p>
 <ol type="1">
 <li><p><strong>Column Space</strong>: <span class="math inline">\(Col(A) \subseteq \mathbb{R}^m\)</span> <span class="math inline">\(Col(A) = \{\mathbf{y} \in \mathbb{R}^m : \mathbf{y} = A\mathbf{x} \text{ for some } \mathbf{x} \in \mathbb{R}^n\}\)</span></p></li>
@@ -366,8 +372,8 @@ window.Quarto = {
 <li><p><strong>Row Space</strong>: <span class="math inline">\(Row(A) \subseteq \mathbb{R}^n\)</span> <span class="math inline">\(Row(A) = Col(A^T)\)</span></p></li>
 <li><p><strong>Left Null Space</strong>: <span class="math inline">\(Nul(A^T) \subseteq \mathbb{R}^m\)</span></p></li>
 </ol>
-<section id="fundamental-relationships-in-mathbbrn" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="fundamental-relationships-in-mathbbrn"><span class="header-section-number">6.2.1</span> Fundamental Relationships in <span class="math inline">\(\mathbb{R}^n\)</span></h3>
+<section id="fundamental-relationships-in-mathbbrn" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="fundamental-relationships-in-mathbbrn"><span class="header-section-number">7.2.1</span> Fundamental Relationships in <span class="math inline">\(\mathbb{R}^n\)</span></h3>
 <ol type="1">
 <li><strong>Orthogonality</strong>:
 <ul>
@@ -382,8 +388,8 @@ window.Quarto = {
 </ul></li>
 </ol>
 </section>
-<section id="concrete-example" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="concrete-example"><span class="header-section-number">6.2.2</span> Concrete Example:</h3>
+<section id="concrete-example" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="concrete-example"><span class="header-section-number">7.2.2</span> Concrete Example:</h3>
 <p>For the matrix: <span class="math display">\[A = \begin{pmatrix}
 1 &amp; 2 &amp; 2 \\
 2 &amp; 4 &amp; 4
@@ -819,8 +825,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../parts/subspaces_bases.html" class="pagination-link" aria-label="Subspaces and Bases">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Subspaces and Bases</span>
+      <a href="../chapters/bases.html" class="pagination-link" aria-label="Bases of Vector Spaces">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bases of Vector Spaces</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
