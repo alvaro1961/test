@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../worksheets/bases_subspaces.html" rel="next">
 <link href="../chapters/bases.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -271,6 +272,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/bases_subspaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problems</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -283,12 +290,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples"><span class="header-section-number">7.1</span> Examples</a></li>
-  <li><a href="#the-four-fundamental-subspaces-of-mathbbrn" id="toc-the-four-fundamental-subspaces-of-mathbbrn" class="nav-link" data-scroll-target="#the-four-fundamental-subspaces-of-mathbbrn"><span class="header-section-number">7.2</span> The Four Fundamental Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></a>
+  <li><a href="#the-null-space" id="toc-the-null-space" class="nav-link active" data-scroll-target="#the-null-space"><span class="header-section-number">7.1</span> The Null Space</a></li>
+  <li><a href="#the-span-of-a-set-of-vectors" id="toc-the-span-of-a-set-of-vectors" class="nav-link" data-scroll-target="#the-span-of-a-set-of-vectors"><span class="header-section-number">7.2</span> The Span of a Set of Vectors</a>
   <ul class="collapse">
-  <li><a href="#fundamental-relationships-in-mathbbrn" id="toc-fundamental-relationships-in-mathbbrn" class="nav-link" data-scroll-target="#fundamental-relationships-in-mathbbrn"><span class="header-section-number">7.2.1</span> Fundamental Relationships in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
-  <li><a href="#concrete-example" id="toc-concrete-example" class="nav-link" data-scroll-target="#concrete-example"><span class="header-section-number">7.2.2</span> Concrete Example:</a></li>
+  <li><a href="#finding-bases" id="toc-finding-bases" class="nav-link" data-scroll-target="#finding-bases"><span class="header-section-number">7.2.1</span> Finding bases</a></li>
   </ul></li>
+  <li><a href="#the-orthogonal-complement" id="toc-the-orthogonal-complement" class="nav-link" data-scroll-target="#the-orthogonal-complement"><span class="header-section-number">7.3</span> The Orthogonal Complement</a></li>
   </ul>
 </nav>
     </div>
@@ -314,23 +321,103 @@ window.Quarto = {
 </header>
 
 
-<p><strong>This section is still preliminary</strong></p>
 <p>Recall that a subset <span class="math inline">\(W\)</span> of <span class="math inline">\(\mathbb{R}^n\)</span> is a <strong>subspace</strong> of <span class="math inline">\(\mathbb{R}^n\)</span> if it satisfies the following three conditions:</p>
 <ol type="1">
 <li><strong>Zero Vector Property</strong>: <span class="math inline">\(\mathbf{0} \in W\)</span></li>
 <li><strong>Closure under Addition</strong>: For all <span class="math inline">\(\mathbf{u}, \mathbf{v} \in W\)</span>, <span class="math inline">\(\mathbf{u} + \mathbf{v} \in W\)</span></li>
 <li><strong>Closure under Scalar Multiplication</strong>: For all <span class="math inline">\(c \in \mathbb{R}\)</span> and <span class="math inline">\(\mathbf{v} \in W\)</span>, <span class="math inline">\(c\mathbf{v} \in W\)</span></li>
 </ol>
-<p>We showed in ?? that subspaces are also vector spaces with the operations they inherit.</p>
-<section id="examples" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="examples"><span class="header-section-number">7.1</span> Examples</h2>
-<p>We will look at three important examples</p>
-<p><strong>Example 1: The Span of Vectors</strong> Let <span class="math inline">\(\mathbf{v}_1, ..., \mathbf{v}_k \in \mathbb{R}^n\)</span>. Recall that the span (<a href="vectors.html#sec-span" class="quarto-xref"><span>Section 1.3</span></a>) of the vectors is defined by <span class="math display">\[\text{span}\{\mathbf{v}_1, ..., \mathbf{v}_k\} = \{c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + ... + c_k\mathbf{v}_k : c_1, c_2, ..., c_k \in \mathbb{R}\}.\]</span></p>
+<p>We showed in <a href="vector_spaces.html#thm-subspace" class="quarto-xref">Theorem&nbsp;<span>2.1</span></a> that subspaces are also vector spaces with the operations they inherit.</p>
+<section id="the-null-space" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="the-null-space"><span class="header-section-number">7.1</span> The Null Space</h2>
+<div id="def-null-A" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 7.1</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix, the null space of the matrix <span class="math inline">\(A\)</span> is defined by <span class="math display">\[\text{nul}(A) = \{\mathbf{x}\in\mathbb{R}^n:A\mathbf{x}=\mathbf{0}\}\]</span></p>
+</div>
+<div class="theorem">
+<p><strong>Proposition:</strong> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix. Then nul<span class="math inline">\((A)\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^n\)</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>We need to check the three properties:</p>
+<ol type="1">
+<li><p><strong>Zero Vector Property</strong>: <span class="math inline">\(A\mathbf{0} = \mathbf{0}\)</span> by properties of matrix multiplication. Therefore, <span class="math inline">\(\mathbf{0} \in \text{nul}(A)\)</span></p></li>
+<li><p><strong>Closure under Addition</strong>: Let <span class="math inline">\(\mathbf{x}, \mathbf{y} \in \text{nul}(A)\)</span>. Then <span class="math inline">\(A\mathbf{x} = \mathbf{0}\)</span> and <span class="math inline">\(A\mathbf{y} = \mathbf{0}\)</span>. Then <span class="math inline">\(A(\mathbf{x} + \mathbf{y}) = A\mathbf{x} + A\mathbf{y} = \mathbf{0} + \mathbf{0} = \mathbf{0}\)</span>. Therefore, <span class="math inline">\(\mathbf{x} + \mathbf{y} \in \text{nul}(A)\)</span></p></li>
+<li><p><strong>Closure under Scalar Multiplication</strong>: Let <span class="math inline">\(\mathbf{x} \in \text{nul}(A)\)</span> and <span class="math inline">\(c \in \mathbb{R}\)</span>. Then <span class="math inline">\(A(c\mathbf{x}) = cA\mathbf{x} = c\mathbf{0} = \mathbf{0}\)</span>. Therefore, <span class="math inline">\(c\mathbf{x} \in \text{nul}(A)\)</span> <span class="math inline">\(\square\)</span></p></li>
+</ol>
+</div>
+<blockquote class="blockquote">
+<p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m\times n\)</span> matrix:</p>
+<ol type="1">
+<li><span class="math inline">\(\text{nul}(A)\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^n\)</span>, and</li>
+<li><span class="math inline">\(\text{nul}(A^T)\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^m\)</span>.</li>
+</ol>
+</blockquote>
+<p>Since <span class="math inline">\(\text{nul}(A)\)</span> consists of the solutions of the homogeneous system <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>, we solve it using Gaussain elimination and back substitution. We will see that this process gives a basis of <span class="math inline">\(\text{nul}(A)\)</span>.</p>
+<p><strong>Example 1:</strong> Find a basis for the null space of <span class="math display">\[A = \begin{bmatrix}
+-1 &amp; 2 &amp; 0 &amp; 1 &amp; 1  \\
+2 &amp; 2 &amp; 6 &amp; 4 &amp; -1  \\
+1 &amp; -1 &amp; 1 &amp; 0 &amp; 1  \\
+1 &amp; 2 &amp; 4 &amp; 3 &amp; 2
+\end{bmatrix}.\]</span></p>
+<p>To find the solutions of <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>, we look at the augmented matrix <span class="math inline">\([A|\mathbf{0}]\)</span>, row reduce it:</p>
+<p><span class="math display">\[\left[
+\begin{array}{ccccc|c}
+-1 &amp; 2 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\
+2 &amp; 2 &amp; 6 &amp; 4 &amp; -1 &amp; 0 \\
+1 &amp; -1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 2 &amp; 4 &amp; 3 &amp; 2 &amp; 0
+\end{array}\right]
+\xrightarrow{\text{RREF}}
+\left[
+\begin{array}{ccccc|c}
+1 &amp; 0 &amp; 2 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right],\]</span> and then we solve the system by back substitution:</p>
+<ol type="1">
+<li>From the third row: <span class="math inline">\(x_5=0\)</span></li>
+<li><span class="math inline">\(x_4\)</span> is free</li>
+<li><span class="math inline">\(x_3\)</span> is free</li>
+<li>From the second row: <span class="math inline">\(x_2= -x_3-x_4\)</span>, and</li>
+<li>From the first row: <span class="math inline">\(x_1=-2x_3-x_4\)</span>.</li>
+</ol>
+<p>Wrting the solution in vector form we get:</p>
+<p><span class="math display">\[\mathbf{x}=\begin{bmatrix}x_1\\ x_2\\ x_3\\ x_4\\ x_5\end{bmatrix}
+=\begin{bmatrix}-2x_3-x_4\\-x_3-x_4\\ x_3\\ x_4\\0\end{bmatrix}
+=x_3\begin{bmatrix}-2\\-1\\ 1\\ 0\\0\end{bmatrix}
++x_4\begin{bmatrix}-1\\-1\\ 0\\ 1\\0\end{bmatrix}.
+\]</span></p>
+<p>We claim that <span class="math display">\[S=\left\{\begin{bmatrix}-2\\-1\\ 1\\ 0\\0\end{bmatrix},
+\begin{bmatrix}-1\\-1\\ 0\\ 1\\0\end{bmatrix}\right\}\]</span> is a basis for <span class="math inline">\(\text{nul}(A)\)</span>. Indeed, we just showed that any solution of <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> can be written as a linear combination of these vectors, showing that <span class="math inline">\(S\)</span> spans <span class="math inline">\(\text{nul}(A)\)</span>. Then notice that <span class="math inline">\(S\)</span> is linearly independent, proving that <span class="math inline">\(S\)</span> is a basis of <span class="math inline">\(\text{nul}(A)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Gaussian Elimination Naturally Produces Basis Vectors
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The point is that back substitution gives us vectors that:</p>
+<ol type="1">
+<li>Are automatically linearly independent (due to the staggered positioning of pivots and free variables)</li>
+<li>Generate all solutions (since we systematically express each variable in terms of free variables)</li>
+</ol>
+<p>These two properties are exactly what’s needed for a basis. The systematic nature of Gaussian elimination ensures this happens every time.</p>
+</div>
+</div>
+</section>
+<section id="the-span-of-a-set-of-vectors" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-span-of-a-set-of-vectors"><span class="header-section-number">7.2</span> The Span of a Set of Vectors</h2>
+<p>Let <span class="math inline">\(\mathbf{v}_1, ..., \mathbf{v}_k \in \mathbb{R}^n\)</span>. Recall (<a href="vectors.html#sec-span" class="quarto-xref"><span>Section 1.3</span></a>) that the span of a set of vectors is defined by <span class="math display">\[\text{span}\{\mathbf{v}_1, ..., \mathbf{v}_k\} = \{c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + ... + c_k\mathbf{v}_k : c_1, c_2, ..., c_k \in \mathbb{R}\}.\]</span></p>
+<p>Parts of the following theorem were discussed in <a href="vectors.html#thm-span_subspace" class="quarto-xref">Theorem&nbsp;<span>1.1</span></a></p>
 <div class="theorem">
 <p><strong>Proposition:</strong> <span class="math inline">\(\text{span}\{\mathbf{v}_1, ..., \mathbf{v}_k\}\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^n\)</span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>We need to check the three conditions:</p>
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(W=\text{span}\{\mathbf{v}_1, ..., \mathbf{v}_k\}\)</span>. We need to check the three conditions:</p>
 <ol type="1">
 <li><p><strong>Zero Vector Property</strong>: Let <span class="math inline">\(c_1 = c_2 = ... = c_k = 0\)</span> Then <span class="math inline">\(0\mathbf{v}_1 + 0\mathbf{v}_2 + ... + 0\mathbf{v}_k = \mathbf{0}\)</span> Therefore, <span class="math inline">\(\mathbf{0} \in W\)</span></p></li>
 <li><p><strong>Closure under Addition</strong>: Let <span class="math inline">\(\mathbf{x}, \mathbf{y} \in W\)</span> where: <span class="math inline">\(\mathbf{x} = a_1\mathbf{v}_1 + ... + a_k\mathbf{v}_k\)</span> <span class="math inline">\(\mathbf{y} = b_1\mathbf{v}_1 + ... + b_k\mathbf{v}_k\)</span></p>
@@ -338,19 +425,101 @@ window.Quarto = {
 <li><p><strong>Closure under Scalar Multiplication</strong>: Let <span class="math inline">\(\mathbf{x} \in W\)</span> where <span class="math inline">\(\mathbf{x} = a_1\mathbf{v}_1 + ... + a_k\mathbf{v}_k\)</span> For any <span class="math inline">\(c \in \mathbb{R}\)</span>: <span class="math inline">\(c\mathbf{x} = (ca_1)\mathbf{v}_1 + ... + (ca_k)\mathbf{v}_k \in W\)</span> <span class="math inline">\(\square\)</span></p></li>
 </ol>
 </div>
-<p><strong>Example 2: The Null Space</strong> For an <span class="math inline">\(m \times n\)</span> matrix A, define: <span class="math inline">\(Nul(A) = \{\mathbf{x} \in \mathbb{R}^n : A\mathbf{x} = \mathbf{0}\}\)</span></p>
-<div class="theorem">
-<p><strong>Proposition:</strong> <span class="math inline">\(Nul(A)\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^n\)</span></p>
+<p>An important example is the column space of a matrix:</p>
+<div id="def-column_A" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 7.2</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix <span class="math display">\[A = \begin{bmatrix}
+\uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow \\
+\mathbf{c}_1 &amp; \mathbf{c}_2 &amp; \cdots &amp; \mathbf{c}_n \\
+\downarrow &amp; \downarrow &amp; \cdots &amp; \downarrow
+\end{bmatrix},\]</span> <span class="math inline">\(\text{col}(A)=\text{span}\{\mathbf{c}_1,\mathbf{c}_2,\dots,\mathbf{c}_n\}\)</span></p>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>We need to check the three properties:</p>
+<blockquote class="blockquote">
+<p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m\times n\)</span> matrix:</p>
 <ol type="1">
-<li><p><strong>Zero Vector Property</strong>: <span class="math inline">\(A\mathbf{0} = \mathbf{0}\)</span> by properties of matrix multiplication Therefore, <span class="math inline">\(\mathbf{0} \in Nul(A)\)</span></p></li>
-<li><p><strong>Closure under Addition</strong>: Let <span class="math inline">\(\mathbf{x}, \mathbf{y} \in Nul(A)\)</span> Then <span class="math inline">\(A\mathbf{x} = \mathbf{0}\)</span> and <span class="math inline">\(A\mathbf{y} = \mathbf{0}\)</span> <span class="math inline">\(A(\mathbf{x} + \mathbf{y}) = A\mathbf{x} + A\mathbf{y} = \mathbf{0} + \mathbf{0} = \mathbf{0}\)</span> Therefore, <span class="math inline">\(\mathbf{x} + \mathbf{y} \in Nul(A)\)</span></p></li>
-<li><p><strong>Closure under Scalar Multiplication</strong>: Let <span class="math inline">\(\mathbf{x} \in Nul(A)\)</span> and <span class="math inline">\(c \in \mathbb{R}\)</span> <span class="math inline">\(A(c\mathbf{x}) = cA\mathbf{x} = c\mathbf{0} = \mathbf{0}\)</span> Therefore, <span class="math inline">\(c\mathbf{x} \in Nul(A)\)</span> <span class="math inline">\(\square\)</span></p></li>
+<li><span class="math inline">\(\text{col}(A)\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^m\)</span>, and</li>
+<li><span class="math inline">\(\text{col}(A^T)\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^n\)</span>.</li>
 </ol>
+</blockquote>
+<section id="finding-bases" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="finding-bases"><span class="header-section-number">7.2.1</span> Finding bases</h3>
+<p>Let <span class="math inline">\(W=\text{span}\{\mathbf{v}_1, ..., \mathbf{v}_k\}\subset\mathbb{R}^n\)</span>. A basis of <span class="math inline">\(W\)</span> is a set of vectors that spans <span class="math inline">\(W\)</span> and that is linearly independent. We already have a spanning set <span class="math inline">\(\{\mathbf{v}_1, ..., \mathbf{v}_k\}\)</span>. If this set is linearly independent, it forms a basis. Otherwise, some vectors can be written as linear combinations of others. Either way, the first step is to check if the set is linearly independent. This leads to a homogeneous system that is solved using Gaussain elimination. This process will tell us how to remove the dependent vectors systematically keeping only the vectors corresponding to pivot columns. This process yields a basis that spans the same subspace <span class="math inline">\(W\)</span>.</p>
+<p><strong>Example:</strong> Find a basis for <span class="math display">\[W=\text{span}\left\{   
+   \begin{bmatrix}-1\\2\\1\\1\end{bmatrix},
+   \begin{bmatrix}2\\2\\-1\\2\end{bmatrix},
+   \begin{bmatrix}0\\6\\1\\4\end{bmatrix},
+   \begin{bmatrix}1\\4\\0\\3\end{bmatrix},
+   \begin{bmatrix}1\\-1\\1\\2\end{bmatrix}
+\right\}\]</span></p>
+<p>Notice that this is the same problem as finding a basis for <span class="math inline">\(\text{col}(A)\)</span>, where <span class="math inline">\(A\)</span> is the matrix of <strong>Example 1</strong>: <span class="math display">\[A = \begin{bmatrix}
+-1 &amp; 2 &amp; 0 &amp; 1 &amp; 1  \\
+2 &amp; 2 &amp; 6 &amp; 4 &amp; -1  \\
+1 &amp; -1 &amp; 1 &amp; 0 &amp; 1  \\
+1 &amp; 2 &amp; 4 &amp; 3 &amp; 2
+\end{bmatrix}=
+  \begin{bmatrix}
+  \uparrow &amp; \uparrow &amp; \uparrow &amp; \uparrow &amp;\uparrow \\
+\mathbf{c}_1 &amp; \mathbf{c}_2 &amp; \mathbf{c}_3 &amp; \mathbf{c}_4 &amp; \mathbf{c}_5 \\
+\downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow
+  \end{bmatrix}.\]</span></p>
+<p>The first step is to check if the set is linearly independent. We look at the equation <span class="math display">\[x_1\begin{bmatrix}-1\\2\\1\\1\end{bmatrix}+
+  x_2 \begin{bmatrix}2\\2\\-1\\2\end{bmatrix}+
+  x_3 \begin{bmatrix}0\\6\\1\\4\end{bmatrix}+
+  x_4 \begin{bmatrix}1\\4\\0\\3\end{bmatrix}+
+  x_5 \begin{bmatrix}1\\-1\\1\\2\end{bmatrix} =
+  \begin{bmatrix}0\\0\\0\\0\end{bmatrix},
+  \]</span> and we solve it by writing the augmented matrix and finding the row reduced echelon form.</p>
+<p><span class="math display">\[\left[
+\begin{array}{ccccc|c}
+-1 &amp; 2 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\
+2 &amp; 2 &amp; 6 &amp; 4 &amp; -1 &amp; 0 \\
+1 &amp; -1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 2 &amp; 4 &amp; 3 &amp; 2 &amp; 0
+\end{array}\right]
+\xrightarrow{\text{RREF}}
+\left[
+\begin{array}{ccccc|c}
+1 &amp; 0 &amp; 2 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right].\]</span></p>
+<p>With three pivots and two free columns, the columns are not linearly independent. We use the null space basis from Example 1: <span class="math display">\[S=\left\{\begin{bmatrix}-2\\-1\\ 1\\ 0\\0\end{bmatrix},
+\begin{bmatrix}-1\\-1\\ 0\\ 1\\0\end{bmatrix}\right\}\]</span></p>
+<p>These vectors reveal the dependency of non-pivot columns on pivot columns. Since: <span class="math display">\[A\begin{bmatrix}-2\\-1\\ 1\\ 0\\0\end{bmatrix}=\mathbf{0} \quad\text{and}\quad A\begin{bmatrix}-1\\-1\\ 0\\ 1\\0\end{bmatrix}=\mathbf{0}\]</span></p>
+<p>It follows from <a href="matrices.html#eq-matrix-linear-combination" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> that <span class="math inline">\(-2\mathbf{c}_1-\mathbf{c}_2+\mathbf{c}_3=\mathbf{0}\)</span> and <span class="math inline">\(-\mathbf{c}_1-\mathbf{c}_2+\mathbf{c}_4=\mathbf{0}\)</span>, yielding: <span class="math display">\[\begin{align}
+\mathbf{c}_3 &amp;= 2\mathbf{c}_1+\mathbf{c}_2\\
+\mathbf{c}_4 &amp;=\mathbf{c}_1+\mathbf{c}_2
+\end{align}\]</span></p>
+<p>These equations show we can express <span class="math inline">\(\mathbf{c}_3\)</span> and <span class="math inline">\(\mathbf{c}_4\)</span> using <span class="math inline">\(\{\mathbf{c}_1,\mathbf{c}_2,\mathbf{c}_5\}\)</span>. Therefore, <span class="math inline">\(\{\mathbf{c}_1,\mathbf{c}_2,\mathbf{c}_5\}\)</span> spans the column space of <span class="math inline">\(A\)</span>. Since this set is linearly independent, it forms a basis: <span class="math display">\[\left\{   
+   \begin{bmatrix}-1\\2\\1\\1\end{bmatrix},
+   \begin{bmatrix}2\\2\\-1\\2\end{bmatrix},
+   \begin{bmatrix}1\\-1\\1\\2\end{bmatrix}
+\right\}\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p><strong>Example 3: The Orthogonal Complement</strong> For a non-empty subset <span class="math inline">\(S \subseteq \mathbb{R}^n\)</span>, define: <span class="math display">\[S^\perp = \{\mathbf{v} \in \mathbb{R}^n : \mathbf{v} \cdot \mathbf{u} = 0 \text{ for all } \mathbf{u} \in S\}\]</span></p>
+<div class="callout-title-container flex-fill">
+Pivot Columns Form a Basis for Col(A)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The pivot columns from RREF give us a basis because:</p>
+<ol type="1">
+<li>They are linearly independent (due to the pivot structure in RREF)</li>
+<li>Every non-pivot column can be written as a combination of pivot columns (using RREF coefficients)</li>
+</ol>
+<p>These two properties are precisely what defines a basis. Since this comes from the systematic row reduction process, it works every time.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="the-orthogonal-complement" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="the-orthogonal-complement"><span class="header-section-number">7.3</span> The Orthogonal Complement</h2>
+<p>For a non-empty subset <span class="math inline">\(S \subseteq \mathbb{R}^n\)</span>, the set <span class="math display">\[S^\perp = \{\mathbf{v} \in \mathbb{R}^n : \mathbf{v} \cdot \mathbf{u} = 0 \text{ for all } \mathbf{u} \in S\}\]</span> is called <strong><em>the orthogonal complement of <span class="math inline">\(S\)</span></em></strong>.</p>
 <div class="theorem">
 <p><strong>Proposition:</strong> <span class="math inline">\(S^\perp\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^n\)</span></p>
 </div>
@@ -362,47 +531,8 @@ window.Quarto = {
 <li><p><strong>Closure under Scalar Multiplication</strong>: Let <span class="math inline">\(\mathbf{x} \in S^\perp\)</span>, <span class="math inline">\(c \in \mathbb{R}\)</span>, and <span class="math inline">\(\mathbf{u} \in S\)</span> <span class="math inline">\((c\mathbf{x}) \cdot \mathbf{u} = c(\mathbf{x} \cdot \mathbf{u}) = c(0) = 0\)</span> Therefore, <span class="math inline">\(c\mathbf{x} \in S^\perp\)</span> <span class="math inline">\(\square\)</span></p></li>
 </ol>
 </div>
-</section>
-<section id="the-four-fundamental-subspaces-of-mathbbrn" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="the-four-fundamental-subspaces-of-mathbbrn"><span class="header-section-number">7.2</span> The Four Fundamental Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></h2>
-<p>For an <span class="math inline">\(m \times n\)</span> matrix A:</p>
-<ol type="1">
-<li><p><strong>Column Space</strong>: <span class="math inline">\(Col(A) \subseteq \mathbb{R}^m\)</span> <span class="math inline">\(Col(A) = \{\mathbf{y} \in \mathbb{R}^m : \mathbf{y} = A\mathbf{x} \text{ for some } \mathbf{x} \in \mathbb{R}^n\}\)</span></p></li>
-<li><p><strong>Null Space</strong>: <span class="math inline">\(Nul(A) \subseteq \mathbb{R}^n\)</span> <span class="math inline">\(Nul(A) = \{\mathbf{x} \in \mathbb{R}^n : A\mathbf{x} = \mathbf{0}\}\)</span></p></li>
-<li><p><strong>Row Space</strong>: <span class="math inline">\(Row(A) \subseteq \mathbb{R}^n\)</span> <span class="math inline">\(Row(A) = Col(A^T)\)</span></p></li>
-<li><p><strong>Left Null Space</strong>: <span class="math inline">\(Nul(A^T) \subseteq \mathbb{R}^m\)</span></p></li>
-</ol>
-<section id="fundamental-relationships-in-mathbbrn" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="fundamental-relationships-in-mathbbrn"><span class="header-section-number">7.2.1</span> Fundamental Relationships in <span class="math inline">\(\mathbb{R}^n\)</span></h3>
-<ol type="1">
-<li><strong>Orthogonality</strong>:
-<ul>
-<li><span class="math inline">\(Row(A) = Nul(A)^\perp\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span></li>
-<li><span class="math inline">\(Col(A) = Nul(A^T)^\perp\)</span> in <span class="math inline">\(\mathbb{R}^m\)</span></li>
-</ul></li>
-<li><strong>Dimension Properties</strong>:
-<ul>
-<li><span class="math inline">\(dim(Row(A)) = dim(Col(A)) = rank(A)\)</span></li>
-<li><span class="math inline">\(dim(Nul(A)) + rank(A) = n\)</span></li>
-<li><span class="math inline">\(dim(Nul(A^T)) + rank(A) = m\)</span></li>
-</ul></li>
-</ol>
-</section>
-<section id="concrete-example" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="concrete-example"><span class="header-section-number">7.2.2</span> Concrete Example:</h3>
-<p>For the matrix: <span class="math display">\[A = \begin{pmatrix}
-1 &amp; 2 &amp; 2 \\
-2 &amp; 4 &amp; 4
-\end{pmatrix}\]</span></p>
-<ul>
-<li><span class="math inline">\(Col(A) \subseteq \mathbb{R}^2\)</span> is a line through the origin</li>
-<li><span class="math inline">\(Nul(A) \subseteq \mathbb{R}^3\)</span> is a plane through the origin</li>
-<li><span class="math inline">\(rank(A) = 1\)</span></li>
-<li><span class="math inline">\(dim(Nul(A)) = 2\)</span></li>
-</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -830,6 +960,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../worksheets/bases_subspaces.html" class="pagination-link" aria-label="Problems">
+        <span class="nav-page-text">Problems</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

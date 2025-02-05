@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../applications/image_transforms_matrix.html" rel="next">
-<link href="../chapters/matrices.html" rel="prev">
+<link href="../chapters/subspaces_Rn.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,7 +109,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/matrices.html">Matrices</a></li><li class="breadcrumb-item"><a href="../worksheets/matrix_multiplication.html">Problems</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/subspaces_bases.html">Subspaces and Bases</a></li><li class="breadcrumb-item"><a href="../worksheets/bases_subspaces.html">Problems</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,7 +186,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../worksheets/matrix_multiplication.html" class="sidebar-item-text sidebar-link active">
+  <a href="../worksheets/matrix_multiplication.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problems</span></a>
   </div>
 </li>
@@ -274,7 +273,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../worksheets/bases_subspaces.html" class="sidebar-item-text sidebar-link">
+  <a href="../worksheets/bases_subspaces.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Problems</span></a>
   </div>
 </li>
@@ -290,23 +289,23 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#bases-coordinates-and-subspaces" id="toc-bases-coordinates-and-subspaces" class="nav-link active" data-scroll-target="#bases-coordinates-and-subspaces">Bases Coordinates and Subspaces</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
   <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
   <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
   <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a></li>
-  <li><a href="#problem-8" id="toc-problem-8" class="nav-link" data-scroll-target="#problem-8">Problem 8</a></li>
-  <li><a href="#problem-9" id="toc-problem-9" class="nav-link" data-scroll-target="#problem-9">Problem 9</a></li>
-  <li><a href="#problem-10-optional" id="toc-problem-10-optional" class="nav-link" data-scroll-target="#problem-10-optional">Problem 10 (Optional)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/matrices.html">Matrices</a></li><li class="breadcrumb-item"><a href="../worksheets/matrix_multiplication.html">Problems</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/subspaces_bases.html">Subspaces and Bases</a></li><li class="breadcrumb-item"><a href="../worksheets/bases_subspaces.html">Problems</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Problems</h1>
 </div>
@@ -325,114 +324,145 @@ window.Quarto = {
 </header>
 
 
-<section id="problem-1" class="level2">
-<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
-<p>For this problem let</p>
-<p><span class="math display">\[A = \begin{bmatrix}
-3 &amp; 1 &amp; -2 \\
-5 &amp; -4 &amp; 3
-\end{bmatrix},
-B = \begin{bmatrix}
-8 &amp; 2\\
--6 &amp; -3\\
-2 &amp; -4
-\end{bmatrix}\]</span></p>
-<p><span class="math display">\[C = \begin{bmatrix}
-2 &amp; 3 \\
--3 &amp; 2
-\end{bmatrix},
-D = \begin{bmatrix}
-4 &amp; 6 \\
--2 &amp; 5
-\end{bmatrix},
-E = \begin{bmatrix}
--6 \\
-4
-\end{bmatrix}\]</span></p>
-<p>Compute the following. If the operation is not possible explain why</p>
+<section id="bases-coordinates-and-subspaces" class="level2">
+<h2 class="anchored" data-anchor-id="bases-coordinates-and-subspaces">Bases Coordinates and Subspaces</h2>
+<p>For these problems, you should use SymPy to find row reduced echelon matrices. Once you write a matrix <span class="math inline">\(A\)</span>, you can simply write the matrix <span class="math inline">\(R\)</span> indicating that it is the row reduced one. You can use symbols like this: <span class="math inline">\(A\xrightarrow{\text{RREF}}R\)</span>.</p>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<p>Let <span class="math inline">\(\mathcal{B} = \left\{\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 2 \end{bmatrix}\right\}\)</span> be a basis for <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
 <ol type="a">
-<li><span class="math inline">\(-3A+B\)</span></li>
-<li><span class="math inline">\(B - 3A^T\)</span></li>
-<li><span class="math inline">\(I_3-AB\)</span></li>
-<li><span class="math inline">\(AB-2I_2\)</span></li>
-<li><span class="math inline">\(AC\)</span></li>
-<li><span class="math inline">\(DA\)</span></li>
-<li><span class="math inline">\(E^TCE\)</span></li>
-<li><span class="math inline">\(BD+A^T\)</span></li>
+<li>Find the coordinates of <span class="math inline">\(\mathbf{v} = (3,2,4)\)</span> with respect to <span class="math inline">\(\mathcal{B}\)</span>. That is, find scalars <span class="math inline">\(c_1, c_2, c_3\)</span> such that:</li>
+</ol>
+<p><span class="math display">\[\mathbf{v} = c_1(1,1,0) + c_2(-1,1,0) + c_3(0,0,2)\]</span></p>
+<ol start="2" type="a">
+<li>Find the coordinates of the following vectors with respect to <span class="math inline">\(\mathcal{B}\)</span> simultaneously. You can solve three systems of equations, but if you pay attention, you can solve one system that gives you the coordinates of the three vectors at once.</li>
+</ol>
+<ul>
+<li><span class="math inline">\(\mathbf{v}_1 = (1,0,1)\)</span></li>
+<li><span class="math inline">\(\mathbf{v}_2 = (2,2,0)\)</span></li>
+<li><span class="math inline">\(\mathbf{v}_3 = (-1,1,3)\)</span></li>
+</ul>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p>Given the basis <span class="math inline">\(\mathcal{B} = \{(1,1,1), (1,1,-1), (1,-2,0)\}\)</span> for <span class="math inline">\(\mathbb{R}^3\)</span>:</p>
+<ol type="a">
+<li>Find the coordinates of the standard basis vectors with respect to <span class="math inline">\(\mathcal{B}\)</span>:</li>
+</ol>
+<ul>
+<li><span class="math inline">\(\mathbf{e}_1 = (1,0,0)\)</span></li>
+<li><span class="math inline">\(\mathbf{e}_2 = (0,1,0)\)</span></li>
+<li><span class="math inline">\(\mathbf{e}_3 = (0,0,1)\)</span></li>
+</ul>
+</section>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<p>Let <span class="math inline">\(\mathcal{B} = \{(2,0,1), (0,1,1), (1,1,0)\}\)</span> be a basis for <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+<ol type="a">
+<li><p>Find the vector <span class="math inline">\(\mathbf{v}\)</span> whose coordinates with respect to <span class="math inline">\(\mathcal{B}\)</span>: <span class="math inline">\([v]_\mathcal{B}=(2,-1,3)\)</span>.</p></li>
+<li><p>If a vector has coordinates <span class="math inline">\((1,1,1)\)</span> with respect to <span class="math inline">\(\mathcal{B}\)</span>, what is this vector in standard coordinates?</p></li>
 </ol>
 </section>
-<section id="problem-2" class="level2">
-<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
-<p>Let <span class="math inline">\(A = \begin{bmatrix} \uparrow &amp; \uparrow &amp; \uparrow \\ \mathbf{c}_1 &amp; \mathbf{c}_2 &amp; \mathbf{c}_3 \\ \downarrow &amp; \downarrow &amp; \downarrow \end{bmatrix} = \begin{bmatrix} \leftarrow \mathbf{r}_1 \rightarrow \\ \leftarrow \mathbf{r}_2 \rightarrow \\ \leftarrow \mathbf{r}_3 \rightarrow \\ \leftarrow \mathbf{r}_4 \rightarrow \end{bmatrix}\)</span></p>
-<p>and suppose that <span class="math inline">\(A \begin{bmatrix} 1 \\ 1 \\ -1 \end{bmatrix} = \begin{bmatrix} 3 \\ 0 \\ 2 \\ -9 \end{bmatrix}\)</span>. For the following write the vectors in terms of the columns or rows of <span class="math inline">\(A\)</span>.</p>
-<ol type="a">
-<li><p>What are the dimensions of <span class="math inline">\(A\)</span>?</p></li>
-<li><p>Is any row of <span class="math inline">\(A\)</span> orthogonal to <span class="math inline">\((1,1,-1)\)</span>? (Actually, the question is if the transpose of any row is orthogonal to <span class="math inline">\((1,1,-1)\)</span>)</p></li>
-<li><p>Write a vector <span class="math inline">\(\mathbf{v}\)</span> in terms of the rows of <span class="math inline">\(A\)</span> that satisfies <span class="math inline">\(\mathbf{v} \cdot (1,1,-1) = 3\)</span></p></li>
-<li><p>Write a vector <span class="math inline">\(\mathbf{v}\)</span> in terms of the rows of <span class="math inline">\(A\)</span> that satisfies <span class="math inline">\(\mathbf{v} \cdot (1,1,-1) = 1\)</span></p></li>
+<section id="problem-4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4">Problem 4</h3>
+<p>Let <span class="math inline">\(S_1 =
+\left\{
+\begin{bmatrix}1\\0\\1\end{bmatrix},
+\begin{bmatrix}0\\2\\1\end{bmatrix},
+\begin{bmatrix}1\\1\\2\end{bmatrix}
+\right\}\)</span> and <span class="math inline">\(S_2
+=
+\left\{
+\begin{bmatrix}2\\1\\0\end{bmatrix},
+\begin{bmatrix}1\\0\\2\end{bmatrix},
+\begin{bmatrix}3\\1\\1\end{bmatrix}
+\right\}\)</span> be bases of <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+<ol type="1">
+<li>If <span class="math inline">\([v]_{S_1} = (2,-1,3)\)</span>, find <span class="math inline">\([v]_{S_2}\)</span>.<br>
+</li>
+<li>If <span class="math inline">\([v]_{S_1} = (1,2,0)\)</span>, find <span class="math inline">\([v]_{S_2}\)</span>.<br>
+</li>
+<li>If <span class="math inline">\([v]_{S_1} = (0,0,1)\)</span>, find <span class="math inline">\([v]_{S_2}\)</span>.</li>
 </ol>
 </section>
-<section id="problem-3" class="level2">
-<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-<p>Let <span class="math inline">\(A = \begin{bmatrix} \uparrow &amp; \uparrow &amp; \uparrow \\ \mathbf{c}_1 &amp; \mathbf{c}_2 &amp; \mathbf{c}_3 \\ \downarrow &amp; \downarrow &amp; \downarrow \end{bmatrix}\)</span>, <span class="math inline">\(B = \begin{bmatrix} \uparrow &amp; \uparrow &amp; \uparrow \\ \mathbf{d}_1 &amp; \mathbf{d}_2 &amp; \mathbf{d}_3 \\ \downarrow &amp; \downarrow &amp; \downarrow \end{bmatrix}\)</span> and suppose that <span class="math inline">\(A^tB = \begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{bmatrix}\)</span></p>
-<ol type="a">
-<li><p>What are the dimensions of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>?</p></li>
-<li><p>Find the following dot products: <span class="math inline">\(\mathbf{c}_1 \cdot \mathbf{d}_1\)</span>, <span class="math inline">\(\mathbf{c}_3 \cdot \mathbf{d}_1\)</span>, <span class="math inline">\(\mathbf{c}_2 \cdot \mathbf{d}_3\)</span></p></li>
-<li><p>Find a constant <span class="math inline">\(\alpha \in \mathbb{R}\)</span> such that <span class="math inline">\(\mathbf{c}_1 - \alpha \mathbf{c}_2\)</span> is orthogonal to <span class="math inline">\(\mathbf{d}_3\)</span></p></li>
+<section id="problem-5" class="level3">
+<h3 class="anchored" data-anchor-id="problem-5">Problem 5</h3>
+<p>Let <span class="math inline">\(S_1 =
+\left\{
+\begin{bmatrix}2\\1\\1\end{bmatrix},
+\begin{bmatrix}1\\2\\0\end{bmatrix},
+\begin{bmatrix}0\\1\\3\end{bmatrix}
+\right\}\)</span> and <span class="math inline">\(S_2 = \left\{
+\begin{bmatrix}1\\1\\1\end{bmatrix},
+\begin{bmatrix}2\\0\\1\end{bmatrix},
+\begin{bmatrix}1\\2\\2\end{bmatrix}
+\right\}\)</span> be bases of <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+<ol type="1">
+<li>If <span class="math inline">\([w]_{S_1} = (1,-1,2)\)</span>, find <span class="math inline">\([w]_{S_2}\)</span>.<br>
+</li>
+<li>If <span class="math inline">\([w]_{S_1} = (3,-0,0)\)</span>, find <span class="math inline">\([w]_{S_2}\)</span>.<br>
+</li>
+<li>If <span class="math inline">\([w]_{S_1} = (2,2,1)\)</span>, find <span class="math inline">\([w]_{S_2}\)</span>.</li>
 </ol>
 </section>
-<section id="problem-4" class="level2">
-<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
-<p>Let <span class="math inline">\(A = \begin{bmatrix} \uparrow &amp; \uparrow &amp; \uparrow \\ \mathbf{c}_1 &amp; \mathbf{c}_2 &amp; \mathbf{c}_3 \\ \downarrow &amp; \downarrow &amp; \downarrow \end{bmatrix}\)</span> and assume that <span class="math inline">\(A^tA = \begin{bmatrix} 1 &amp; -1 &amp; 1 \\ -1 &amp; 2 &amp; 0 \\ 1 &amp; 0 &amp; 3 \end{bmatrix}\)</span></p>
-<ol type="a">
-<li><p>Find the following dot products: <span class="math inline">\(\mathbf{c}_1 \cdot \mathbf{c}_2\)</span>, <span class="math inline">\(\mathbf{c}_1 \cdot \mathbf{c}_3\)</span>, <span class="math inline">\(\mathbf{c}_2 \cdot \mathbf{c}_3\)</span></p></li>
-<li><p>Find <span class="math inline">\(\|\mathbf{c}_1\|\)</span>, <span class="math inline">\(\|\mathbf{c}_2\|\)</span>, <span class="math inline">\(\|\mathbf{c}_3\|\)</span></p></li>
-<li><p>Find <span class="math inline">\(\|\mathbf{c}_1 + 3\mathbf{c}_2\|\)</span> and <span class="math inline">\(\|3\mathbf{c}_2 - 4\mathbf{c}_3\|\)</span></p></li>
+<section id="problem-6" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6">Problem 6</h3>
+<p>For the following matrices</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Find a basis for <span class="math inline">\(\text{col}(A)\)</span></li>
+<li>Find a basis for <span class="math inline">\(\text{nul}(A)\)</span></li>
+<li>Write the columns of <span class="math inline">\(A\)</span> that you didn’t include in the basis in terms of the ones you kept</li>
 </ol>
-<hr>
-<p>For the following problems we have:</p>
-<p><span class="math inline">\(A = \begin{bmatrix}\uparrow&amp;\uparrow&amp;\uparrow\\
-\mathbf{c}_1&amp;\mathbf{c}_2 &amp;\mathbf{c}_3\\
-\downarrow&amp;\downarrow&amp;\downarrow\end{bmatrix} =
-\begin{bmatrix} \leftarrow \mathbf{r}_1 \rightarrow \\ \leftarrow \mathbf{r}_2 \rightarrow \\ \leftarrow \mathbf{r}_3 \rightarrow \\ \leftarrow \mathbf{r}_4 \rightarrow \end{bmatrix}\)</span></p>
-<p><span class="math inline">\(E_1 = \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, &nbsp; <span class="math inline">\(E_2 = \begin{bmatrix} 1 &amp; 0 &amp; -2 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, &nbsp;</p>
-<p><span class="math inline">\(E_3 = \begin{bmatrix} -1 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; -1 \end{bmatrix}\)</span>, &nbsp; <span class="math inline">\(E_4 = \begin{bmatrix} 1 &amp; 0 &amp; 1 &amp; -10 \\ 2 &amp; 2 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; -1 &amp; 0 \\ 4 &amp; 0 &amp; 0 &amp; -1 \end{bmatrix}\)</span></p>
-</section>
-<section id="problem-5" class="level2">
-<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
-<p>For each of the following problems, indicate if the matrices can be multiplied. If they can, express the answer in terms of the rows of <span class="math inline">\(A\)</span> or the columns of <span class="math inline">\(A\)</span>. If they cannot be multiplied, explain why.</p>
+</blockquote>
 <ol type="a">
-<li><p><span class="math inline">\(AE_1\)</span></p></li>
-<li><p><span class="math inline">\(E_1A\)</span></p></li>
-<li><p><span class="math inline">\(AE_2\)</span></p></li>
-<li><p><span class="math inline">\(E_2A\)</span></p></li>
-<li><p><span class="math inline">\(AE_3\)</span></p></li>
-<li><p><span class="math inline">\(E_3A\)</span></p></li>
-<li><p><span class="math inline">\(AE_4\)</span></p></li>
-<li><p><span class="math inline">\(E_4A\)</span></p></li>
+<li><p><span class="math inline">\(A=\begin{bmatrix}1&amp;4&amp;-1&amp;3\\1&amp;5&amp;0&amp;2\\0&amp;3&amp;3&amp;1 \end{bmatrix}\)</span></p></li>
+<li><p><span class="math inline">\(A=\begin{bmatrix}
+5 &amp; 10 &amp; 12 &amp; 14 &amp; 11 &amp; 3\\
+-4 &amp; -8 &amp; -5 &amp; -2 &amp; -27 &amp; -16\\
+2 &amp; 4 &amp; 6 &amp; 8 &amp; 0 &amp; -2
+\\1 &amp; 2 &amp; 8 &amp; 14 &amp; -19 &amp; -15
+\end{bmatrix}\)</span></p></li>
 </ol>
 </section>
-<section id="problem-6" class="level2">
-<h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
-<p>Suppose that <span class="math inline">\(AB_1 = \begin{bmatrix} \uparrow &amp; \uparrow &amp; \uparrow &amp; \uparrow \\ (\mathbf{c}_1-3\mathbf{c}_2) &amp; \mathbf{c}_3 &amp; \mathbf{c}_2 &amp; (8\mathbf{c}_2-\mathbf{c}_3) \\ \downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow \end{bmatrix}\)</span>. Find <span class="math inline">\(B_1\)</span></p>
-</section>
-<section id="problem-7" class="level2">
-<h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
-<p>Suppose that <span class="math inline">\(B_2A = \begin{bmatrix} \leftarrow \mathbf{r}_1 \rightarrow \\ \leftarrow \mathbf{r}_2 \rightarrow \\ \leftarrow \mathbf{r}_3 \rightarrow \\ \leftarrow \mathbf{r}_4 \rightarrow \end{bmatrix}\)</span>. Find <span class="math inline">\(B_2\)</span></p>
-</section>
-<section id="problem-8" class="level2">
-<h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
-<p>Suppose that <span class="math inline">\(B_3A = \begin{bmatrix} \leftarrow (\mathbf{r}_1+\mathbf{r}_2-\mathbf{r}_3) \rightarrow \\ \leftarrow (\mathbf{r}_2-\mathbf{r}_3+\mathbf{r}_4) \rightarrow \end{bmatrix}\)</span>. Find <span class="math inline">\(B_3\)</span></p>
-</section>
-<section id="problem-9" class="level2">
-<h2 class="anchored" data-anchor-id="problem-9">Problem 9</h2>
-<p>Suppose that <span class="math inline">\(B_4E_1 = A\)</span>. Find <span class="math inline">\(B_4\)</span></p>
-</section>
-<section id="problem-10-optional" class="level2">
-<h2 class="anchored" data-anchor-id="problem-10-optional">Problem 10 (Optional)</h2>
-<p>Suppose that <span class="math inline">\(B_5\begin{bmatrix} \leftarrow (\mathbf{r}_1+\mathbf{r}_2+\mathbf{r}_3+\mathbf{r}_4) \rightarrow \\ \leftarrow (\mathbf{r}_2+\mathbf{r}_3+\mathbf{r}_4) \rightarrow \\ \leftarrow (\mathbf{r}_3+\mathbf{r}_4) \rightarrow \\ \leftarrow \mathbf{r}_4 \rightarrow \end{bmatrix} = A\)</span>. Find <span class="math inline">\(B_5\)</span></p>
+<section id="problem-7" class="level3">
+<h3 class="anchored" data-anchor-id="problem-7">Problem 7</h3>
+<p>For each of the following sets,</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>write the set as the span of some vectors,</li>
+<li>express the set as the column space of a matrix <span class="math inline">\(A\)</span>,</li>
+<li>find a basis of the subspace and find the dimension.</li>
+</ol>
+</blockquote>
+<p>Notice that it follows from (1) or (2) that the set is a subspace</p>
+<ol type="a">
+<li><p>The set of all vectors of the form <span class="math display">\[
+\left\{ \begin{bmatrix}
+x + 2y \\
+y - z \\
+2x - z
+\end{bmatrix} : x,y,z \in \mathbb{R} \right\}
+\]</span></p></li>
+<li><p>The set of all vectors of the form <span class="math display">\[
+\left\{ \begin{bmatrix}
+-3s + 6t - u + v - 7w \\
+s - 2t + 2u + 3v - w \\
+2s - 4t + 5u + 8v - 4w
+\end{bmatrix} : s,t,u,v,w \in \mathbb{R} \right\}
+\]</span></p></li>
+<li><p>The set of all vectors of the form <span class="math display">\[
+\left\{ \begin{bmatrix}
+-2s - 5t + 8u - 17w \\
+s + 3t - 5u + v + 5w \\
+3s + 11t - 19u + 7v + w \\
+s + 7t - 13u + 5v - 3w
+\end{bmatrix} : s,t,u,v,w \in \mathbb{R} \right\}
+\]</span></p></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -855,14 +885,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/matrices.html" class="pagination-link" aria-label="Matrices">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matrices</span></span>
+      <a href="../chapters/subspaces_Rn.html" class="pagination-link" aria-label="Subspaces of $\mathbb{R}^n$">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../applications/image_transforms_matrix.html" class="pagination-link" aria-label="Real World Application">
-        <span class="nav-page-text">Real World Application</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
