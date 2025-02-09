@@ -280,6 +280,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/least_squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Least Squares</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/projection_theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Least Squares</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -391,7 +408,7 @@ c\begin{bmatrix}x_1\\ x_2\\\vdots\\ x_n \end{bmatrix}
 <p><span class="theorem-title"><strong>Lemma 4.1</strong></span> Suppose that <span class="math inline">\(A\)</span> is an <span class="math inline">\(m\times n\)</span> matrix and that <span class="math inline">\(B\)</span> is an <span class="math inline">\(n\times p\)</span> matrix. Then for every <span class="math inline">\(\mathbf{x}\in\mathbb{R}^p\)</span>, <span class="math display">\[(AB)\mathbf{x}=A(B\mathbf{x})\]</span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Express <span class="math inline">\(B\)</span> in terms of its columns: <span class="math inline">\(B=\begin{bmatrix}\mathbf{b}_1&amp;\mathbf{b}_2&amp;\cdots&amp;\mathbf{b}_p\end{bmatrix}\)</span>, where each <span class="math inline">\(\mathbf{b}_i\)</span> is an <span class="math inline">\(n\)</span>-dimensional column vector. By <a href="matrices.html#eq-matrix-matrix" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>, the product <span class="math inline">\(AB\)</span> is defined by: <span class="math display">\[
+<p><span class="proof-title"><em>Proof</em>. </span>Express <span class="math inline">\(B\)</span> in terms of its columns: <span class="math inline">\(B=\begin{bmatrix}\mathbf{b}_1&amp;\mathbf{b}_2&amp;\cdots&amp;\mathbf{b}_p\end{bmatrix}\)</span>, where each <span class="math inline">\(\mathbf{b}_i\)</span> is an <span class="math inline">\(n\)</span>-dimensional column vector. By <a href="matrices.html#eq-matrix-matrix" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>, the product <span class="math inline">\(AB\)</span> is defined by: <span class="math display">\[
 AB=\begin{bmatrix}
 \uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow \\
 A\mathbf{b}_1 &amp; A\mathbf{b}_2 &amp; \cdots &amp; A\mathbf{b}_p \\
@@ -571,7 +588,7 @@ T(\mathbf{e}_1) &amp; T(\mathbf{e}_2) &amp; \cdots &amp; T(\mathbf{e}_n) \\
 <div class="corollary">
 <p><strong>Corollary:</strong> Suppose that <span class="math inline">\(A, B\)</span> and <span class="math inline">\(C\)</span> are matrices of sizes <span class="math inline">\(m\times n\)</span>, <span class="math inline">\(n\times p\)</span> and <span class="math inline">\(p\times q\)</span>, respectively. Then <span class="math display">\[(AB)C=A(BC)\]</span></p>
 </div>
-<p>We can also prove associativity using <a href="#lem-associative" class="quarto-xref">Lemma&nbsp;<span>4.1</span></a> and the definitions of product <a href="matrices.html#eq-matrix-matrix" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>, and we can also prove associativity using the formula <a href="matrices.html#eq-matrix-product" class="quarto-xref">Equation&nbsp;<span>3.4</span></a> to show that <span class="math inline">\(((AB)C)_{ij}=(A(BC))_{ij}\)</span>.</p>
+<p>We can also prove associativity using <a href="#lem-associative" class="quarto-xref">Lemma&nbsp;<span>4.1</span></a> and the definitions of product <a href="matrices.html#eq-matrix-matrix" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>, and we can also prove associativity using the formula <a href="matrices.html#eq-matrix-product" class="quarto-xref">Equation&nbsp;<span>3.5</span></a> to show that <span class="math inline">\(((AB)C)_{ij}=(A(BC))_{ij}\)</span>.</p>
 
 
 </section>

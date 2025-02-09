@@ -314,6 +314,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/least_squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Least Squares</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/projection_theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Least Squares</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -597,7 +614,7 @@ A\mathbf{x} &amp;= \begin{bmatrix} a_{1,1}x_1+a_{1,2}x_2+\cdots+a_{1,n}x_n\\ a_{
 (A\mathbf{x})_i=a_{i,1}x_1+a_{i,2}x_2+\cdots+a_{i,n}x_n
 =\begin{bmatrix} a_{i,1}\\ a_{i,2}\\\vdots \\ a_{i,n}\end{bmatrix}\cdot
 \begin{bmatrix} x_1\\ x_2\\\vdots \\ x_n\end{bmatrix}
-=\mathbf{r}_i^T\cdot\mathbf{x}.\]</span> Recall that vectors in <span class="math inline">\(\mathbb{R}^n\)</span> are represented by column vectors, and that the first vector is the transpose of the <span class="math inline">\(i\)</span>-th row of <span class="math inline">\(A\)</span>. Putting all the compunents togther, we get: <span class="math display">\[
+=\mathbf{r}_i^T\cdot\mathbf{x}.\]</span> Recall that vectors in <span class="math inline">\(\mathbb{R}^n\)</span> are represented by column vectors, and that the first vector is the transpose of the <span class="math inline">\(i\)</span>-th row of <span class="math inline">\(A\)</span>. Putting all the compunents togther, we get: <span id="eq-Ax-dot-product-formula"><span class="math display">\[
 A\mathbf{x}=\begin{bmatrix}
 \leftarrow &amp; \mathbf{r}_1 &amp;\rightarrow \\
 \leftarrow &amp; \mathbf{r}_2 &amp;\rightarrow \\
@@ -608,7 +625,7 @@ A\mathbf{x}=\begin{bmatrix}
 \mathbf{r}_1^T\cdot\mathbf{x} \\
 \mathbf{r}_2^T\cdot\mathbf{x}\\ \vdots \\
 \mathbf{r}_n^T\cdot\mathbf{x}\end{bmatrix}.
-\]</span></p>
+\tag{3.3}\]</span></span></p>
 </section>
 </section>
 <section id="matrix-matrix-multiplication" class="level2" data-number="3.5">
@@ -628,16 +645,16 @@ AB = A \begin{bmatrix}
 A\mathbf{b}_1 &amp; A\mathbf{b}_2 &amp; \cdots &amp; A\mathbf{b}_p \\
 \downarrow &amp; \downarrow &amp; \cdots &amp; \downarrow
 \end{bmatrix}.
-\tag{3.3}\]</span></span></p>
+\tag{3.4}\]</span></span></p>
 <p>Notice that <span class="math inline">\(AB\)</span> consists of <span class="math inline">\(p\)</span> columns, where each column <span class="math inline">\(A\mathbf{c}_i \in \mathbb{R}^m\)</span>. Therefore, <span class="math inline">\(AB\)</span> is an <span class="math inline">\(m \times p\)</span> matrix.</p>
 </section>
 <section id="the-component-formula" class="level3" data-number="3.5.2">
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="the-component-formula"><span class="header-section-number">3.5.2</span> The Component Formula</h3>
-<p>We use the previous formula to compute the individual entries of <span class="math inline">\(AB\)</span>. Consider <span class="math inline">\((AB)_{i,j}\)</span>. This is the element of <span class="math inline">\(AB\)</span> in the <span class="math inline">\(i\)</span>-th row and <span class="math inline">\(j\)</span>-th column. Since the <span class="math inline">\(j\)</span>-th column of <span class="math inline">\(AB\)</span> is <span class="math inline">\(A\mathbf{b}_j\)</span>, it follows from (<a href="#eq-Ax-component-wise" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) that <span class="math inline">\((AB)_{i,j}=(A\mathbf{b}_j)_i= \sum_{k=1}^na_{i,k}b_{k,j}.\)</span> Then we have <span id="eq-matrix-product"><span class="math display">\[(AB)_{i,j}=\sum_{k=1}^na_{i,k}b_{k,j}. \tag{3.4}\]</span></span></p>
+<p>We use the previous formula to compute the individual entries of <span class="math inline">\(AB\)</span>. Consider <span class="math inline">\((AB)_{i,j}\)</span>. This is the element of <span class="math inline">\(AB\)</span> in the <span class="math inline">\(i\)</span>-th row and <span class="math inline">\(j\)</span>-th column. Since the <span class="math inline">\(j\)</span>-th column of <span class="math inline">\(AB\)</span> is <span class="math inline">\(A\mathbf{b}_j\)</span>, it follows from (<a href="#eq-Ax-component-wise" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) that <span class="math inline">\((AB)_{i,j}=(A\mathbf{b}_j)_i= \sum_{k=1}^na_{i,k}b_{k,j}.\)</span> Then we have <span id="eq-matrix-product"><span class="math display">\[(AB)_{i,j}=\sum_{k=1}^na_{i,k}b_{k,j}. \tag{3.5}\]</span></span></p>
 </section>
 <section id="the-row-column-dot-product-formula" class="level3" data-number="3.5.3">
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="the-row-column-dot-product-formula"><span class="header-section-number">3.5.3</span> The Row-Column Dot Product Formula</h3>
-<p>From (<a href="#eq-matrix-product" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>), it follows that <span class="math inline">\((AB)_{i,j}\)</span> is the dot product of the <span class="math inline">\(i\)</span>-th row of <span class="math inline">\(A\)</span> and the <span class="math inline">\(j\)</span>-th column of <span class="math inline">\(B\)</span>. Writing <span class="math inline">\(A\)</span> in terms of its rows and <span class="math inline">\(B\)</span> in terms of its columns, we have:</p>
+<p>From (<a href="#eq-matrix-product" class="quarto-xref">Equation&nbsp;<span>3.5</span></a>), it follows that <span class="math inline">\((AB)_{i,j}\)</span> is the dot product of the <span class="math inline">\(i\)</span>-th row of <span class="math inline">\(A\)</span> and the <span class="math inline">\(j\)</span>-th column of <span class="math inline">\(B\)</span>. Writing <span class="math inline">\(A\)</span> in terms of its rows and <span class="math inline">\(B\)</span> in terms of its columns, we have:</p>
 <p><span id="eq-matrix-matrix-dot-product"><span class="math display">\[
 AB =
 \begin{bmatrix}
@@ -657,7 +674,7 @@ AB =
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\  
 \mathbf{r}_m^T \cdot \mathbf{b}_1 &amp; \mathbf{r}_m^T \cdot \mathbf{b}_2 &amp; \cdots &amp; \mathbf{r}_m^T \cdot \mathbf{b}_p  
 \end{bmatrix}.
-\tag{3.5}\]</span></span></p>
+\tag{3.6}\]</span></span></p>
 <p>Here, <span class="math inline">\(\mathbf{r}_i\)</span> represents the <span class="math inline">\(i\)</span>-th row of <span class="math inline">\(A\)</span>, and <span class="math inline">\(\mathbf{b}_j\)</span> represents the <span class="math inline">\(j\)</span>-th column of <span class="math inline">\(B\)</span>. Each entry of <span class="math inline">\(AB\)</span>, denoted <span class="math inline">\((AB)_{i,j}\)</span>, is the dot product <span class="math inline">\(\mathbf{r}_i^T \cdot \mathbf{b}_j\)</span>.</p>
 </section>
 </section>
@@ -838,14 +855,14 @@ a_{3,1} &amp; a_{3,2} &amp; a_{3,3} &amp; a_{3,4} &amp; a_{3,5}
 <section id="setup" class="level3" data-number="3.9.1">
 <h3 data-number="3.9.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">3.9.1</span> Setup</h3>
 <p>First, let’s import NumPy:</p>
-<div id="3559596e" class="cell" data-execution_count="1">
+<div id="09642222" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="creating-matrices" class="level3" data-number="3.9.2">
 <h3 data-number="3.9.2" class="anchored" data-anchor-id="creating-matrices"><span class="header-section-number">3.9.2</span> Creating Matrices</h3>
 <p>NumPy provides several ways to create matrices using ndarrays:</p>
-<div id="27f86d39" class="cell" data-execution_count="2">
+<div id="ca7a88cb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From a list of lists</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
@@ -880,7 +897,7 @@ Identity matrix:
 <section id="matrix-properties-and-shape" class="level3" data-number="3.9.3">
 <h3 data-number="3.9.3" class="anchored" data-anchor-id="matrix-properties-and-shape"><span class="header-section-number">3.9.3</span> Matrix Properties and Shape</h3>
 <p>The shape attribute tells us the dimensions of the matrix:</p>
-<div id="59a047a9" class="cell" data-execution_count="3">
+<div id="f3c1c0df" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>A<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -896,7 +913,7 @@ Size: 6</code></pre>
 <section id="indexing-and-slicing" class="level3" data-number="3.9.4">
 <h3 data-number="3.9.4" class="anchored" data-anchor-id="indexing-and-slicing"><span class="header-section-number">3.9.4</span> Indexing and Slicing</h3>
 <p>NumPy provides powerful ways to access matrix elements:</p>
-<div id="11ca94db" class="cell" data-execution_count="4">
+<div id="fc2e0e00" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
@@ -937,7 +954,7 @@ Submatrix (first two rows, second and third columns):
 <section id="addition-and-subtraction" class="level4" data-number="3.9.5.1">
 <h4 data-number="3.9.5.1" class="anchored" data-anchor-id="addition-and-subtraction"><span class="header-section-number">3.9.5.1</span> Addition and Subtraction</h4>
 <p>Matrix addition and subtraction work element-wise:</p>
-<div id="beca6639" class="cell" data-execution_count="5">
+<div id="33e80b09" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -973,7 +990,7 @@ A - B:
 <section id="scalar-operations" class="level4" data-number="3.9.5.2">
 <h4 data-number="3.9.5.2" class="anchored" data-anchor-id="scalar-operations"><span class="header-section-number">3.9.5.2</span> Scalar Operations</h4>
 <p>Multiply or divide a matrix by a scalar:</p>
-<div id="e5286137" class="cell" data-execution_count="6">
+<div id="7ec35bd8" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1001,7 +1018,7 @@ Divide by 2:
 <section id="matrix-multiplication" class="level4" data-number="3.9.5.3">
 <h4 data-number="3.9.5.3" class="anchored" data-anchor-id="matrix-multiplication"><span class="header-section-number">3.9.5.3</span> Matrix Multiplication</h4>
 <p>NumPy provides several ways to perform matrix multiplication:</p>
-<div id="38947943" class="cell" data-execution_count="7">
+<div id="628b86e1" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -1027,7 +1044,7 @@ Element-wise multiplication (A * B):
 <section id="common-matrix-operations" class="level3" data-number="3.9.6">
 <h3 data-number="3.9.6" class="anchored" data-anchor-id="common-matrix-operations"><span class="header-section-number">3.9.6</span> Common Matrix Operations</h3>
 <p>Here are some frequently used matrix operations:</p>
-<div id="3b74951c" class="cell" data-execution_count="8">
+<div id="dbfea7fc" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1090,7 +1107,7 @@ Matrix inverse:
 <section id="setup-1" class="level3" data-number="3.10.1">
 <h3 data-number="3.10.1" class="anchored" data-anchor-id="setup-1"><span class="header-section-number">3.10.1</span> Setup</h3>
 <p>First, let’s import SymPy and set up symbolic variables:</p>
-<div id="ac224a7d" class="cell" data-execution_count="9">
+<div id="bf490388" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, Symbol, init_printing, pprint</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1105,7 +1122,7 @@ Matrix inverse:
 <section id="creating-matrices-1" class="level3" data-number="3.10.2">
 <h3 data-number="3.10.2" class="anchored" data-anchor-id="creating-matrices-1"><span class="header-section-number">3.10.2</span> Creating Matrices</h3>
 <p>SymPy provides several ways to create matrices:</p>
-<div id="fef93946" class="cell" data-execution_count="10">
+<div id="3215ea46" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From a list of lists</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
@@ -1155,7 +1172,7 @@ Symbolic matrix:
 <section id="matrix-properties-and-shape-1" class="level3" data-number="3.10.3">
 <h3 data-number="3.10.3" class="anchored" data-anchor-id="matrix-properties-and-shape-1"><span class="header-section-number">3.10.3</span> Matrix Properties and Shape</h3>
 <p>SymPy matrices have several useful properties:</p>
-<div id="54b9bfd8" class="cell" data-execution_count="11">
+<div id="0bda468a" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>A<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1171,7 +1188,7 @@ Number of columns: 3</code></pre>
 <section id="indexing-and-slicing-1" class="level3" data-number="3.10.4">
 <h3 data-number="3.10.4" class="anchored" data-anchor-id="indexing-and-slicing-1"><span class="header-section-number">3.10.4</span> Indexing and Slicing</h3>
 <p>SymPy uses different indexing methods than NumPy:</p>
-<div id="17a054c8" class="cell" data-execution_count="12">
+<div id="070930fa" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
@@ -1231,7 +1248,7 @@ Submatrix:
 <section id="addition-and-subtraction-1" class="level4" data-number="3.10.5.1">
 <h4 data-number="3.10.5.1" class="anchored" data-anchor-id="addition-and-subtraction-1"><span class="header-section-number">3.10.5.1</span> Addition and Subtraction</h4>
 <p>Matrix addition and subtraction work both with numeric and symbolic matrices:</p>
-<div id="fa461315" class="cell" data-execution_count="13">
+<div id="a0a2362a" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrix([[<span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -1282,7 +1299,7 @@ Symbolic addition A + C:
 <section id="scalar-operations-1" class="level4" data-number="3.10.5.2">
 <h4 data-number="3.10.5.2" class="anchored" data-anchor-id="scalar-operations-1"><span class="header-section-number">3.10.5.2</span> Scalar Operations</h4>
 <p>Multiply or divide a matrix by a scalar (numeric or symbolic):</p>
-<div id="35ccce07" class="cell" data-execution_count="14">
+<div id="0b08a754" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1313,7 +1330,7 @@ Multiply by symbolic x:
 <section id="matrix-multiplication-1" class="level4" data-number="3.10.5.3">
 <h4 data-number="3.10.5.3" class="anchored" data-anchor-id="matrix-multiplication-1"><span class="header-section-number">3.10.5.3</span> Matrix Multiplication</h4>
 <p>SymPy matrix multiplication works with both numeric and symbolic matrices:</p>
-<div id="fb78e576" class="cell" data-execution_count="15">
+<div id="c7a19f33" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrix([[<span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -1333,7 +1350,7 @@ Multiply by symbolic x:
 <section id="other-matrix-operations" class="level3" data-number="3.10.6">
 <h3 data-number="3.10.6" class="anchored" data-anchor-id="other-matrix-operations"><span class="header-section-number">3.10.6</span> Other Matrix Operations</h3>
 <p>SymPy provides powerful symbolic matrix operations:</p>
-<div id="edab5af3" class="cell" data-execution_count="16">
+<div id="e3ae3129" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
