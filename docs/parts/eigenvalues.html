@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Least Squares – Linear Algebra</title>
+<title>Eigenvalues and Eigenvectors – Linear Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/projection_theorem.html" rel="next">
-<link href="../worksheets/bases_subspaces.html" rel="prev">
+<link href="../chapters/determinants.html" rel="next">
+<link href="../chapters/projection_theorem.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/least_squares.html">Least Squares</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/eigenvalues.html">Eigenvalues and Eigenvectors</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -282,7 +282,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../parts/least_squares.html" class="sidebar-item-text sidebar-link active">
+            <a href="../parts/least_squares.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Least Squares</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -299,7 +299,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../parts/eigenvalues.html" class="sidebar-item-text sidebar-link">
+            <a href="../parts/eigenvalues.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Eigenvalues and Eigenvectors</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -327,7 +327,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Least Squares</h1>
+<h1 class="title">Eigenvalues and Eigenvectors</h1>
 </div>
 
 
@@ -344,10 +344,11 @@ window.Quarto = {
 </header>
 
 
-<p>This section covers orthogonal complements, the projection theorem and regression.</p>
+<p>This section covers determinats, eigenvalues and eigenvectors</p>
 <ol type="1">
-<li><a href="../chapters/projection_theorem.html">Least Squares</a></li>
-<li><a href="">Problems</a></li>
+<li><a href="../chapters/determinants.html">Determinants</a></li>
+<li>Eigenvalues and Eigenvectors</li>
+<li>Problems</li>
 </ol>
 
 
@@ -772,13 +773,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../worksheets/bases_subspaces.html" class="pagination-link" aria-label="Problems">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Problems</span>
+      <a href="../chapters/projection_theorem.html" class="pagination-link" aria-label="Least Squares">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Least Squares</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/projection_theorem.html" class="pagination-link" aria-label="Least Squares">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Least Squares</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/determinants.html" class="pagination-link" aria-label="Determinants">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Determinants</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

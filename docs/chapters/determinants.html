@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Least Squares – Linear Algebra</title>
+<title>9&nbsp; Determinants – Linear Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/projection_theorem.html" rel="next">
-<link href="../worksheets/bases_subspaces.html" rel="prev">
+<link href="../parts/eigenvalues.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,7 +109,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/least_squares.html">Least Squares</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/eigenvalues.html">Eigenvalues and Eigenvectors</a></li><li class="breadcrumb-item"><a href="../chapters/determinants.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Determinants</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -282,7 +281,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../parts/least_squares.html" class="sidebar-item-text sidebar-link active">
+            <a href="../parts/least_squares.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Least Squares</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -308,7 +307,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/determinants.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/determinants.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Determinants</span></span></a>
   </div>
 </li>
@@ -319,15 +318,22 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#axioms" id="toc-axioms" class="nav-link active" data-scroll-target="#axioms"><span class="header-section-number">9.1</span> Axioms</a></li>
+  <li><a href="#properties-of-determinant" id="toc-properties-of-determinant" class="nav-link" data-scroll-target="#properties-of-determinant"><span class="header-section-number">9.2</span> Properties of determinant</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/eigenvalues.html">Eigenvalues and Eigenvectors</a></li><li class="breadcrumb-item"><a href="../chapters/determinants.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Determinants</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Least Squares</h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Determinants</span></h1>
 </div>
 
 
@@ -344,13 +350,197 @@ window.Quarto = {
 </header>
 
 
-<p>This section covers orthogonal complements, the projection theorem and regression.</p>
+<p>Determinants are a fundamental concept in linear algebra, associated with square matrices. They have various applications, such as:</p>
+<ul>
+<li>Determining the invertibility of matrices</li>
+<li>Calculating the area and volume of geometric shapes</li>
+</ul>
+<section id="axioms" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="axioms"><span class="header-section-number">9.1</span> Axioms</h2>
+<p>Determinants are functions that assign a unique scalar value to each square matrix. We denote the determinant of a matrix <span class="math inline">\(A\)</span> as <span class="math inline">\(\det(A)\)</span> or <span class="math inline">\(|A|\)</span>. The axioms that characterize determinants are:</p>
 <ol type="1">
-<li><a href="../chapters/projection_theorem.html">Least Squares</a></li>
-<li><a href="">Problems</a></li>
+<li><strong>Identity Axiom</strong>: The determinant of the identity matrix is 1.</li>
 </ol>
+<p><span class="math display">\[|I_n| = 1,\quad\text{for every }n\in\mathbb{N},\]</span></p>
+<p>where <span class="math inline">\(I_n\)</span> is the <span class="math inline">\(n\times n\)</span> identity matrix.</p>
+<ol start="2" type="1">
+<li><strong>Linearity Axiom</strong>: The determinant is a linear function of each row separately.</li>
+</ol>
+<ul>
+<li>(scalar multiplication) If a row is multiplied by a scalar, the determinant is multiplied by the same scalar.</li>
+<li>(additivity) <span class="math display">\[\det
+  \begin{pmatrix}
+\leftarrow &amp; \mathbf{r_1} &amp; \rightarrow \\
+&amp; \vdots &amp; \\
+\leftarrow &amp; \mathbf{x} + \mathbf{y} &amp; \rightarrow \\
+&amp; \vdots &amp; \\
+\leftarrow &amp; \mathbf{r_n} &amp; \rightarrow
+\end{pmatrix}
+=
+\det \begin{pmatrix}
+\leftarrow &amp; \mathbf{r_1} &amp; \rightarrow \\
+&amp; \vdots &amp; \\
+\leftarrow &amp; \mathbf{x} &amp; \rightarrow \\
+&amp; \vdots &amp; \\
+\leftarrow &amp; \mathbf{r_n} &amp; \rightarrow
+\end{pmatrix} +\det
+\begin{pmatrix}
+\leftarrow &amp; \mathbf{r_1} &amp; \rightarrow \\
+&amp; \vdots &amp; \\
+\leftarrow &amp; \mathbf{y} &amp; \rightarrow \\
+&amp; \vdots &amp; \\
+\leftarrow &amp; \mathbf{r_n} &amp; \rightarrow
+\end{pmatrix}.\]</span></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Alternating Property Axiom</strong>: If two rows are swapped, the determinant changes sign.</li>
+</ol>
+<hr>
+<p>The three axioms uniquely define the determinant function, even though this may not be immediately apparent. It can be shown that these axioms lead to a formula for the determinant of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span>: <span class="math display">\[\det(A) = \sum_{\pi \in S_n} \text{sgn}(\pi) , a_{1\pi(1)} , a_{2\pi(2)} , \cdots , a_{n\pi(n)}\]</span> where:</p>
+<ul>
+<li><span class="math inline">\(S_n\)</span> is the set of all permutations of the indices <span class="math inline">\({1, 2, \dots, n}\)</span></li>
+<li><span class="math inline">\(\text{sgn}(\pi)\)</span> is the sign of the permutation <span class="math inline">\(\pi\)</span>, which is +1 for even permutations and -1 for odd permutations</li>
+<li><span class="math inline">\(a_{i\pi(i)}\)</span> is the entry in the <span class="math inline">\(i\)</span>-th row and <span class="math inline">\(\pi(i)\)</span>-th column of <span class="math inline">\(A\)</span></li>
+</ul>
+<p>However, this formula is not practical for calculating determinants, as there are <span class="math inline">\(n!\)</span> permutations in <span class="math inline">\(S_n\)</span>, leading to a very large number of terms in the sum as <span class="math inline">\(n\)</span> increases.</p>
+<p>Instead, we will see that the axioms are useful for keeping track of elementary row operations. This property allows us to compute determinants efficiently and prove various properties about them, without relying on the permutation formula directly.</p>
+<hr>
+<p>We can also view the determinant on <span class="math inline">\(n\times n\)</span> matrices as a function that maps an ordered set of <span class="math inline">\(n\)</span> vectors in <span class="math inline">\(\mathbb{R}^n\)</span> to a real number: <span class="math display">\[\det: \mathbb{R}^n \times \mathbb{R}^n \times \cdots \times \mathbb{R}^n \to \mathbb{R}\]</span> Here, we interpret each element of <span class="math inline">\(\mathbb{R}^n\)</span> as a row of the matrix, meaning that the determinant takes <span class="math inline">\(𝑛\)</span> row vectors from <span class="math inline">\(\mathbb{R}^n\)</span> and returns a scalar. If an <span class="math inline">\(n\times n\)</span> matrix is represented in terms of its rows: <span class="math display">\[A = \begin{bmatrix}
+\leftarrow &amp;\mathbf{r}_1 &amp;\rightarrow\\
+\leftarrow &amp;\mathbf{r}_2 &amp; \rightarrow\\
+&amp;\vdots &amp; \\
+\leftarrow &amp; \mathbf{r}_n &amp; \rightarrow
+\end{bmatrix}\quad\text{then}\quad\det(A)=\det(\mathbf{r}_1,\mathbf{r}_2,\dots,\mathbf{r}_n).\]</span></p>
+<p>Using this notation, the identity axiom states that: <span class="math display">\[\det(\mathbf{e}_1,\mathbf{e}_2,\cdots,\mathbf{e}_n)=1\]</span> where <span class="math inline">\({\mathbf{e}_1,\mathbf{e}_2,\cdots,\mathbf{e}_n}\)</span> is the standard basis of <span class="math inline">\(\mathbb{R}^n\)</span>, defined as: <span class="math display">\[\mathbf{e}_1=\begin{bmatrix}1\\0\\ \vdots\\0\end{bmatrix},\quad
+\mathbf{e}_2=\begin{bmatrix}0\\1\\ \vdots\\0\end{bmatrix},\quad
+\cdots,\quad
+\mathbf{e}_n=\begin{bmatrix}0\\0\\ \vdots\\1\end{bmatrix}.\]</span></p>
+</section>
+<section id="properties-of-determinant" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="properties-of-determinant"><span class="header-section-number">9.2</span> Properties of determinant</h2>
+<p>From the axioms we infer many properties of determinants:</p>
+<ol type="1">
+<li>If <span class="math inline">\(A\)</span> has a zero row, then <span class="math inline">\(\det(A) = 0\)</span></li>
+</ol>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\(A\)</span> be a matrix with a zero row in position <span class="math inline">\(i\)</span>. By the <strong><em>Linearity Axiom</em></strong> in row <span class="math inline">\(i\)</span>, for any scalar <span class="math inline">\(c\)</span>,</p>
+<p><span class="math display">\[\begin{align}
+\det(A) &amp;= \det(\mathbf{r}_1,\ldots,\mathbf{0},\ldots,\mathbf{r}_n)\\
+&amp; = \det(\mathbf{r}_1,\ldots,c\mathbf{0},\ldots,\mathbf{r}_n)\\
+&amp; = c\det(\mathbf{r}_1,\ldots,\mathbf{0},\ldots,\mathbf{r}_n) = c\det(A)
+\end{align}\]</span> Since <span class="math inline">\(c\)</span> is arbitrary, <span class="math inline">\(\det(A)=0\)</span>.</p>
+</blockquote>
+<ol start="2" type="1">
+<li>If <span class="math inline">\(A\)</span> has two equal rows, then <span class="math inline">\(\det(A) = 0\)</span></li>
+</ol>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\(A\)</span> be a matrix where <span class="math inline">\(\mathbf{r}_i = \mathbf{r}_j\)</span> for some <span class="math inline">\(i \neq j\)</span>. Then</p>
+<p><span class="math display">\[\begin{align}
+\det(A) &amp;= \det(\ldots,\mathbf{r}_i,\ldots,\mathbf{r}_j,\ldots)&amp;&amp;\text{definition}\\
+&amp;= -\det(\ldots,\mathbf{r}_j,\ldots,\mathbf{r}_i,\ldots)&amp;&amp;\text{Alternating Property Axiom}\\
+&amp;= -\det(\ldots,\mathbf{r}_i,\ldots,\mathbf{r}_j,\ldots)&amp;&amp;\text{because }\mathbf{r}_i=\mathbf{r}_j\\
+&amp;= -\det(A)
+\end{align}\]</span> Therefore, <span class="math inline">\(\det(A) = -\det(A)\)</span>, which implies <span class="math inline">\(\det(A) = 0\)</span>.</p>
+</blockquote>
+<ol start="3" type="1">
+<li>For a scalar <span class="math inline">\(c\)</span>, <span class="math inline">\(\det(cA) = c^n\det(A)\)</span></li>
+</ol>
+<blockquote class="blockquote">
+<p>Note that <span class="math inline">\(cA\)</span> means multiplying each row by <span class="math inline">\(c\)</span>. Using multilinearity <span class="math inline">\(n\)</span> times:</p>
+<p><span class="math display">\[\begin{align}
+\det(cA) &amp;= \det(c\mathbf{r}_1,c\mathbf{r}_2,\ldots,c\mathbf{r}_n)\\
+&amp;= c\det(\mathbf{r}_1,c\mathbf{r}_2,\ldots,c\mathbf{r}_n)\\
+&amp;= c^2\det(\mathbf{r}_1,\mathbf{r}_2,c\mathbf{r}_3\ldots,c\mathbf{r}_n)\\
+&amp;\;\;\vdots\\
+&amp;= c^n\det(\mathbf{r}_1,\mathbf{r}_2,\ldots,\mathbf{r}_n)\\
+&amp;= c^n\det(A)
+\end{align}\]</span></p>
+</blockquote>
+<ol start="4" type="1">
+<li>For diagonal matrices, <span class="math inline">\(\det(A)\)</span> is the product of the diagonal terms.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\(A\)</span> be a diagonal matrix and <span class="math inline">\(\{\mathbf{e}_1,\dots,\mathbf{e}_n\}\)</span> be the canonical basis of <span class="math inline">\(\mathbb{R}^n\)</span>. Then using linearity <span class="math inline">\(n\)</span> times we get: <span class="math display">\[\begin{align}
+\det(A)&amp;=\det(a_{11}\mathbf{e}_1,a_{22}\mathbf{e}_2,\dots,a_{nn}\mathbf{e}_n)\\
+&amp;=a_{11}\det(\mathbf{e}_1,a_{22}\mathbf{e}_2,\dots,a_{nn}e_n)\\
+&amp;=a_{11}a_{22}\det(\mathbf{e}_1,\mathbf{e}_2,a_{33}\mathbf{e}_3\dots,a_{nn}\mathbf{e}_n)\\
+&amp;\;\;\vdots \\
+&amp;=a_{11}a_{22}\cdots a_{nn}\det(\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_n)\\
+&amp;=a_{11}a_{22}\cdots a_{nn}&amp;&amp; \text{By the identity axiom}\\
+\end{align}\]</span></p>
+</blockquote>
+<ol start="5" type="1">
+<li>Suppose that the matrix <span class="math inline">\(B\)</span> is obtained from the matrix <span class="math inline">\(A\)</span> by applying the type III elementary row operation <span class="math inline">\(c\mathbf{r}_j+\mathbf{r}_i\to\mathbf{r}_i\)</span>, where <span class="math inline">\(i\neq j\)</span> and <span class="math inline">\(c\)</span> is a scalar. This operation adds <span class="math inline">\(c\)</span> times the <span class="math inline">\(j\)</span>-th row to the <span class="math inline">\(i\)</span>-th row. Then, <span class="math inline">\(\det(B)=\det(A)\)</span>.</li>
+</ol>
+<blockquote class="blockquote">
+<p><span class="math display">\[\begin{align}
+\det(B) &amp;= \det(\ldots,c\mathbf{r}_j+\mathbf{r}_i,\ldots,\mathbf{r}_j,\ldots)&amp;&amp;\text{definition of $B$}\\
+&amp;= c\det(\ldots,\mathbf{r}_j,\ldots,\mathbf{r}_j,\ldots) +\det(\ldots,\mathbf{r}_i,\ldots,\mathbf{r}_j,\ldots)&amp;&amp;\text{ by linearity}\\
+&amp;= 0+\det(\ldots,\mathbf{r}_i,\ldots,\mathbf{r}_j,\ldots)&amp;&amp;\text{two equal rows}\\
+&amp;= \det(A)
+\end{align}\]</span></p>
+</blockquote>
+<p>These properties allow us to find the determinants of the elementary matrices. Suppose that <span class="math inline">\(E\)</span> is an elementary matrix. If <span class="math inline">\(E\)</span> multiplies row <span class="math inline">\(i\)</span> by a non-zero constant <span class="math inline">\(c\)</span>, <span class="math inline">\(E\)</span> is diagonal with <span class="math inline">\(c\)</span> in the <span class="math inline">\(i\)</span>-th term and 1’s elsewhere. Then <span class="math inline">\(\det(E)=c\)</span>. If <span class="math inline">\(E\)</span> exchanges two rows, its determinant is -1. And if <span class="math inline">\(E\)</span> adds a multiple of a row to another row its determinant is 1.</p>
+<p>We summarize these properties here:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Determinants of Elementary Matrices
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose that <span class="math inline">\(E\)</span> is an elementary matrix</p>
+<ul>
+<li>If <span class="math inline">\(E\)</span> multiplies a row by a non-zero constant <span class="math inline">\(c\)</span>, then <span class="math inline">\(\det(E)=c\)</span></li>
+<li>If <span class="math inline">\(E\)</span> exchanges two rows, then <span class="math inline">\(\det(E)=-1\)</span></li>
+<li>If <span class="math inline">\(E\)</span> adds a multiple of a row to another row, then <span class="math inline">\(\det(E)=1\)</span></li>
+</ul>
+</div>
+</div>
+<p>Repeating the arguments on matrices and elementary row matrices, we obtain the following important result</p>
+<div id="lem-determinant_elementary" class="lemma theorem">
+<p><span class="theorem-title"><strong>Lemma 9.1</strong></span> Suppose that <span class="math inline">\(A\)</span> is an <span class="math inline">\(n\times n\)</span> matrix and that <span class="math inline">\(E\)</span> is an <span class="math inline">\(n\times n\)</span> elementary matrix. Then <span class="math display">\[\det(EA)=\det(E)\det(A)\]</span></p>
+</div>
+<p>Let’s illustrate this when <span class="math inline">\(E\)</span> multiplies the <span class="math inline">\(i\)</span>-th row by a non-zero constant <span class="math inline">\(c\)</span>. Then <span class="math display">\[\begin{align}
+\det(EA) &amp;= \det(\mathbf{r}_1,\cdots,\mathbf{r}_{i-1},c\mathbf{r}_i,\mathbf{r}_{i+1},\cdots,\mathbf{r}_n)\\
+&amp;= c\det(\mathbf{r}_1,\cdots,\mathbf{r}_{i-1},\mathbf{r}_i,\mathbf{r}_{i+1},\cdots,\mathbf{r}_n)\\
+&amp;=\det(E)\det(A)
+\end{align}.\]</span> A similar argument is used for the other elementary matrices.</p>
+<p>We use the Lemma to characterize invertibility of matrices in terms of determinants</p>
+<div id="thm-determinant-invertible" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 9.1</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n\times n\)</span> matrix. Then <span class="math inline">\(A\)</span> is invertible if and only if <span class="math inline">\(\det(A)\not=0\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n\times n\)</span> matrix with row reduced echelon form <span class="math inline">\(R\)</span>. Find elementary row operations <span class="math inline">\(E_i\)</span> such that <span class="math display">\[E_k\cdots E_2E_1A=R.\]</span> Applying <a href="#lem-determinant_elementary" class="quarto-xref">Lemma&nbsp;<span>9.1</span></a> repeatedly we get <span class="math display">\[\det(E_k)\cdots \det(E_2)\det(E_1)\det(A)=\det(R).\]</span></p>
+<p>If <span class="math inline">\(A\)</span> is invertible, then <span class="math inline">\(R=I_n\)</span> and <span class="math inline">\(\det(E_k)\cdots \det(E_2)\det(E_1)\det(A)=\det(I_n)=1,\)</span> which implies that <span class="math inline">\(\det(A)\not=0\)</span>.</p>
+<p>On the other hand, if <span class="math inline">\(A\)</span> is not invertible, <span class="math inline">\(R\)</span> has a row of zeros and then <span class="math inline">\(\det(R)=0\)</span>. Hence, <span class="math inline">\(\det(E_k)\cdots \det(E_2)\det(E_1)\det(A)=\det(R)=0\)</span>. Since <span class="math inline">\(\det(E_i)\not=0\)</span> for <span class="math inline">\(i\leq k\)</span>, we get that <span class="math inline">\(\det(A)=0\)</span>. <span class="math inline">\(\square\)</span></p>
+</div>
+<p><a href="#lem-determinant_elementary" class="quarto-xref">Lemma&nbsp;<span>9.1</span></a> and <a href="#thm-determinant-invertible" class="quarto-xref">Theorem&nbsp;<span>9.1</span></a> have several consequences:</p>
+<div id="cor-multiplicative" class="corollory theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 9.1</strong></span> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be <span class="math inline">\(n\times n\)</span> matrices, then <span class="math inline">\(\det(AB)=\det(A)\det(B)\)</span></p>
+</div>
+<p>Indeed, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are invertible, then each of them can be written as a product of elementary matrices, and the result follows from <a href="#lem-determinant_elementary" class="quarto-xref">Lemma&nbsp;<span>9.1</span></a>. On the other hand, if either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is not invertible, then <span class="math inline">\(AB\)</span> is not invertible either and <span class="math inline">\(\det(AB)=0\)</span>. Since <span class="math inline">\(\det(A)=0\)</span> or <span class="math inline">\(\det(B)=0\)</span>, we see that <span class="math inline">\(\det(A)\det(B)=0\)</span> as well.</p>
+<p>If <span class="math inline">\(A\)</span> is invertible, <span class="math inline">\(A^{-1}A=I_n\)</span> and then <span class="math inline">\(1=\det(I_n)=\det(A^{-1}A)=\det(A^{-1})\det(A)\)</span> and we get:</p>
+<div id="cor-inverse" class="corollory theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 9.2</strong></span> Suppose that <span class="math inline">\(A\)</span> is an invertible be <span class="math inline">\(n\times n\)</span> matrix. Then <span class="math display">\[\det(A^{-1}) =\frac{1}{\det(A)}.\]</span></p>
+</div>
+<p><a href="#lem-determinant_elementary" class="quarto-xref">Lemma&nbsp;<span>9.1</span></a> and <a href="#thm-determinant-invertible" class="quarto-xref">Theorem&nbsp;<span>9.1</span></a> also allow us to compute the determinant efficiently when the matrix is in echelon form, or if it is upper or lower triangular.</p>
+<div id="cor-upper-triangular" class="corollory theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 9.3</strong></span> Suppose that <span class="math inline">\(A\)</span> is an upper triangular (or lower triangular) matrix. Then <span class="math display">\[\det(A)=a_{11}a_{22}\cdots a_{nn}\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n\times n\)</span> upper triangular matrix. We consider two cases:</p>
+<p>Case 1: If any of the diagonal entries <span class="math inline">\(a_{ii}\)</span> is zero, then <span class="math inline">\(A\)</span> has fewer than <span class="math inline">\(n\)</span> pivots and is not invertible. By <a href="#thm-determinant-invertible" class="quarto-xref">Theorem&nbsp;<span>9.1</span></a>, <span class="math inline">\(\det(A)=0\)</span>. Since one of the diagonal entries is zero, the product <span class="math inline">\(a_{11}a_{22}\cdots a_{nn}\)</span> is also zero.</p>
+<p>Case 2: If all of the diagonal entries <span class="math inline">\(a_{ii}\)</span> are non-zero, then <span class="math inline">\(A\)</span> is already in row echelon form. We can apply elementary row operations of type III (multiplying a multiple of a row to another row) to transform <span class="math inline">\(A\)</span> into a diagonal matrix <span class="math inline">\(D\)</span> with the same diagonal entries as <span class="math inline">\(A\)</span>. By the properties of determinants, type III elementary row operations do not change the determinant. Therefore, <span class="math inline">\(\det(A)=\det(D)\)</span>.</p>
+<p>The determinant of a diagonal matrix <span class="math inline">\(D\)</span> is the product of its diagonal entries and since <span class="math inline">\(A\)</span> and <span class="math inline">\(D\)</span> have the same diagonals, <span class="math display">\[\det(A)=\det(D)=a_{11}a_{22}\cdots a_{nn}.\quad \square\]</span></p>
+</div>
+<hr>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -772,14 +962,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../worksheets/bases_subspaces.html" class="pagination-link" aria-label="Problems">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Problems</span>
+      <a href="../parts/eigenvalues.html" class="pagination-link" aria-label="Eigenvalues and Eigenvectors">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Eigenvalues and Eigenvectors</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/projection_theorem.html" class="pagination-link" aria-label="Least Squares">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Least Squares</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

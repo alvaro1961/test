@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../parts/eigenvalues.html" rel="next">
 <link href="../parts/least_squares.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -330,6 +331,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/eigenvalues.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Eigenvalues and Eigenvectors</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/determinants.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Determinants</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -412,18 +430,28 @@ window.Quarto = {
 </section>
 <section id="invertibility-of-ata-optional" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="invertibility-of-ata-optional"><span class="header-section-number">8.3</span> Invertibility of <span class="math inline">\(A^TA\)</span> (Optional)</h2>
-<p>The sub-section is not complete yet.</p>
+<p>In this section we will prove that if the columns of <span class="math inline">\(A\)</span> are linearly independent, then <span class="math inline">\(A^TA\)</span> is invertible. The main tool is <a href="system_equations.html#thm-homogeneous-independence" class="quarto-xref">Theorem&nbsp;<span>5.3</span></a>.</p>
+<p>Suppose that <span class="math inline">\(A\)</span> is an <span class="math inline">\(m\times n\)</span> matrix satifying <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> has a unique solution. We will show that this implies that <span class="math inline">\(A^TA\mathbf{x}=\mathbf{0}\)</span> also has a unique solution. This implies that the RREF of <span class="math inline">\(A^TA\)</span> has <span class="math inline">\(n\)</span> pivots, and since <span class="math inline">\(A^TA\)</span> is <span class="math inline">\(n\times n\)</span>, the RREF of <span class="math inline">\(A\)</span> is the identity, which implies that <span class="math inline">\(A^TA\)</span> is invertible, as we showed in the lab.</p>
+<p>The main tool to prove this is the following important Lemma. Recall that if <span class="math inline">\(\mathbf{x},\mathbf{y}\in\mathbb{R}^n\)</span>, we can write their dot product as the transpose of the first vector times the second one: <span class="math display">\[\mathbf{x}\cdot\mathbf{y}=\begin{bmatrix}x_1&amp;x_2&amp;\cdots &amp;x_n\end{bmatrix}
+\begin{bmatrix}
+y_1\\ y_2\\ \vdots\\ y_n
+\end{bmatrix}\]</span></p>
 <div id="lem-adjoint" class="lemma theorem">
 <p><span class="theorem-title"><strong>Lemma 8.1</strong></span> Suppose that <span class="math inline">\(A\)</span> is an <span class="math inline">\(m\times n\)</span> matrix, that <span class="math inline">\(\mathbf{x}\in\mathbb{R}^m\)</span> and <span class="math inline">\(\mathbf{y}\in\mathbb{R}^n\)</span>. Then <span class="math display">\[(A^T\mathbf{x})\cdot\mathbf{y}=\mathbf{x}\cdot(A\mathbf{y})\]</span></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Using the fact that the dot product can be written as matrix multiplication of a row vector with a column vector:</p>
-<p><span class="math display">\[(A^T\mathbf{x})\cdot\mathbf{y} = ((A^T\mathbf{x})^T)\mathbf{y}\]</span></p>
-<p>because to compute a dot product, we need to transpose the first vector to make it a row vector. Then</p>
+<p><span class="math display">\[(A^T\mathbf{x})\cdot\mathbf{y} = ((A^T\mathbf{x})^T)\mathbf{y}.\]</span></p>
+<p>Then</p>
 <p><span class="math display">\[((A^T\mathbf{x})^T)\mathbf{y} = \mathbf{x}^TA\mathbf{y} = \mathbf{x}\cdot(A\mathbf{y})\]</span></p>
 <p>where the first equality follows from the property <span class="math inline">\((A^T\mathbf{x})^T = \mathbf{x}^TA\)</span> of matrix transpose.</p>
 </div>
-<p>By <a href="#lem-adjoint" class="quarto-xref">Lemma&nbsp;<span>8.1</span></a> we will see if it works</p>
+<div class="propositiom">
+<p><strong>Proposition:</strong> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m\times n\)</span> matrix. If <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> has a unique solution, then <span class="math inline">\(A^TA\mathbf{x}=\mathbf{0}\)</span> also has a unique solution.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Suppose that <span class="math inline">\(A^TA\mathbf{x}=\mathbf{0}\)</span>. Then <span class="math inline">\(A^TA\mathbf{x}\cdot \mathbf{x}=0\)</span>. Applying <a href="#lem-adjoint" class="quarto-xref">Lemma&nbsp;<span>8.1</span></a> we get <span class="math display">\[0=A^TA\mathbf{x}\cdot\mathbf{x}=A^T(A\mathbf{x})\cdot\mathbf{x}=A\mathbf{x}\cdot A\mathbf{x}=\|A\mathbf{x}\|^2.\]</span> This implies that <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> and the assumption on <span class="math inline">\(A\)</span> tells us that <span class="math inline">\(\mathbf{x}=\mathbf{0}\)</span> <span class="math inline">\(\square\)</span></p>
+</div>
 </section>
 <section id="regression-problems" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="regression-problems"><span class="header-section-number">8.4</span> Regression Problems</h2>
@@ -924,6 +952,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../parts/eigenvalues.html" class="pagination-link" aria-label="Eigenvalues and Eigenvectors">
+        <span class="nav-page-text">Eigenvalues and Eigenvectors</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
