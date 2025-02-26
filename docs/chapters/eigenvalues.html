@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; Eigenvalues and Eigenvectors – Linear Algebra</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/determinants.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-273e46d7b3848a679358d7b360117b95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.35.2.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/eigenvalues.html">Eigenvalues and Eigenvectors</a></li><li class="breadcrumb-item"><a href="../chapters/eigenvalues.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Eigenvalues and Eigenvectors</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Linear Algebra</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Linear Algebra</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Vectors in <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/vector_spaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Abstract Vector Spaces</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/computing_dot_products.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/matrices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matrices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/matrices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matrices</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/matrix_multiplication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../applications/image_transforms_matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Real World Application</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/linear_maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Transformation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/linear_maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Transformations in <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/linearMapsEquations1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/system_equations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Systems of Linear Equations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/system_equations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of Linear Equations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/gaussianElimination.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computational Problems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/alwaysSometimesNever.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceptual Problems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/subspaces_bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Subspaces and Bases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bases of Vector Spaces</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/subspaces_Rn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathbb{R}^n\)</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/bases_subspaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/least_squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Least Squares</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/projection_theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Least Squares</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parts/eigenvalues.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Eigenvalues and Eigenvectors</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/determinants.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Determinants</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/eigenvalues.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Eigenvalues and Eigenvectors</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">10.1</span> Introduction</a></li>
+  <li><a href="#finding-eigenvalues" id="toc-finding-eigenvalues" class="nav-link" data-scroll-target="#finding-eigenvalues"><span class="header-section-number">10.2</span> Finding Eigenvalues</a>
+  <ul class="collapse">
+  <li><a href="#a-note-of-caution-about-numerical-calculations" id="toc-a-note-of-caution-about-numerical-calculations" class="nav-link" data-scroll-target="#a-note-of-caution-about-numerical-calculations">A Note of Caution About Numerical Calculations</a></li>
+  </ul></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">10.3</span> Examples</a>
+  <ul class="collapse">
+  <li><a href="#do-eigenvalues-always-exist" id="toc-do-eigenvalues-always-exist" class="nav-link" data-scroll-target="#do-eigenvalues-always-exist"><span class="header-section-number">10.3.1</span> Do eigenvalues always exist?</a></li>
+  <li><a href="#algebraic-vs.-geometric-multiplicity-of-eigenvalues" id="toc-algebraic-vs.-geometric-multiplicity-of-eigenvalues" class="nav-link" data-scroll-target="#algebraic-vs.-geometric-multiplicity-of-eigenvalues"><span class="header-section-number">10.3.2</span> Algebraic vs.&nbsp;Geometric Multiplicity of Eigenvalues</a></li>
+  </ul></li>
+  <li><a href="#diagonalization" id="toc-diagonalization" class="nav-link" data-scroll-target="#diagonalization"><span class="header-section-number">10.4</span> Diagonalization</a>
+  <ul class="collapse">
+  <li><a href="#the-diagonalization-formula" id="toc-the-diagonalization-formula" class="nav-link" data-scroll-target="#the-diagonalization-formula"><span class="header-section-number">10.4.1</span> The Diagonalization Formula</a></li>
+  <li><a href="#the-spectral-theorem" id="toc-the-spectral-theorem" class="nav-link" data-scroll-target="#the-spectral-theorem"><span class="header-section-number">10.4.2</span> The Spectral Theorem</a></li>
+  <li><a href="#finding-the-spectral-decomposition-in-numpy" id="toc-finding-the-spectral-decomposition-in-numpy" class="nav-link" data-scroll-target="#finding-the-spectral-decomposition-in-numpy"><span class="header-section-number">10.4.3</span> Finding the spectral decomposition in NumPy</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parts/eigenvalues.html">Eigenvalues and Eigenvectors</a></li><li class="breadcrumb-item"><a href="../chapters/eigenvalues.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Eigenvalues and Eigenvectors</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Eigenvalues and Eigenvectors</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Watch the following video from the Essence of Linear Algebra, from 3Blue1Brown</p>
+<ul>
+<li><a href="https://youtu.be/PFDu9oVAE-g?si=J5NadhxmFMCs0dne" target="_blank">Eigenvectors and Eigenvalues</a></li>
+</ul>
+<p>In this section we study eigenvalues and eigenvectors.</p>
+<section id="introduction" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">10.1</span> Introduction</h2>
+<div id="def-eigen" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 10.1</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n\times n\)</span> matrix. A non-zero vector <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span> is an <em>eigenvector</em> of <span class="math inline">\(A\)</span> if <span class="math inline">\(A\mathbf{x}=\lambda\mathbf{x}\)</span> for some <span class="math inline">\(\lambda\in\mathbb{R}\)</span>. A scalar <span class="math inline">\(\lambda\in\mathbb{R}\)</span> is an <em>eigenvalue</em> of <span class="math inline">\(A\)</span> if there exists a non-zero vector <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span> such that <span class="math inline">\(A\mathbf{x}=\lambda\mathbf{x}\)</span>.</p>
+</div>
+<p>Checking whether a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> is an eigenvector of a matrix <span class="math inline">\(A\)</span> is straightforward: we compute <span class="math inline">\(A\mathbf{x}\)</span> and verify if the result is a scalar multiple of <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<p>Determining whether a scalar <span class="math inline">\(\lambda\)</span> is an eigenvalue requires solving a system of equations. The key observation is that the equation <span class="math inline">\(A\mathbf{x} = \lambda\mathbf{x}\)</span> is equivalent to<br>
+<span class="math display">\[
+(A - \lambda I)\mathbf{x} = \mathbf{0},
+\]</span> where <span class="math inline">\(I\)</span> is the identity matrix. For <span class="math inline">\(\lambda\)</span> to be an eigenvalue, this system must have a nonzero solution, meaning <span class="math inline">\(A - \lambda I\)</span> must be singular. Then we solve:<br>
+<span id="eq-A-lambdaI"><span class="math display">\[
+(A - \lambda I)\mathbf{x} = \mathbf{0}.
+\tag{10.1}\]</span></span> If there are infinitely many solutions, <span class="math inline">\(\lambda\)</span> is an eigenvalue, and all nonzero solutions are eigenvectors. If the system has only the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span>, then <span class="math inline">\(\lambda\)</span> is not an eigenvalue.</p>
+<div class="exercise">
+<p><strong>Exercise:</strong> Suppose that <span class="math inline">\(A=\begin{bmatrix}7&amp;-2\\5&amp;0\end{bmatrix}\)</span>, <span class="math inline">\(\mathbf{x}_1=\begin{bmatrix}2\\1\end{bmatrix}\)</span> and <span class="math inline">\(\mathbf{x}_2=\begin{bmatrix}1\\1\end{bmatrix}\)</span>. Answer the following problems and click to check the answers</p>
+<ol type="1">
+<li>Are <span class="math inline">\(\mathbf{x}_1\)</span> or <span class="math inline">\(\mathbf{x}_2\)</span> eigenvectors of <span class="math inline">\(A\)</span>?</li>
+<li>Is <span class="math inline">\(\lambda=2\)</span> an eigenvalue of <span class="math inline">\(A\)</span>?</li>
+<li>Is <span class="math inline">\(\lambda=3\)</span> an eigenvalue of <span class="math inline">\(A\)</span>?</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to see the answer of 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Remember that we need to check that <span class="math inline">\(A\mathbf{x}\)</span> is a multiple of <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<p>We compute <span class="math inline">\(A\mathbf{x}_1=\begin{bmatrix}7&amp;-2\\5&amp;0\end{bmatrix}\begin{bmatrix}2\\1\end{bmatrix}=\begin{bmatrix}12\\10\end{bmatrix}\)</span> and see that it is not a multiple of <span class="math inline">\(\begin{bmatrix}2\\1\end{bmatrix}\)</span>. Therefore, <span class="math inline">\(\mathbf{x}_1\)</span> is not an eigenvector of <span class="math inline">\(A\)</span>.</p>
+<p>Now we compute <span class="math inline">\(A\mathbf{x}_2=\begin{bmatrix}7&amp;-2\\5&amp;0\end{bmatrix}\begin{bmatrix}1\\1\end{bmatrix}=\begin{bmatrix}5\\5\end{bmatrix}\)</span> and notice that this is <span class="math inline">\(5\begin{bmatrix}1\\1\end{bmatrix}\)</span>. Therefore <span class="math inline">\(\mathbf{x}_2\)</span> is an eigenvector of <span class="math inline">\(A\)</span> with eigenvalue <span class="math inline">\(5\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to see the answer of 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From <a href="#eq-A-lambdaI" class="quarto-xref">Equation&nbsp;<span>10.1</span></a>, we find <span class="math inline">\(A-2 I=\begin{bmatrix}5&amp;-2\\5&amp;-2\end{bmatrix}\)</span> and solve the augmented system <span class="math inline">\(\left[\begin{array}{cc|c}5&amp;-2&amp;0\\5&amp;-2&amp;0\end{array}\right]\)</span>. This system has infinitely many solutions and we conclude that <span class="math inline">\(\lambda=2\)</span> is an eigenvalue of <span class="math inline">\(A\)</span>.</p>
+<p>The solutions are multiples of <span class="math inline">\(\begin{bmatrix}\frac{2}{5}\\1\end{bmatrix}\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to see the answer of 3
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From <a href="#eq-A-lambdaI" class="quarto-xref">Equation&nbsp;<span>10.1</span></a>, we find <span class="math inline">\(A-3 I=\begin{bmatrix}4&amp;-2\\5&amp;-3\end{bmatrix}\)</span> and solve the augmented system <span class="math inline">\(\left[\begin{array}{cc|c}4&amp;-2&amp;0\\5&amp;-3&amp;0\end{array}\right]\)</span>. This system has a unique solution and we conclude that <span class="math inline">\(\lambda=3\)</span> is not an eigenvalue of <span class="math inline">\(A\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="finding-eigenvalues" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="finding-eigenvalues"><span class="header-section-number">10.2</span> Finding Eigenvalues</h2>
+<p>To find the eigenvalues of a matrix <span class="math inline">\(A\)</span>, we can use the following chain of equivalent statements:</p>
+<p><span class="math display">\[\begin{align}
+\lambda\text{ is an eigenvalue of }A
+&amp;\Leftrightarrow A\mathbf{x}=\lambda\mathbf{x}\text{ for some }\mathbf{x}\not=0\\
+&amp;\Leftrightarrow A\mathbf{x}-\lambda\mathbf{x}=\mathbf{0}\text{ for some }\mathbf{x}\not=0\\
+&amp;\Leftrightarrow (A-\lambda I)\mathbf{x}=\mathbf{0}\text{ for some }\mathbf{x}\not=0\\
+&amp;\Leftrightarrow (A-\lambda I) \text{ is not invertible }\\
+&amp;\Leftrightarrow \det(A-\lambda I)=0 \\
+\end{align}
+\]</span></p>
+<p>We compute <span class="math inline">\(\det(A-\lambda I)\)</span>, which for an <span class="math inline">\(n\times n\)</span> matrix is a polynomial of degree <span class="math inline">\(n\)</span> named the characteristic polynomial of <span class="math inline">\(A\)</span>, and then we find the roots.</p>
+<blockquote class="blockquote">
+<p>Since the characteristic polynomial has degree <span class="math inline">\(n\)</span>, it has at most <span class="math inline">\(n\)</span> roots. This implies that an <span class="math inline">\(n\times n\)</span> matrix has at most <span class="math inline">\(n\)</span> eigenvalues.</p>
+</blockquote>
+<p>If <span class="math inline">\(A\)</span> is an upper triangular matrix <span class="math display">\[A=\begin{bmatrix}
+a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
+0 &amp; a_{22} &amp; a_{23} &amp; \cdots &amp; a_{2n} \\
+0 &amp; 0 &amp; a_{33} &amp; \cdots &amp; a_{3n} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; a_{nn}
+\end{bmatrix}\]</span> then <span class="math display">\[\det(A-\lambda I)=(a_{11}-\lambda)(a_{22}-\lambda)\cdots (a_{nn}-\lambda)\]</span> and the eigenvalues of <span class="math inline">\(A\)</span> are the diagonal elements. The same is true if <span class="math inline">\(A\)</span> is lower triangular.</p>
+<p>However, in general, it is not so easy to find the roots of the characteristic polynomial, especially as the size of the matrix increases.</p>
+<p>For a <span class="math inline">\(2 \times 2\)</span> matrix, we can find the roots using the quadratic formula. For a <span class="math inline">\(3 \times 3\)</span> matrix, we could potentially use the cubic formula, though it’s rather complicated. For a <span class="math inline">\(4 \times 4\)</span> matrix, there is a quartic formula, but it’s extremely complex and rarely used in practice.</p>
+<p>For matrices of size <span class="math inline">\(5 \times 5\)</span> or larger, the Abel-Ruffini theorem from abstract algebra proves that there is no general algebraic formula for the roots of polynomials of degree five or higher. Therefore, for larger matrices, we typically rely on numerical methods such the power method.</p>
+<p>We can also graph the characteristic polynomial to get an idea where the eigenvalues are. Consider</p>
+<p><span class="math display">\[A=\begin{bmatrix}0.325 &amp; -0.075 &amp; 0.075 &amp; -0.075\\
+0.025 &amp; 0.225 &amp; -0.025 &amp; -0.275\\0.15 &amp; -0.05 &amp; 0.25 &amp; -0.05\\
+-0.1 &amp; -0.1 &amp; 0.1 &amp; 0.4\end{bmatrix}
+\]</span></p>
+<p>We use sympy to find the characteristic polynomial <span class="math display">\[\det(A-\lambda I)=
+x^{4} - \frac{6 x^{3}}{5} + \frac{49 x^{2}}{100} - \frac{39 x}{500} + \frac{1}{250}\]</span> and then we plot it:</p>
+<div id="93d056d1" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>                            <div id="d71b8b3c-f020-4c8c-bbf1-308d577657db" class="plotly-graph-div" style="height:300px; width:600px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("d71b8b3c-f020-4c8c-bbf1-308d577657db")) {                    Plotly.newPlot(                        "d71b8b3c-f020-4c8c-bbf1-308d577657db",                        [{"mode":"lines","name":"characteristic polynomial","x":[0.0,0.006060606060606061,0.012121212121212121,0.01818181818181818,0.024242424242424242,0.030303030303030304,0.03636363636363636,0.04242424242424243,0.048484848484848485,0.05454545454545454,0.06060606060606061,0.06666666666666667,0.07272727272727272,0.07878787878787878,0.08484848484848485,0.09090909090909091,0.09696969696969697,0.10303030303030303,0.10909090909090909,0.11515151515151516,0.12121212121212122,0.12727272727272726,0.13333333333333333,0.1393939393939394,0.14545454545454545,0.15151515151515152,0.15757575757575756,0.16363636363636364,0.1696969696969697,0.17575757575757575,0.18181818181818182,0.18787878787878787,0.19393939393939394,0.2,0.20606060606060606,0.21212121212121213,0.21818181818181817,0.22424242424242424,0.23030303030303031,0.23636363636363636,0.24242424242424243,0.24848484848484848,0.2545454545454545,0.2606060606060606,0.26666666666666666,0.2727272727272727,0.2787878787878788,0.28484848484848485,0.2909090909090909,0.296969696969697,0.30303030303030304,0.3090909090909091,0.3151515151515151,0.3212121212121212,0.32727272727272727,0.3333333333333333,0.3393939393939394,0.34545454545454546,0.3515151515151515,0.3575757575757576,0.36363636363636365,0.3696969696969697,0.37575757575757573,0.38181818181818183,0.3878787878787879,0.3939393939393939,0.4,0.40606060606060607,0.4121212121212121,0.41818181818181815,0.42424242424242425,0.4303030303030303,0.43636363636363634,0.44242424242424244,0.4484848484848485,0.45454545454545453,0.46060606060606063,0.4666666666666667,0.4727272727272727,0.47878787878787876,0.48484848484848486,0.4909090909090909,0.49696969696969695,0.503030303030303,0.509090909090909,0.5151515151515151,0.5212121212121212,0.5272727272727272,0.5333333333333333,0.5393939393939394,0.5454545454545454,0.5515151515151515,0.5575757575757576,0.5636363636363636,0.5696969696969697,0.5757575757575758,0.5818181818181818,0.5878787878787879,0.593939393939394,0.6],"y":[0.004000000000000002,0.0035450051057363866,0.0031244226217429314,0.002736698312956767,0.002380310324212154,0.002053769180240505,0.0017556177856703798,0.001484431425027468,0.0012388177627346167,0.0010174168431118095,0.0008189010903761725,0.0006419753086419756,0.00048537668192063377,0.00034787477412070485,0.00022827152904788747,0.00012540127040502688,3.813070179210928e-05,-3.4641093293735404e-05,-9.398265145823353e-05,-0.0001409301294099693,-0.0001764873039603816,-0.00020162557202376886,-0.00021728395061728397,-0.00022436907686093776,-0.0002237552079775972,-0.00021628422129298642,-0.00020276561423568704,-0.00018397650433713542,-0.00016066162923162672,-0.00013353334665631205,-0.00010327163445119871,-7.0524090559152e-05,-3.590593302589298e-05,7.563394355258914e-20,3.664325026709196e-05,7.350573942109133e-05,0.00011010176900484924,0.00014597802045836116,0.00018071355511876423,0.00021391981422034026,0.00024524061889451325,0.00027435217016985125,0.0003009630489720646,0.0003248142161240083,0.0003456790123456791,0.00036336315825421763,0.00037770475436390796,0.0003885742810861767,0.00039587459872959525,0.00039954094749987564,0.00039954094749987564,0.00039587459872959525,0.00038857428108617705,0.00037770475436390796,0.00036336315825421763,0.0003456790123456791,0.0003248142161240083,0.0003009630489720646,0.00027435217016985125,0.0002452406188945128,0.00021391981422034026,0.00018071355511876423,0.00014597802045836116,0.00011010176900484943,7.350573942109133e-05,3.664325026709209e-05,-1.1449174941446906e-19,-3.590593302589298e-05,-7.052409055915188e-05,-0.00010327163445119852,-0.00013353334665631205,-0.00016066162923162672,-0.00018397650433713542,-0.00020276561423568704,-0.0002162842212929868,-0.0002237552079775972,-0.00022436907686093735,-0.00021728395061728397,-0.0002016255720237692,-0.00017648730396038222,-0.00014093012940996906,-9.39826514582342e-05,-3.46410932937359e-05,3.813070179210928e-05,0.00012540127040502576,0.00022827152904788707,0.00034787477412070485,0.0004853766819206329,0.0006419753086419745,0.0008189010903761725,0.0010174168431118077,0.0012388177627346167,0.0014844314250274692,0.001755617785670375,0.0020537691802405065,0.002380310324212154,0.002736698312956762,0.0031244226217429314,0.0035450051057363866,0.003999999999999995],"type":"scatter"},{"marker":{"color":"red","size":12},"mode":"markers","name":"eigenvalues","x":[0.09999999999999998,0.2000000000000001,0.3999999999999999,0.5],"y":[0,0,0,0],"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"shapes":[{"line":{"color":"black","width":1},"type":"line","x0":0.0,"x1":0.6,"y0":0,"y1":0},{"line":{"color":"black","width":1},"type":"line","x0":0,"x1":0,"y0":-0.00022436907686093776,"y1":0.004000000000000002}],"title":{"text":"Graph of the characteristic polynomial of A"},"width":600,"height":300},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('d71b8b3c-f020-4c8c-bbf1-308d577657db');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<hr>
+<p>In most cases, we use software like NumPy to find eigenvalues. The command <code>np.linalg.eig(A)</code> returns two objects:</p>
+<ol type="1">
+<li>An array containing the eigenvalues of matrix <span class="math inline">\(A\)</span></li>
+<li>A 2D array where each column represents the eigenvector corresponding to the eigenvalue at the same index</li>
+</ol>
+<p>The eigenvectors are normalized to have unit length. If you need only the eigenvalues, you can use the more efficient <code>np.linalg.eigvals(A)</code> function.</p>
+<p>Let’s look at the eigenvalues of the matrix <span class="math inline">\(A\)</span> defined above</p>
+<div id="42093f05" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate eigenvalues and eigenvectors of matrix A</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>eigenvalues, eigenvectors <span class="op">=</span> np.linalg.eig(A)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the eigenvalues</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvalues of A:"</span>,eigenvalues)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvalues of A: [0.1 0.2 0.4 0.5]</code></pre>
+</div>
+</div>
+<p>Now let’s enhance the eigenvector visualization with better formatting:</p>
+<div id="60e1160b" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>init_printing()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Matrix(np.<span class="bu">round</span>(eigenvectors,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.4082 &amp; 0.0 &amp; 0.7071 &amp; 0.0\\0.8165 &amp; -0.7071 &amp; 0.0 &amp; -0.7071\\0.0 &amp; -0.7071 &amp; 0.7071 &amp; 0.0\\0.4082 &amp; 0.0 &amp; 0.0 &amp; 0.7071\end{matrix}\right]\)</span></p>
+</div>
+</div>
+<div class="exercise">
+<p><strong>Exercise:</strong> Check that the columns of <code>eigenvectors</code> are eigenvectors of <span class="math inline">\(A\)</span> corresponding to the eigenvalues of <code>eigenvalues</code></p>
+</div>
+<section id="a-note-of-caution-about-numerical-calculations" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a-note-of-caution-about-numerical-calculations">A Note of Caution About Numerical Calculations</h3>
+<p>When using NumPy to calculate eigenvalues and eigenvectors, it’s good to double-check the results, especially for certain types of matrices. For example, with a matrix like <span class="math display">\[\begin{bmatrix}1&amp;1\\0&amp;1\end{bmatrix},\]</span> we know that it has only one eigenvalue which is 1, but it has only one eigenvector up to a non-zero multiple <a href="#exm-1101" class="quarto-xref">Example&nbsp;<span>10.2</span></a>. However, NumPy will try to give us two eigenvectors anyway, and the second one isn’t really an new eigenvector.</p>
+<div id="94d8ab80" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>eigenvalues, eigenvectors <span class="op">=</span> np.linalg.eig(np.array([[<span class="dv">1</span>,<span class="dv">1</span>],[<span class="dv">0</span>,<span class="dv">1</span>]]))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The eigenvalues are:"</span>,eigenvalues)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The eigenvectors are:"</span>,<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, eigenvectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The eigenvalues are: [1. 1.]
+The eigenvectors are: 
+ [[ 1.00000000e+00 -1.00000000e+00]
+ [ 0.00000000e+00  2.22044605e-16]]</code></pre>
+</div>
+</div>
+<p>This happens because NumPy uses numerical methods that sometimes have to make approximations. To check if the results make sense, you can always verify whether <span class="math inline">\(A\mathbf{v} = \lambda\mathbf{v}\)</span> holds true for each eigenvector and if the eigenvectors are linearly independent. In this example, the second eigenvector is <span class="math inline">\((-1,0)\)</span> which is a multiple of the first eigenvector <span class="math inline">\((1,0)\)</span>.</p>
+</section>
+</section>
+<section id="examples" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="examples"><span class="header-section-number">10.3</span> Examples</h2>
+<p>In this subsection we find several examples of eigenvalues and eigenvectors</p>
+<section id="do-eigenvalues-always-exist" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="do-eigenvalues-always-exist"><span class="header-section-number">10.3.1</span> Do eigenvalues always exist?</h3>
+<p>The answer is no when working in the real number system. However, in the complex number system, the answer is yes. This is guaranteed by the fundamental theorem of algebra, which states that all non-constant polynomials with complex coefficients have at least one complex root.</p>
+<div id="exm-rotation" class="example theorem">
+<p><span class="theorem-title"><strong>Example 10.1</strong></span> A simple example of a matrix without real eigenvalues is the rotation matrix in <span class="math inline">\(\mathbb{R}^2\)</span> that rotates vectors by <span class="math inline">\(\theta\)</span> degrees. This matrix is represented as: <span class="math display">\[\begin{bmatrix}\cos(\theta) &amp; -\sin(\theta)\\\sin(\theta)&amp;\cos(\theta) \end{bmatrix}\]</span></p>
+<p>When <span class="math inline">\(\theta\)</span> is not a multiple of <span class="math inline">\(180°\)</span>, this matrix has no real eigenvalues, only complex ones.</p>
+<p>The characteristic polynomial of this matrix is <span class="math display">\[\lambda^2-2\cos(\theta)+1\]</span> and the quadratic formula tells us that the eigenavalues are <span class="math display">\[\lambda = \cos(\theta)\pm i\sin(\theta),\]</span> which is a real number only if <span class="math inline">\(\sin(\theta)=0\)</span>, which happens precisely when <span class="math inline">\(\theta\)</span> is a multiple of <span class="math inline">\(180°\)</span>.</p>
+</div>
+</section>
+<section id="algebraic-vs.-geometric-multiplicity-of-eigenvalues" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="algebraic-vs.-geometric-multiplicity-of-eigenvalues"><span class="header-section-number">10.3.2</span> Algebraic vs.&nbsp;Geometric Multiplicity of Eigenvalues</h3>
+<p>The following example is instructive.</p>
+<div id="exm-1101" class="example theorem">
+<p><span class="theorem-title"><strong>Example 10.2</strong></span> Let <span class="math inline">\(A=\begin{bmatrix}1&amp;1\\0&amp;1\end{bmatrix}\)</span>. We see that <span class="math inline">\(A\)</span> has only one eigenvalue <span class="math inline">\(\lambda=1\)</span> (appearing with algebraic multiplicity 2, since the characteristic polynomial is <span class="math inline">\((1-\lambda)^2\)</span>).</p>
+<p>When we find the eigenvectors associated with <span class="math inline">\(\lambda=1\)</span> by solving <span class="math inline">\((A-\lambda I)\mathbf{v} = \mathbf{0}\)</span>:</p>
+<p><span class="math display">\[(A-I)\mathbf{v} = \begin{bmatrix}0&amp;1\\0&amp;0\end{bmatrix}\begin{bmatrix}v_1\\v_2\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}\]</span></p>
+<p>We get <span class="math inline">\(v_2 = 0\)</span> with <span class="math inline">\(v_1\)</span> free to take any value. Thus, all eigenvectors are scalar multiples of <span class="math inline">\(\begin{bmatrix}1\\0\end{bmatrix}\)</span>.</p>
+</div>
+<p>Despite having an eigenvalue with algebraic multiplicity 2, we can only find one linearly independent eigenvector. The geometric multiplicity (dimension of the eigenspace) is only 1, which is less than the algebraic multiplicity.</p>
+<p>Let’s look at a couple of examples</p>
+<div id="exm-3by3_diag" class="example theorem">
+<p><span class="theorem-title"><strong>Example 10.3</strong></span> Consider the 3×3 matrix: <span class="math display">\[A=\begin{bmatrix}3 &amp; -1 &amp; 3\\1 &amp; 1 &amp; 3\\1 &amp; -1 &amp; 5\end{bmatrix}\]</span></p>
+<p>To diagonalize <span class="math inline">\(A\)</span>, we first need to find its eigenvalues and eigenvectors. We’ll use SymPy to calculate the characteristic polynomial:</p>
+<div id="bcef505f" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import required functions from SymPy</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, Symbol, eye, det, factor</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the matrix A</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">5</span>]]) </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the symbol for eigenvalues </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Symbol(<span class="st">'x'</span>) </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the characteristic polynomial and factored form</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The characteristic polynomial of A and its factored version are:"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>char_poly <span class="op">=</span> det(A<span class="op">-</span>x<span class="op">*</span>eye(<span class="dv">3</span>)) <span class="co">#eye(3) is the 3x3 identity matrix</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>char_poly,factor(char_poly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The characteristic polynomial of A and its factored version are:</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
+<p><span class="math inline">\(\displaystyle \left( - x^{3} + 9 x^{2} - 24 x + 20, \  - \left(x - 5\right) \left(x - 2\right)^{2}\right)\)</span></p>
+</div>
+</div>
+<p>The output tells us the eigenvalues are <span class="math inline">\(\lambda = 5\)</span> (with multiplicity 1) and <span class="math inline">\(\lambda = 2\)</span> (with multiplicity 2).</p>
+<p>Next we find the eigenvectors associated with each eigenvalue. For <span class="math inline">\(\lambda = 2\)</span>, we find a basis for the null space of <span class="math inline">\((A-2I)\)</span>:</p>
+<div id="4eb28333" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find eigenvectors for λ = 2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvectors for λ = 2:"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>(A<span class="op">-</span><span class="dv">2</span><span class="op">*</span>eye(<span class="dv">3</span>)).nullspace()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvectors for λ = 2:</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="6">
+<p><span class="math inline">\(\displaystyle \left[ \left[\begin{matrix}1\\1\\0\end{matrix}\right], \  \left[\begin{matrix}-3\\0\\1\end{matrix}\right]\right]\)</span></p>
+</div>
+</div>
+<p>For <span class="math inline">\(\lambda = 5\)</span>, we find a basis of <span class="math inline">\((A- 5I)\)</span>:</p>
+<div id="597cf0b3" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find eigenvectors for λ = 5</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvectors for λ = 5:"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>(A<span class="op">-</span><span class="dv">5</span><span class="op">*</span>eye(<span class="dv">3</span>)).nullspace()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvectors for λ = 5:</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="7">
+<p><span class="math inline">\(\displaystyle \left[ \left[\begin{matrix}1\\1\\1\end{matrix}\right]\right]\)</span></p>
+</div>
+</div>
+<p>From these calculations, we obtain three linearly independent eigenvectors: <span class="math display">\[\left\{\begin{bmatrix}1\\1\\0\end{bmatrix}, \begin{bmatrix}-3\\0\\1\end{bmatrix}, \begin{bmatrix}1\\1\\1\end{bmatrix}\right\}\]</span> that form a basis for <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+</div>
+<p>Let’s look at another example with two eigenvalues</p>
+<div id="exm-3by3_not_diag" class="example theorem">
+<p><span class="theorem-title"><strong>Example 10.4</strong></span> Consider the 3×3 matrix: <span class="math display">\[A = \begin{bmatrix}2 &amp; 4 &amp; 3\\-4 &amp; -6 &amp; -3\\3 &amp; 3 &amp; 1\end{bmatrix}\]</span></p>
+<p>Using sympy, we find that the characteristic polynomial of <span class="math inline">\(A\)</span> is: <span class="math display">\[\det(A-\lambda I)=-\lambda^3-3\lambda^2+4=-(\lambda-1)(\lambda+2)^2\]</span></p>
+<p>This tells us the eigenvalues are <span class="math inline">\(\lambda = 1\)</span> (with multiplicity 1) and <span class="math inline">\(\lambda = -2\)</span> (with multiplicity 2).</p>
+<p>To find the eigenvectors for <span class="math inline">\(\lambda = -2\)</span>, we find a basis for <span class="math inline">\(\text{nul}(A+2I)\)</span>: <span class="math inline">\(\begin{bmatrix}-1\\1\\0\end{bmatrix}\)</span>.</p>
+<p>For the eigenvalue <span class="math inline">\(\lambda = 1\)</span>, a basis for <span class="math inline">\(\text{nul}(A-1I)\)</span>: <span class="math inline">\(\begin{bmatrix}1\\-1\\1\end{bmatrix}\)</span>.</p>
+</div>
+<p>In this case we only got two linearly independent eigenvectors and we didn’t have enough eigenvectors to get a basis of <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+</section>
+</section>
+<section id="diagonalization" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="diagonalization"><span class="header-section-number">10.4</span> Diagonalization</h2>
+<p>We now explore one of the most significant applications of eigenvalues and eigenvectors: determining when a matrix has enough eigenvectors to form a basis of <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
+<div id="def-diagonalizable" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 10.2</strong></span> An <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(A\)</span> is said to be <strong><em>diagonalizable</em></strong> if there exists a basis of <span class="math inline">\(\mathbb{R}^n\)</span> consisting of eigenvector of <span class="math inline">\(A\)</span>.</p>
+</div>
+<p>A key result supporting this definition is the following theorem:</p>
+<div id="thm-diff-eigenvalues" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 10.1</strong></span> Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n\times n\)</span> matrix. Suppose that <span class="math inline">\(A\)</span> has distinct eigenvalues <span class="math inline">\(\lambda_1,\lambda_2,\dots,\lambda_k\)</span> with corresponding eigenvectors <span class="math inline">\(\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_k\)</span>. Then the set of eigenvectors <span class="math inline">\(\{\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_k\}\)</span> is linearly independent.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>We proceed by contradiction. Suppose that the eigenvalues are distinct but the set of eigenvectors <span class="math inline">\(\{\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_k\}\)</span> is linearly dependent.</p>
+<p>Let <span class="math inline">\(j\)</span> be the smallest index such that <span class="math inline">\(\mathbf{v}_j\)</span> can be expressed as a linear combination of the previous eigenvectors. This means <span class="math inline">\(\{\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_{j-1}\}\)</span> is linearly independent, but <span class="math inline">\(\mathbf{v}_j\)</span> can be written as: <span class="math display">\[\mathbf{v}_j = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_{j-1}\mathbf{v}_{j-1}\]</span> for some scalars <span class="math inline">\(c_1, c_2, \dots, c_{j-1}\)</span>.</p>
+<p>Now, applying <span class="math inline">\(A\)</span> to both sides of this equation: <span class="math display">\[\begin{align}
+A\mathbf{v}_j &amp;= A(c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_{j-1}\mathbf{v}_{j-1}) \\
+&amp;= c_1 A\mathbf{v}_1 + c_2 A\mathbf{v}_2 + \cdots + c_{j-1} A\mathbf{v}_{j-1} \\
+&amp;= c_1 \lambda_1 \mathbf{v}_1 + c_2 \lambda_2 \mathbf{v}_2 + \cdots + c_{j-1} \lambda_{j-1} \mathbf{v}_{j-1}
+\end{align}\]</span></p>
+<p>Since <span class="math inline">\(\mathbf{v}_j\)</span> is an eigenvector of <span class="math inline">\(A\)</span> with eigenvalue <span class="math inline">\(\lambda_j\)</span>, we also have: <span class="math display">\[A\mathbf{v}_j = \lambda_j \mathbf{v}_j = \lambda_j(c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_{j-1}\mathbf{v}_{j-1})\]</span></p>
+<p>Comparing these two expressions for <span class="math inline">\(A\mathbf{v}_j\)</span> and subtracting: <span class="math display">\[\begin{align}
+\mathbf{0} &amp;= c_1\lambda_1\mathbf{v}_1 + c_2\lambda_2\mathbf{v}_2 + \cdots + c_{j-1}\lambda_{j-1}\mathbf{v}_{j-1} - \lambda_j(c_1\mathbf{v}_1 + \cdots + c_{j-1}\mathbf{v}_{j-1}) \\
+&amp;= c_1(\lambda_1 - \lambda_j)\mathbf{v}_1 + c_2(\lambda_2 - \lambda_j)\mathbf{v}_2 + \cdots + c_{j-1}(\lambda_{j-1} - \lambda_j)\mathbf{v}_{j-1}
+\end{align}\]</span></p>
+<p>Since <span class="math inline">\(\{\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_{j-1}\}\)</span> is linearly independent, each coefficient must be zero: <span class="math display">\[c_i(\lambda_i - \lambda_j) = 0 \quad \text{for all } i \in \{1, 2, \dots, j-1\}\]</span></p>
+<p>But the eigenvalues are distinct, so <span class="math inline">\(\lambda_i - \lambda_j \neq 0\)</span> for all <span class="math inline">\(i \neq j\)</span>. This forces <span class="math inline">\(c_i = 0\)</span> for all <span class="math inline">\(i \in \{1, 2, \dots, j-1\}\)</span>. Therefore, <span class="math inline">\(\mathbf{v}_j = \mathbf{0}\)</span>, which contradicts the definition of an eigenvector. Hence, the set of eigenvectors must be linearly independent. <span class="math inline">\(\square\)</span></p>
+</div>
+<p>This leads to an immediate corollary</p>
+<div class="corollary">
+<p><strong>Corollary:</strong> An <span class="math inline">\(n\times n\)</span> matrix with <span class="math inline">\(n\)</span> different eigenvalues is diagonalizable.</p>
+</div>
+<section id="the-diagonalization-formula" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="the-diagonalization-formula"><span class="header-section-number">10.4.1</span> The Diagonalization Formula</h3>
+<p>Suppose that the <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(A\)</span> has a basis of eigenvectors <span class="math inline">\(S=\{\mathbf{v}_1,\dots,\mathbf{v}_n\}\)</span> with corresponding eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \ldots, \lambda_n\)</span>, such that <span class="math inline">\(A\mathbf{v}_i=\lambda_i\mathbf{v}_i\)</span> for each <span class="math inline">\(i\)</span>.</p>
+<p>Let <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span>. We can express <span class="math inline">\(\mathbf{x}\)</span> as a linear combination of the eigenvectors in <span class="math inline">\(S\)</span>: <span class="math display">\[\begin{align}
+\mathbf{x}&amp;=c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_n\mathbf{v}_n\\
+&amp;= \begin{bmatrix}
+\uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow \\
+\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \cdots &amp; \mathbf{v}_n \\
+\downarrow &amp; \downarrow &amp; \cdots &amp; \downarrow
+\end{bmatrix}\begin{bmatrix}c_1\\c_2\\\vdots\\c_n\end{bmatrix}=P\mathbf{c}
+\end{align}\]</span></p>
+<p>where <span class="math inline">\(P\)</span> is the <span class="math inline">\(n\times n\)</span> matrix with the eigenvectors as columns and <span class="math inline">\(\mathbf{c}=[\mathbf{x}]_S\)</span> is the coordinate vector of <span class="math inline">\(\mathbf{x}\)</span> with respect to basis <span class="math inline">\(S\)</span>. Since the columns of <span class="math inline">\(P\)</span> are linearly independent, then <span class="math inline">\(P\)</span> is invertible and <span class="math inline">\(\mathbf{c}=[\mathbf{x}]_S=P^{-1}\mathbf{x}\)</span>.</p>
+<p>When we apply <span class="math inline">\(A\)</span> to <span class="math inline">\(\mathbf{x}\)</span>, we get:</p>
+<p><span class="math display">\[\begin{align}
+A\mathbf{x}&amp;=A(c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_n\mathbf{v}_n)\\
+&amp;=c_1A\mathbf{v}_1+c_2A\mathbf{v}_2+\cdots+c_nA\mathbf{v}_n\\
+&amp;=c_1\lambda_1\mathbf{v}_1+c_2\lambda_2\mathbf{v}_2+\cdots+c_n\lambda_n\mathbf{v}_n\\
+&amp;= \begin{bmatrix}
+\uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow \\
+\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \cdots &amp; \mathbf{v}_n \\
+\downarrow &amp; \downarrow &amp; \cdots &amp; \downarrow
+\end{bmatrix}\begin{bmatrix}\lambda_1c_1\\\lambda_2c_2\\\vdots\\\lambda_nc_n\end{bmatrix}\\
+&amp;= \begin{bmatrix}
+\uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow \\
+\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \cdots &amp; \mathbf{v}_n \\
+\downarrow &amp; \downarrow &amp; \cdots &amp; \downarrow
+\end{bmatrix}
+\begin{bmatrix}\lambda_1&amp;0&amp;\cdots&amp;0\\ 0&amp;\lambda_2&amp;\cdots&amp;0\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\0&amp;0&amp;\cdots&amp;\lambda_n\end{bmatrix}
+\begin{bmatrix}c_1\\c_2\\\vdots\\c_n\end{bmatrix}\\
+&amp;= P\Lambda\mathbf{c} = P\Lambda[\mathbf{x}]_S\\
+\end{align}\]</span> where <span class="math inline">\(\Lambda\)</span> is the <span class="math inline">\(n\times n\)</span> diagonal matrix of eigenvalues.</p>
+<p>Combining both formulas, we get that for any <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span>: <span class="math display">\[AP[\mathbf{x}]_S=A\mathbf{x}=P\Lambda[\mathbf{x}]_S.\]</span></p>
+<p>Since this holds for any vector <span class="math inline">\(\mathbf{x}\)</span>, and <span class="math inline">\([\mathbf{x}]_S\)</span> represents any vector in <span class="math inline">\(\mathbb{R}^n\)</span> (as <span class="math inline">\(S\)</span> is a basis), we conclude that: <span class="math display">\[AP=P\Lambda.\]</span></p>
+<p>This important formula can be rewritten as: <span class="math display">\[A=P\Lambda P^{-1}\quad\text{or equivalently}\quad P^{-1}AP=\Lambda.\]</span></p>
+<p>This formula provides remarkable computational advantages when working with powers of <span class="math inline">\(A\)</span>. For example, computing the cube of <span class="math inline">\(A\)</span>: <span class="math display">\[\begin{align}
+A^3 &amp;= A \cdot A \cdot A \\
+&amp;= (P\Lambda P^{-1})(P\Lambda P^{-1})(P\Lambda P^{-1}) \\
+&amp;= P\Lambda P^{-1}P\Lambda P^{-1}P\Lambda P^{-1} \\
+&amp;= P\Lambda \underbrace{P^{-1}P}_{=I} \Lambda \underbrace{P^{-1}P}_{=I} \Lambda P^{-1} \\
+&amp;= P\Lambda \cdot I \cdot \Lambda \cdot I \cdot \Lambda P^{-1} \\
+&amp;= P\Lambda \Lambda \Lambda P^{-1} \\
+&amp;= P\Lambda^3 P^{-1}
+\end{align}\]</span></p>
+<p>More generally, for any positive integer <span class="math inline">\(k\)</span>: <span class="math display">\[A^k = P\Lambda^k P^{-1}\]</span></p>
+<p>where <span class="math inline">\(\Lambda^k\)</span> is the diagonal matrix with entries <span class="math inline">\(\lambda_i^k\)</span>: <span class="math display">\[\Lambda^k = \begin{bmatrix}
+\lambda_1^k &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \lambda_2^k &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \lambda_n^k
+\end{bmatrix}\]</span></p>
+<p>This result dramatically simplifies calculations involving matrix powers, making diagonalization a powerful technique in linear algebra.</p>
+</section>
+<section id="the-spectral-theorem" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="the-spectral-theorem"><span class="header-section-number">10.4.2</span> The Spectral Theorem</h3>
+<p>While the diagonalization formula <span class="math inline">\(A = P\Lambda P^{-1}\)</span> applies when a matrix has a complete set of eigenvectors, the spectral theorem provides an even more powerful result for a special class of matrices: symmetric matrices.</p>
+<p>Recall that a matrix <span class="math inline">\(A\)</span> is symmetric if <span class="math inline">\(A = A^T\)</span>. The spectral theorem states that every symmetric matrix <span class="math inline">\(A \in \mathbb{R}^{n \times n}\)</span> is diagonalizable in a very strong sense:</p>
+<ol type="1">
+<li><span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> real eigenvalues (counting multiplicities)</li>
+<li><span class="math inline">\(A\)</span> has an orthonormal basis of eigenvectors</li>
+<li><span class="math inline">\(A\)</span> can be orthogonally diagonalized as <span class="math inline">\(A = QDQ^T\)</span> where <span class="math inline">\(Q\)</span> is an orthogonal matrix (<span class="math inline">\(Q^T = Q^{-1}\)</span>)</li>
+</ol>
+<hr>
+<p>Eigenvectors of symmetric matrices corresponding to distinct eigenvalues are orthogonal, which helps explain why the spectral theorem works.</p>
+<p><strong>Theorem:</strong> Let <span class="math inline">\(A\)</span> be a symmetric matrix. If <span class="math inline">\(\lambda_i\)</span> and <span class="math inline">\(\lambda_j\)</span> are distinct eigenvalues with corresponding eigenvectors <span class="math inline">\(\mathbf{v}_i\)</span> and <span class="math inline">\(\mathbf{v}_j\)</span>, then <span class="math inline">\(\mathbf{v}_i \cdot \mathbf{v}_j = 0\)</span>.</p>
+<p><em>Proof:</em> <span class="math display">\[\begin{align}
+\lambda_i(\mathbf{v}_i \cdot \mathbf{v}_j) &amp;= \lambda_i\mathbf{v}_i^T\mathbf{v}_j = (A\mathbf{v}_i)^T\mathbf{v}_j = \mathbf{v}_i^TA^T\mathbf{v}_j\\
+&amp;= \mathbf{v}_i^TA\mathbf{v}_j = \mathbf{v}_i^T(\lambda_j\mathbf{v}_j) = \lambda_j(\mathbf{v}_i \cdot \mathbf{v}_j)
+\end{align}\]</span></p>
+<p>Since <span class="math inline">\(\lambda_i \neq \lambda_j\)</span>, we must have <span class="math inline">\(\mathbf{v}_i \cdot \mathbf{v}_j = 0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>If we select orthogonal eigenvectors of a symmetric matrix <span class="math inline">\(A\)</span>, and we normalize them we obtain an orthonormal basis <span class="math inline">\(\{\mathbf{q}_1, \mathbf{q}_2, \ldots, \mathbf{q}_n\}\)</span> where:</p>
+<ul>
+<li><span class="math inline">\(\|\mathbf{q}_i\| = 1\)</span> for all <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(\mathbf{q}_i \cdot \mathbf{q}_j = 0\)</span> for all <span class="math inline">\(i \neq j\)</span></li>
+<li><span class="math inline">\(A\mathbf{q}_i = \lambda_i\mathbf{q}_i\)</span> for all <span class="math inline">\(i\)</span></li>
+</ul>
+<p>Let <span class="math inline">\(Q = [\mathbf{q}_1 \; \mathbf{q}_2 \; \cdots \; \mathbf{q}_n]\)</span> be the matrix with these orthonormal eigenvectors as columns. Then <span class="math inline">\(Q\)</span> is an orthogonal matrix, meaning <span class="math inline">\(Q^TQ = QQ^T = I\)</span>, and thus <span class="math inline">\(Q^{-1} = Q^T\)</span>.</p>
+<p>The <strong><em>spectral decomposition</em></strong> of <span class="math inline">\(A\)</span> is then: <span id="eq-spectral-decomposition"><span class="math display">\[A = QDQ^T \tag{10.2}\]</span></span></p>
+<p>where <span class="math inline">\(D\)</span> is the diagonal matrix with eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \ldots, \lambda_n\)</span> on the diagonal.</p>
+<p>We can also write the spectral decomposition in the following form: <span class="math display">\[A = \lambda_1\mathbf{q}_1\mathbf{q}_1^T + \lambda_2\mathbf{q}_2\mathbf{q}_2^T + \cdots + \lambda_n\mathbf{q}_n\mathbf{q}_n^T = \sum_{i=1}^n \lambda_i\mathbf{q}_i\mathbf{q}_i^T\]</span></p>
+<p>This representation expresses <span class="math inline">\(A\)</span> as a sum of rank-one matrices, each scaled by an eigenvalue. This form is particularly useful for applications in principal component analysis, computer graphics, and quantum mechanics.</p>
+</section>
+<section id="finding-the-spectral-decomposition-in-numpy" class="level3" data-number="10.4.3">
+<h3 data-number="10.4.3" class="anchored" data-anchor-id="finding-the-spectral-decomposition-in-numpy"><span class="header-section-number">10.4.3</span> Finding the spectral decomposition in NumPy</h3>
+<p>The spectral theorem guarantees that every symmetric matrix can be orthogonally diagonalized. In practical applications, we need efficient and reliable computational methods to find this decomposition. NumPy provides exactly what we need through its linear algebra module.</p>
+<p>We use the command <code>np.linalg.eigh()</code> in NumPy to find the eigenvalues and eigenvectors of symmetric matrices. Symmetric matrices are also called Hermitian (in the real case), and the “h” in “eigh” stands for that. This function is specifically optimized for symmetric matrices and guarantees real eigenvalues and orthogonal eigenvectors, while <code>np.linalg.eig()</code> is the general function for non-symmetric matrices that doesn’t ensure these properties.</p>
+<p>Let’s implement the spectral decomposition step by step:</p>
+<div id="99d425ab" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a symmetric matrix</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>],</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">6</span>]</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original symmetric matrix A:"</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that A is symmetric</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Is A symmetric?"</span>, np.allclose(A, A.T))</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Original symmetric matrix A:
+[[4 1 1]
+ [1 3 2]
+ [1 2 6]]
+
+Is A symmetric? True
+</code></pre>
+</div>
+</div>
+<p>The spectral theorem only applies to symmetric matrices, so it’s always good practice to verify symmetry before proceeding. The <code>np.allclose()</code> function accounts for potential floating-point errors when checking equality.</p>
+<p>Now we find the eigenvalues and eigenvectors of <span class="math inline">\(A\)</span>. The spectral theorem guarantees we’ll get real eigenvalues and a complete set of orthogonal eigenvectors:</p>
+<div id="4c70a5d7" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find eigenvalues and eigenvectors using NumPy</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>eigenvalues, eigenvectors <span class="op">=</span> np.linalg.eigh(A)  <span class="co"># eigh is for symmetric matrices</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvalues:"</span>, eigenvalues)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Eigenvectors (as columns):"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eigenvectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvalues: [1.88646239 3.59642438 7.51711323]
+
+Eigenvectors (as columns):
+[[ 0.24556026 -0.90025898 -0.35949122]
+ [-0.89393687 -0.06686651 -0.44317687]
+ [ 0.37493604  0.43018908 -0.82119445]]</code></pre>
+</div>
+</div>
+<p>Notice that in NumPy, the eigenvectors are returned as columns of the matrix. The <code>eigh</code> function automatically normalizes the eigenvectors to have unit length, forming an orthonormal basis. By the spectral theorem, these eigenvectors form an orthogonal matrix <span class="math inline">\(Q\)</span>.</p>
+<p>A key property of orthogonal matrices is that their transpose equals their inverse: <span class="math inline">\(Q^T = Q^{-1}\)</span>. Let’s verify this property:</p>
+<div id="672ea240" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify orthogonality of eigenvectors</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> eigenvectors</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Q^T Q = (should be identity)"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">round</span>(Q.T <span class="op">@</span> Q, <span class="dv">10</span>))  <span class="co"># Should be identity</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Q^T Q = (should be identity)
+[[ 1.  0. -0.]
+ [ 0.  1.  0.]
+ [-0.  0.  1.]]</code></pre>
+</div>
+</div>
+<p>The result should be the identity matrix (within numerical precision), confirming the orthogonality of our eigenvectors.</p>
+<p>For the spectral decomposition, we need a diagonal matrix <span class="math inline">\(D\)</span> containing the eigenvalues:</p>
+<div id="c50d3950" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create diagonal matrix of eigenvalues</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.diag(eigenvalues)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Diagonal matrix of eigenvalues D:"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Diagonal matrix of eigenvalues D:
+[[1.88646239 0.         0.        ]
+ [0.         3.59642438 0.        ]
+ [0.         0.         7.51711323]]</code></pre>
+</div>
+</div>
+<p>Now we can reconstruct the original matrix using the spectral decomposition formula <span class="math inline">\(A = QDQ^T\)</span>:</p>
+<div id="270fa63d" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reconstruct A using spectral decomposition: A = Q D Q^T</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>A_reconstructed <span class="op">=</span> Q <span class="op">@</span> D <span class="op">@</span> Q.T</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reconstructed A from spectral decomposition:"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">round</span>(A_reconstructed, <span class="dv">10</span>))  <span class="co"># Round to handle floating-point errors</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify reconstruction error</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> np.<span class="bu">max</span>(A <span class="op">-</span> A_reconstructed)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Reconstruction error: </span><span class="sc">{</span>error<span class="sc">:.2e}</span><span class="ss">"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reconstructed A from spectral decomposition:
+[[4. 1. 1.]
+ [1. 3. 2.]
+ [1. 2. 6.]]
+
+Reconstruction error: 5.33e-15
+</code></pre>
+</div>
+</div>
+<p>The reconstruction error should be extremely small (near machine precision), confirming that our spectral decomposition is correct.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/determinants.html" class="pagination-link" aria-label="Determinants">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Determinants</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
