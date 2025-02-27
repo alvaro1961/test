@@ -352,6 +352,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Eigenvalues and Eigenvectors</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/quadratic_forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -776,7 +782,7 @@ x_4\begin{bmatrix}-1\\ 0\\ -2\\ 1\end{bmatrix}\]</span></p>
 \]</span></p>
 <p>This system has no solution since the last equation becomes: <span class="math display">\[0x_1+0x_2+0x_3+0x_4=1\]</span></p>
 <p>For the general case, let <span class="math inline">\(\mathbf{b}_3=\begin{bmatrix}a\\b\\c\end{bmatrix}\)</span> be arbitrary in <span class="math inline">\(\mathbb{R}^3\)</span>. We can find solutions by reducing the augmented matrix <span class="math inline">\([A|\mathbf{b}_3]\)</span> to echelon form. We can do this in SymPy using the <code>echelon_form()</code> method that finds the row echelon form and not the row reduced echelon form.</p>
-<div id="80880b04" class="cell" data-execution_count="1">
+<div id="37fee78f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, symbols</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a,b,c <span class="op">=</span> symbols(<span class="st">"a b c"</span>)</span>
