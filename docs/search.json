@@ -1162,7 +1162,7 @@
     "href": "worksheets/quadratic_forms.html#visualizing-quadratic-forms-in-mathbbr2-and-mathbbr3",
     "title": "Lab",
     "section": "",
-    "text": "Understand the connection between symmetric matrices and quadratic forms\nVisualize conic sections in \\(\\mathbb{R}^2\\) as level sets of quadratic forms\nApply the Spectral Theorem to analyze and transform quadratic forms\nExtend these concepts to quadratic surfaces in \\(\\mathbb{R}^3\\)\n\n\n\nSymmetric matrices and their properties\nEigenvalues and eigenvectors\nThe Spectral Theorem\nLinear transformations and change of basis\n\n\nRequired Libraries\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib import cm\nimport plotly.graph_objects as go\nimport plotly.express as px\nfrom mpl_toolkits.mplot3d import Axes3D\nimport sympy as sp\nfrom IPython.display import display, Markdown",
+    "text": "Understand the connection between symmetric matrices and quadratic forms\nVisualize conic sections in \\(\\mathbb{R}^2\\) as level sets of quadratic forms\nApply the Spectral Theorem to analyze and transform quadratic forms\nExtend these concepts to quadratic surfaces in \\(\\mathbb{R}^3\\)\n\n\n\nSymmetric matrices and their properties\nEigenvalues and eigenvectors\nThe Spectral Theorem\nLinear transformations and change of basis\n\n\nRequired Libraries\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport plotly.graph_objects as go\nimport sympy as sp\nfrom IPython.display import display, Markdown",
     "crumbs": [
       "Eigenvalues and Eigenvectors",
       "Lab"
