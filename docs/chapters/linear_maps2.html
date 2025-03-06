@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,6 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../worksheets/matrix_representations2.html" rel="next">
 <link href="../parts/linear_maps2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -384,6 +419,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Topics of Linear Maps</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../worksheets/matrix_representations2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problems</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -396,15 +437,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-change-of-basis" id="toc-sec-change-of-basis" class="nav-link active" data-scroll-target="#sec-change-of-basis"><span class="header-section-number">11.1</span> Vector Basis Representations</a>
+  <li><a href="#sec-change-of-basis" id="toc-sec-change-of-basis" class="nav-link active" data-scroll-target="#sec-change-of-basis"><span class="header-section-number">11.1</span> Representation of Vectors using Bases</a>
   <ul class="collapse">
   <li><a href="#computational-problems" id="toc-computational-problems" class="nav-link" data-scroll-target="#computational-problems"><span class="header-section-number">11.1.1</span> Computational Problems</a></li>
   </ul></li>
-  <li><a href="#matrix-basis-representation" id="toc-matrix-basis-representation" class="nav-link" data-scroll-target="#matrix-basis-representation"><span class="header-section-number">11.2</span> Matrix Basis Representation</a>
+  <li><a href="#matrix-representations-of-linear-maps" id="toc-matrix-representations-of-linear-maps" class="nav-link" data-scroll-target="#matrix-representations-of-linear-maps"><span class="header-section-number">11.2</span> Matrix Representations of Linear Maps</a>
   <ul class="collapse">
   <li><a href="#computational-problems-1" id="toc-computational-problems-1" class="nav-link" data-scroll-target="#computational-problems-1"><span class="header-section-number">11.2.1</span> Computational Problems</a></li>
+  <li><a href="#diagonalization-of-linear-transformations" id="toc-diagonalization-of-linear-transformations" class="nav-link" data-scroll-target="#diagonalization-of-linear-transformations"><span class="header-section-number">11.2.2</span> Diagonalization of Linear Transformations</a></li>
   </ul></li>
-  <li><a href="#change-of-basis-for-matrices" id="toc-change-of-basis-for-matrices" class="nav-link" data-scroll-target="#change-of-basis-for-matrices"><span class="header-section-number">11.3</span> Change of Basis for Matrices</a></li>
+  <li><a href="#matrices-that-represent-the-same-linear-map" id="toc-matrices-that-represent-the-same-linear-map" class="nav-link" data-scroll-target="#matrices-that-represent-the-same-linear-map"><span class="header-section-number">11.3</span> Matrices that Represent the Same Linear Map</a>
+  <ul class="collapse">
+  <li><a href="#rotations-in-mathbbr3" id="toc-rotations-in-mathbbr3" class="nav-link" data-scroll-target="#rotations-in-mathbbr3"><span class="header-section-number">11.3.1</span> Rotations in <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -433,7 +478,7 @@ window.Quarto = {
 <p>The diagonalization process we explored previously—expressing matrices as <span class="math inline">\(P^{-1}DP\)</span> with eigenvector matrix <span class="math inline">\(P\)</span> and diagonal eigenvalue matrix <span class="math inline">\(D\)</span>—takes on deeper meaning when viewed through the lens of linear transformations.</p>
 <p>This perspective reveals that the same linear transformation can look different depending on our coordinate system. By changing basis, we gain the flexibility to choose the most convenient representation for a given problem, bridging the gap between abstract properties and concrete matrix representations. This powerful viewpoint is essential in both theoretical contexts and applications ranging from computer graphics to quantum mechanics.</p>
 <section id="sec-change-of-basis" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="sec-change-of-basis"><span class="header-section-number">11.1</span> Vector Basis Representations</h2>
+<h2 data-number="11.1" class="anchored" data-anchor-id="sec-change-of-basis"><span class="header-section-number">11.1</span> Representation of Vectors using Bases</h2>
 <p>When working with a vector space <span class="math inline">\(V\)</span> (often <span class="math inline">\(\mathbb{R}^n\)</span>), we can represent vectors using different bases. Let’s explore how the coordinate representation of a vector changes when we switch between bases.</p>
 <p>Consider a vector space <span class="math inline">\(V\)</span> with two different bases:</p>
 <ul>
@@ -453,7 +498,7 @@ window.Quarto = {
 <p>Moreover, this change of basis matrix can be constructed as: <span id="eq-change_of_basis"><span class="math display">\[P_{S_1 \leftarrow S_2} =
 \begin{bmatrix} \uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow\\
 [\mathbf{w}_1]_{S_1} &amp; [\mathbf{w}_2]_{S_1} &amp; \cdots &amp; [\mathbf{w}_n]_{S_1} \\
-\downarrow &amp; \downarrow &amp; \cdots&amp;\downarrow \end{bmatrix}. \tag{11.1}\]</span></span></p>
+\downarrow &amp; \downarrow &amp; \cdots&amp;\downarrow \end{bmatrix}, \tag{11.1}\]</span></span> where <span class="math inline">\(S_2=\{\mathbf{w}_1,\dots,\mathbf{w}_n\}\)</span></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(\mathbf{v} \in V\)</span> with representation in basis <span class="math inline">\(S_2\)</span>:</p>
@@ -467,7 +512,7 @@ window.Quarto = {
 \end{align}\]</span> Therefore: <span class="math display">\[[\mathbf{v}]_{S_1} = P_{S_1 \leftarrow S_2} [\mathbf{v}]_{S_2},\]</span> and <span class="math inline">\(P_{S_1\leftarrow S_2}\)</span> is given by <a href="#eq-change_of_basis" class="quarto-xref">Equation&nbsp;<span>11.1</span></a></p>
 </div>
 <blockquote class="blockquote">
-<p>If <span class="math inline">\(P=P_{S_1\leftarrow S_2}\)</span> is the change of basis matrix from <span class="math inline">\(S_2\)</span> to <span class="math inline">\(S_1\)</span>, then <span class="math inline">\(P^{-1}=P_{S_2\leftarrow S_1}\)</span> is the change of basis from <span class="math inline">\(S_1\)</span> to <span class="math inline">\(S_2\)</span>. We see this easily: from the equation <span class="math inline">\([\mathbf{v}]_{S_1} = P[\mathbf{v}]_{S_2}\)</span>, we deduce that <span class="math display">\[[\mathbf{v}]_{S_2} = P^{-1}[\mathbf{v}]_{S_1}\]</span></p>
+<p>If <span class="math inline">\(P=P_{S_1\leftarrow S_2}\)</span> is the change of basis matrix from <span class="math inline">\(S_2\)</span> to <span class="math inline">\(S_1\)</span>, then <span class="math inline">\(P^{-1}=P_{S_2\leftarrow S_1}\)</span> is the change of basis matrix from <span class="math inline">\(S_1\)</span> to <span class="math inline">\(S_2\)</span>. We see this easily: from the equation <span class="math inline">\([\mathbf{v}]_{S_1} = P[\mathbf{v}]_{S_2}\)</span>, we deduce that <span class="math display">\[[\mathbf{v}]_{S_2} = P^{-1}[\mathbf{v}]_{S_1}\]</span></p>
 </blockquote>
 <section id="computational-problems" class="level3" data-number="11.1.1">
 <h3 data-number="11.1.1" class="anchored" data-anchor-id="computational-problems"><span class="header-section-number">11.1.1</span> Computational Problems</h3>
@@ -525,13 +570,13 @@ window.Quarto = {
 <p>Suppose <span class="math inline">\(S_1\)</span>, <span class="math inline">\(S_2\)</span> and <span class="math inline">\(P=P_{S_1\leftarrow S_2}\)</span> are given. If we we know the coordinates of a vector <span class="math inline">\(\mathbf{v}\in V\)</span> with respect to one basis, find the coordinates with respect to the other basis.</p>
 </div>
 </div>
-<p>These type of problems are simpler. We just need to pay attention if we multiply by <span class="math inline">\(P\)</span> or by <span class="math inline">\(P^{-1}\)</span>. Let <span class="math inline">\(\mathbf{v}\in V\)</span>. If we know <span class="math inline">\([\mathbf{v}]_{S_2}\)</span>, then we find <span class="math inline">\([\mathbf{v}]_{S_1}\)</span> using: <span class="math display">\[\mathbf{v}_{S_1}=P[\mathbf{v}]_{S_2}\]</span> On the other hand, if we know <span class="math inline">\([\mathbf{v}]_{S_1}\)</span> then we find <span class="math inline">\([\mathbf{v}]_{S_2}\)</span> using: <span class="math display">\[\mathbf{v}_{S_2}=P^{-1}[\mathbf{v}]_{S_1}\]</span></p>
+<p>These type of problems are simpler. We just need to pay attention if we multiply by <span class="math inline">\(P\)</span> or by <span class="math inline">\(P^{-1}\)</span>. Let <span class="math inline">\(\mathbf{v}\in V\)</span>. If we know <span class="math inline">\([\mathbf{v}]_{S_2}\)</span>, then we find <span class="math inline">\([\mathbf{v}]_{S_1}\)</span> using: <span class="math display">\[[\mathbf{v}]_{S_1}=P[\mathbf{v}]_{S_2}\]</span> On the other hand, if we know <span class="math inline">\([\mathbf{v}]_{S_1}\)</span> then we find <span class="math inline">\([\mathbf{v}]_{S_2}\)</span> using: <span class="math display">\[[\mathbf{v}]_{S_2}=P^{-1}[\mathbf{v}]_{S_1}\]</span></p>
 <div class="problem-box problem-box-1">
 <section id="find-elements-of-a-basis" class="level4 unnumbered problem-title">
 <h4 class="unnumbered anchored" data-anchor-id="find-elements-of-a-basis">Find elements of a basis</h4>
 </section>
 <div class="problem-content">
-<p>Suppose <span class="math inline">\(S_1\)</span> and <span class="math inline">\(P=P_{S_1\leftarrow S_2}\)</span> are given. Find <span class="math inline">\(S_1\)</span>.</p>
+<p>Suppose <span class="math inline">\(S_1\)</span> and <span class="math inline">\(P=P_{S_1\leftarrow S_2}\)</span> are given. Find <span class="math inline">\(S_2\)</span>.</p>
 </div>
 </div>
 <p><strong>Example:</strong> Suppose that</p>
@@ -542,7 +587,7 @@ window.Quarto = {
 \begin{bmatrix}1\\1\\-2\end{bmatrix}
   \right\}\)</span></li>
 <li><span class="math inline">\(S_2 =\{\mathbf{w}_1,\mathbf{w}_2, \mathbf{w}_3\}\)</span>, and are bases of <span class="math inline">\(\mathbf{R^3}\)</span> and that <span class="math display">\[ P=P_{S_1\leftarrow S_2}=\begin{bmatrix}1&amp;0&amp;0\\1&amp;1&amp;0\\1&amp;1&amp;1\end{bmatrix}
-\]</span> is the change of basis matrix from <span class="math inline">\(S_1\)</span> to <span class="math inline">\(S_2\)</span>. Our task is to find the elements of <span class="math inline">\(S_2\)</span>.</li>
+\]</span> is the change of basis matrix from <span class="math inline">\(S_2\)</span> to <span class="math inline">\(S_1\)</span>. Our task is to find the elements of <span class="math inline">\(S_2\)</span>.</li>
 </ul>
 <p>From <a href="#eq-change_of_basis" class="quarto-xref">Equation&nbsp;<span>11.1</span></a> we know that <span class="math inline">\([\mathbf{w}_1]_{S_1}=(1,1,1)\)</span>. Then <span class="math display">\[\mathbf{w}_1=1\begin{bmatrix}1\\1\\1\end{bmatrix}+1\begin{bmatrix}1\\-1\\0\end{bmatrix}+1\begin{bmatrix}1\\1\\-2
 \end{bmatrix}=\begin{bmatrix}3\\1\\-1\end{bmatrix}\]</span> Notice that we can write this as <span class="math display">\[\begin{align}\mathbf{w}_1&amp;=1\begin{bmatrix}1\\1\\1\end{bmatrix}+1\begin{bmatrix}1\\-1\\0\end{bmatrix}+1\begin{bmatrix}1\\1\\-2
@@ -563,31 +608,31 @@ window.Quarto = {
 \end{bmatrix}=[S_2]\]</span> and this works in general.</p>
 </section>
 </section>
-<section id="matrix-basis-representation" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="matrix-basis-representation"><span class="header-section-number">11.2</span> Matrix Basis Representation</h2>
-<p>In <a href="linear_maps.html#thm-matrix_rep" class="quarto-xref">Theorem&nbsp;<span>4.1</span></a> we showed that a linear map <span class="math inline">\(T:\mathbf{R}^n\to\mathbf{R}^n\)</span> can be written as <span class="math inline">\(T\mathbf{x}=A\mathbf{x}\)</span>, where <span class="math inline">\(A\)</span> is the matrix <span class="math display">\[A=\begin{bmatrix}
+<section id="matrix-representations-of-linear-maps" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="matrix-representations-of-linear-maps"><span class="header-section-number">11.2</span> Matrix Representations of Linear Maps</h2>
+<p>In <a href="linear_maps.html#thm-matrix_rep" class="quarto-xref">Theorem&nbsp;<span>4.1</span></a> we showed that a linear map <span class="math inline">\(T:\mathbf{R}^n\to\mathbf{R}^n\)</span> can be written as <span class="math inline">\(T(\mathbf{x})=A\mathbf{x}\)</span>, where <span class="math inline">\(A\)</span> is the matrix <span class="math display">\[A=\begin{bmatrix}
    \uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow \\
    T(\mathbf{e}_1) &amp; T(\mathbf{e}_2) &amp; \cdots &amp; T(\mathbf{e}_n) \\
    \downarrow &amp; \downarrow &amp; \cdots &amp; \downarrow \\
    \end{bmatrix}\]</span> and <span class="math inline">\(\{\mathbf{e}_1,\dots\mathbf{e}_n\}\)</span> is the canonical basis for <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
 <p>In this section we show that a similar result works for general linear maps on general vector spaces with a fixed basis. The idea of the proof is the same but the result is presented in terms of coordinates.</p>
 <div id="thm-matrix-rep-general" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 11.2</strong></span> Suppose that <span class="math inline">\(V\)</span> is an <span class="math inline">\(n\)</span> dimensional vector space with basis <span class="math inline">\(S=\{\mathbf{e}_1,\dots\mathbf{e}_n\}\)</span>. If <span class="math inline">\(T:V\to V\)</span> is a linear map, there exists a unique matrix <span class="math inline">\(A\)</span> such that for every <span class="math inline">\(\mathbf{v}\in V\)</span>, <span class="math display">\[[T\mathbf{v}]_S=A[\mathbf{v}]_S\]</span> Moreover, the matrix representation of <span class="math inline">\(T\)</span> with respect to the basis <span class="math inline">\(S\)</span> is given by <span id="eq-matrix-representation"><span class="math display">\[A =
+<p><span class="theorem-title"><strong>Theorem 11.2</strong></span> Suppose that <span class="math inline">\(V\)</span> is an <span class="math inline">\(n\)</span> dimensional vector space with basis <span class="math inline">\(S=\{\mathbf{e}_1,\dots\mathbf{e}_n\}\)</span>. If <span class="math inline">\(T:V\to V\)</span> is a linear map, there exists a unique matrix <span class="math inline">\(A\)</span> such that for every <span class="math inline">\(\mathbf{v}\in V\)</span>, <span class="math display">\[[T(\mathbf{v})]_S=A[\mathbf{v}]_S\]</span> Moreover, the matrix representation of <span class="math inline">\(T\)</span> with respect to the basis <span class="math inline">\(S\)</span> is given by <span id="eq-matrix-representation"><span class="math display">\[A =
 \begin{bmatrix} \uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow\\
-[T\mathbf{v}_1]_S &amp; [T\mathbf{v}_2]_{S} &amp; \cdots &amp; [T\mathbf{v}_n]_{S} \\
+[T(\mathbf{v}_1)]_S &amp; [T(\mathbf{v}_2)]_{S} &amp; \cdots &amp; [T(\mathbf{v}_n)]_{S} \\
 \downarrow &amp; \downarrow &amp; \cdots&amp;\downarrow \end{bmatrix}. \tag{11.2}\]</span></span></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(\mathbf{v} \in V\)</span> with representation in basis <span class="math inline">\(S\)</span>: <span class="math display">\[\mathbf{v} = x_1\mathbf{v}_1 + x_2\mathbf{v}_2 + \ldots + x_n\mathbf{v}_n \quad \text{where} \quad [\mathbf{v}]_{S} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}\]</span> Since <span class="math inline">\(T\)</span> is linear <span class="math display">\[
-\begin{align}T\mathbf{v} &amp;=T(x_1\mathbf{v}_1 + x_2\mathbf{v}_2 + \ldots + x_n\mathbf{v}_n)\\
-&amp;= x_1T\mathbf{v}_1 + x_2T\mathbf{v}_2 + \ldots + x_nT\mathbf{v}_n.
+\begin{align}T(\mathbf{v}) &amp;=T(x_1\mathbf{v}_1 + x_2\mathbf{v}_2 + \ldots + x_n\mathbf{v}_n)\\
+&amp;= x_1T(\mathbf{v}_1) + x_2T(\mathbf{v}_2) + \ldots + x_nT(\mathbf{v}_n).
 \end{align}
-\]</span> Then we find coordinates using <a href="bases.html#thm-coordinates" class="quarto-xref">Theorem&nbsp;<span>6.1</span></a> (finding coordinates is a linear map) and <a href="matrices.html#eq-matrix-linear-combination" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> to find the matrix representation: <span class="math display">\[
+\]</span> Then we find the coordinates of <span class="math inline">\(T(\mathbf{v})\)</span> using <a href="bases.html#thm-coordinates" class="quarto-xref">Theorem&nbsp;<span>6.1</span></a> (finding coordinates is a linear map) and <a href="matrices.html#eq-matrix-linear-combination" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> to find the matrix representation: <span class="math display">\[
 \begin{align}
-[T\mathbf{v}]_S &amp;= [x_1T\mathbf{v}_1 + x_2T\mathbf{v}_2 + \ldots + x_nT\mathbf{v}_n]_S\\
-&amp;=x_1[T\mathbf{v}_1]_S + x_2[T\mathbf{v}_2]_S + \ldots + x_n[T\mathbf{v}_n]_S\\
+[T(\mathbf{v})]_S &amp;= [x_1T(\mathbf{v}_1) + x_2T(\mathbf{v}_2) + \ldots + x_nT(\mathbf{v}_n)]_S\\
+&amp;=x_1[T(\mathbf{v}_1)]_S + x_2[T(\mathbf{v}_2)]_S + \ldots + x_n[T(\mathbf{v}_n)]_S\\
 &amp;= \begin{bmatrix} \uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow\\
-[T\mathbf{v}_1]_{S} &amp; [T\mathbf{v}_2]_{S} &amp; \cdots &amp; [T\mathbf{v}_n]_{S} \\
+[T(\mathbf{v}_1)]_{S} &amp; [T(\mathbf{v}_2)]_{S} &amp; \cdots &amp; [T(\mathbf{v}_n)]_{S} \\
 \downarrow &amp; \downarrow &amp; \cdots&amp;\downarrow \end{bmatrix}
 \begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}=A[\mathbf{v}]_S.
 \end{align}
@@ -595,7 +640,7 @@ window.Quarto = {
 </div>
 <section id="computational-problems-1" class="level3" data-number="11.2.1">
 <h3 data-number="11.2.1" class="anchored" data-anchor-id="computational-problems-1"><span class="header-section-number">11.2.1</span> Computational Problems</h3>
-<p>Like before, <a href="#thm-matrix-rep-general" class="quarto-xref">Theorem&nbsp;<span>11.2</span></a> provides not just a theoretical connection but a concrete algorithm for computing the matrix representation <span class="math inline">\(A\)</span>. The formula <span class="math inline">\([T\mathbf{v}]_{S}=A[\mathbf{v}]_{S}\)</span> contains a lot of information. Students should pay close attention to it.</p>
+<p>Like before, <a href="#thm-matrix-rep-general" class="quarto-xref">Theorem&nbsp;<span>11.2</span></a> provides not just a theoretical connection but a concrete algorithm for computing the matrix representation <span class="math inline">\(A\)</span>. The formula <span class="math inline">\([T(\mathbf{v})]_{S}=A[\mathbf{v}]_{S}\)</span> contains a lot of information. Students should pay close attention to it.</p>
 <div class="problem-box problem-box-1">
 <section id="find-the-matrix-representation" class="level4 unnumbered problem-title">
 <h4 class="unnumbered anchored" data-anchor-id="find-the-matrix-representation">Find the matrix representation</h4>
@@ -605,32 +650,32 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>Example:</strong> Suppose <span class="math inline">\(S = \{\mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3\}\)</span> is a basis of <span class="math inline">\(\mathbb{R}^3\)</span> and that <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{R}^3\)</span> is a linear map. We are asked to find the matrix representation of <span class="math inline">\(T\)</span> with respect to <span class="math inline">\(S\)</span>, which we call <span class="math inline">\(A\)</span>.</p>
-<p>From <a href="#thm-matrix-rep-general" class="quarto-xref">Theorem&nbsp;<span>11.2</span></a>, we know that we need to find <span class="math inline">\([T\mathbf{v}_1]_{S}\)</span>, <span class="math inline">\([T\mathbf{v}_2]_{S}\)</span>, and <span class="math inline">\([T\mathbf{v}_3]_{S}\)</span>.</p>
-<p>To find <span class="math inline">\([T\mathbf{v}_i]_{S}\)</span>, we solve the vector equation: <span class="math inline">\(x_1 \mathbf{v}_1 + x_2 \mathbf{v}_2 + x_3 \mathbf{v}_3 = T\mathbf{v}_i\)</span>. We look at the augmented system and we row reduce it: <span class="math display">\[
+<p>From <a href="#thm-matrix-rep-general" class="quarto-xref">Theorem&nbsp;<span>11.2</span></a>, we know that we need to find <span class="math inline">\([T(\mathbf{v}_1)]_{S}\)</span>, <span class="math inline">\([T(\mathbf{v}_2)]_{S}\)</span>, and <span class="math inline">\([T(\mathbf{v}_3)]_{S}\)</span>.</p>
+<p>To find <span class="math inline">\([T(\mathbf{v}_i)]_{S}\)</span>, we solve the vector equation: <span class="math inline">\(x_1 \mathbf{v}_1 + x_2 \mathbf{v}_2 + x_3 \mathbf{v}_3 = T(\mathbf{v}_i)\)</span>. We look at the augmented system and we row reduce it: <span class="math display">\[
 \left[
     \begin{array}{ccc|c}
 \uparrow &amp; \uparrow &amp; \uparrow &amp; \uparrow \\
-\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \mathbf{v}_3 &amp; T\mathbf{v}_i \\
+\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \mathbf{v}_3 &amp; T(\mathbf{v}_i) \\
 \downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow
 \end{array}\right]
 \xrightarrow{\text{RREF}}
 \left[\begin{array}{ccc|c}
 1&amp;0&amp;0&amp;\uparrow \\
-0&amp;1&amp;0 &amp; [T\mathbf{v}_i]_{S} \\
+0&amp;1&amp;0 &amp; [T(\mathbf{v}_i)]_{S} \\
 0&amp;0&amp;1 &amp;\downarrow
 \end{array}\right].
-\]</span> Since <span class="math inline">\(\{\mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3\}\)</span> is a basis, the first three columns of the reduced matrix is the identity and the last column gives us the coordinates of <span class="math inline">\(T\mathbf{v}_i\)</span>. We can combine all of them:</p>
+\]</span> Since <span class="math inline">\(\{\mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3\}\)</span> is a basis, the first three columns of the reduced matrix is the identity and the last column gives us the coordinates of <span class="math inline">\(T(\mathbf{v}_i)\)</span>. We can combine all of them:</p>
 <p><span class="math display">\[
 \left[
     \begin{array}{ccc|ccc}
 \uparrow &amp; \uparrow &amp; \uparrow &amp; \uparrow &amp; \uparrow &amp; \uparrow\\
-\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \mathbf{v}_3 &amp; T\mathbf{v}_1 &amp; T\mathbf{v}_2 &amp; T\mathbf{v}_3 \\
+\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \mathbf{v}_3 &amp; T(\mathbf{v}_1) &amp; T(\mathbf{v}_2) &amp; T(\mathbf{v}_3) \\
 \downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow
 \end{array}\right]
 \xrightarrow{\text{RREF}}
 \left[\begin{array}{ccc|ccc}
 1&amp;0&amp;0&amp;\uparrow &amp;\uparrow &amp; \uparrow\\
-0&amp;1&amp;0 &amp; [T\mathbf{v}_1]_{S} &amp; [T\mathbf{v}_2]_{S} &amp; [T\mathbf{v}_3]_{S} \\
+0&amp;1&amp;0 &amp; [T(\mathbf{v}_1)]_{S} &amp; [T(\mathbf{v}_2)]_{S} &amp; [T(\mathbf{v}_3)]_{S} \\
 0&amp;0&amp;1 &amp;\downarrow &amp; \downarrow &amp; \downarrow
 \end{array}\right]
 \]</span> Therefore, in general, to find <span class="math inline">\(A\)</span> we row reduce the augmented matrix <span class="math inline">\([S|T(S)]\)</span> to get <span class="math inline">\([I|A]\)</span>:</p>
@@ -643,10 +688,10 @@ window.Quarto = {
 </ul>
 <div class="problem-box problem-box-1">
 <section id="find-tmathbfv" class="level4 unnumbered problem-title">
-<h4 class="unnumbered anchored" data-anchor-id="find-tmathbfv">Find <span class="math inline">\(T\mathbf{v}\)</span></h4>
+<h4 class="unnumbered anchored" data-anchor-id="find-tmathbfv">Find <span class="math inline">\(T(\mathbf{v})\)</span></h4>
 </section>
 <div class="problem-content">
-<p>Suppose <span class="math inline">\(S\)</span> is a basis of <span class="math inline">\(\mathbb{R}^n\)</span> and that <span class="math inline">\(A\)</span> is the matrix representation of a linear map <span class="math inline">\(T:\mathbb{R}^n\to\mathbb{R}^n\)</span>. If <span class="math inline">\(\mathbf{v}\in\mathbb{R}^n\)</span>, we need to find <span class="math inline">\(T\mathbf{v}\)</span></p>
+<p>Suppose <span class="math inline">\(S\)</span> is a basis of <span class="math inline">\(\mathbb{R}^n\)</span> and that <span class="math inline">\(A\)</span> is the matrix representation of a linear map <span class="math inline">\(T:\mathbb{R}^n\to\mathbb{R}^n\)</span>. If <span class="math inline">\(\mathbf{v}\in\mathbb{R}^n\)</span>, we need to find <span class="math inline">\(T(\mathbf{v})\)</span></p>
 </div>
 </div>
 <p><strong>Example:</strong> Suppose that <span class="math display">\[S =\left\{
@@ -654,11 +699,11 @@ window.Quarto = {
   \begin{bmatrix}1\\-1\\0\end{bmatrix},
   \begin{bmatrix}1\\1\\-2\end{bmatrix}
     \right\}\]</span> is a basis of <span class="math inline">\(\mathbf{R^3}\)</span> and that <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{R}^3\)</span> is a linear map with matrix represenation with respect to <span class="math inline">\(S\)</span> given by <span class="math display">\[ A=\begin{bmatrix}1&amp;0&amp;0\\1&amp;1&amp;0\\1&amp;1&amp;1\end{bmatrix}.\]</span> Let <span class="math inline">\(\mathbf{v}=(1,1,0)\)</span>. We need to find <span class="math inline">\(T(1,1,0)\)</span>.</p>
-<p>From <a href="#thm-matrix-rep-general" class="quarto-xref">Theorem&nbsp;<span>11.2</span></a> we know that <span class="math inline">\([T\mathbf{v}]_S=A[\mathbf{v}]_S\)</span>. This formula outlines the steps that we need to take. We should not memorize them, we should read them from the formula. We have <span class="math inline">\(\mathbf{v}\)</span></p>
+<p>From <a href="#thm-matrix-rep-general" class="quarto-xref">Theorem&nbsp;<span>11.2</span></a> we know that <span class="math inline">\([T(\mathbf{v})]_S=A[\mathbf{v}]_S\)</span>. This formula outlines the steps that we need to take. We should not memorize them, we should read them from the formula. We have <span class="math inline">\(\mathbf{v}\)</span></p>
 <ul>
 <li>First, we need to find <span class="math inline">\([\mathbf{v}]_S\)</span></li>
-<li>Then, multiplying <span class="math inline">\([\mathbf{v}]_S\)</span> by <span class="math inline">\(A\)</span> we get <span class="math inline">\([T\mathbf{v}]_S\)</span></li>
-<li>Finally we find <span class="math inline">\(T\mathbf{v}\)</span></li>
+<li>Then, multiplying <span class="math inline">\([\mathbf{v}]_S\)</span> by <span class="math inline">\(A\)</span> we get <span class="math inline">\([T(\mathbf{v})]_S\)</span></li>
+<li>Finally we find <span class="math inline">\(T(\mathbf{v})\)</span></li>
 </ul>
 <p>To find <span class="math inline">\([\mathbf{v}]_S\)</span>, we look at the augmented system and row reduce it <span class="math display">\[\left[\begin{array}{ccc|c}
 1&amp;1&amp;1&amp;1\\1&amp;-1&amp;1&amp;1\\1&amp;0&amp;-2&amp;0
@@ -667,23 +712,130 @@ window.Quarto = {
 \left[\begin{array}{ccc|c}
 1&amp;0&amp;0&amp;2\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;-1
 \end{array}\right]
-\]</span> and we get that <span class="math inline">\([(1,1,0)]_S=(2,0,-1)\)</span>. Now we multiply the coordinates by <span class="math inline">\(A\)</span> to find the coordinates of <span class="math inline">\(T\mathbf{v}\)</span> <span class="math display">\[
-[T\mathbf{v}]_S=A[\mathbf{v}]_S
+\]</span> and we get that <span class="math inline">\([(1,1,0)]_S=(2,0,-1)\)</span>. Now we multiply the coordinates by <span class="math inline">\(A\)</span> to find the coordinates of <span class="math inline">\(T(\mathbf{v})\)</span> <span class="math display">\[
+[T(\mathbf{v})]_S=A[\mathbf{v}]_S
 =A\begin{bmatrix}1&amp;0&amp;0\\1&amp;1&amp;0\\1&amp;1&amp;1\end{bmatrix}
 \begin{bmatrix}2\\0\\-1\end{bmatrix}=
 \begin{bmatrix}2\\2\\1\end{bmatrix}
-\]</span> Then <span class="math display">\[T\mathbf{v}=
+\]</span> Then <span class="math display">\[T(\mathbf{v})=
 2 \begin{bmatrix}1\\1\\1\end{bmatrix}+
 2 \begin{bmatrix}1\\-1\\0\end{bmatrix}+
   \begin{bmatrix}1\\1\\-2\end{bmatrix}
   =\begin{bmatrix}5\\1\\0\end{bmatrix}
 \]</span></p>
 </section>
+<section id="diagonalization-of-linear-transformations" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="diagonalization-of-linear-transformations"><span class="header-section-number">11.2.2</span> Diagonalization of Linear Transformations</h3>
+<p>When studying linear transformations on vector spaces, we often seek simple matrix representations. In some cases, we can find bases that yield diagonal matrices, which significantly simplifies calculations. The following Theorem characterizes the transformations that allow for such representations:</p>
+<p>I’ll clean up the proof while maintaining its logical structure.</p>
+<div class="theorem">
+<p><strong>Theorem:</strong> A linear transformation <span class="math inline">\(T: V \to V\)</span> is diagonalizable if and only if there exists a basis for <span class="math inline">\(V\)</span> consisting entirely of eigenvectors of <span class="math inline">\(T\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>(<span class="math inline">\(\Rightarrow\)</span>) Suppose that the matrix representation of <span class="math inline">\(T:V\to V\)</span> with respect to the basis <span class="math inline">\(S=\{\mathbf{v}_1,\dots,\mathbf{v}_n\}\)</span> is diagonal: <span class="math display">\[\begin{bmatrix}
+λ_1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; λ_2 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; λ_n
+\end{bmatrix}\]</span></p>
+<p>From <a href="#eq-matrix-representation" class="quarto-xref">Equation&nbsp;<span>11.2</span></a>, we know that the <span class="math inline">\(j\)</span>th column of this matrix gives the coordinates of <span class="math inline">\(T(\mathbf{v}_j)\)</span> in terms of the basis <span class="math inline">\(S\)</span>. Thus, <span class="math inline">\([T(\mathbf{v}_j)]_S\)</span> has <span class="math inline">\(λ_j\)</span> in the <span class="math inline">\(j\)</span>th position and zeros elsewhere, which means <span class="math inline">\(T(\mathbf{v}_j)=λ_j\mathbf{v}_j\)</span> for each <span class="math inline">\(j=1,2,\ldots,n\)</span>. Therefore, each basis vector <span class="math inline">\(\mathbf{v}_j\)</span> is an eigenvector of <span class="math inline">\(T\)</span> with corresponding eigenvalue <span class="math inline">\(λ_j\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Conversely, if <span class="math inline">\(S=\{\mathbf{v}_1,\dots,\mathbf{v}_n\}\)</span> is a basis of eigenvectors with <span class="math inline">\(T(\mathbf{v}_j)=λ_j\mathbf{v}_j\)</span>, then the matrix representation with respect to this basis must be diagonal with the eigenvalues on the main diagonal.</p>
+</div>
 </section>
-<section id="change-of-basis-for-matrices" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="change-of-basis-for-matrices"><span class="header-section-number">11.3</span> Change of Basis for Matrices</h2>
+</section>
+<section id="matrices-that-represent-the-same-linear-map" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="matrices-that-represent-the-same-linear-map"><span class="header-section-number">11.3</span> Matrices that Represent the Same Linear Map</h2>
+<p>Let <span class="math inline">\(V\)</span> be a vector space with bases <span class="math inline">\(S_1 = \{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}\)</span> and <span class="math inline">\(S_2 = \{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_n\}\)</span> and let <span class="math inline">\(T:V\to V\)</span> be a linear map. From <a href="#thm-matrix-rep-general" class="quarto-xref">Theorem&nbsp;<span>11.2</span></a> there exist unique matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> such that for every <span class="math inline">\(\mathbf{v}\in V\)</span> <span class="math display">\[[T(\mathbf{v})]_{S_1}=A[\mathbf{v}]_{S_1}\quad\text{ and }\quad [T(\mathbf{v})]_{S_2}=B[\mathbf{v}]_{S_2}.\]</span></p>
+<blockquote class="blockquote">
+<p>Since <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> represent the same linear map with respect to a different set of bases, they have to be related. In this section we study this relationship.</p>
+</blockquote>
+<p>From <a href="#thm-change-of-basis" class="quarto-xref">Theorem&nbsp;<span>11.1</span></a> there exists a unique matrix <span class="math inline">\(P=P_{S_1\leftarrow S_2}\)</span> such that for every <span class="math inline">\(\mathbf{z}\in V\)</span> <span class="math display">\[[\mathbf{z}]_{S_1}=P[\mathbf{z}].\]</span> Applying this formula to <span class="math inline">\(\mathbf{v}\)</span> and <span class="math inline">\(T(\mathbf{v})\)</span> and multiplying by <span class="math inline">\(P^{-1}\)</span> we get: <span class="math display">\[\begin{align}
+[T(\mathbf{v})]_{S_1} &amp;= A[\mathbf{v}]_{S_1}\\
+P[T(\mathbf{v})]_{S_2} &amp;= AP[\mathbf{v}]_{S_2}\\
+[T(\mathbf{v})]_{S_2} &amp;= P^{-1}AP[\mathbf{v}]_{S_2}.
+\end{align}\]</span> Since <span class="math inline">\(B\)</span> is unique we obtain that <span id="eq-similar-matrices"><span class="math display">\[B=P^{-1}AP\quad\text{ or equivalently }\quad A=PBP^{-1} \tag{11.3}\]</span></span></p>
+<p>This motivates the following definition:</p>
+<div id="def-similarity" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 11.1</strong></span> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be <span class="math inline">\(n\times n\)</span> matrices. We say that <span class="math inline">\(A\)</span> is <em>similar</em> to <span class="math inline">\(B\)</span> if there exists an invertible matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(B=P^{-1}AP\)</span>.</p>
+</div>
+<p>Similarity forms an equivalence relation between square matrices. First, the relation is symmetric: if <span class="math inline">\(B=P^{-1}AP\)</span>, then by multiplying both sides by <span class="math inline">\(P\)</span> on the right and <span class="math inline">\(P^{-1}\)</span> on the left, we get <span class="math inline">\(A=PBP^{-1}\)</span>, showing that <span class="math inline">\(B\)</span> is also similar to <span class="math inline">\(A\)</span>.</p>
+<p>The relation is reflexive because every square matrix <span class="math inline">\(A\)</span> is similar to itself via the identity matrix: <span class="math inline">\(A=I^{-1}AI\)</span>.</p>
+<p>Finally, similarity is transitive: if <span class="math inline">\(A\)</span> is similar to <span class="math inline">\(B\)</span> with <span class="math inline">\(B=P^{-1}AP\)</span>, and <span class="math inline">\(B\)</span> is similar to <span class="math inline">\(C\)</span> with <span class="math inline">\(C=Q^{-1}BQ\)</span>, then substituting gives <span class="math inline">\(C=Q^{-1}(P^{-1}AP)Q=(PQ)^{-1}A(PQ)\)</span>. This shows that <span class="math inline">\(A\)</span> is similar to <span class="math inline">\(C\)</span> via the invertible matrix <span class="math inline">\(PQ\)</span>, thereby establishing similarity as an equivalence relation.</p>
+<p>Our explanation also provided a proof of the following theorem:</p>
+<div id="thm-change-of-basis-representations" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 11.3</strong></span> Let <span class="math inline">\(V\)</span> be a vector space with bases <span class="math inline">\(S_1\)</span> and <span class="math inline">\(S_2\)</span> and let <span class="math inline">\(T:V\to V\)</span> be a linear map. Then the matrix representations of <span class="math inline">\(T\)</span> with respect to <span class="math inline">\(S_1\)</span> and <span class="math inline">\(S_2\)</span> are similar. More precisely, if <span class="math inline">\(P\)</span> is the change of basis matrix from <span class="math inline">\(S_2\)</span> to <span class="math inline">\(S_1\)</span>, <span class="math inline">\(A\)</span> is the matrix representation of <span class="math inline">\(T\)</span> with respect to <span class="math inline">\(S_1\)</span> and <span class="math inline">\(B\)</span> is the matrix representation of <span class="math inline">\(T\)</span> with respect to <span class="math inline">\(S_2\)</span>, then <span class="math inline">\(B=P^{-1}AP\)</span>.</p>
+</div>
+<section id="rotations-in-mathbbr3" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="rotations-in-mathbbr3"><span class="header-section-number">11.3.1</span> Rotations in <span class="math inline">\(\mathbb{R}^3\)</span></h3>
+<p>We will illustrate <a href="#thm-change-of-basis-representations" class="quarto-xref">Theorem&nbsp;<span>11.3</span></a> finding matrix representations of 3D rotations.</p>
+<p>Let’s start with a simpler example in <span class="math inline">\(\mathbb{R}^2\)</span> that we have discussed before</p>
+<p><strong>Example 1:</strong> Let <span class="math inline">\(T\)</span> be the rotation by <span class="math inline">\(\theta\)</span> degrees in <span class="math inline">\(\mathbb{R}^2\)</span>. The matrix representation with respect to the canonical basis is <span class="math display">\[\begin{bmatrix}\cos(\theta) &amp;-\sin(\theta)\\\sin(\theta)&amp;\cos(\theta)\end{bmatrix}\]</span></p>
+<p>This matrix represents a counterclockwise rotation by <span class="math inline">\(\theta\)</span> degrees around the origin in a two-dimensional space. When we multiply this matrix by any vector in <span class="math inline">\(\mathbb{R}^2\)</span>, it rotates the vector by the angle <span class="math inline">\(\theta\)</span> while preserving its length.</p>
+<p>The canonical basis in <span class="math inline">\(\mathbb{R}^2\)</span> consists of the unit vectors <span class="math inline">\(\mathbf{e}_1 = (1,0)\)</span> and <span class="math inline">\(\mathbf{e}_2 = (0,1)\)</span>. When rotated by <span class="math inline">\(\theta\)</span> degrees:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{e}_1\)</span> becomes <span class="math inline">\((\cos(\theta), \sin(\theta))\)</span>, which forms the first column of the matrix</li>
+<li><span class="math inline">\(\mathbf{e}_2\)</span> becomes <span class="math inline">\((-\sin(\theta), \cos(\theta))\)</span>, which forms the second column</li>
+</ul>
+<p><strong>Example 2:</strong> Rotation by <span class="math inline">\(\theta\)</span> degrees about the x-axis in <span class="math inline">\(\mathbb{R}^3\)</span> has matrix representation: <span class="math display">\[\begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; \cos(\theta) &amp; -\sin(\theta) \\ 0 &amp; \sin(\theta) &amp; \cos(\theta)\end{bmatrix}\]</span></p>
+<p>This matrix keeps the x-coordinate unchanged while rotating the yz-plane by angle <span class="math inline">\(\theta\)</span>.</p>
+<p><strong>Example 3:</strong> Rotation by <span class="math inline">\(\theta\)</span> degrees about the y-axis in <span class="math inline">\(\mathbb{R}^3\)</span> has matrix representation: <span class="math display">\[\begin{bmatrix}\cos(\theta) &amp; 0 &amp; \sin(\theta) \\ 0 &amp; 1 &amp; 0 \\ -\sin(\theta) &amp; 0 &amp; \cos(\theta)\end{bmatrix}\]</span></p>
+<p>This transformation preserves the y-coordinate while rotating the xz-plane by angle <span class="math inline">\(\theta\)</span>.</p>
+<p><strong>Example 4:</strong> Let <span class="math inline">\(T\)</span> be the 3D-rotation by <span class="math inline">\(\theta\)</span> degrees about the axis <span class="math inline">\((1,1,1)\)</span>. Find the matrix representation of <span class="math inline">\(T\)</span> with respect to the standard basis.</p>
+<p>This is a more challenging problem because we can’t immediately determine how the rotation affects the standard basis vectors. A better approach is to use a change of basis strategy: first select a new coordinate system where one axis aligns with the rotation axis <span class="math inline">\((1,1,1)\)</span>, compute the rotation matrix in this convenient basis, and then transform it back to the standard basis using a change of basis matrix.</p>
+<p>In the aligned coordinate system, the rotation will have a simple form since the vector <span class="math inline">\((1,1,1)\)</span> remains fixed while vectors in the perpendicular plane rotate. We can use the similarity transformation <span class="math inline">\(A = PBP^{-1}\)</span> where <span class="math inline">\(P\)</span> is the change of basis matrix, <span class="math inline">\(B\)</span> represents the rotation in the aligned coordinates, and <span class="math inline">\(A\)</span> is our desired rotation matrix in the standard basis.</p>
+<p>This technique is widely used in computer graphics, where rotations around arbitrary axes are essential for realistic 3D animations, camera movements, and object manipulations. While modern graphics engines often implement these operations using quaternions for better computational efficiency and to avoid issues, the underlying mathematical foundation remains the same.</p>
+<p><strong>Step 1: Find the new coordinate system:</strong> We first find an orthonormal basis where one vector aligns with the rotation vector <span class="math inline">\((1,1,1)\)</span>: <span class="math display">\[S_2=\left\{
+    \begin{bmatrix}\frac{1}{\sqrt{3}}\\\frac{1}{\sqrt{3}}\\\frac{1}{\sqrt{3}}\end{bmatrix}\\
+    \begin{bmatrix}\frac{1}{\sqrt{2}}\\\frac{-1}{\sqrt{2}}\\0\end{bmatrix}\\
+    \begin{bmatrix}\frac{1}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\\\frac{-2}{\sqrt{6}}\end{bmatrix}\\
+\right\}\]</span></p>
+<p>In this case we see that the matrix representation of <span class="math inline">\(T\)</span> with respect <span class="math inline">\(S_2\)</span> is <span class="math display">\[B=\begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; \cos(\theta) &amp; -\sin(\theta) \\ 0 &amp; \sin(\theta) &amp; \cos(\theta)\end{bmatrix}\]</span> This matrix keeps the first vector fixed and it rotates the perpendicular plane by <span class="math inline">\(\theta\)</span> degrees, which is exactly what we want for a rotation around the <span class="math inline">\((1,1,1)\)</span> axis.</p>
+<p>This approach works precisely because <span class="math inline">\(S_2\)</span>​ is an orthonormal basis. The orthonormality ensures that the transformation preserves angles and distances in the new coordinate system, which is essential for a proper rotation. Without orthonormality, the transformation would introduce distortion, and we could no longer interpret it as a pure rotation.</p>
+<p><strong>Step 2: Find the change of basis matrix:</strong> We now find <span class="math inline">\(Q=P_{S_1\leftarrow S_2}\)</span>, the change of basis matrix from <span class="math inline">\(S_2\)</span> to the canonical basis <span class="math inline">\(S_1=\{\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3\}\)</span>. Since we are transitioning to the canonical basis, for every element of <span class="math inline">\(S_2\)</span>, <span class="math inline">\([\mathbf{w}_i]_{S_1}=\mathbf{w}_i\)</span> and from <a href="#eq-change_of_basis" class="quarto-xref">Equation&nbsp;<span>11.1</span></a> we see that <span class="math display">\[Q=\begin{bmatrix}
+\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}}\\
+\frac{1}{\sqrt{3}} &amp; \frac{-1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}}\\
+\frac{1}{\sqrt{3}} &amp; 0 &amp; \frac{-2}{\sqrt{6}}.\\
+\end{bmatrix}\]</span></p>
+<p>The orthonormality of <span class="math inline">\(S_2\)</span> makes the change of basis matrix orthogonal, since all the columns are orthonormal. This means that the inverse of <span class="math inline">\(Q\)</span> is transpose, which significantly simplifies the calculations when transforming back to the standard basis.</p>
+<p><strong>Step 3: Transform back to the standard basis:</strong> <a href="#thm-change-of-basis-representations" class="quarto-xref">Theorem&nbsp;<span>11.3</span></a> says that the matrix representation of <span class="math inline">\(T\)</span> with respect to the canonical basis <span class="math inline">\(S_1\)</span> is <span class="math inline">\(A=QBQ^T\)</span>: <span class="math display">\[A=\begin{bmatrix}
+\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}}\\
+\frac{1}{\sqrt{3}} &amp; \frac{-1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}}\\
+\frac{1}{\sqrt{3}} &amp; 0 &amp; \frac{-2}{\sqrt{6}}.\\
+\end{bmatrix}
+\begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; \cos(\theta) &amp; -\sin(\theta) \\ 0 &amp; \sin(\theta) &amp; \cos(\theta)\end{bmatrix}
+\begin{bmatrix}
+\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{2}} &amp; \frac{-1}{\sqrt{2}} &amp; 0\\
+\frac{1}{\sqrt{6}} &amp; \frac{1}{\sqrt{6}} &amp; \frac{-2}{\sqrt{6}}
+\end{bmatrix}
+\]</span> When we simplify this expression using SymPy we get that <span class="math display">\[A= \begin{bmatrix}\frac{2 \cos{\left(θ \right)}}{3} + \frac{1}{3} &amp; \frac{1}{3} - \frac{2 \sin{\left(θ + \frac{\pi}{6} \right)}}{3} &amp; \frac{1}{3} - \frac{2 \cos{\left(θ + \frac{\pi}{3} \right)}}{3}\\\frac{1}{3} - \frac{2 \cos{\left(θ + \frac{\pi}{3} \right)}}{3} &amp; \frac{2 \cos{\left(θ \right)}}{3} + \frac{1}{3} &amp; \frac{1}{3} - \frac{2 \sin{\left(θ + \frac{\pi}{6} \right)}}{3}\\\frac{1}{3} - \frac{2 \sin{\left(θ + \frac{\pi}{6} \right)}}{3} &amp; \frac{1}{3} - \frac{2 \cos{\left(θ + \frac{\pi}{3} \right)}}{3} &amp; \frac{2 \cos{\left(θ \right)}}{3} + \frac{1}{3}\end{bmatrix}.\]</span></p>
+<p>This is the SymPy code:</p>
+<div id="a70c95bf" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>init_printing()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the orthonormal vectors of S2</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>V1<span class="op">=</span>Matrix([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>])<span class="op">/</span>sqrt(<span class="dv">3</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>V2<span class="op">=</span>Matrix([<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>])<span class="op">/</span>sqrt(<span class="dv">2</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>V3<span class="op">=</span>Matrix([<span class="dv">1</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>])<span class="op">/</span>sqrt(<span class="dv">6</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the change of basis mstrix Q</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> Matrix.hstack(V1,V2,V3)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Define B, matrix representation of T with respect to S2</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> Symbol(<span class="st">'θ'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrix([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">0</span>,cos(θ),<span class="op">-</span>sin(θ)],[<span class="dv">0</span>,sin(θ),cos(θ)]])</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the matrix representation with respect to the standard basis and simplify</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>simplify(Q<span class="op">*</span>B<span class="op">*</span>Q.T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}\frac{2 \cos{\left(θ \right)}}{3} + \frac{1}{3} &amp; \frac{1}{3} - \frac{2 \sin{\left(θ + \frac{\pi}{6} \right)}}{3} &amp; \frac{1}{3} - \frac{2 \cos{\left(θ + \frac{\pi}{3} \right)}}{3}\\\frac{1}{3} - \frac{2 \cos{\left(θ + \frac{\pi}{3} \right)}}{3} &amp; \frac{2 \cos{\left(θ \right)}}{3} + \frac{1}{3} &amp; \frac{1}{3} - \frac{2 \sin{\left(θ + \frac{\pi}{6} \right)}}{3}\\\frac{1}{3} - \frac{2 \sin{\left(θ + \frac{\pi}{6} \right)}}{3} &amp; \frac{1}{3} - \frac{2 \cos{\left(θ + \frac{\pi}{3} \right)}}{3} &amp; \frac{2 \cos{\left(θ \right)}}{3} + \frac{1}{3}\end{matrix}\right]\)</span></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1111,6 +1263,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../worksheets/matrix_representations2.html" class="pagination-link" aria-label="Problems">
+        <span class="nav-page-text">Problems</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
