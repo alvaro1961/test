@@ -392,7 +392,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bases-linear-maps-matrix-representations-and-eigenvalues-and-eigenvectors" id="toc-bases-linear-maps-matrix-representations-and-eigenvalues-and-eigenvectors" class="nav-link active" data-scroll-target="#bases-linear-maps-matrix-representations-and-eigenvalues-and-eigenvectors">Bases, Linear Maps, Matrix Representations, and Eigenvalues and Eigenvectors</a></li>
+  <li><a href="#bases-linear-maps-matrix-representations-and-eigenvalues-and-eigenvectors" id="toc-bases-linear-maps-matrix-representations-and-eigenvalues-and-eigenvectors" class="nav-link active" data-scroll-target="#bases-linear-maps-matrix-representations-and-eigenvalues-and-eigenvectors">Bases, Linear Maps, Matrix Representations, and Eigenvalues and Eigenvectors</a>
+  <ul class="collapse">
+  <li><a href="#bases-in-numpy" id="toc-bases-in-numpy" class="nav-link" data-scroll-target="#bases-in-numpy">Bases in NumPy</a></li>
+  <li><a href="#bases-in-sympy" id="toc-bases-in-sympy" class="nav-link" data-scroll-target="#bases-in-sympy">Bases in SymPy</a></li>
+  </ul></li>
   <li><a href="#part-i-bases-and-coordinates" id="toc-part-i-bases-and-coordinates" class="nav-link" data-scroll-target="#part-i-bases-and-coordinates">Part I: Bases and Coordinates</a>
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
@@ -450,7 +454,8 @@ window.Quarto = {
 <p><span class="math inline">\(S_4 = \left\{\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix}\right\}\)</span></p>
 <p><span class="math inline">\(S_5 = \left\{\begin{pmatrix} 1 \\ 0 \\ 0 \\ -1 \end{pmatrix}, \begin{pmatrix} 2 \\ -2 \\ -1 \\ 1 \end{pmatrix}, \begin{pmatrix} 3 \\ 1 \\ 0 \\ -2 \end{pmatrix}, \begin{pmatrix} 4 \\ -4 \\ -1 \\ -2 \end{pmatrix}\right\}\)</span></p>
 <p><span class="math inline">\(S_6 = \left\{\begin{pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end{pmatrix}, \begin{pmatrix} 1/2 \\ 1/2 \\ -1/2 \\ -1/2 \end{pmatrix}, \begin{pmatrix} 1/2 \\ -1/2 \\ 1/2 \\ -1/2 \end{pmatrix}, \begin{pmatrix} 1/2 \\ -1/2 \\ -1/2 \\ 1/2 \end{pmatrix}\right\}\)</span></p>
-<p>For your convenience, you can copy this code to save the bases as numpy lists or numpy matrices.</p>
+<section id="bases-in-numpy" class="level3">
+<h3 class="anchored" data-anchor-id="bases-in-numpy">Bases in NumPy</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Bases for R^3</span></span>
@@ -502,6 +507,56 @@ window.Quarto = {
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>S5_matrix <span class="op">=</span> np.column_stack(S5)  <span class="co"># S5 as a matrix</span></span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>S6_matrix <span class="op">=</span> np.column_stack(S6)  <span class="co"># S6 as a matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="bases-in-sympy" class="level3">
+<h3 class="anchored" data-anchor-id="bases-in-sympy">Bases in SymPy</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>init_printing()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bases for R^3</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>S1_sp <span class="op">=</span> [</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>S2_sp <span class="op">=</span> [</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">1</span>, <span class="dv">2</span>, <span class="op">-</span><span class="dv">4</span>]),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>]),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>S3_sp <span class="op">=</span> [</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    Matrix([sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">3</span>, sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">3</span>, sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">3</span>]),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    Matrix([sqrt(<span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span>sqrt(<span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>]),</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="op">-</span>sqrt(<span class="dv">6</span>)<span class="op">/</span><span class="dv">6</span>, sqrt(<span class="dv">6</span>)<span class="op">/</span><span class="dv">3</span>, <span class="op">-</span>sqrt(<span class="dv">6</span>)<span class="op">/</span><span class="dv">6</span>])</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Bases for R^4</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>S4_sp <span class="op">=</span> [</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]),</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]),</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>S5_sp <span class="op">=</span> [</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>]),</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">2</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>]),</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">2</span>]),</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">4</span>, <span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>])</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>S6_sp <span class="op">=</span> [</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>]),</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>]),</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>]),</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    Matrix([<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>])</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting lists of vectors to matrices (each column is a basis vector)</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>S1_matrix_sp <span class="op">=</span> Matrix.hstack(<span class="op">*</span>S1_sp)  </span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>S2_matrix_sp <span class="op">=</span> Matrix.hstack(<span class="op">*</span>S2_sp)  </span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>S3_matrix_sp <span class="op">=</span> Matrix.hstack(<span class="op">*</span>S3_sp)  </span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>S4_matrix_sp <span class="op">=</span> Matrix.hstack(<span class="op">*</span>S4_sp)  </span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>S5_matrix_sp <span class="op">=</span> Matrix.hstack(<span class="op">*</span>S5_sp)  </span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>S6_matrix_sp <span class="op">=</span> Matrix.hstack(<span class="op">*</span>S6_sp)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
 <section id="part-i-bases-and-coordinates" class="level2">
 <h2 class="anchored" data-anchor-id="part-i-bases-and-coordinates">Part I: Bases and Coordinates</h2>
 <blockquote class="blockquote">
@@ -524,15 +579,15 @@ window.Quarto = {
 <p>For each of the following, find <span class="math inline">\([\mathbf{v}]_S\)</span> by:</p>
 <ul>
 <li>Writing the vector equation <span class="math inline">\(\mathbf{v} = x_1\mathbf{v}_1 + x_2\mathbf{v}_2 + \cdots + x_k\mathbf{v}_k\)</span></li>
-<li>Writing it as a matrix equation</li>
-<li>Entering the augmented matrix in sympy and solving</li>
+<li>Writing it as a matrix equation or augmented matrix</li>
+<li>Solve it (if it is too complicated, use SymPy)</li>
 <li>Finding <span class="math inline">\([\mathbf{v}]_S\)</span></li>
 </ul>
 <ol type="a">
 <li><span class="math inline">\(\mathbf{v} = (1,1,1)\)</span> with basis <span class="math inline">\(S_2\)</span></li>
-<li><span class="math inline">\(\mathbf{v} = (1,1,1)\)</span> with basis <span class="math inline">\(S_3\)</span></li>
+<li><span class="math inline">\(\mathbf{v} = (1,1,-1)\)</span> with basis <span class="math inline">\(S_3\)</span></li>
 <li><span class="math inline">\(\mathbf{v} = (1,1,1,1)\)</span> with basis <span class="math inline">\(S_5\)</span></li>
-<li><span class="math inline">\(\mathbf{v} = (1,1,1,1)\)</span> with basis <span class="math inline">\(S_6\)</span></li>
+<li><span class="math inline">\(\mathbf{v} = (1,1,0,0)\)</span> with basis <span class="math inline">\(S_6\)</span></li>
 </ol>
 </section>
 <section id="problem-3" class="level3">
